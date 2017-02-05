@@ -1,0 +1,53 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "missionConversations.hpp"
+
+SET_MISSION_META(B, "MMain06", "Smash And Grab", "On the way to Black Mesa...", "The British Knights and ION contractors launch an attack on DSE's research facility code name 'Black Mesa' in order to extract the device.", "Campaigns\IP_CMP_MERCS\img\MMain06_load.jpg", "Campaigns\IP_CMP_MERCS\img\MMain06_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+
+class CfgDebriefing
+{  
+	class MMain07
+	{
+		title = "Mission Accomplished!";
+		subtitle = "Device Secured!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	class MOut_AAF
+	{
+		title = "Mission Accomplished!";
+		subtitle = "Device Destroyed!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_AAF_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	class MOut_CSAT
+	{
+		title = "Mission Accomplished!";
+		subtitle = "Device Secured!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	class MOut_DSE
+	{
+		title = "Mission Accomplished!";
+		subtitle = "Device Secured!";
+		description = "";
+		pictureBackground = "\Campaigns\IP_CMP_MERCS\txt\DSE_Logo.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	class MOut_EF
+	{
+		title = "Mission Accomplished!";
+		subtitle = "Device Secured!";
+		description = "";
+		pictureBackground = "\Campaigns\IP_CMP_MERCS\txt\EF_Flag.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+};

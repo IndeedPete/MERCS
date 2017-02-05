@@ -1,0 +1,43 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(A, "M04b", "Protection Money", "On the way to Sideras...", "ION reacts to the cowardly Black Arrow ambush on the Sauerland cargo trucks. Contractors are sent out to eliminate a disloyal client's security detail.", "Campaigns\IP_CMP_MERCS\img\M04b_load.jpg", "Campaigns\IP_CMP_MERCS\img\M04b_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+
+class CfgDebriefing
+{  
+	class Hub01
+	{
+		title = "Mission Accomplished!";
+		subtitle = "The HVI was scared shitless!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	class Hub01Fail1
+	{
+		title = "Mission Failed!";
+		subtitle = "The HVI was killed!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {1,0,0,1};	
+	};
+	class Hub01Fail2
+	{
+		title = "Mission Failed!";
+		subtitle = "The HVI escaped!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {1,0,0,1};	
+	};
+	class MOut_Renegade
+	{
+		title = "Mission Aborted!";
+		subtitle = "You better run fast, renegade!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,0,1,1};	
+	};
+};

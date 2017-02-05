@@ -1,0 +1,32 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "missionConversations.hpp"
+
+SET_MISSION_META(B, "MMain03", "Schnitzeljagd", "On the way to Agios Panagiotis...", "ION contractors are sent out to pick up a freelancing IT-Security specialist.", "Campaigns\IP_CMP_MERCS\img\MMain03_load.jpg", "Campaigns\IP_CMP_MERCS\img\MMain03_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+
+// Temporary as it does not seem to work from the campaign folder
+class CfgSounds
+{
+	sounds[] = {};
+	class ringtone
+	{
+		// how the sound is referred to in the editor (e.g. trigger effects)
+		name = "ringtone";
+		// filename, volume, pitch
+		sound[] = {"snd\ringtone.ogg", 1, 1};
+		// subtitle delay in seconds, subtitle text 
+		titles[] = {1, "*Phone Rings*"};
+	};
+};
+
+class CfgDebriefing
+{  
+	class Hub02
+	{
+		title = "Mission Accomplished!";
+		subtitle = "Found him!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+};

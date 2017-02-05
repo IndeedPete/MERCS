@@ -1,0 +1,26 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(B, "M07a", "Badass One", "On the way to Pyrgos...", "EUROFORCE air assets plan to engage the AAF Headquarters at Pyrgos. ION contractors are tasked to provide reconnaissance and BDA.", "Campaigns\IP_CMP_MERCS\img\M07a_load.jpg", "Campaigns\IP_CMP_MERCS\img\M07a_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+
+class CfgDebriefing
+{  
+	class Hub02
+	{
+		title = "Mission Accomplished!";
+		subtitle = "AAF Headquarters Destroyed!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	
+	class Hub02Fail1
+	{
+		title = "Mission Failed!";
+		subtitle = "Raif died!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {1,0,0,1};	
+	};
+};

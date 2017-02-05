@@ -1,0 +1,892 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Cutscene_Done",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Cutscene Done"};
+item2[] = {"Win_End",1,250,-175.000000,900.000000,-75.000000,950.000000,0.000000,"Win End"};
+item3[] = {"Running_Complete",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Running Complete"};
+item4[] = {"Intro_Done",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Intro Done"};
+item5[] = {"Shootingrange",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Shootingrange"};
+item6[] = {"",7,210,-254.000000,21.000000,-246.000015,29.000000,0.000000,""};
+item7[] = {"Range_Done",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Range Done"};
+item8[] = {"Critical_Violati",4,218,-300.000000,-150.000000,-200.000000,-100.000000,3.000000,"Critical Violation"};
+item9[] = {"Fail_1",1,250,-425.000000,-150.000000,-325.000000,-100.000000,0.000000,"Fail 1"};
+item10[] = {"",7,210,-253.999985,171.000000,-246.000000,179.000000,0.000000,""};
+item11[] = {"Briefing",2,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Briefing"};
+item12[] = {"",7,210,-254.000000,321.000000,-246.000015,329.000000,0.000000,""};
+item13[] = {"Briefing_Done",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"Briefing Done"};
+item14[] = {"Attack",2,4346,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Attack"};
+item15[] = {"",7,210,-254.000015,471.000000,-246.000000,479.000000,0.000000,""};
+item16[] = {"Clear",4,218,-175.000000,525.000000,-75.000000,575.000000,0.000000,"Clear"};
+item17[] = {"Cemetery",2,250,-175.000000,600.000000,-75.000000,650.000000,0.000000,"Cemetery"};
+item18[] = {"",7,210,-254.000000,621.000000,-246.000000,629.000000,0.000000,""};
+item19[] = {"Copied",4,218,-175.000000,675.000000,-75.000000,725.000000,0.000000,"Copied"};
+item20[] = {"Meet",2,250,-175.000000,750.000000,-75.000000,800.000000,0.000000,"Meet"};
+item21[] = {"",7,210,-254.000000,771.000000,-245.999985,779.000000,0.000000,""};
+item22[] = {"Close",4,218,-175.000000,825.000000,-75.000000,875.000000,0.000000,"Close"};
+link0[] = {0,1};
+link1[] = {0,8};
+link2[] = {1,3};
+link3[] = {3,4};
+link4[] = {3,6};
+link5[] = {4,5};
+link6[] = {5,7};
+link7[] = {5,10};
+link8[] = {6,8};
+link9[] = {7,11};
+link10[] = {8,9};
+link11[] = {10,6};
+link12[] = {11,12};
+link13[] = {11,13};
+link14[] = {12,10};
+link15[] = {13,14};
+link16[] = {14,15};
+link17[] = {14,16};
+link18[] = {15,12};
+link19[] = {16,17};
+link20[] = {17,18};
+link21[] = {17,19};
+link22[] = {18,15};
+link23[] = {19,20};
+link24[] = {20,21};
+link25[] = {20,22};
+link26[] = {21,18};
+link27[] = {22,2};
+globals[] = {25.000000,1,0,0,0,640,480,1,129,6316128,1,-609.090759,49.443481,634.144104,-131.202225,783,910,1};
+window[] = {2,-1,-1,-1,-1,915,156,1596,156,3,801};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "IP_Main enableSimulation false;" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	waitUntil {time > 0};	" \n
+       "	sleep 1;" \n
+       "	" \n
+       "	_video = [""\A3\Missions_F_EPB\video\B_Hub01_few_hours_later.ogv""] spawn BIS_fnc_playVideo;" \n
+       "	IP_Weather = ["""", [""CLEAR"", ""OVERCAST""]] call IP_fnc_setWeather;" \n
+       "	waitUntil {scriptDone _video};" \n
+       "	" \n
+       "	// Cutscene Start" \n
+       "	#define CUTIN [""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	#define CUTOUT [""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	#define CHECK if (!isNil ""IP_Cutscene_Skip"" && {IP_Cutscene_Skip}) then {breakOut ""cutscene""};" \n
+       "	" \n
+       "	disableSerialization;" \n
+       "	IP_Cutscene_Skip = false;" \n
+       "	" \n
+       "	_ehSkip = ([] call BIS_fnc_displayMission) displayAddEventHandler" \n
+       "	[" \n
+       "		""KeyDown""," \n
+       "		""" \n
+       "			if (_this select 1 == 57) then" \n
+       "			{" \n
+       "				if (IP_Cutscene_Skip) exitWith {};" \n
+       "" \n
+       "				playSound ['click',true];" \n
+       "" \n
+       "				IP_Cutscene_Skip = true;" \n
+       "			};" \n
+       "		""" \n
+       "	];" \n
+       "	" \n
+       "	uiNamespace setVariable [""IP_Cutscene_ehSkip"", _ehSkip];" \n
+       "	" \n
+       "	_camera = ""camera"" camCreate (getPos player);" \n
+       "	_camera cameraEffect [""internal"", ""back""];" \n
+       "	IP_Main enableSimulation true;" \n
+       "	IP_Main switchMove """";" \n
+       "	" \n
+       "	if (true) then {" \n
+       "		scopeName ""cutscene"";" \n
+       "" \n
+       "		_camera camPrepareTarget [-44205.38,82148.30,-47656.57];" \n
+       "		_camera camPreparePos [15161.84,17325.82,7.46];" \n
+       "		_camera camPrepareFOV 0.700;" \n
+       "		_camera camCommitPrepared 0;" \n
+       "" \n
+       "		sleep 0.5;" \n
+       "		CUTIN" \n
+       "		CHECK" \n
+       "		" \n
+       "		sleep 2;" \n
+       "		[] spawn IP_fnc_showOSD;" \n
+       "		sleep 10;" \n
+       "" \n
+       "		CHECK" \n
+       "		CUTOUT" \n
+       "		sleep 0.25;" \n
+       "		" \n
+       "		_camera camPrepareTarget [-52360.54,91052.77,2276.68];" \n
+       "		_camera camPreparePos [15150.18,17333.10,1.51];" \n
+       "		_camera camPrepareFOV 0.700;" \n
+       "		_camera camCommitPrepared 0;" \n
+       "		" \n
+       "		sleep 0.25;" \n
+       "		CUTIN" \n
+       "		CHECK" \n
+       "		" \n
+       "		_camera camPrepareTarget [-52360.54,91052.77,2276.85];" \n
+       "		_camera camPreparePos [15154.33,17336.88,1.50];" \n
+       "		_camera camPrepareFOV 0.700;" \n
+       "		_camera camCommitPrepared 10;" \n
+       "		waitUntil {camCommitted _camera};" \n
+       "		" \n
+       "		sleep 5;" \n
+       "	};" \n
+       "	" \n
+       "	CUTOUT" \n
+       "	sleep 0.5;" \n
+       "" \n
+       "	_camera cameraEffect [""terminate"", ""back""];" \n
+       "	camDestroy _camera;" \n
+       "	" \n
+       "	([] call BIS_fnc_displayMission) displayRemoveEventHandler ['KeyDown', (uiNamespace getVariable ""IP_Cutscene_ehSkip"")];" \n
+       "	uiNamespace setVariable [""IP_Cutscene_ehSkip"", nil];" \n
+       "	IP_Cutscene_Skip = nil;" \n
+       "	" \n
+       "	sleep 0.5;" \n
+       "	CUTIN" \n
+       "	" \n
+       "	IP_Sergeant switchMove ""Acts_A_M01_briefing"";" \n
+       "	[" \n
+       "		[IP_Sergeant]," \n
+       "		[" \n
+       "			(""Aaaaaaaaaaaaattention, you assholes! I am Staff Sergeant "" + (name IP_Sergeant) + ""!"")," \n
+       "			""You fucking idiots were so damn stupid to join my beloved AAF! And it's my pleasure to grant you asshats some education!""," \n
+       "			""You know how the brass calls you worthless shits?! One-week-wonders! And you know why?!""," \n
+       "			""Because you nutjobs get just one damn week of training until we'll put you to battle! You are officially the most fucked faggots in this force! Congrats!""," \n
+       "			""In the next seven days I will give you assholes a crash course on how to kill terrorists! Wait - who the fuck are you?! Are we now allowing monkeys in my platoon?!""," \n
+       "			""Don't give me that look you worthless piece of shit! Get yourself moving, one time around the facility! Just because I don't like your fucking face! Now, move it, dammit!""" \n
+       "		]," \n
+       "		""DIRECT""," \n
+       "		IP_ShowIntro" \n
+       "	] call IP_fnc_simpleConversation;" \n
+       "	" \n
+       "	[player, ""tRun"", [""Run a penalty round and follow the waypoints as quickly as possible just because you've pissed off the drill sergeant with the look on your face!"", ""Run"", """"], nil, true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "	" \n
+       "	[] spawn {" \n
+       "		sleep 5;" \n
+       "		while {((""tRun"" call BIS_fnc_taskState) != ""SUCCEEDED"") && !IP_CriticalViolation} do {" \n
+       "			if ((speed IP_Main < 1) && (speed IP_Main > -1) && ((""tRun"" call BIS_fnc_taskState) != ""SUCCEEDED"")) then {" \n
+       "				waitUntil {!IP_SimpleSentence_Talking};" \n
+       "				[IP_Sergeant, ""Get moving you fucktard or I'll kick your ass! This is my last warning!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "				if ((speed IP_Main < 1) && (speed IP_Main > -1) && ((""tRun"" call BIS_fnc_taskState) != ""SUCCEEDED"")) then {IP_CriticalViolation = true};" \n
+       "			};" \n
+       "			sleep 1;" \n
+       "		};" \n
+       "	};" \n
+       "	" \n
+       "	_grp = group IP_Main;" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mMove1""), 0];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", '[IP_Sergeant, ""Faster, faster! Who are you?! My fucking grandmother?!"", ""DIRECT""] spawn IP_fnc_simpleSentence; IP_Sergeant switchMove """";'];" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mMove2""), 1];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", '[IP_Sergeant, ""Run bimbo, run! Bananas are just around the corner!"", ""DIRECT""] spawn IP_fnc_simpleSentence;'];" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mMove3""), 2];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", '[IP_Main, ""Jeez, what an ass, he should get laid some time!"", ""DIRECT""] spawn IP_fnc_simpleSentence;'];" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mMove4""), 3];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", '[IP_Sergeant, ""Okay, get back here you faggot, we are waiting!"", ""DIRECT""] spawn IP_fnc_simpleSentence;'];" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mMove5""), 4];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", ""['tRun', 'SUCCEEDED'] call BIS_fnc_taskSetState;""];" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Critical_Violati">*/
+        class Critical_Violati
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_CriticalViolation"" && IP_CriticalViolation"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Cutscene_Done">*/
+        class Cutscene_Done
+        {
+          priority = 0.000000;
+          to="Running_Complete";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (""tRun"" call BIS_fnc_taskExists) && {(""tRun"" call BIS_fnc_taskState) == ""SUCCEEDED""}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	[""tMeet"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	IP_Commander setVariable [""IP_LiveFeed"", true];" \n
+       "	[IP_Commander, ""There you are. Okay, get rid of the Greenback clothes, you look like a bloody garden gnome."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""Hub02"", true, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Running_Complete">*/
+    class Running_Complete
+    {
+      name = "Running_Complete";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Sergeant, ""Now look what we got here. The monkey returns! You want a damn banana? You don't get fucking bananas in my platoon!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Sergeant, ""And now all you assholes will run ten laps around the camp! Move it, you faggots! "", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Critical_Violati">*/
+        class Critical_Violati
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_CriticalViolation"" && IP_CriticalViolation"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Intro_Done">*/
+        class Intro_Done
+        {
+          priority = 0.000000;
+          to="Shootingrange";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Shootingrange">*/
+    class Shootingrange
+    {
+      name = "Shootingrange";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	skipTime 46.5;" \n
+       "	sleep 1;" \n
+       "	" \n
+       "	_video = [""\A3\Missions_F_EPB\video\B_out2_sometime_later.ogv""] spawn BIS_fnc_playVideo;" \n
+       "	IP_Weather = ["""", [""FOGGY"", ""LIGHTFOG""]] call IP_fnc_setWeather;" \n
+       "	waitUntil {scriptDone _video};" \n
+       "	" \n
+       "	IP_Sergeant addVest ""V_BandollierB_oli"";	" \n
+       "	_guys = [IP_Main, IP_Sergeant] + IP_Recruits;" \n
+       "	for ""_i"" from 0 to ((count _guys) - 1) do {" \n
+       "		_guy = _guys select _i;" \n
+       "		_guy moveInCargo [IP_Truck, (_i + 2)];" \n
+       "	};" \n
+       "	" \n
+       "	IP_AirbaseDone = true;" \n
+       "	" \n
+       "	sleep 1;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	[] spawn IP_fnc_showOSD;	" \n
+       "	[" \n
+       "		[IP_Sergeant]," \n
+       "		[" \n
+       "			""Okay, listen up you fucktards! We're about to enter our improvised shooting range! The fucking Blueflags bombed our proper one a few days ago!""," \n
+       "			""I'm gonna show you retards how to shoot and kill a damn Blueflag or FIA terrorist in an orderly fashion!""," \n
+       "			""If I see any of you assholes pointing a rifle in my direction I'm gonna fuck you, shoot you and then fuck you again until you're literally FUBAR!""," \n
+       "			""Heads up, lowlifes, there's the range!""" \n
+       "		]," \n
+       "		""DIRECT""," \n
+       "		IP_ShowIntro" \n
+       "	] call IP_fnc_simpleConversation;" \n
+       "	" \n
+       "	[IP_Shooter1, [[BIS_SR_Target0], [BIS_SR_Target1]], {isNil ""IP_ShootingRangeDone""}] spawn IP_scn_ambientShootingRange;" \n
+       "	[IP_Shooter2, [[BIS_SR_Target2], [BIS_SR_Target3], [BIS_SR_Target4]], {isNil ""IP_ShootingRangeDone""}] spawn IP_scn_ambientShootingRange;" \n
+       "	[IP_Shooter3, [[IP_MR_Target1, ""MIDDLE"", 30, 10, 3, 0.1], [IP_LR_Target1, ""DOWN"", 30, 5, 3, 0.1]], {isNil ""IP_ShootingRangeDone""}] spawn IP_scn_ambientShootingRange;" \n
+       "	[IP_Shooter4, [[IP_ULR_Target1, ""DOWN"", 60, 5, 10, 2]], {isNil ""IP_ShootingRangeDone""}] spawn IP_scn_ambientShootingRange;" \n
+       "" \n
+       "	[] spawn {" \n
+       "		while {isNil ""IP_ShootingRangeDone""} do {" \n
+       "			IP_Heli setFuel 1;" \n
+       "			IP_Heli engineOn true;			" \n
+       "			sleep (10 + random 5);			" \n
+       "			IP_Heli setFuel 0;" \n
+       "			sleep (30 + random 30);" \n
+       "		};" \n
+       "	};" \n
+       "	" \n
+       "	waitUntil {{_x in IP_Truck} count _guys == 0};" \n
+       "	" \n
+       "	_grp = group IP_Sergeant;" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mSergeant""), 0];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointSpeed ""LIMITED"";" \n
+       "	_wp setWaypointBehaviour ""SAFE"";" \n
+       "	" \n
+       "	{_x stop false} forEach IP_Recruits;" \n
+       "	" \n
+       "	[IP_Sergeant, ""All right, there we go! Come over here!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Sergeant, ""Hey, banana joe, I've read in your lousy CV that you have military experience! Unlike these other losers."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Sergeant, ""Get your filthy ass to the officer over there and pick up a starter kit! You're gonna serve as an example on how not to do it!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	{" \n
+       "		_pos = ""mRecruits"" call IP_fnc_SHKPos;" \n
+       "		_x setSpeedMode ""LIMITED"";" \n
+       "		_x setBehaviour ""SAFE"";" \n
+       "		_x doMove _pos;" \n
+       "	} forEach IP_Recruits;" \n
+       "	" \n
+       "	[player, ""tRifle"", [""Pick up a rifle!"", ""Pick Up A Rifle"", ""Officer""], IP_Officer, true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "	" \n
+       "	waitUntil {IP_Main distance IP_Officer < 3};" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 0.5;" \n
+       "	 " \n
+       "	removeHeadgear IP_Main;" \n
+       "	IP_Main addHeadgear ""H_Cap_headphones"";" \n
+       "	IP_Main addVest ""V_Chestrig_oli"";" \n
+       "	IP_Main addWeapon ""arifle_Mk20_plain_F"";" \n
+       "	" \n
+       "	_watchPos = getMarkerPos ""mShooting"";" \n
+       "	_watchPos set [2, 1.75];" \n
+       "	" \n
+       "	{" \n
+       "		_x lookAt _watchPos;" \n
+       "		_x doWatch _watchPos;" \n
+       "	} forEach ([IP_Sergeant] + IP_Recruits);" \n
+       "	" \n
+       "	sleep 0.5;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	[IP_Sergeant, ""Okay, now come back here!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""tRifle"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[player, ""tShootRifle"", [""Shoot at the targets!"", ""Shoot Targets"", ""Shooting Range""], ""mShooting"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	" \n
+       "	waitUntil {IP_Main distance (getMarkerPos ""mShooting"") < 1.5};" \n
+       "	" \n
+       "	[IP_Sergeant, ""Let's see if you dumbass can hit something! Load up this mag and fire some rounds at the targets in front of you!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	IP_Main addMagazine ""30Rnd_556x45_Stanag_Tracer_Red"";" \n
+       "	" \n
+       "	IP_ShotsFired = 0;" \n
+       "	IP_TargetsHit = 0;" \n
+       "	_firedEH = IP_Main addEventHandler [""Fired"", {" \n
+       "		if ((_this select 1) == (primaryWeapon (_this select 0))) then {" \n
+       "			IP_ShotsFired = IP_ShotsFired + 1;" \n
+       "			_acc = IP_TargetsHit / IP_ShotsFired;" \n
+       "			" \n
+       "			_class = switch (true) do {" \n
+       "				case (_acc <= 0.25): {""Automatic Rifleman""};" \n
+       "				case ((_acc > 0.25) && (_acc <= 0.5)): {""Rifleman""};" \n
+       "				case ((_acc > 0.5) && (_acc <= 0.75)): {""Grenadier""};" \n
+       "				case (_acc > 0.75): {""Marksman""};" \n
+       "			};" \n
+       "			" \n
+       "			_text = ""Targets Hit: "" + str(IP_TargetsHit) + ""/"" + str(IP_ShotsFired) + ""\nAccuracy: "" + str(_acc * 100) + ""%\nClass: "" + _class;" \n
+       "			hint _text;		" \n
+       "		};" \n
+       "	}];" \n
+       "	" \n
+       "	{" \n
+       "		_x addEventhandler [""Hit"", {" \n
+       "			if (isPlayer(_this select 1)) then {" \n
+       "				IP_TargetsHit = IP_TargetsHit + 1;" \n
+       "				_acc = IP_TargetsHit / IP_ShotsFired;" \n
+       "				" \n
+       "				_class = switch (true) do {" \n
+       "					case (_acc <= 0.25): {""Automatic Rifleman""};" \n
+       "					case ((_acc > 0.25) && (_acc <= 0.5)): {""Rifleman""};" \n
+       "					case ((_acc > 0.5) && (_acc <= 0.75)): {""Grenadier""};" \n
+       "					case (_acc > 0.75): {""Marksman""};" \n
+       "				};" \n
+       "				" \n
+       "				_text = ""Targets Hit: "" + str(IP_TargetsHit) + ""/"" + str(IP_ShotsFired) + ""\nAccuracy: "" + str(_acc * 100) + ""%\nRank: "" + _class;" \n
+       "				hint _text;		" \n
+       "			};" \n
+       "		}];" \n
+       "	} forEach [IP_SR_Target1, IP_SR_Target2, IP_MR_Target3, IP_MR_Target4, IP_MR_Target5, IP_LR_Target2, IP_LR_Target3, IP_ULR_Target2, IP_ULR_Target3, IP_ULR_Target4];" \n
+       "	" \n
+       "	waitUntil {(count magazines IP_Main == 0) && (IP_Main ammo (primaryWeapon IP_Main) == 0) && (IP_ShotsFired > 0)};" \n
+       "	[""tShootRifle"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	" \n
+       "	//if (IP_ShotsFired == 0) then {IP_ShotsFired = 1};" \n
+       "	_acc = IP_TargetsHit / IP_ShotsFired;" \n
+       "	_class = switch (true) do {" \n
+       "		case (_acc <= 0.25): {" \n
+       "			[IP_Sergeant, ""Jesus fucking Christ! Looks like you can't hit a damn thing! Maybe a supporting role is more suiting for you, you damn nuthead!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			[IP_Sergeant, ""Get you ass back to the officer and pick up an MG, double time!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			[player, ""tMG"", [""Pick up a machine gun!"", ""Pick Up An MG"", ""Officer""], IP_Officer, true, 1] call BIS_fnc_taskCreate;" \n
+       "			""Automatic Rifleman""" \n
+       "		};" \n
+       "		" \n
+       "		case ((_acc > 0.25) && (_acc <= 0.5)): {" \n
+       "			[IP_Sergeant, ""Ah, looks like you're the average loser! Get yourself an assault rifle and see if we can confirm this result!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			[player, ""tAssaultRifle"", [""Pick up an assault rifle!"", ""Pick Up An Assault Rifle"", ""Officer""], IP_Officer, true, 1] call BIS_fnc_taskCreate;" \n
+       "			""Rifleman""" \n
+       "		};" \n
+       "		" \n
+       "		case ((_acc > 0.5) && (_acc <= 0.75)): {" \n
+       "			[IP_Sergeant, ""Fairly accurate result for a fucktard like you! Maybe you're not that much of a useless shit I thought at first. Let's see how you handle the grenade launcher!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			[player, ""tGrenade"", [""Pick up an assault rifle with grenade launcher!"", ""Pick Up An Assault Rifle"", ""Officer""], IP_Officer, true, 1] call BIS_fnc_taskCreate;" \n
+       "			""Grenadier""" \n
+       "		};" \n
+       "		" \n
+       "		case (_acc > 0.75): {" \n
+       "			[IP_Sergeant, ""Holy moly, I'm impressed you piece of shit! Go for the marksman rifle, now!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			[player, ""tMarksman"", [""Pick up a marksman rifle!"", ""Pick Up A Marksman Rifle"", ""Officer""], IP_Officer, true, 1] call BIS_fnc_taskCreate;" \n
+       "			""Marksman""" \n
+       "		};" \n
+       "	};" \n
+       "	" \n
+       "	saveGame;	" \n
+       "	waitUntil {IP_Main distance IP_Officer < 3};" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	_stuff = switch (_class) do {" \n
+       "		case ""Automatic Rifleman"": {[""LMG_Mk200_pointer_F"", [""200Rnd_65x39_cased_Box_Tracer"", 1], ""tMG"", IP_Autorifleman, [""H_HelmetIA_camo"", ""V_PlateCarrierIA2_dgtl"", [[""200Rnd_65x39_cased_Box"",3], [""9Rnd_45ACP_Mag"",3], [""HandGrenade"",2], [""SmokeShell"",1], [""SmokeShellGreen"",1], [""Chemlight_green"",2]]]]};" \n
+       "		case ""Rifleman"": {[""arifle_Mk20_ACO_pointer_F"", [""30Rnd_556x45_Stanag_Tracer_Red"", 1], ""tAssaultRifle"", IP_Rifleman, [""H_HelmetIA"", ""V_PlateCarrierIA1_dgtl"", [[""30Rnd_556x45_Stanag"",10], [""9Rnd_45ACP_Mag"",3], [""HandGrenade"",2], [""SmokeShell"",1], [""SmokeShellGreen"",1], [""Chemlight_green"",2]]]]};" \n
+       "		case ""Grenadier"": {[""arifle_Mk20_GL_ACO_F"", [""1Rnd_HE_Grenade_shell"", 6], ""tGrenade"", IP_Grenadier, [""H_HelmetIA_net"", ""V_PlateCarrierIAGL_dgtl"", [[""30Rnd_556x45_Stanag"",6], [""9Rnd_45ACP_Mag"",3], [""HandGrenade"",2], [""MiniGrenade"",2], [""1Rnd_HE_Grenade_shell"",6], [""SmokeShell"",1], [""SmokeShellGreen"",1], [""Chemlight_green"",2], [""1Rnd_Smoke_Grenade_shell"",2], [""1Rnd_SmokeGreen_Grenade_shell"",1], [""1Rnd_SmokeOrange_Grenade_shell"",1], [""1Rnd_SmokePurple_Grenade_shell"",1]]]]};" \n
+       "		case ""Marksman"": {[""srifle_EBR_MRCO_pointer_F"", [""20Rnd_762x51_Mag"", 1], ""tMarksman"", IP_Marksman, [""H_HelmetIA"", ""V_PlateCarrierIA1_dgtl"", [[""20Rnd_762x51_Mag"",8], [""9Rnd_45ACP_Mag"",3], [""HandGrenade"",2], [""SmokeShell"",1], [""SmokeShellGreen"",1], [""Chemlight_green"",2]]]]};" \n
+       "	};" \n
+       "	 " \n
+       "	removeAllWeapons IP_Main;" \n
+       "	IP_Main addWeapon (_stuff select 0);" \n
+       "	" \n
+       "	sleep 0.5;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	[IP_Sergeant, ""Okay, now come back here!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[(_stuff select 2), ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[player, ""tShoot"", [""Shoot at the targets!"", ""Shoot Targets"", ""Shooting Range""], ""mShooting"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	" \n
+       "	waitUntil {IP_Main distance (getMarkerPos ""mShooting"") < 1.5};" \n
+       "	" \n
+       "	[IP_Sergeant, ""Here's some ammo!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	IP_Main addMagazines (_stuff select 1);" \n
+       "	" \n
+       "	IP_ShotsFired = 0;" \n
+       "	IP_TargetsHit = 0;" \n
+       "	" \n
+       "		waitUntil {(count magazines IP_Main == 0) && (IP_Main ammo (primaryWeapon IP_Main) == 0) && (IP_ShotsFired > 0)};" \n
+       "	[""tShoot"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	saveGame;" \n
+       "	" \n
+       "	[IP_Commander, ""Hey, Freshmeat, McMillian here! Get yourself some privacy, we need to talk."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Uhm, Staff Sergeant? Can I excuse myself for a second? Nature's calling."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Sergeant, ""What the fuck do you think this is?! Kindergarten?! Are you completely out of your mind?! Ah fuck, get going before you start peeing all over my beautiful range."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[player, ""tTalk"", [""Get to a safe position and talk to McMillian!"", ""Talk"", ""Toilet""], IP_Toilet, true, 1] call BIS_fnc_taskCreate;" \n
+       "	[IP_Commander, ""commanderOpener"", IP_Toilet] call IP_fnc_addConversation;" \n
+       "	saveGame;" \n
+       "	" \n
+       "	[IP_Sergeant, ""In the meantime the next one of you losers will get himself a rifle and start shooting! Now!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	waitUntil {(""tTalk"" call BIS_fnc_taskState) == ""SUCCEEDED""};" \n
+       "	" \n
+       "	_guy = IP_Recruits select 0;" \n
+       "	_guy setPos (getMarkerPos ""mShooting"");" \n
+       "	_guy setDir 90;" \n
+       "	removeHeadgear _guy;" \n
+       "	_guy addHeadgear ""H_Cap_headphones"";" \n
+       "	_guy addVest ""V_Chestrig_oli"";" \n
+       "	_guy addMagazines [""30Rnd_556x45_Stanag_Tracer_Red"", 3];" \n
+       "	_guy addWeapon ""arifle_Mk20_plain_F"";" \n
+       "	sleep 1;" \n
+       "	[_guy, [[IP_SR_Target1], [IP_SR_Target2], [IP_MR_Target3], [IP_MR_Target4], [IP_MR_Target5]], {isNil ""IP_ShootingRangeDone""}] spawn IP_scn_ambientShootingRange;" \n
+       "	" \n
+       "	[player, ""tBack"", [""Get back to the Drill Sergeant!"", ""Get Back"", ""Drill Sergeant""], IP_Sergeant, true, 1] call BIS_fnc_taskCreate;" \n
+       "	" \n
+       "	waitUntil {IP_Main distance IP_Sergeant < 5};" \n
+       "	" \n
+       "	IP_Sergeant lookAt ObjNull;" \n
+       "	IP_Sergeant doWatch ObjNull;	" \n
+       "	[""tBack"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[IP_Sergeant, ""What on earth are you doing Geckas?! You incestuous piece of shit! If your damn father hadn't fucked his ugly sister 20 years ago we wouldn't have to watch this lousy shooting now!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Sergeant, ""Now, all you fuckers get down and give me forty because Geckas is a fucking retard!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	skipTime 78;" \n
+       "	sleep 1;" \n
+       "	" \n
+       "	_video = [""\A3\Missions_F_EPB\video\B_out2_sometime_later.ogv""] spawn BIS_fnc_playVideo;" \n
+       "	IP_Weather = ["""", [""RAINY"", ""LIGHTRAIN""]] call IP_fnc_setWeather;" \n
+       "	waitUntil {scriptDone _video};" \n
+       "	" \n
+       "	deleteVehicle (_stuff select 3);" \n
+       "	_gear = _stuff select 4;" \n
+       "	" \n
+       "	removeAllWeapons IP_Main;" \n
+       "	removeHeadgear IP_Main;" \n
+       "	removeVest IP_Main;" \n
+       "	IP_Main addHeadgear (_gear select 0);" \n
+       "	IP_Main addVest (_gear select 1);" \n
+       "	IP_Main addItem ""FirstAidKit"";" \n
+       "	{IP_Main addMagazines _x} forEach (_gear select 2);" \n
+       "	IP_Main addWeapon (_stuff select 0);" \n
+       "	IP_Main addWeapon ""hgun_ACPC2_F"";" \n
+       "	IP_Main selectWeapon (primaryWeapon IP_Main);" \n
+       "	IP_Main setPos (getMarkerPos ""mBriefingMain"");" \n
+       "	IP_Main setDir (markerDir ""mBriefingMain"");" \n
+       "	IP_Main switchMove ""AmovPercMstpSlowWrflDnon"";" \n
+       "	IP_Main removeEventHandler [""Fired"", _firedEH];" \n
+       "	" \n
+       "	removeVest IP_Sergeant;" \n
+       "	IP_Sergeant addVest ""V_PlateCarrierIA2_dgtl"";" \n
+       "	IP_Sergeant addMagazine ""30Rnd_556x45_Stanag"";" \n
+       "	IP_Sergeant addWeapon ""arifle_Mk20_MRCO_pointer_F"";" \n
+       "	IP_Sergeant selectWeapon (primaryWeapon IP_Sergeant);" \n
+       "	IP_Sergeant setPos (getMarkerPos ""mBriefingSergeant"");" \n
+       "	IP_Sergeant switchMove ""AmovPercMstpSlowWrflDnon"";" \n
+       "	IP_Sergeant setDir (markerDir ""mBriefingSergeant"");" \n
+       "	{IP_Sergeant disableAI _x} forEach [""AUTOTARGET"", ""MOVE"", ""TARGET""];" \n
+       "	" \n
+       "	IP_ShootingRangeDone = true;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Critical_Violati">*/
+        class Critical_Violati
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_CriticalViolation"" && IP_CriticalViolation"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Range_Done">*/
+        class Range_Done
+        {
+          priority = 0.000000;
+          to="Briefing";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fail_1">*/
+    class Fail_1
+    {
+      name = "Fail_1";
+      init = /*%FSM<STATEINIT""">*/"[""Hub02Fail1"", false, true] call IP_fnc_endMission;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Briefing">*/
+    class Briefing
+    {
+      name = "Briefing";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {	" \n
+       "	sleep 1;" \n
+       "	IP_Sergeant switchMove ""Acts_A_OUT_briefing"";" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	[] spawn IP_fnc_showOSD;		" \n
+       "	sleep 2;" \n
+       "	" \n
+       "	[" \n
+       "		[IP_Sergeant]," \n
+       "		[" \n
+       "			""Attention, losers! I've planned another life fire exercise for you today!""," \n
+       "			""Unfortunately, it looks like these asshats from the FIA really want to piss me off! They've somehow managed to take the village of Sofia just an hour ago.""," \n
+       "			""We've received intel suggesting that one of their key personnel is right on site.""," \n
+       "			""This son of a bitch is FIA's resistance commander in the north-east and by that our top priority!""," \n
+       "			""So, brass called off my beautiful exercise and decided to put you nutjobs into battle right away.""," \n
+       "			""I personally recommended you for service on the front line so congrats, you will be the first to die and I won't have to see your ugly faces any more!""," \n
+       "			""You will operate in two teams accompanied by an APC. Our monkeyboy here will lead callsign 'Loser One'. Incest-Geckas will take command of 'Loser Two'.""," \n
+       "			""Now get your asses to the staging area, double time!""" \n
+       "		]," \n
+       "		""DIRECT""," \n
+       "		IP_ShowIntro" \n
+       "	] call IP_fnc_simpleConversation;" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	IP_Main moveInCargo IP_Apc;" \n
+       "	(units IP_MainGroup) joinSilent IP_Main;" \n
+       "	IP_Main setGroupID [""Loser One""];" \n
+       "	" \n
+       "	IP_Sergeant switchMove """";" \n
+       "	IP_Sergeant setPos (getMarkerPos ""mSergeantCemetery"");" \n
+       "	IP_Sergeant setDir (markerDir ""mSergeantCemetery"");" \n
+       "	[IP_Sergeant, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;" \n
+       "	" \n
+       "	skipTime 1;" \n
+       "	sleep 1;" \n
+       "	" \n
+       "	IP_Sergeant enableSimulation false;" \n
+       "	IP_Sergeant hideObject true;	" \n
+       "	IP_Sergeant setVariable [""IP_Cemetery"", true];" \n
+       "	IP_BriefingDone = true;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Critical_Violati">*/
+        class Critical_Violati
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_CriticalViolation"" && IP_CriticalViolation"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Briefing_Done">*/
+        class Briefing_Done
+        {
+          priority = 0.000000;
+          to="Attack";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Attack">*/
+    class Attack
+    {
+      name = "Attack";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[] call IP_fnc_ambientLife;" \n
+       "	IP_Weather = ["""", [""RAINY"", ""MEDIUMRAIN""]] call IP_fnc_setWeather;" \n
+       "	sleep 1;" \n
+       "	{_x moveInCargo IP_APC} forEach units group IP_Main;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	saveGame;" \n
+       "	[] spawn IP_fnc_showOSD;		" \n
+       "	sleep 2;" \n
+       "	" \n
+       "	[" \n
+       "		[IP_Main, ((units(group IP_Main)) select 1)]," \n
+       "		[" \n
+       "			""""," \n
+       "			""Our first mission. And we can't even shoot straight. Anybody knows how to get around those damn jams?""," \n
+       "			""You need to pull this one until it makes click, I told you before. Anyway, I know it's gonna be tough but try to keep calm out there.""," \n
+       "			""""," \n
+       "			""Looking at the map our best option is to flank right once we're out of this tin can. But whatever you do, stay clear of the main road!""" \n
+       "		]," \n
+       "		""DIRECT""," \n
+       "		IP_ShowIntro" \n
+       "	] call IP_fnc_simpleConversation;" \n
+       "	" \n
+       "	{" \n
+       "		if ((side _x) == east) then {" \n
+       "			_x enableSimulation true;" \n
+       "			_x hideObject false;" \n
+       "		};" \n
+       "	} forEach allUnits;" \n
+       "	" \n
+       "	waitUntil {{_x in IP_APC} count(units(group IP_Main)) == 0};" \n
+       "	" \n
+       "	[player, ""tSofia"", [""Capture the village of <marker name=""""mSofia"""">Sofia</marker>!"", ""Capture Sofia"", ""Sofia""], ""mSofia"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "	" \n
+       "	[] spawn {" \n
+       "		[(getMarkerPos ""mFlyStart""), (getMarkerPos ""mFlyEnd""), 100, ""FULL"", ""I_Plane_Fighter_03_CAS_F"", independent] call BIS_fnc_ambientFlyby;" \n
+       "		sleep 11;" \n
+       "		_markerPos = getMarkerPos ""mBomb"";" \n
+       "		_pos = [(_markerPos select 0), (_markerPos select 1), 50];" \n
+       "		_shell = ""Bo_GBU12_LGB_MI10"" createVehicle _pos;" \n
+       "		[_shell, -90, 0] call BIS_fnc_setPitchBank;" \n
+       "		_shell setVelocity [0, 0, -100];  " \n
+       "		sleep 3;" \n
+       "		[_markerPos, ""FIRE_BIG""] call IP_fnc_createFireEffect;" \n
+       "	};" \n
+       "	" \n
+       "	[IP_Main, ""Loser One, Loser Two deployed. We're on the move towards mission objective, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Critical_Violati">*/
+        class Critical_Violati
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_CriticalViolation"" && IP_CriticalViolation"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Clear">*/
+        class Clear
+        {
+          priority = 0.000000;
+          to="Cemetery";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgSofia)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Cemetery">*/
+    class Cemetery
+    {
+      name = "Cemetery";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {	" \n
+       "	sleep 10;" \n
+       "	[""tSofia"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	sleep 5;" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	{" \n
+       "		if (((side _x) == east) && (alive _x)) then {" \n
+       "			_x setDamage 1;" \n
+       "		};" \n
+       "		" \n
+       "		if (_x in (units(group IP_Main))) then {" \n
+       "			deleteVehicle _x;" \n
+       "		};" \n
+       "" \n
+       "		if (_x getVariable [""IP_Cemetery"", false]) then {" \n
+       "			_x enableSimulation true;" \n
+       "			_x hideObject false;" \n
+       "		};" \n
+       "	} forEach (allUnits - [IP_Main]);" \n
+       "	" \n
+       "	skipTime 0.5;" \n
+       "	sleep 1;" \n
+       "	IP_Weather = ["""", [""RAINY"", ""LIGHTRAIN""]] call IP_fnc_setWeather;" \n
+       "	" \n
+       "	IP_Main setPos (getMarkerPos ""mMainCemetery"");" \n
+       "	IP_Main setDir 0;" \n
+       "	IP_Main switchMove ""Acts_PercMwlkSlowWrflDf2"";" \n
+       "	" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	[0] call BIS_fnc_cinemaBorder;" \n
+       "	" \n
+       "	[] spawn IP_fnc_showOSD;" \n
+       "	sleep 5;" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 0.5;" \n
+       "	IP_Main switchMove ""AmovPercMstpSlowWrflDnon"";" \n
+       "	sleep 0.5;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;		" \n
+       "	[1] call BIS_fnc_cinemaBorder;" \n
+       "" \n
+       "	saveGame;" \n
+       "	" \n
+       "	[IP_Sergeant, ""Colonel, Sir! The area around the city is clear. The terrorists are retreating, Sir!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Colonel, ""Well done, Staff Sergeant. And finally, this traitor lies before me, covered in blood."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Critical_Violati">*/
+        class Critical_Violati
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_CriticalViolation"" && IP_CriticalViolation"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Copied">*/
+        class Copied
+        {
+          priority = 0.000000;
+          to="Meet";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && ((""tKey"" call BIS_fnc_taskState) == ""SUCCEEDED"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Meet">*/
+    class Meet
+    {
+      name = "Meet";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	sleep 5;" \n
+       "	[IP_Commander, ""Hey, this is McMillian. Looks like we've got everything. Get your ass to these coordinates, over!"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	""mMeet"" setMarkerAlpha 1;" \n
+       "	[player, ""tMeet"", [""Move to the <marker name=""""mMeet"""">Meeting Point</marker> and link-up with McMillian for extraction!"", ""Meet McMillian"", ""McMillian""], ""mMeet"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "	" \n
+       "	{" \n
+       "		_x enableSimulation true;" \n
+       "		_x hideObject false;" \n
+       "	} forEach (units(group IP_Commander));" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Critical_Violati">*/
+        class Critical_Violati
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_CriticalViolation"" && IP_CriticalViolation"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Close">*/
+        class Close
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (IP_Main distance IP_Commander < 5)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+    "Fail_1",
+  };
+};
+/*%FSM</COMPILE>*/

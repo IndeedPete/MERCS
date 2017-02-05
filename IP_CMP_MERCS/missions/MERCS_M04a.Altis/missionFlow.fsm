@@ -1,0 +1,350 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Ambush",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Ambush"};
+item2[] = {"Fight_Or_Flee",2,4346,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Fight Or Flee"};
+item3[] = {"Mercs_Defeated",4,218,-300.000000,225.000000,-200.000000,275.000000,0.000000,"Mercs Defeated"};
+item4[] = {"Black_Arrow_",2,250,-300.000000,300.000000,-200.000000,350.000000,0.000000,"Black Arrow!"};
+item5[] = {"At_Airfield",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"At Airfield"};
+item6[] = {"Intro_Done",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Intro Done"};
+item7[] = {"Driving",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Driving"};
+item8[] = {"Win_End",1,250,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Win End"};
+item9[] = {"",7,210,-254.000000,20.999998,-246.000000,29.000000,0.000000,""};
+item10[] = {"Trucks_Destroyed",4,218,-300.000000,-75.000000,-200.000000,-25.000000,3.000000,"Trucks Destroyed"};
+item11[] = {"Fail_1",1,250,-300.000000,-150.000000,-200.000000,-100.000000,0.000000,"Fail 1"};
+item12[] = {"",7,210,-254.000000,171.000000,-246.000000,179.000000,0.000000,""};
+item13[] = {"",7,210,-404.000000,321.000000,-396.000000,328.999969,0.000000,""};
+item14[] = {"",7,210,-129.000000,246.000015,-120.999992,253.999985,0.000000,""};
+item15[] = {"",7,210,-404.000000,171.000000,-396.000000,179.000000,0.000000,""};
+item16[] = {"",7,210,-253.999985,396.000000,-246.000031,404.000000,0.000000,""};
+link0[] = {0,6};
+link1[] = {1,2};
+link2[] = {2,12};
+link3[] = {2,14};
+link4[] = {3,4};
+link5[] = {4,13};
+link6[] = {4,16};
+link7[] = {5,8};
+link8[] = {6,7};
+link9[] = {7,1};
+link10[] = {7,9};
+link11[] = {9,10};
+link12[] = {10,11};
+link13[] = {12,9};
+link14[] = {13,15};
+link15[] = {14,3};
+link16[] = {14,5};
+link17[] = {15,12};
+link18[] = {16,5};
+globals[] = {25.000000,1,0,0,0,640,480,1,136,6316128,1,-484.351196,49.782166,542.600525,27.518101,757,730,1};
+window[] = {2,-1,-1,-1,-1,837,78,1518,78,3,775};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "skipTime 1;" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	_saySentences = {" \n
+       "		#define EH_SKIP (uiNamespace getVariable ""IP_Cutscene_ehSkip"")" \n
+       "		#define EH_SKIP_SET_NIL uiNamespace setVariable [""IP_Cutscene_ehSkip"", nil]" \n
+       "		" \n
+       "		_guys = _this select 0;" \n
+       "		_sentences = _this select 1;" \n
+       "		" \n
+       "		disableSerialization;" \n
+       "		//add skip mechanics -----------------------------------------------------------------------" \n
+       "		IP_cutscene_skip = false;" \n
+       "" \n
+       "		private[""_ehSkip""];" \n
+       "" \n
+       "		_ehSkip = ([] call BIS_fnc_displayMission) displayAddEventHandler" \n
+       "		[" \n
+       "			""KeyDown""," \n
+       "			""" \n
+       "				if (_this select 1 == 57) then" \n
+       "				{" \n
+       "					if (IP_cutscene_skip) exitWith {};" \n
+       "" \n
+       "					playSound ['click',true];" \n
+       "" \n
+       "					IP_cutscene_skip = true;" \n
+       "				};" \n
+       "" \n
+       "				if !((_this select 1) in (actionKeys 'PersonView' + [1])) then {true};" \n
+       "			""" \n
+       "		];" \n
+       "" \n
+       "		uiNamespace setVariable [""IP_Cutscene_ehSkip"", _ehSkip];" \n
+       "		//add skip mechanics -----------------------------------------------------------------------" \n
+       "		" \n
+       "		for ""_i"" from 0 to ((count _sentences) - 1) do {" \n
+       "			_sentence = _sentences select _i;" \n
+       "			if (_sentence != """" ) then {" \n
+       "				private ""_speaker"";" \n
+       "				if (_i mod 2 == 0) then {_speaker = _guys select 0} else {_speaker = _guys select 1};			" \n
+       "				[_speaker, _sentence, ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			};" \n
+       "			if (IP_cutscene_skip) exitWith {};" \n
+       "		};" \n
+       "		" \n
+       "		([] call BIS_fnc_displayMission) displayRemoveEventHandler ['KeyDown', EH_SKIP];" \n
+       "		EH_SKIP_SET_NIL;" \n
+       "		IP_cutscene_skip = nil;" \n
+       "	};" \n
+       "	" \n
+       "	sleep 2;" \n
+       "	IP_Main switchMove ""Acts_PercMwlkSlowWrflDf2"";" \n
+       "" \n
+       "	IP_Buddy disableAI ""MOVE"";" \n
+       "	IP_Buddy disableAI ""ANIM"";" \n
+       "	IP_Buddy switchMove ""Acts_PercMwlkSlowWrflDf2"";" \n
+       "	" \n
+       "	[IP_Buddy] joinSilent IP_Main;" \n
+       "	[] call IP_fnc_spawnTeam;" \n
+       "	" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	sleep 0.5;" \n
+       "" \n
+       "	[] spawn IP_fnc_showOSD;" \n
+       "	[[IP_Buddy, IP_Corporal], [""Hey boss, we're here to pick up some trucks!"", ""Yes, we've been waiting for you! Those two over there, already loaded."", ""Great, thanks!"", ""My CO ordered me to escort you. Follow me when you're ready."", ""Thanks, Corporal!""]] call _saySentences;" \n
+       "	" \n
+       "	IP_Handle_Lead = [IP_Corporal, (getMarkerPos ""mAirfield""), [IP_Truck1, IP_Truck2]] spawn IP_fnc_carLead;" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	IP_Main switchMove """";" \n
+       "	IP_Buddy switchMove """";" \n
+       "	IP_Buddy enableAI ""MOVE"";" \n
+       "	IP_Buddy enableAI ""ANIM"";" \n
+       "	" \n
+       "	sleep 0.5;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	[IP_Buddy, ""Wow, a nice Greenback! Didn't think such thing exists."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""They probably just want to make sure that we're not stealing anything. Let's get going!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Likely. I'm all yours!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};	" \n
+       "	""tTransport"" call IP_fnc_taskHint;" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Intro_Done">*/
+        class Intro_Done
+        {
+          priority = 0.000000;
+          to="Driving";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fight_Or_Flee">*/
+    class Fight_Or_Flee
+    {
+      name = "Fight_Or_Flee";
+      init = /*%FSM<STATEINIT""">*/"_blackArrow = false;" \n
+       "_handle = [] spawn {" \n
+       "	[IP_Main, ""What the fuck?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Ambush! Get out of the trucks!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[(getPos IP_Car), ""FIRE_BIG""] spawn IP_fnc_createFireEffect;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Trucks_Destroyed">*/
+        class Trucks_Destroyed
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!alive IP_Truck1) OR (!alive IP_Truck2)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "At_Airfield">*/
+        class At_Airfield
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgParking) && (IP_Main == vehicle IP_Main)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Mercs_Defeated">*/
+        class Mercs_Defeated
+        {
+          priority = 0.000000;
+          to="Black_Arrow_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && ({side _x == east} count allUnits == 0)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Black_Arrow_">*/
+    class Black_Arrow_
+    {
+      name = "Black_Arrow_";
+      init = /*%FSM<STATEINIT""">*/"_blackArrow = true;" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	sleep 5;" \n
+       "	[IP_Main, ""Clear! Who the hell was that?! Pirates?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""I don't think so. They were too professional for pirates, let's take a look!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	sleep 10;" \n
+       "	[IP_Buddy, ""Holy fuck, look at those uniforms! These guys are Black Arrows!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Black what?"", ""DIRECT"", 1] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Black Arrow! That's another merc organisation. This is odd."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Let me guess, these guys didn't mine the area by accident."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Nope. They were after us and they knew the 'when' and 'where'."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""You think it's the payload? Maybe there's something of value after all."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Nah, these guys play in a different league. They don't have to steal military equipment."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""They just wanted to fuck up our contract. Didn't think these assholes would go that far."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""There's only one rule in this business. Stay out of other people's contracts."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Well, that's one way to deal with competition."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Okay, let's get the job done and go back to the camp ASAP. McMillian will be furious."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	if ({damage _x > 0} count [IP_Truck1, IP_Truck2] > 0) then {" \n
+       "		if ({!canMove _x} count [IP_Truck1, IP_Truck2] > 0) then {" \n
+       "			[IP_Buddy, ""Damn, the trucks are wasted. We need something to get them moving again."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		} else {" \n
+       "			[IP_Buddy, ""Looks like the trucks took some. Better check if we can move on safely."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		};" \n
+       "	};" \n
+       "	" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Trucks_Destroyed">*/
+        class Trucks_Destroyed
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!alive IP_Truck1) OR (!alive IP_Truck2)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "At_Airfield">*/
+        class At_Airfield
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgParking) && (IP_Main == vehicle IP_Main)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Driving">*/
+    class Driving
+    {
+      name = "Driving";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Trucks_Destroyed">*/
+        class Trucks_Destroyed
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!alive IP_Truck1) OR (!alive IP_Truck2)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Ambush">*/
+        class Ambush
+        {
+          priority = 0.000000;
+          to="Fight_Or_Flee";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_Car"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"_blackArrow spawn {" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	[""tTransport"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[IP_Main, ""Sir, we've got a delivery! Here are your trucks!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_EFOfficer, ""Great, the transport machine will arrive soon. You're done here!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	if (!_this) then {" \n
+       "		[IP_Buddy, ""Hey, Raif. These fuckers that ambushed us."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Yes?"", ""DIRECT"",1] call IP_fnc_simpleSentence;" \n
+       "		[IP_Buddy, ""I can't get their uniforms out of my head. I think they were Black Arrows."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Black what?"", ""DIRECT"", 1] call IP_fnc_simpleSentence;" \n
+       "		[IP_Buddy, ""Black Arrow! That's another merc organisation. This is odd."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""You think it's they were after payload?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Buddy, ""Nah, these guys play in a different league. They don't have to steal military equipment."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Buddy, ""I think they just wanted to fuck up our contract. Didn't think these assholes would go that far."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Buddy, ""There's only one rule in this business. Stay out of other people's contracts."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Well, that's one way to deal with competition."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	};" \n
+       "	" \n
+       "	[""Hub01"", true, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fail_1">*/
+    class Fail_1
+    {
+      name = "Fail_1";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	sleep 5;	" \n
+       "	[""tTransport"", ""FAILED""] call BIS_fnc_taskSetState;" \n
+       "	[IP_Buddy, ""Fuck, we lost one of the trucks!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""Hub01Fail1"", false, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+    "Fail_1",
+  };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,462 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Pirates_Close",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Pirates Close"};
+item2[] = {"Money_Delivery",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Money Delivery"};
+item3[] = {"Mercs_Killed",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Mercs Killed"};
+item4[] = {"Fuck_",2,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Fuck!"};
+item5[] = {"In_Car",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"In Car"};
+item6[] = {"Start_Chase",2,4346,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Start Chase"};
+item7[] = {"Pirates_Near",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Pirates Near"};
+item8[] = {"Arrived",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Arrived"};
+item9[] = {"Lost_Them",4,218,-50.000000,450.000000,50.000000,500.000000,1.000000,"Lost Them"};
+item10[] = {"Fail_2",1,250,75.000000,450.000000,175.000000,500.000000,0.000000,"Fail 2"};
+item11[] = {"Ransom_Collected",4,218,-175.000000,525.000000,-75.000000,575.000000,0.000000,"Ransom Collected"};
+item12[] = {"Win_End",1,250,-175.000000,600.000000,-75.000000,650.000000,0.000000,"Win End"};
+item13[] = {"Fail_1",1,250,75.000000,0.000000,175.000000,50.000000,0.000000,"Fail 1"};
+item14[] = {"Spotted",4,218,-50.000000,0.000000,50.000000,50.000000,1.000000,"Spotted"};
+item15[] = {"",7,210,-4.000000,171.000000,4.000000,179.000000,0.000000,""};
+item16[] = {"Player_killed_Me",4,218,-300.000000,0.000000,-200.000000,50.000000,2.000000,"Player killed Mercs"};
+item17[] = {"Fail_3",1,250,-425.000000,0.000000,-325.000000,50.000000,0.000000,"Fail 3"};
+item18[] = {"",7,210,-254.000000,-129.000000,-245.999985,-121.000000,0.000000,""};
+link0[] = {0,7};
+link1[] = {0,18};
+link2[] = {1,2};
+link3[] = {2,3};
+link4[] = {2,15};
+link5[] = {3,4};
+link6[] = {4,5};
+link7[] = {5,6};
+link8[] = {6,9};
+link9[] = {6,11};
+link10[] = {7,8};
+link11[] = {8,1};
+link12[] = {8,14};
+link13[] = {8,16};
+link14[] = {9,10};
+link15[] = {11,12};
+link16[] = {14,13};
+link17[] = {15,14};
+link18[] = {16,17};
+link19[] = {18,16};
+globals[] = {25.000000,1,0,0,0,640,480,1,60,6316128,1,-451.753479,157.958176,596.490906,-111.210167,784,910,1};
+window[] = {2,-1,-1,-1,-1,967,208,1648,208,3,802};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "skipTime 1;" \n
+       "" \n
+       "_pos = getMarkerPos ""mPirateDelivery"";" \n
+       "IP_Pirate1 move _pos;" \n
+       "" \n
+       "[] spawn {	" \n
+       "	_saySentences = {" \n
+       "		#define EH_SKIP (uiNamespace getVariable ""IP_Cutscene_ehSkip"")" \n
+       "		#define EH_SKIP_SET_NIL uiNamespace setVariable [""IP_Cutscene_ehSkip"", nil]" \n
+       "		" \n
+       "		_guys = _this select 0;" \n
+       "		_sentences = _this select 1;" \n
+       "		" \n
+       "		disableSerialization;" \n
+       "		//add skip mechanics -----------------------------------------------------------------------" \n
+       "		IP_cutscene_skip = false;" \n
+       "" \n
+       "		private[""_ehSkip""];" \n
+       "" \n
+       "		_ehSkip = ([] call BIS_fnc_displayMission) displayAddEventHandler" \n
+       "		[" \n
+       "			""KeyDown""," \n
+       "			""" \n
+       "				if (_this select 1 == 57) then" \n
+       "				{" \n
+       "					if (IP_cutscene_skip) exitWith {};" \n
+       "" \n
+       "					playSound ['click',true];" \n
+       "" \n
+       "					IP_cutscene_skip = true;" \n
+       "				};" \n
+       "" \n
+       "				if !((_this select 1) in (actionKeys 'PersonView' + [1])) then {true};" \n
+       "			""" \n
+       "		];" \n
+       "" \n
+       "		uiNamespace setVariable [""IP_Cutscene_ehSkip"", _ehSkip];" \n
+       "		//add skip mechanics -----------------------------------------------------------------------" \n
+       "		" \n
+       "		for ""_i"" from 0 to ((count _sentences) - 1) do {" \n
+       "			_sentence = _sentences select _i;" \n
+       "			if (_sentence != """" ) then {" \n
+       "				private ""_speaker"";" \n
+       "				if (_i mod 2 == 0) then {_speaker = _guys select 0} else {_speaker = _guys select 1};			" \n
+       "				[_speaker, _sentence, ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			};" \n
+       "			if (IP_cutscene_skip) exitWith {};" \n
+       "		};" \n
+       "		" \n
+       "		([] call BIS_fnc_displayMission) displayRemoveEventHandler ['KeyDown', EH_SKIP];" \n
+       "		EH_SKIP_SET_NIL;" \n
+       "		IP_cutscene_skip = nil;" \n
+       "	};" \n
+       "	" \n
+       "	sleep 2;" \n
+       "	IP_Main switchMove ""Acts_PercMwlkSlowWrflDf2"";" \n
+       "" \n
+       "	IP_Buddy disableAI ""MOVE"";" \n
+       "	IP_Buddy disableAI ""ANIM"";" \n
+       "	IP_Buddy switchMove ""Acts_PercMwlkSlowWrflDf2"";" \n
+       "	" \n
+       "	[IP_Buddy] joinSilent IP_Main;" \n
+       "	[] call IP_fnc_spawnTeam;" \n
+       "	" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	sleep 0.5;" \n
+       "" \n
+       "	[] spawn IP_fnc_showOSD;" \n
+       "	[[IP_Main, IP_Merc1], [""Hey guys, is everything ready?"", ""Yes, we're all set. Get yourselves some nice overview position and make sure they don't see you."", ""Okay, let's move!""]] call _saySentences;" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	IP_Main switchMove """";" \n
+       "	IP_Buddy switchMove """";" \n
+       "	IP_Buddy enableAI ""MOVE"";" \n
+       "	IP_Buddy enableAI ""ANIM"";" \n
+       "	" \n
+       "	sleep 0.5;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};" \n
+       "	" \n
+       "	""tObserve"" call IP_fnc_taskHint;" \n
+       "	saveGame;" \n
+       "	" \n
+       "	if (!(""Binocular"" in (weapons IP_Main))) then {[IP_Buddy, ""Hm, probably would have been good if you brought Binoculars..."", ""DIRECT""] call IP_fnc_simpleSentence};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Player_killed_Me">*/
+        class Player_killed_Me
+        {
+          priority = 2.000000;
+          to="Fail_3";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!alive IP_Merc1) OR (!alive IP_Merc2)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Pirates_Near">*/
+        class Pirates_Near
+        {
+          priority = 0.000000;
+          to="Arrived";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"IP_Car distance (getMarkerPos ""mPirateDelivery"") < 5"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Money_Delivery">*/
+    class Money_Delivery
+    {
+      name = "Money_Delivery";
+      init = /*%FSM<STATEINIT""">*/"[] spawn{" \n
+       "	[IP_Buddy, ""Okay, looks like they're talking."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	sleep 5;" \n
+       "	[IP_Buddy, ""Now our guy is handing him the cash."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "" \n
+       "	{_x setCaptive false} forEach [IP_Merc1, IP_Merc2];" \n
+       "	" \n
+       "	// Timeout because AI is too stupid to kill two people..." \n
+       "	sleep 15;" \n
+       "	IP_Merc1 setDamage 1;" \n
+       "	IP_Merc2 setDamage 1;" \n
+       "};" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Spotted">*/
+        class Spotted
+        {
+          priority = 1.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((IP_Pirate1 knowsAbout IP_Main > 0.7) OR (IP_Pirate2 knowsAbout IP_Main > 0.7)) && (!IP_TESTMODE)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Mercs_Killed">*/
+        class Mercs_Killed
+        {
+          priority = 0.000000;
+          to="Fuck_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!alive IP_Merc1) && (!alive IP_Merc2)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fuck_">*/
+    class Fuck_
+    {
+      name = "Fuck_";
+      init = /*%FSM<STATEINIT""">*/"/*" \n
+       "IP_Pirate2 setCombatMode ""BLUE"";" \n
+       "IP_Pirate2 setSpeedMode ""FULL"";" \n
+       "IP_Pirate2 assignAsCargo IP_Car;" \n
+       "[IP_Pirate2] orderGetIn true;*/" \n
+       "{_x setCaptive false; _x setCombatMode ""BLUE""; _x setSpeedMode ""FULL"";} forEach ([IP_Pirate1, IP_Pirate2] /*+ units group IP_Main*/);" \n
+       "" \n
+       "[] spawn {" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;	" \n
+       "	sleep 0.5;	" \n
+       "" \n
+       "	IP_Pirate2 assignAsCargo IP_Car;" \n
+       "	IP_Pirate2 moveInCargo IP_Car;" \n
+       "	[] spawn {" \n
+       "		sleep 3;" \n
+       "		IP_Pirate2 moveInCargo IP_Car;" \n
+       "	};" \n
+       "	//[IP_Pirate2, IP_Pirate1, {true}, {(!canMove IP_Car) OR (!alive IP_Pirate1) OR (!alive IP_Pirate2)}] spawn IP_fnc_follow;" \n
+       "" \n
+       "	sleep 0.5;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "" \n
+       "	[IP_Buddy, ""Fuck! He killed our guys!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Quick! We have to follow them and get the money back!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Starforce, this is Razor! Delivery failed, delivery failed! We've got two men down! Pirates took the ransom and are heading north-north-east in an SUV, over!"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Pilot, ""Copy that, Razor. We're taking up the chase, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[""tObserve"", ""CANCELED""] call BIS_fnc_taskSetState;" \n
+       "	[player, ""tRansom"", [""Chase the pirates and get the ransom back! Don't lose them!"", ""Retrieve Ransom"", """"], nil, true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "In_Car">*/
+        class In_Car
+        {
+          priority = 0.000000;
+          to="Start_Chase";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"IP_Pirate2 in IP_Car"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Start_Chase">*/
+    class Start_Chase
+    {
+      name = "Start_Chase";
+      init = /*%FSM<STATEINIT""">*/"//if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};" \n
+       "IP_Pirate1 setSpeedMode ""FULL"";" \n
+       "IP_Pirate1 move (getMarkerPos ""mHideout"");" \n
+       "{_x allowDamage true} forEach [IP_Car, IP_Pirate1, IP_Pirate2];" \n
+       "//IP_Pirate2 moveInCargo IP_Car;" \n
+       "//{IP_Pirate2 disableAI _x} forEach [""FSM"", ""TARGET"", ""AUTOTARGET""];" \n
+       "" \n
+       "[] spawn {" \n
+       "	[getMarkerPos ""mFlyStart"", getMarkerPos ""mFlyEnd"", 100, ""FULL"", ""O_Heli_Light_02_unarmed_F"", west] call BIS_fnc_ambientFlyby;" \n
+       "	IP_Pirate2 moveInCargo IP_Car;" \n
+       "	_pos = getMarkerPos ""mHideout"";" \n
+       "	" \n
+       "	while {(IP_Car distance _pos > 5) && (canMove IP_Car) && (alive(driver IP_Car))} do {" \n
+       "		sleep 30;" \n
+       "		" \n
+       "		_grid = mapGridPosition(getPos IP_Car);" \n
+       "		_bearing = getDir IP_Car;" \n
+       "		_distance = (round((IP_Car distance (vehicle IP_Main)) / 10)) * 10;" \n
+       "		" \n
+       "		_dir = switch (true) do  " \n
+       "		{ " \n
+       "			case (_bearing <= 22.5 || _bearing > 337.5): {""north""};  " \n
+       "			case (_bearing > 22.5 && _bearing <= 67.5): {""north-east""};  " \n
+       "			case (_bearing > 67.5 && _bearing <= 112.5 ): {""east""};  " \n
+       "			case (_bearing > 112.5 && _bearing <= 157.5): {""south-east""};  " \n
+       "			case (_bearing > 157.5 && _bearing <= 202.5): {""south""};  " \n
+       "			case (_bearing > 202.5 && _bearing <= 247.5): {""south-west""};  " \n
+       "			case (_bearing > 247.5 && _bearing <= 292.5): {""west""};  " \n
+       "			case (_bearing > 292.5 && _bearing <= 337.5): {""north-west""};     " \n
+       "			default {(""Car chase:\nBearing out of range: "" + str(_bearing))};" \n
+       "		};" \n
+       "		" \n
+       "		_sentence = format [""Razor, they're on grid %1, %2 metres ahead of you, heading %3, over."", _grid, _distance, _dir];" \n
+       "		if (isNil ""IP_SimpleSentence_Talking"") then {[IP_Pilot, _sentence, ""SIDE""] call IP_fnc_simpleSentence};" \n
+       "	};" \n
+       "	" \n
+       "	_grid = mapGridPosition(getPos IP_Car);" \n
+       "	_distance = (round((IP_Car distance (vehicle IP_Main)) / 10)) * 10;" \n
+       "	_sentence = format [""Razor, they stopped on grid %1, %2 metres ahead of you, over."", _grid, _distance];" \n
+       "	[IP_Pilot, _sentence, ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	{[_x] orderGetIn false; _x setCombatMode ""RED"";} forEach [IP_Pirate1, IP_Pirate2];" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Lost_Them">*/
+        class Lost_Them
+        {
+          priority = 1.000000;
+          to="Fail_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((vehicle player) distance IP_Car > 2500) && (!IP_TESTMODE)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Ransom_Collected">*/
+        class Ransom_Collected
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_RansomCollected"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Arrived">*/
+    class Arrived
+    {
+      name = "Arrived";
+      init = /*%FSM<STATEINIT""">*/"//if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "[IP_Merc1, ""Sabre to Razor, the pirates arrived. Get ready."", ""SIDE""] spawn IP_fnc_simpleSentence;" \n
+       "" \n
+       "unassignVehicle IP_Pirate2;" \n
+       "[IP_Pirate2] orderGetIn false;" \n
+       "IP_Pirate2 move (getMarkerPos ""mDelivery"");"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Player_killed_Me">*/
+        class Player_killed_Me
+        {
+          priority = 2.000000;
+          to="Fail_3";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!alive IP_Merc1) OR (!alive IP_Merc2)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Spotted">*/
+        class Spotted
+        {
+          priority = 1.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((IP_Pirate1 knowsAbout IP_Main > 0.7) OR (IP_Pirate2 knowsAbout IP_Main > 0.7)) && (!IP_TESTMODE)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Pirates_Close">*/
+        class Pirates_Close
+        {
+          priority = 0.000000;
+          to="Money_Delivery";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"IP_Pirate2 distance (getMarkerPos ""mDelivery"") < 5"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fail_2">*/
+    class Fail_2
+    {
+      name = "Fail_2";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	[IP_Buddy, ""Damn, we lost them! Now the money's gone too!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""tRansom"", ""FAILED""] call BIS_fnc_taskSetState;" \n
+       "	sleep 5;" \n
+       "	[""Hub01Fail2"", false, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	[""tRansom"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[IP_Main, ""I have it! I have the ransom! Let's get out of here!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Starforce, this is Razor. We've got the money back. Stand by for extraction, over!"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	IP_Extract = false;" \n
+       "	waitUntil {IP_Extract};" \n
+       "	[""Hub01"", true, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fail_1">*/
+    class Fail_1
+    {
+      name = "Fail_1";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	[IP_Buddy, ""Fuck, we're compromised! They've spotted us!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""tObserve"", ""FAILED""] call BIS_fnc_taskSetState;" \n
+       "	sleep 5;" \n
+       "	[""Hub01Fail1"", false, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fail_3">*/
+    class Fail_3
+    {
+      name = "Fail_3";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	[IP_Buddy, ""Why the fuck did you kill our guys?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""tObserve"", ""FAILED""] call BIS_fnc_taskSetState;" \n
+       "	sleep 5;" \n
+       "	[""Hub01Fail3"", false, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Fail_2",
+    "Win_End",
+    "Fail_1",
+    "Fail_3",
+  };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,278 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,4346,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Timeout",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Timeout"};
+item2[] = {"End",1,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"End"};
+link0[] = {0,1};
+link1[] = {1,2};
+globals[] = {25.000000,1,0,0,0,640,480,1,50,6316128,1,-198.576263,97.126884,123.125366,-161.654694,758,910,1};
+window[] = {2,-1,-1,-1,-1,889,130,1570,130,3,776};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "" \n
+       "_posStart = getMarkerPos ""mStart"";" \n
+       "_posLZ = getPos IP_LZ;" \n
+       "_dir = [_posStart, _posLZ] call BIS_fnc_dirTo;" \n
+       "" \n
+       "_grp = createGroup civilian;" \n
+       "IP_Pilot = _grp createUnit [""C_man_pilot_F"", _posStart, [], 0, ""NONE""];" \n
+       "IP_Pilot setIdentity ""pilot"";" \n
+       "IP_Pilot setVariable [""IP_Avatar"", ""Campaigns\IP_CMP_MERCS\img\pilotAvatar.jpg""];" \n
+       "IP_Pilot setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\coveralls_black_coION.paa""];" \n
+       "IP_Copilot = _grp createUnit [""C_man_pilot_F"", _posStart, [], 0, ""NONE""];" \n
+       "IP_Heli = createVehicle [""O_Heli_Light_02_unarmed_F"", _posStart, [], 0, ""FLY""];" \n
+       "clearWeaponCargo IP_Heli;" \n
+       "clearMagazineCargo IP_Heli;" \n
+       "clearBackpackCargo IP_Heli;" \n
+       "clearItemCargo IP_Heli;" \n
+       "IP_Heli setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\heli_light_02_ext_coION.paa""];" \n
+       "IP_Heli setDir _dir;" \n
+       "IP_Heli lock 2;" \n
+       "IP_Pilot moveInDriver IP_Heli;" \n
+       "IP_Copilot moveInTurret [IP_Heli, [0]];" \n
+       "" \n
+       "_grp setCombatMode ""BLUE"";" \n
+       "_grp setBehaviour ""CARELESS"";" \n
+       "//_grp setSpeedMode ""LIMITED"";" \n
+       "_grp move _posLZ;" \n
+       "{_x setCaptive true} forEach units _grp;" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	waitUntil{time > 0};" \n
+       "	IP_Main moveInCargo [IP_Heli, 5];" \n
+       "	IP_Buddy moveInCargo [IP_Heli, 2];" \n
+       "	IP_Commander moveInCargo [IP_Heli, 1];" \n
+       "	//[] call IP_fnc_spawnTeam;" \n
+       "	{_x moveInCargo IP_Heli} forEach ((units group IP_Main) - [IP_Main]);" \n
+       "	" \n
+       "	sleep 2;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "" \n
+       "	[] spawn IP_fnc_showOSD;" \n
+       "	[IP_Main, ""So, what's the mission, Sir?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Commander, ""Shut your bloody mouth, Freshmeat! I was just about to tell you!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Commander, ""We're going down at that - what the hell?!"", ""DIRECT"", -2] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	{IP_Heli animate [_x, 1]} forEach [""dvere1"", ""dvere1_posunZ"", ""dvere2""];" \n
+       "	sleep 1;" \n
+       "	" \n
+       "	[IP_Commander, ""Hey, what the fuck is wrong with you?! Why are you opening the door already?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Pilot, ""Sorry Sir, but I didn't do that! My controls are doing funny things!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""What the-"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		" \n
+       "	for ""_i"" from 0 to 5 do {	" \n
+       "		{IP_Heli animate [_x, 0]} forEach [""dvere1"", ""dvere1_posunZ"", ""dvere2""];" \n
+       "		sleep 0.75;" \n
+       "		{IP_Heli animate [_x, 1]} forEach [""dvere1"", ""dvere1_posunZ"", ""dvere2""];" \n
+       "		sleep 0.75;" \n
+       "	};" \n
+       "	" \n
+       "	[IP_Commander, ""What on earth are you doing?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Pilot, ""I've lost the controls! Primary systems down, switching to secondary!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "" \n
+       "	IP_Heli setFuel 0;" \n
+       "	[] spawn {" \n
+       "		IP_Beep1 = true;" \n
+       "		while {IP_Beep1} do {" \n
+       "			playSound ""Beep1"";" \n
+       "			sleep 5.5;" \n
+       "		};" \n
+       "	};" \n
+       "	" \n
+       "	[] spawn {" \n
+       "		IP_Shake = true;" \n
+       "		enableCamShake true;" \n
+       "		while {IP_Shake} do {" \n
+       "			addCamShake [5, 3, 25];" \n
+       "			sleep 1;" \n
+       "		};" \n
+       "	};" \n
+       "	" \n
+       "	[] spawn {" \n
+       "		IP_Light = true;" \n
+       "		while {IP_Light} do {" \n
+       "			_light = '#lightpoint' createVehicleLocal [0,0,0];" \n
+       "			_light lightAttachObject [IP_Heli, [0, 2, 0.3]];" \n
+       "			_light setLightColor [255, 0, 0];" \n
+       "			_light setLightAttenuation [0.3, 0, 0, 500];" \n
+       "			_light setLightIntensity 50;" \n
+       "			" \n
+       "			sleep 0.5;" \n
+       "			" \n
+       "			deleteVehicle _light;" \n
+       "	};" \n
+       "};" \n
+       "	" \n
+       "	[IP_Pilot, ""Damn! The engine's shut down!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Commander, ""Restart it, dammit!"", ""DIRECT""] spawn IP_fnc_simpleSentence;	" \n
+       "" \n
+       "	sleep 20;" \n
+       "	" \n
+       "	IP_Heli setFuel 1;" \n
+       "	[] spawn {" \n
+       "		[IP_Pilot, ""We have the engine back! Stabilising!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Pilot, ""Fuck! We've lost the tail rotor! We're going down!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	};" \n
+       "	//(group IP_Pilot) setSpeedMode ""FULL"";" \n
+       "	IP_Heli setHitPointDamage [""HitVRotor"", 1];" \n
+       "	IP_Heli allowDamage false;" \n
+       "	" \n
+       "	[] spawn {" \n
+       "		IP_Beep2 = true;" \n
+       "		while {IP_Beep2} do {" \n
+       "			playMusic ""Beep2"";" \n
+       "			sleep 4.5;" \n
+       "		};" \n
+       "	};" \n
+       "" \n
+       "	""dynamicBlur"" ppEffectEnable true;" \n
+       "	""dynamicBlur"" ppEffectAdjust [6];" \n
+       "	""dynamicBlur"" ppEffectCommit 20; " \n
+       "	sleep 10;" \n
+       "" \n
+       "	//setAccTime 0.1;" \n
+       "" \n
+       "	//IP_Buddy allowDamage false;" \n
+       "	//IP_Buddy setPos (IP_Heli modelToWorld [-2, 0, -1]); " \n
+       "	//IP_Buddy setVelocity (velocity IP_Heli); " \n
+       "	//IP_Buddy setDir ([IP_Buddy, IP_Heli] call BIS_fnc_DirTo);" \n
+       "	" \n
+       "	//[IP_Main, ""DRAŽEN!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "" \n
+       "	//setAccTime 1;" \n
+       "" \n
+       "	IP_Heli setFuel 0;" \n
+       "	" \n
+       "	IP_Main allowDamage false;" \n
+       "	waitUntil {isTouchingGround IP_Heli};" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	" \n
+       "	IP_Main setPos (getMarkerPos ""mPosMain"");" \n
+       "	IP_Main setDir 180;" \n
+       "	IP_Main enableSimulation false;" \n
+       "	" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	playSound ""vehicle_collision"";" \n
+       "	IP_Beep1 = false;" \n
+       "	IP_Beep2 = false;" \n
+       "	IP_Shake = false;" \n
+       "	IP_Light = false;" \n
+       "	" \n
+       "	sleep 2;" \n
+       "	" \n
+       "	0 fadeSound 0;" \n
+       "	0 fadeMusic 0;" \n
+       "	skipTime 0.08;" \n
+       "	" \n
+       "	{deleteVehicle _x} forEach [IP_Heli, IP_Pilot, IP_CoPilot];" \n
+       "	" \n
+       "	IP_Buddy setPos (getMarkerPos ""mPosBuddy"");" \n
+       "	//[IP_Buddy, ""PRONE_INJURED"", ""ASIS""] call BIS_fnc_ambientAnim;" \n
+       "	IP_Buddy disableAI ""ANIM"";" \n
+       "	IP_Buddy removeItems ""FirstAidKit"";" \n
+       "	IP_Buddy switchMove ""Acts_LyingWounded_loop2"";" \n
+       "	" \n
+       "	IP_Commander setPos (getMarkerPos ""mPosCommander"");" \n
+       "	IP_Commander setDir ([IP_Commander, IP_Captain] call BIS_fnc_dirTo);" \n
+       "	[IP_Commander, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;" \n
+       "	" \n
+       "	[(getPos IP_Heli2), ""FIRE_BIG""] call IP_fnc_createFireEffect;" \n
+       "	" \n
+       "	sleep 5;" \n
+       "	" \n
+       "	[] spawn {" \n
+       "		IP_Beep3 = true;" \n
+       "		while {IP_Beep3} do {" \n
+       "			IP_Heli2 say3D ""Beep3"";" \n
+       "			sleep 3;" \n
+       "		};" \n
+       "	};" \n
+       "	" \n
+       "	""dynamicBlur"" ppEffectAdjust [0];" \n
+       "	""dynamicBlur"" ppEffectCommit 20;" \n
+       "	IP_Main switchMove ""Acts_UnconsciousStandUp_part1"";" \n
+       "	0 fadeSound 1;" \n
+       "	IP_Main enableSimulation true;" \n
+       "	" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	playSound [""combat_deafness"", true];" \n
+       "	sleep 15;" \n
+       "	" \n
+       "	[IP_Medic, ""Good morning, sunshine!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""What the fuck happened? Who are you?! What's going on?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	IP_Medic setUnitPos ""UP"";" \n
+       "	" \n
+       "	[IP_Commander, ""Freshmeat, still alive then? Do as they say, we won't be harmed."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Captain, ""You are now under the authority of the Order of the British Knights. We will depart to our camp soon."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Oh, what fresh hell is this..."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Raif ... I'm hurt ... please, don't let me die here ... argh!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Captain, ""You've got thirty seconds to help him, mercenary. Then we have to move."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	IP_Main	switchMove """";" \n
+       "	if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};" \n
+       "	" \n
+       "	IP_Buddy allowDamage true;" \n
+       "	IP_Buddy setDamage 0.8;" \n
+       "	IP_Buddy addEventhandler [""HandleHeal"", {" \n
+       "		IP_BuddyHealed = true;" \n
+       "		IP_Buddy allowDamage false;" \n
+       "		[IP_Main, ""Don't worry, I got you, buddy!"", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "	}];" \n
+       "	" \n
+       "	sleep 30;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Timeout">*/
+        class Timeout
+        {
+          priority = 0.000000;
+          to="End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End">*/
+    class End
+    {
+      name = "End";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	IP_MERCS_BuddyDied = if (IP_BuddyHealed) then {false} else {true};" \n
+       "	IP_MERCS_BuddyDiedWeapon = primaryWeapon IP_Buddy;" \n
+       "	saveVar ""IP_MERCS_BuddyDied"";" \n
+       "	saveVar ""IP_MERCS_BuddyDiedWeapon"";" \n
+       "	[IP_Captain, ""All right, move out!"", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "	[""Hub02"", true, 5] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "End",
+  };
+};
+/*%FSM</COMPILE>*/

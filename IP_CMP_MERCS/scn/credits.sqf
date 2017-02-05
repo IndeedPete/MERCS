@@ -1,0 +1,18 @@
+player allowDamage false;
+41 cutText ["", "BLACK", 5];
+5 fadeSound 0;
+sleep 5;
+43 cutRsc ["IP_RSC_MAIN_PICTURE", "PLAIN", 1];
+sleep 3;
+["by<br/>IndeedPete", 0, 0.5, 4, 1, 0, 42] call BIS_fnc_dynamicText;
+["Thank you for playing!", 0, 0.5, 4, 1, 0, 42] call BIS_fnc_dynamicText;
+["And also big thanks to:<br/>Bohemia Interactive Studios for this great game!", 0, 0.5, 4, 1, 0, 42] call BIS_fnc_dynamicText;
+["aeroson for his get/set loadout and repetitive clean up scripts!", 0, 0.5, 4, 1, 0, 42] call BIS_fnc_dynamicText;
+["cobra4v320 for his HALO/parachuting scripts!", 0, 0.5, 4, 1, 0, 42] call BIS_fnc_dynamicText;
+["Kydoimos for cross-reading and improving some of the dialogues and texts!", 0, 0.5, 4, 1, 0, 42] call BIS_fnc_dynamicText;
+["mrflay for his explosion detector!", 0, 0.5, 4, 1, 0, 42] call BIS_fnc_dynamicText;
+["Shuko for his SHKPos script!", 0, 0.5, 4, 1, 0, 42] call BIS_fnc_dynamicText;
+["Surfer for his help regarding the awesome M.E.R.C.S. logo and way too many textures and images!", 0, 0.5, 4, 1, 0, 42] call BIS_fnc_dynamicText;
+["tpw for his ambient civilian script package!", 0, 0.5, 4, 1, 0, 42] call BIS_fnc_dynamicText;
+["And all the great people on the BI-Forums who helped out with answers and feedback to so many questions!", 0, 0.5, 4, 1, 0, 42] call BIS_fnc_dynamicText;
+endMission "End1";

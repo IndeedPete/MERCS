@@ -1,0 +1,58 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(A, "M03", "Very Important Pickup", "On the way to the Central Airport...", "An important client wishes to be picked up from the international airport on Altis and then being ground-transported to a location of his choice.", "Campaigns\IP_CMP_MERCS\img\M03_load.jpg", "Campaigns\IP_CMP_MERCS\img\M03_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+
+// Temporary as it does not seem to work from the campaign folder
+class CfgSounds
+{
+	sounds[] = {};
+	class ringtone
+	{
+		// how the sound is referred to in the editor (e.g. trigger effects)
+		name = "ringtone";
+		// filename, volume, pitch
+		sound[] = {"snd\ringtone.ogg", 1, 1};
+		// subtitle delay in seconds, subtitle text 
+		titles[] = {1, "*Phone Rings*"};
+	};
+};
+
+class CfgDebriefing
+{  
+	class Hub01
+	{
+		title = "Mission Accomplished!";
+		subtitle = "The client is pleased!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	class Hub01Fail1
+	{
+		title = "Mission Failed!";
+		subtitle = "The VIP died!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {1,0,0,1};	
+	};
+	class Hub01Fail2
+	{
+		title = "Mission Failed!";
+		subtitle = "You have totalled the SUV!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {1,0,0,1};	
+	};
+	class MOut_Renegade
+	{
+		title = "Mission Aborted!";
+		subtitle = "You better run fast, renegade!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,0,1,1};	
+	};
+};

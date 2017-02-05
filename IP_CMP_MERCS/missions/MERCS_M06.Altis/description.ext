@@ -1,0 +1,16 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(B, "M06", "Cleanup", "On the way to the Limni Swamps...", "ION contractors move out to destroy what's left of the company's assets at the crash site.", "Campaigns\IP_CMP_MERCS\img\M06_load.jpg", "Campaigns\IP_CMP_MERCS\img\M06_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+
+class CfgDebriefing
+{  
+	class Hub02
+	{
+		title = "Mission Accomplished!";
+		subtitle = "Assets destroyed, contractors buried!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+};

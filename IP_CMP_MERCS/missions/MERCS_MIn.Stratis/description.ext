@@ -1,0 +1,3 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(A, "MIn", "Brave New World", "On the way to a better life in Europe...", "After months of an exhausting journey of more than 2500 kilometres from Karthoum over the east Sahara and Cairo, Raif Salih finally arrived in the port of Alexandria to buy a ticket to Europe.", "Campaigns\IP_CMP_MERCS\img\MIn_load.jpg", "Campaigns\IP_CMP_MERCS\img\MIn_overview.jpg", 0, 0, 1, 1, 1, 0, 1)

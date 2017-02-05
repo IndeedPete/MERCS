@@ -1,0 +1,483 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,4346,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Officer_Found",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Officer Found"};
+item2[] = {"Win_End",1,250,-175.000000,600.000000,-75.000000,650.000000,0.000000,"Win End"};
+item3[] = {"Join_Or_Pickup",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Join Or Pickup"};
+item4[] = {"Handle_Done",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Handle Done"};
+item5[] = {"On_the_Move",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"On the Move"};
+item6[] = {"Handle_Done",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Handle Done"};
+item7[] = {"On_Mission",2,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"On Mission"};
+item8[] = {"At_Power_Plant",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"At Power Plant"};
+item9[] = {"Defend",2,250,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Defend"};
+item10[] = {"Clear",4,218,-175.000000,525.000000,-75.000000,575.000000,0.000000,"Clear"};
+item11[] = {"Officer_Died",4,218,-50.000000,150.000000,50.000000,200.000000,2.000000,"Officer Died"};
+item12[] = {"Take_USB",2,250,-50.000000,75.000000,50.000000,125.000000,0.000000,"Take USB"};
+item13[] = {"At_Pickup",4,218,-300.000000,150.000000,-200.000000,200.000000,1.000000,"At Pickup"};
+item14[] = {"Ambush",2,250,-425.000000,150.000000,-325.000000,200.000000,0.000000,"Ambush"};
+item15[] = {"Defeated",4,218,-425.000000,75.000000,-325.000000,125.000000,0.000000,"Defeated"};
+item16[] = {"What_Now_",2,250,-300.000000,75.000000,-200.000000,125.000000,0.000000,"What Now?"};
+item17[] = {"",7,210,-3.999997,321.000000,3.999997,329.000000,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,3};
+link2[] = {3,4};
+link3[] = {4,5};
+link4[] = {5,6};
+link5[] = {5,11};
+link6[] = {5,13};
+link7[] = {6,7};
+link8[] = {7,8};
+link9[] = {7,17};
+link10[] = {8,9};
+link11[] = {9,10};
+link12[] = {10,2};
+link13[] = {11,12};
+link14[] = {12,4};
+link15[] = {13,14};
+link16[] = {14,15};
+link17[] = {15,16};
+link18[] = {16,4};
+link19[] = {17,11};
+globals[] = {25.000000,1,0,0,0,640,480,1,99,6316128,1,-479.369720,241.751541,622.349548,-173.069107,825,910,1};
+window[] = {2,-1,-1,-1,-1,811,52,1492,52,3,843};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"_handle = [" \n
+       "	[" \n
+       "		[IP_HQ, IP_Officer, IP_Main], " \n
+       "		[" \n
+       "			""Asker, this is Sultan. I've got Mirza on the line, putting through, over.""," \n
+       "			""This is Mirza! I'm holding out in a small hostel above a shop in the centre. There's a lot of movement around, I'm stuck here, over.""," \n
+       "			""Mirza, this is Asker. Hold tight, we're inbound. Keep your head down and try not to draw too much attention, over.""," \n
+       "			""""," \n
+       "			""Will do, Asker! I'll hold my position, out.""" \n
+       "		]," \n
+       "		""SIDE""," \n
+       "		IP_ShowIntro" \n
+       "	]," \n
+       "	[""tReach""]," \n
+       "	[IP_Main, 5, false, [((dayTime < 7) OR (dayTime > 19)), true], false, {" \n
+       "		_this setCaptive true;" \n
+       "		sleep 6;" \n
+       "		_this allowDamage false;" \n
+       "		waitUntil {(getPosATL _this) select 2 < 3};" \n
+       "		sleep 30;" \n
+       "		_this allowDamage true;" \n
+       "	}]" \n
+       "] spawn IP_fnc_mainInsertion;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Officer_Found">*/
+        class Officer_Found
+        {
+          priority = 0.000000;
+          to="Join_Or_Pickup";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (IP_Main distance IP_Officer < 9) && ((getPosATL IP_Main) select 2 > 4) && !(lineIntersects [eyePos IP_Main, eyePos IP_Officer, IP_Main, IP_Officer])"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	sleep 5;" \n
+       "	[""tPower"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[IP_Main, ""Looks clear."", ""DIRECT"", 1] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	if ((!IP_OfficerDied) && (alive IP_Officer)) then {" \n
+       "		[IP_Main, ""Sultan, this is Asker, I'm at the RV. Blueflags tried to get the data but I've fought them off, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "		[IP_HQ, ""Good job, Asker. Hold your position, our troops are inbound. Call for extraction, when you're ready, out."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	} else {" \n
+       "		IP_OfficerDied = true;" \n
+       "		[IP_Main, ""Sultan, this is Asker, I'm at the RV. Blueflags tried to get the data. We've fought them off."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""But Mirza is down, how copy, over?"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "		[IP_HQ, ""Copy that, Asker. What about the data, over?"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""The flash drive looks intact, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "		[IP_HQ, ""Good job, Asker. Hold your position, our troops are inbound. Call for extraction, when you're ready, out."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	};" \n
+       "	" \n
+       "	IP_Extract = false;" \n
+       "	waitUntil {IP_Extract};" \n
+       "	IP_MERCS_CSATOfficerAlive = alive IP_Officer;" \n
+       "	saveVar ""IP_MERCS_CSATOfficerAlive"";" \n
+       "	[""Hub02"", true, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Join_Or_Pickup">*/
+    class Join_Or_Pickup
+    {
+      name = "Join_Or_Pickup";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Main, ""Hey, don't shoot, I'm callsign Asker!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	_bit = if (alive IP_Officer) then {" \n
+       "		[IP_Officer, ""Over here! As-salamu alaykum, friend!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Wa 'alayka al-salaam! I might be from a Muslim country but I've lost my faith years ago. One of the reasons why I left..."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Officer, ""Well, I guess we don't have time to discuss your faith. I'm just happy somebody comes to get me out of here. I'm Sub-Lieutenant Malik Nafisi."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Raif. Let's move, where to?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Officer, ""Here are the coordinates for a pick-up point north of Kavala. Oh, and if I die, the intel is on this flash drive I carry. It's far more important than my life."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Got it. But I prefer to get you out of here alive, let's go."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Sultan, this is Asker, we've linked up with Mirza, proceeding to extraction now, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "		[IP_HQ, ""Copy that, Sultan. Stay on mission, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "		" \n
+       "		IP_Officer setUnitPos ""AUTO"";" \n
+       "		IP_Officer stop false;" \n
+       "		[IP_Officer] joinSilent IP_Main;" \n
+       "		IP_OfficerDied = false;" \n
+       "		""is""" \n
+       "	} else {" \n
+       "		[IP_Main, ""Fuck, he's dead! We're too late! Let's search him, he must have been carrying the intel!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		" \n
+       "		_id = IP_Officer addAction [""Search Body"", {IP_Searched = true}];" \n
+       "		waitUntil {!isNil ""IP_Searched""};" \n
+       "		IP_Officer removeAction _id;" \n
+       "		" \n
+       "		[IP_Main, ""Ah, there we go, I found a flash drive!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Sultan, this is Asker, we've found Mirza but he's KIA, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "		[IP_HQ, ""Copy that, Sultan. Do you have the data, over?"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Positive, Sultan. We found a flash drive, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "		[IP_HQ, ""Good, I'm uploading a set of coordinates. Move there and deliver the data to one of our teams, how copy, over?"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Understood, we're on the way, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "		" \n
+       "		IP_OfficerDied = true;" \n
+       "		""was""" \n
+       "	};" \n
+       "	" \n
+       "	[""tReach"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	""mPickup"" setMarkerAlpha 1;" \n
+       "	[player, ""tPickup"", [(""Deliver the data Sub-Lieutenant Nafisi "" + _bit + "" carrying to the <marker name=""""mPickup"""">Pickup Point</marker>!""), ""Deliver Data"", ""Pickup Point""], ""mPickup"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "	" \n
+       "	[" \n
+       "		[2, 0, 0, 0]," \n
+       "		[[""mMenSpawn1"", ""mMenSpawn2""], [], [], []]," \n
+       "		[[""STD""], [], [], []]," \n
+       "		west," \n
+       "		(getMarkerPos ""mOfficer"")," \n
+       "		[4, 4]," \n
+       "		""{_x setVariable ['IP_Faction', 'EFMil']; _x setObjectTexture [0, 'Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa']; [_x, 'TFAegis'] call BIS_fnc_setUnitInsignia;} forEach units (_this select 1);""" \n
+       "	] call IP_fnc_wave;" \n
+       "	" \n
+       "	[" \n
+       "		[1, 0, 0, 0]," \n
+       "		[[""mEU""], [], [], []]," \n
+       "		[[""SF""], [], [], []]," \n
+       "		west," \n
+       "		(getMarkerPos ""mEU"")," \n
+       "		[4, 8]," \n
+       "		""{_x setVariable ['IP_Faction', 'EFMil']; _x setObjectTexture [0, 'Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa']; [_x, 'TFAegis'] call BIS_fnc_setUnitInsignia;} forEach units (_this select 1); IP_AmbushGroup = (_this select 1);""" \n
+       "	] call IP_fnc_wave;" \n
+       "	" \n
+       "	[""mAO2"", {true}, 0, 0, [20, 40], ""ROCKET""] spawn IP_fnc_ambientArty;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_the_Move";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "On_the_Move">*/
+    class On_the_Move
+    {
+      name = "On_the_Move";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Officer_Died">*/
+        class Officer_Died
+        {
+          priority = 2.000000;
+          to="Take_USB";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!IP_OfficerDied) && (!alive IP_Officer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "At_Pickup">*/
+        class At_Pickup
+        {
+          priority = 1.000000;
+          to="Ambush";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(isNil ""_pickup"") && (IP_Main distance (getMarkerPos ""mPickup"") < 30)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!isNil ""_pickup"") && ((""tPickup"" call BIS_fnc_taskState) == ""CANCELED"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "On_Mission">*/
+    class On_Mission
+    {
+      name = "On_Mission";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Officer_Died">*/
+        class Officer_Died
+        {
+          priority = 2.000000;
+          to="Take_USB";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!IP_OfficerDied) && (!alive IP_Officer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "At_Power_Plant">*/
+        class At_Power_Plant
+        {
+          priority = 0.000000;
+          to="Defend";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"IP_Main distance (getMarkerPos ""mPower"") < 50"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Defend">*/
+    class Defend
+    {
+      name = "Defend";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	IP_Worker setVariable [""IP_LiveFeed"", true];" \n
+       "	[IP_Worker, ""Hey, who the fuck are you?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Go away! Move, go home if you don't want to die!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Worker, ""Let's get out of here, guys! We're not getting paid enough!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	IP_WorkerFlee = true;" \n
+       "	{_x stop false} forEach units group IP_Worker;" \n
+       "" \n
+       "	saveGame;" \n
+       "	" \n
+       "	_posStart = getMarkerPos ""mEFHeliStart"";" \n
+       "	_posEnd = getMarkerPos ""mEFHeliEnd"";" \n
+       "	_dir = [_posStart, _posEnd] call BIS_fnc_dirTo;" \n
+       "" \n
+       "	_grp = createGroup west;" \n
+       "	_heli = createVehicle [""B_Heli_Transport_01_F"", _posStart, [], 0, ""FLY""];" \n
+       "	_heli setDir _dir;" \n
+       "	{_heli animateDoor [_x, 1]} forEach [""door_R"", ""door_L""];" \n
+       "	[_heli, _grp] call BIS_fnc_spawnCrew;" \n
+       "" \n
+       "	_grp setCombatMode ""BLUE"";" \n
+       "	_grp allowFleeing 0;" \n
+       "" \n
+       "	_wp = _grp addWaypoint [_posEnd, 0];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", ""deleteVehicle (vehicle this); {deleteVehicle _x} forEach units group this;""];" \n
+       "" \n
+       "	IP_ParatrooperGrp = [_posEnd, west, (configFile >> ""CfgGroups"" >> ""West"" >> ""BLU_F"" >> ""Infantry"" >> ""BUS_InfSquad"")] call BIS_fnc_spawnGroup;" \n
+       "	{" \n
+       "		_x setVariable [""IP_Faction"", ""EFMil""];" \n
+       "		_x setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa""];" \n
+       "		[_x, 'TFAegis'] call BIS_fnc_setUnitInsignia;" \n
+       "		_x moveInCargo _heli;" \n
+       "	} forEach (units IP_ParatrooperGrp);" \n
+       "	[(leader IP_ParatrooperGrp)] call IP_fnc_track;" \n
+       "" \n
+       "	IP_ParatrooperGrp setCombatMode ""RED"";" \n
+       "	IP_ParatrooperGrp setBehaviour ""COMBAT"";" \n
+       "	IP_ParatrooperGrp allowFleeing 0;" \n
+       "" \n
+       "	_targetPos = getMarkerPos ""mPower"";" \n
+       "	_wp = IP_ParatrooperGrp addWaypoint [_targetPos, 0];" \n
+       "	_wp setWaypointType ""SAD"";" \n
+       "	" \n
+       "	waitUntil {_heli distance _targetPos < 300};" \n
+       "	[IP_Main, ""What is this?! Wait, paratroopers?! Damn, those Blueflags don't give up easily!"", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "	waitUntil {_heli distance _targetPos < 150};" \n
+       "" \n
+       "	{" \n
+       "		[_x, _heli] call IP_fnc_paradrop;" \n
+       "		sleep 0.5;" \n
+       "	} forEach (units IP_ParatrooperGrp);" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Clear">*/
+        class Clear
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && {{alive _x} count (units IP_ParatrooperGrp) == 0}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Take_USB">*/
+    class Take_USB
+    {
+      name = "Take_USB";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	IP_OfficerDied = true;" \n
+       "	sleep 5;" \n
+       "	[IP_Main, ""Damn, we lost that CSAT officer! He's dead! I need to get the flash drive he was carrying!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""tPickup"", IP_Officer] call BIS_fnc_taskSetDestination;" \n
+       "		" \n
+       "	_id = IP_Officer addAction [""Search Body"", {IP_Searched = true}];" \n
+       "	waitUntil {!isNil ""IP_Searched""};" \n
+       "	IP_Officer removeAction _id;" \n
+       "	" \n
+       "	[IP_Main, ""Ah, found it, there we go!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""tPickup"", (getMarkerPos ""mPickup"")] call BIS_fnc_taskSetDestination;" \n
+       "	[IP_Main, ""Sultan, this is Asker, Mirza's down but I have the data, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[IP_HQ, ""Copy that, Sultan. Proceed with mission and link-up with our team, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_the_Move";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Ambush">*/
+    class Ambush
+    {
+      name = "Ambush";
+      init = /*%FSM<STATEINIT""">*/"_pickup = true;" \n
+       "_handle = [] spawn {" \n
+       "	saveGame;" \n
+       "	[IP_Main, ""Hey! Wait - what's this?! Why are they dead?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Fuck! Looks like an ambush!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[" \n
+       "		[1, 0, 0, 0]," \n
+       "		[[""mMenSpawnPickup1"", ""mMenSpawnPickup2""], [], [], []]," \n
+       "		[[""SF""], [], [], []]," \n
+       "		west," \n
+       "		(getMarkerPos ""mPickup"")," \n
+       "		[4, 6]," \n
+       "		""{_x setVariable ['IP_Faction', 'EFMil']; _x setObjectTexture [0, 'Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa'];} forEach units (_this select 1); IP_AmbushGroup = (_this select 1);""" \n
+       "	] call IP_fnc_wave;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Defeated">*/
+        class Defeated
+        {
+          priority = 0.000000;
+          to="What_Now_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && {{alive _x} count (units IP_AmbushGroup) == 0}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "What_Now_">*/
+    class What_Now_
+    {
+      name = "What_Now_";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	sleep 5;" \n
+       "	[IP_Main, ""That was the last of them! All clear!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	if ((!alive IP_Officer) && !IP_OfficerDied) then {" \n
+       "		IP_OfficerDied = true;" \n
+       "		[IP_Main, ""Damn, we lost that CSAT officer! He's dead! I need to get the flash drive he was carrying!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[""tPickup"", IP_Officer] call BIS_fnc_taskSetDestination;" \n
+       "			" \n
+       "		_id = IP_Officer addAction [""Search Body"", {IP_Searched = true}];" \n
+       "		waitUntil {!isNil ""IP_Searched""};" \n
+       "		IP_Officer removeAction _id;" \n
+       "		" \n
+       "		[IP_Main, ""Ah, found it, there we go!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[""tPickup"", (getMarkerPos ""mPickup"")] call BIS_fnc_taskSetDestination;" \n
+       "		[IP_Main, ""Sultan, this is Asker. I'm at the pick-up point, we were ambushed by Blueflag special forces. Mirza's down but I have the data, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	} else {" \n
+       "		[IP_Main, ""Sultan, this is Asker. I'm at the pick-up point. It was an ambush by Blueflag special forces, how copy, over?"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	};" \n
+       "	" \n
+       "	[IP_HQ, ""Copy that, Sultan. Damn Blueflags! What's the status of our team, over?"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""They're down, Sultan. What are my orders, over?"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[IP_HQ, ""Asker, we're trying to find an alternative RV position, wait one."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	sleep 3;" \n
+       "	[IP_HQ, ""Asker, there's a power plant one-and-a-half clicks to the north-east. We're sending in troops to pick-up the data once you've secured the area. Think you can do that, over?"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Okay. I'll try to reach it, Sultan. Wait for my signal, I'm going, over!"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[""tPickup"", ""CANCELED""] call BIS_fnc_taskSetState;" \n
+       "	""mPower"" setMarkerAlpha 1;" \n
+       "	[player, ""tPower"", [""Reach and secure the <marker name=""""mPower"""">Power Plant</marker>! Then await CSAT forces to pick-up the data!"", ""Secure Power Plant"", ""Power Plant""], ""mPower"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_the_Move";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+  };
+};
+/*%FSM</COMPILE>*/

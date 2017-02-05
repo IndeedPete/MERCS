@@ -1,0 +1,3 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(A, "MOut_Renegade", "Renegade", "On the run...", "Raif Salih decided to desert from ION and ran away. His whereabouts are unknown, yet there is a price on his head since he hasn't repaid his debts with the mercenaries.", "Campaigns\IP_CMP_MERCS\img\MOut_Renegade_load.jpg", "Campaigns\IP_CMP_MERCS\img\MOut_Renegade_overview.jpg", 0, 0, 0, 1, 1, 0, 0)

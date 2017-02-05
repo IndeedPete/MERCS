@@ -1,0 +1,769 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Destroyed",4,218,-175.000000,600.000000,-75.000000,650.000000,10.000000,"Destroyed"};
+item2[] = {"AAF_End",1,250,-175.000000,675.000000,-75.000000,725.000000,0.000000,"AAF End"};
+item3[] = {"Few_Left",4,218,-525.000000,600.000000,-425.000000,650.000000,0.000000,"Few Left"};
+item4[] = {"ION___Knights_En",1,250,-525.000000,675.000000,-425.000000,725.000000,0.000000,"ION / Knights" \n "End"};
+item5[] = {"",7,210,-129.000000,-54.000000,-121.000008,-46.000000,0.000000,""};
+item6[] = {"Buddy",4,218,-50.000000,-75.000000,50.000000,-25.000000,0.000000,"Buddy"};
+item7[] = {"Remove_Convo",2,250,-50.000000,0.000000,50.000000,50.000000,0.000000,"Remove Convo"};
+item8[] = {"Didn_t_Choose_Bu",4,218,-50.000000,150.000000,50.000000,200.000000,0.000000,"Didn't" \n "Choose" \n "Buddy"};
+item9[] = {"Return_To_MIssio",2,250,-50.000000,225.000000,50.000000,275.000000,0.000000,"Return To MIssion"};
+item10[] = {"",7,210,-4.000000,96.000000,4.000000,104.000000,0.000000,""};
+item11[] = {"",7,210,121.000000,96.000000,129.000000,104.000000,0.000000,""};
+item12[] = {"Chose_Buddy",4,218,75.000000,150.000000,175.000000,200.000000,0.000000,"Chose" \n "Buddy"};
+item13[] = {"Escape",2,4346,75.000000,225.000000,175.000000,275.000000,0.000000,"Escape"};
+item14[] = {"",7,210,121.000000,546.000000,129.000000,554.000000,0.000000,""};
+item15[] = {"",7,210,-129.000000,546.000000,-121.000000,554.000000,0.000000,""};
+item16[] = {"Escaped",4,218,75.000000,600.000000,175.000000,650.000000,0.000000,"Escaped"};
+item17[] = {"Buddy_End",1,250,75.000000,675.000000,175.000000,725.000000,0.000000,"Buddy" \n "End"};
+item18[] = {"",7,210,-129.000015,246.000000,-120.999992,254.000000,0.000000,""};
+item19[] = {"",7,210,-254.000000,-54.000000,-246.000000,-46.000000,0.000000,""};
+item20[] = {"",7,210,-254.000000,246.000000,-246.000000,254.000000,0.000000,""};
+item21[] = {"",7,210,-354.000000,-54.000000,-346.000000,-46.000000,0.000000,""};
+item22[] = {"",7,210,-479.000000,-54.000000,-471.000000,-46.000000,0.000000,""};
+item23[] = {"At_Checkpoint",4,218,-525.000000,0.000000,-425.000000,50.000000,0.000000,"At" \n "Checkpoint"};
+item24[] = {"There_You_Are_",2,250,-525.000000,75.000000,-425.000000,125.000000,0.000000,"There You Are!"};
+item25[] = {"No_Show",4,218,-650.000000,0.000000,-550.000000,50.000000,0.000000,"No Show"};
+item26[] = {"",7,210,-604.000000,-54.000000,-596.000000,-46.000000,0.000000,""};
+item27[] = {"",7,210,-354.000000,546.000000,-346.000000,554.000000,0.000000,""};
+item28[] = {"Where_Are_You__",2,250,-650.000000,75.000000,-550.000000,125.000000,0.000000,"Where Are You?!"};
+item29[] = {"Detection",4,218,-525.000000,150.000000,-425.000000,200.000000,0.000000,"Detection"};
+item30[] = {"",7,210,-354.000000,96.000000,-346.000000,104.000000,0.000000,""};
+item31[] = {"",7,210,-354.000000,546.000000,-346.000000,554.000000,0.000000,""};
+item32[] = {"AAF_Attacking",2,250,-525.000000,225.000000,-425.000000,275.000000,0.000000,"AAF Attacking"};
+item33[] = {"",7,210,-354.000000,246.000000,-346.000000,254.000000,0.000000,""};
+item34[] = {"",7,210,246.000000,246.000015,254.000000,254.000000,0.000000,""};
+item35[] = {"At_Checkpoint",4,218,325.000000,150.000000,425.000000,200.000000,0.000000,"At" \n "Checkpoint"};
+item36[] = {"What__",2,250,450.000000,150.000000,550.000000,200.000000,0.000000,"What?!"};
+item37[] = {"No_Show",4,218,325.000000,225.000000,425.000000,275.000000,0.000000,"No Show"};
+item38[] = {"Where_Are_You___1",2,250,450.000000,225.000000,550.000000,275.000000,0.000000,"Where Are You?!"};
+item39[] = {"",7,210,246.000000,171.000000,254.000000,179.000000,0.000000,""};
+item40[] = {"",7,210,621.000000,171.000000,629.000000,179.000000,0.000000,""};
+item41[] = {"",7,210,621.000000,246.000000,629.000000,254.000000,0.000000,""};
+item42[] = {"",7,210,621.000000,546.000000,629.000000,554.000000,0.000000,""};
+item43[] = {"Timeout",4,218,-525.000000,300.000000,-425.000000,350.000000,0.000000,"Timeout"};
+item44[] = {"Retreat_Second_W",2,250,-525.000000,375.000000,-425.000000,425.000000,0.000000,"Retreat" \n "Second Wave"};
+item45[] = {"Script_Done",4,218,-650.000000,225.000000,-550.000000,275.000000,0.000000,"Script Done"};
+item46[] = {"",7,210,-354.000000,396.000000,-346.000000,404.000000,0.000000,""};
+item47[] = {"",7,210,-354.000000,396.000000,-346.000000,404.000000,0.000000,""};
+item48[] = {"Timeout",4,218,-525.000000,450.000000,-425.000000,500.000000,0.000000,"Timeout"};
+item49[] = {"CSAT_Incoming",2,250,-525.000000,525.000000,-425.000000,575.000000,0.000000,"CSAT" \n "Incoming"};
+link0[] = {0,5};
+link1[] = {1,2};
+link2[] = {3,4};
+link3[] = {5,6};
+link4[] = {5,19};
+link5[] = {6,7};
+link6[] = {7,10};
+link7[] = {8,9};
+link8[] = {9,18};
+link9[] = {10,8};
+link10[] = {10,11};
+link11[] = {11,12};
+link12[] = {12,13};
+link13[] = {13,14};
+link14[] = {13,34};
+link15[] = {14,15};
+link16[] = {14,16};
+link17[] = {15,1};
+link18[] = {16,17};
+link19[] = {18,15};
+link20[] = {18,20};
+link21[] = {19,21};
+link22[] = {20,19};
+link23[] = {21,22};
+link24[] = {21,30};
+link25[] = {22,23};
+link26[] = {22,26};
+link27[] = {23,24};
+link28[] = {24,29};
+link29[] = {24,30};
+link30[] = {25,28};
+link31[] = {26,25};
+link32[] = {27,15};
+link33[] = {28,45};
+link34[] = {29,32};
+link35[] = {30,33};
+link36[] = {32,33};
+link37[] = {32,43};
+link38[] = {33,47};
+link39[] = {34,37};
+link40[] = {34,39};
+link41[] = {35,36};
+link42[] = {36,40};
+link43[] = {37,38};
+link44[] = {38,41};
+link45[] = {39,35};
+link46[] = {40,41};
+link47[] = {41,42};
+link48[] = {42,14};
+link49[] = {43,44};
+link50[] = {44,46};
+link51[] = {44,48};
+link52[] = {45,32};
+link53[] = {47,31};
+link54[] = {48,49};
+link55[] = {49,3};
+link56[] = {49,31};
+globals[] = {25.000000,1,0,0,0,640,480,1,243,6316128,1,-475.147949,276.670654,543.775146,-457.915894,683,910,1};
+window[] = {2,-1,-1,-1,-1,889,130,1570,130,3,701};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"enableSentences false;" \n
+       "[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	sleep 2;" \n
+       "	skipTime 1;" \n
+       "	enableSentences true;" \n
+       "	" \n
+       "	_delay = 4;" \n
+       "	_pos = getMarkerPos ""mComingHome"";" \n
+       "	_dir = 50;" \n
+       "	" \n
+       "	IP_Main setPos _pos;" \n
+       "	IP_Main setDir _dir;" \n
+       "	IP_Main switchMove ""Acts_PercMwlkSlowWrflDf2"";" \n
+       "	" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	[] spawn IP_fnc_showOSD;" \n
+       "	sleep 0.5;" \n
+       "	IP_Lord playMoveNow ""Acts_PercMstpSlowWrflDnon_handup1"";" \n
+       "	player action [""sitDown"", IP_Buddy];" \n
+       "	" \n
+       "	[" \n
+       "		[IP_Lord]," \n
+       "		[" \n
+       "			""Ah, there you are! Well done, Mr. Salih. You really are worth your money!""," \n
+       "			""But I'm afraid I must request your help again. We have AAF inbound, they're after the device.""" \n
+       "		]," \n
+       "		""DIRECT""," \n
+       "		IP_ShowIntro" \n
+       "	] call IP_fnc_simpleConversation;" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 0.5;" \n
+       "	IP_Main switchMove ""AmovPercMstpSlowWrflDnon"";" \n
+       "	sleep 0.5;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	[IP_Lord, ""McMillian's already on site at the southern road, organising the defence. I want you to assist him, now move!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	""tDefend"" call IP_fnc_taskHint;" \n
+       "	if ((IP_OffersHeard select 0) && (IP_ContactsAlive select 0)) then {""tAAF"" call IP_fnc_taskHint};" \n
+       "	if (""B_Heli_Light_01_F"" in IP_CampVehicles) then {[IP_Main, IP_SuppReq, IP_SuppPro_CAS] call BIS_fnc_addSupportLink};" \n
+       "	" \n
+       "	if (!IP_BuddyDied) then {" \n
+       "		[IP_Buddy, ""Hey Raif! Come inside the house for a sec, I gotta talk to you!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[player, ""tTalk"", [""Talk to Dražen! He's waiting in the shack! (OPTIONAL)"", ""Talk to Dražen! (OPTIONAL)"", ""Dražen""], IP_Buddy, true, 1] call BIS_fnc_taskCreate;" \n
+       "	};" \n
+       "	" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "At_Checkpoint">*/
+        class At_Checkpoint
+        {
+          priority = 0.000000;
+          to="There_You_Are_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgCheckpoint)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "No_Show">*/
+        class No_Show
+        {
+          priority = 0.000000;
+          to="Where_Are_You__";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgDetected)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Buddy">*/
+        class Buddy
+        {
+          priority = 0.000000;
+          to="Remove_Convo";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_ChoseBuddy"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "AAF_End">*/
+    class AAF_End
+    {
+      name = "AAF_End";
+      init = /*%FSM<STATEINIT""">*/"[""MOut_AAF"", true, 5] call IP_fnc_endMission;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "ION___Knights_En">*/
+    class ION___Knights_En
+    {
+      name = "ION___Knights_En";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Lord, ""They're pulling back! Keep up the pressure! Fire!"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[""tDefend"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	if (""tAAF"" call BIS_fnc_taskExists) then {[""tAAF"", ""CANCELED""] call BIS_fnc_taskSetState};" \n
+       "	[""MOut_ION"", true, 5] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Remove_Convo">*/
+    class Remove_Convo
+    {
+      name = "Remove_Convo";
+      init = /*%FSM<STATEINIT""">*/"[IP_Buddy, ""buddyOpener""] call IP_fnc_removeConversation;" \n
+       "[""tTalk"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "saveGame;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Chose_Buddy">*/
+        class Chose_Buddy
+        {
+          priority = 0.000000;
+          to="Escape";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"IP_ChoseBuddy"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Didn_t_Choose_Bu">*/
+        class Didn_t_Choose_Bu
+        {
+          priority = 0.000000;
+          to="Return_To_MIssio";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!IP_ChoseBuddy"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Return_To_MIssio">*/
+    class Return_To_MIssio
+    {
+      name = "Return_To_MIssio";
+      init = /*%FSM<STATEINIT""">*/"_handle = [IP_Buddy, ""You're making a big mistake! I hope somebody will find our bodies..."", ""DIRECT""] spawn IP_fnc_simpleSentence;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Destroyed">*/
+        class Destroyed
+        {
+          priority = 10.000000;
+          to="AAF_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_DeviceTruck"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "No_Show">*/
+        class No_Show
+        {
+          priority = 0.000000;
+          to="Where_Are_You__";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgDetected)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "At_Checkpoint">*/
+        class At_Checkpoint
+        {
+          priority = 0.000000;
+          to="There_You_Are_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgCheckpoint)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Escape">*/
+    class Escape
+    {
+      name = "Escape";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Main] join grpNull;" \n
+       "	[""tDefend"", ""CANCELED""] call BIS_fnc_taskSetState;" \n
+       "	player action [""sitDown"", IP_Buddy];" \n
+       "	[IP_Buddy, ""Okay, I'll just get myself some toys in case we run into trouble."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	IP_Buddy forceWalk true;" \n
+       "	IP_Buddy doMove (getPos IP_PlayerBox);" \n
+       "	sleep 5;" \n
+       "	[IP_Buddy, """", ""MARKSMAN""] call IP_fnc_buddyEquipment;" \n
+       "	[IP_Buddy, ""All set! Let's move, you lead the way. I'll follow as fast as I can."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	[IP_Buddy] joinSilent IP_Main; //[IP_Buddy, IP_Main, {true}, {false}, false] spawn IP_fnc_follow;" \n
+       "	IP_Buddy setPos (getMarkerPos ""mComingHome"");" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	[player, ""tEscape"", [""Escape into the woods together with Dražen!"", ""Escape"", """"], nil, true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Destroyed">*/
+        class Destroyed
+        {
+          priority = 10.000000;
+          to="AAF_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_DeviceTruck"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "No_Show">*/
+        class No_Show
+        {
+          priority = 0.000000;
+          to="Where_Are_You___1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgDetected)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "At_Checkpoint">*/
+        class At_Checkpoint
+        {
+          priority = 0.000000;
+          to="What__";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgCheckpoint)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Escaped">*/
+        class Escaped
+        {
+          priority = 0.000000;
+          to="Buddy_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"triggerActivated trgEscape"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Buddy_End">*/
+    class Buddy_End
+    {
+      name = "Buddy_End";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Buddy, ""Okay, just a bit further, come on!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""tEscape"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[""MOut_Buddy"", true, 5] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "There_You_Are_">*/
+    class There_You_Are_
+    {
+      name = "There_You_Are_";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Commander, ""There you are! Finally, get to cover, we're expecting Greenbacks any minute!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	if ((""tTalk"" call BIS_fnc_taskExists) && {!((""tTalk"" call BIS_fnc_taskState) in [""CANCELED"", ""SUCCEEDED""])}) then {" \n
+       "		[IP_Buddy, ""buddyOpener""] call IP_fnc_removeConversation;" \n
+       "		[""tTalk"", ""CANCELED""] call BIS_fnc_taskSetState;" \n
+       "	};" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Detection">*/
+        class Detection
+        {
+          priority = 0.000000;
+          to="AAF_Attacking";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgDetected)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Where_Are_You__">*/
+    class Where_Are_You__
+    {
+      name = "Where_Are_You__";
+      init = /*%FSM<STATEINIT""">*/"_handle = [IP_Commander, ""Raif you bastard, where are you?! We've got AAF armour inbound! Get your ass over here!"", ""SIDE""] spawn IP_fnc_simpleSentence;" \n
+       "if ((""tTalk"" call BIS_fnc_taskExists) && {!((""tTalk"" call BIS_fnc_taskState) in [""CANCELED"", ""SUCCEEDED""])}) then {" \n
+       "	[IP_Buddy, ""buddyOpener""] call IP_fnc_removeConversation;" \n
+       "	[""tTalk"", ""CANCELED""] call BIS_fnc_taskSetState;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Script_Done">*/
+        class Script_Done
+        {
+          priority = 0.000000;
+          to="AAF_Attacking";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "AAF_Attacking">*/
+    class AAF_Attacking
+    {
+      name = "AAF_Attacking";
+      init = /*%FSM<STATEINIT""">*/"_timeout = time + 300 + (random 120);" \n
+       "_handle = [IP_Commander, ""All units, we've got Geeenbacks inbound! Armour and infantry! Open fire!"", ""SIDE""] spawn IP_fnc_simpleSentence;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Timeout">*/
+        class Timeout
+        {
+          priority = 0.000000;
+          to="Retreat_Second_W";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (time > _timeout)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "What__">*/
+    class What__
+    {
+      name = "What__";
+      init = /*%FSM<STATEINIT""">*/"_handle = [IP_Commander, ""Hey, what is this? Why is Petrović with you?"", ""DIRECT""] spawn IP_fnc_simpleSentence;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Destroyed">*/
+        class Destroyed
+        {
+          priority = 10.000000;
+          to="AAF_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_DeviceTruck"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Escaped">*/
+        class Escaped
+        {
+          priority = 0.000000;
+          to="Buddy_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"triggerActivated trgEscape"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Where_Are_You___1">*/
+    class Where_Are_You___1
+    {
+      name = "Where_Are_You___1";
+      init = /*%FSM<STATEINIT""">*/"_handle = [IP_Commander, ""Raif you bastard, where are you?! We've got AAF armour inbound! Get your ass over here!"", ""SIDE""] spawn IP_fnc_simpleSentence;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Destroyed">*/
+        class Destroyed
+        {
+          priority = 10.000000;
+          to="AAF_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_DeviceTruck"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Escaped">*/
+        class Escaped
+        {
+          priority = 0.000000;
+          to="Buddy_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"triggerActivated trgEscape"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Retreat_Second_W">*/
+    class Retreat_Second_W
+    {
+      name = "Retreat_Second_W";
+      init = /*%FSM<STATEINIT""">*/"_handle = [IP_Lord, ""All units, we've got more AAF inbound from all sides! Retreat to the inner defences! I say again: Fall back to the camp, over!"", ""SIDE""] spawn IP_fnc_simpleSentence;" \n
+       "[""tDefend"", (getMarkerPos ""mCamp"")] call BIS_fnc_taskSetDestination;" \n
+       "	" \n
+       "private ""_grps"";" \n
+       "_grps = [];" \n
+       "" \n
+       "_count = if (IP_ContactsAlive select 0) then {4} else {3};" \n
+       "for ""_i"" from 0 to (_count - 1) do {" \n
+       "	_which = 1 + (_i mod 3);" \n
+       "	_pos = getMarkerPos (""mAAFMenSpawn"" + str(_i));" \n
+       "	_grpInf = [_pos, independent, (configFile >> ""CfgGroups"" >> ""Indep"" >> ""IND_F"" >> ""Infantry"" >> ""HAF_InfSquad"")] call BIS_fnc_spawnGroup;" \n
+       "	_grps = _grps + [_grpInf];" \n
+       "};" \n
+       "" \n
+       "_count = if (IP_ContactsAlive select 0) then {2} else {1};" \n
+       "for ""_i"" from 1 to _count do {" \n
+       "	_pos = getMarkerPos (""mAAFVehicleSpawn"" + str(_i));" \n
+       "	_dir = markerDir (""mAAFVehicleSpawn"" + str(_i));" \n
+       "	_grpAPC = [_pos, independent, (configFile >> ""CfgGroups"" >> ""Indep"" >> ""IND_F"" >> ""Mechanized"" >> ""HAF_MechInfSquad"")] call BIS_fnc_spawnGroup;" \n
+       "	_veh = vehicle (leader _grpAPC);" \n
+       "	{" \n
+       "		_x assignAsCargo _veh;" \n
+       "		_x moveInCargo _veh;" \n
+       "	} forEach ((units _grpAPC) - (crew _veh));" \n
+       "	_veh setDir _dir;" \n
+       "	_grps = _grps + [_grpAPC];" \n
+       "};" \n
+       "" \n
+       "_count = if (IP_ContactsAlive select 0) then {2} else {1};" \n
+       "for ""_i"" from 1 to _count do {" \n
+       "	_pos = getMarkerPos (""mAAFAirSpawn"" + str(_i));" \n
+       "	_dir = markerDir (""mAAFAirSpawn"" + str(_i));" \n
+       "	_grpHeli = createGroup independent;" \n
+       "	_heli = createVehicle [""I_Heli_light_03_F"", _pos, [], 0, ""FLY""];" \n
+       "	_heli setDir _dir;" \n
+       "	[_heli, _grpHeli] call BIS_fnc_spawnCrew;" \n
+       "	_grps = _grps + [_grpHeli];" \n
+       "" \n
+       "	_grpFireTeam = [_pos, independent, (configFile >> ""CfgGroups"" >> ""Indep"" >> ""IND_F"" >> ""Infantry"" >> ""HAF_InfTeam"")] call BIS_fnc_spawnGroup;" \n
+       "	{" \n
+       "		_x assignAsCargo _heli;" \n
+       "		_x moveInCargo _heli;" \n
+       "	} forEach (units _grpFireTeam);	" \n
+       "};" \n
+       "" \n
+       "_pos = getPos IP_DeviceTruck;" \n
+       "{" \n
+       "	_grp = _x;" \n
+       "	{_x setVariable [""IP_Faction"", ""AltisMil""]} forEach (units _grp);" \n
+       "	_grp setCombatMode ""RED"";" \n
+       "	// _grp setBehaviour ""COMBAT"";" \n
+       "	_grp setSpeedMode ""FULL"";" \n
+       "	_grp allowFleeing 0;" \n
+       "	_wp = _grp addWaypoint [_pos, 0];" \n
+       "	_wp setWaypointType ""DESTROY"";" \n
+       "	[(leader _grp)] call IP_fnc_track;" \n
+       "} forEach _grps;" \n
+       "" \n
+       "IP_Retreat = true;" \n
+       "saveGame;" \n
+       "_timeout = time + 480 + (random 120);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Timeout">*/
+        class Timeout
+        {
+          priority = 0.000000;
+          to="CSAT_Incoming";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (time > _timeout)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "CSAT_Incoming">*/
+    class CSAT_Incoming
+    {
+      name = "CSAT_Incoming";
+      init = /*%FSM<STATEINIT""">*/"_handle = [IP_Lord, ""Heads up, unknown forces approaching from the north! Man the seaside defences!"", ""SIDE""] spawn IP_fnc_simpleSentence;" \n
+       "[""tDefend"", (getMarkerPos ""mSeaDefences2"")] call BIS_fnc_taskSetDestination;" \n
+       "	" \n
+       "private ""_grps"";" \n
+       "_grps = [];" \n
+       "" \n
+       "_count = if (IP_ContactsAlive select 0) then {2} else {1};" \n
+       "for ""_i"" from 1 to _count do {" \n
+       "	_pos = getMarkerPos (""mAAFAirSpawn"" + str(_i));" \n
+       "	_dir = markerDir (""mAAFAirSpawn"" + str(_i));" \n
+       "	_grpPlane = createGroup independent;" \n
+       "	_plane = createVehicle [""I_Plane_Fighter_03_CAS_F"", _pos, [], 0, ""FLY""];" \n
+       "	[_plane, _dir] call IP_fnc_setDirFly; // _plane setDir _dir;" \n
+       "	[_plane, _grpPlane] call BIS_fnc_spawnCrew;" \n
+       "	_grps = _grps + [_grpPlane];" \n
+       "};" \n
+       "" \n
+       "_pos = getMarkerPos ""mAAFVehicleSpawn1"";" \n
+       "_dir = markerDir ""mAAFVehicleSpawn1"";" \n
+       "_grpTanks = [_pos, independent, (configFile >> ""CfgGroups"" >> ""Indep"" >> ""IND_F"" >> ""Armored"" >> ""HAF_TankSection"")] call BIS_fnc_spawnGroup;" \n
+       "(vehicle ((units _grpTanks) select 0)) setDir _dir;" \n
+       "(vehicle ((units _grpTanks) select 3)) setDir _dir;" \n
+       "_grps = _grps + [_grpTanks];" \n
+       "" \n
+       "_pos = getPos IP_DeviceTruck;" \n
+       "{" \n
+       "	_grp = _x;" \n
+       "	{_x setVariable [""IP_Faction"", ""AltisMil""]} forEach (units _grp);" \n
+       "	_grp setCombatMode ""RED"";" \n
+       "	// _grp setBehaviour ""COMBAT"";" \n
+       "	_grp setSpeedMode ""FULL"";" \n
+       "	_grp allowFleeing 0;" \n
+       "	_wp = _grp addWaypoint [_pos, 0];" \n
+       "	_wp setWaypointType ""DESTROY"";" \n
+       "	[(leader _grp)] call IP_fnc_track;" \n
+       "} forEach _grps;" \n
+       "" \n
+       "_grps = [];" \n
+       "" \n
+       "_pos = getMarkerPos ""mCSATAirSpawn0"";" \n
+       "_dir = markerDir ""mCSATAirSpawn0"";" \n
+       "_grpPlane = createGroup east;" \n
+       "_plane = createVehicle [""O_Plane_CAS_02_F"", _pos, [], 0, ""FLY""];" \n
+       "[_plane, _dir] call IP_fnc_setDirFly; // _plane setDir _dir;" \n
+       "[_plane, _grpPlane] call BIS_fnc_spawnCrew;" \n
+       "_grps = _grps + [_grpPlane];" \n
+       "" \n
+       "_count = if (IP_ContactsAlive select 1) then {3} else {2};" \n
+       "for ""_i"" from 1 to _count do {" \n
+       "	_pos = getMarkerPos (""mCSATAirSpawn"" + str(_i));" \n
+       "	_posEnd = getMarkerPos (""mCSATAirEnd"" + str(_i));" \n
+       "	_dir = markerDir (""mCSATAirSpawn"" + str(_i));" \n
+       "	_grp = createGroup east;" \n
+       "	_heli = createVehicle [""O_Heli_Light_02_F"", _pos, [], 0, ""FLY""];" \n
+       "	_heli setDir _dir;" \n
+       "	[_heli, _grp] call BIS_fnc_spawnCrew;" \n
+       "	" \n
+       "	_grp setCombatMode ""BLUE"";" \n
+       "	_grp setSpeedMode ""FULL"";" \n
+       "	_grp allowFleeing 0;" \n
+       "" \n
+       "	_wp = _grp addWaypoint [_posEnd, 0];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", ""deleteVehicle (vehicle this); {deleteVehicle _x} forEach units group this;""];" \n
+       "" \n
+       "	_grp = [_pos, east, (configFile >> ""CfgGroups"" >> ""East"" >> ""OPF_F"" >> ""Infantry"" >> ""OIA_InfSquad"")] call BIS_fnc_spawnGroup;" \n
+       "	{" \n
+       "		_x setVariable [""IP_Faction"", ""CSAT""];" \n
+       "		_x assignAsCargo _heli;" \n
+       "		_x moveInCargo _heli;" \n
+       "	} forEach (units _grp);" \n
+       "	" \n
+       "	[(leader _grp)] call IP_fnc_track;" \n
+       "" \n
+       "	_grp setCombatMode ""RED"";" \n
+       "	_grp setBehaviour ""COMBAT"";" \n
+       "	_grp allowFleeing 0;" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mCamp""), 0];" \n
+       "	_wp setWaypointType ""SAD"";" \n
+       "" \n
+       "	[_heli, _grp] spawn {" \n
+       "		_heli = _this select 0;" \n
+       "		_grp = _this select 1;" \n
+       "		" \n
+       "		waitUntil {_heli in (list trgCSAT)};" \n
+       "" \n
+       "		{" \n
+       "			[_x, _heli] call IP_fnc_paradrop;" \n
+       "			sleep 0.5;" \n
+       "		} forEach (units _grp);" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "_count = if (IP_ContactsAlive select 1) then {4} else {3};" \n
+       "for ""_i"" from 1 to _count do {" \n
+       "	_pos = getMarkerPos (""mCSATBoatSpawn"" + str(_i));" \n
+       "	_dir = markerDir (""mCSATBoatSpawn"" + str(_i)); " \n
+       "	_grp = createGroup east;" \n
+       "	_boat = createVehicle [""O_Boat_Armed_01_hmg_F"", _pos, [], 0, ""NONE""];" \n
+       "	_boat setDir _dir;" \n
+       "	[_boat, _grp] call BIS_fnc_spawnCrew;" \n
+       "	_grps = _grps + [_grp];" \n
+       "};" \n
+       "" \n
+       "if (IP_ContactsAlive select 1) then {" \n
+       "	_pos = getMarkerPos ""mCSATMenSpawn"";" \n
+       "	_grp = [_pos, east, (configFile >> ""CfgGroups"" >> ""East"" >> ""OPF_F"" >> ""Infantry"" >> ""OIA_InfSquad"")] call BIS_fnc_spawnGroup;" \n
+       "	_grps = _grps + [_grp];" \n
+       "};" \n
+       "" \n
+       "_pos = getMarkerPos ""mCamp"";" \n
+       "{" \n
+       "	_grp = _x;" \n
+       "	{_x setVariable [""IP_Faction"", ""CSAT""]} forEach (units _grp);" \n
+       "	_grp setCombatMode ""RED"";" \n
+       "	// _grp setBehaviour ""COMBAT"";" \n
+       "	_grp setSpeedMode ""FULL"";" \n
+       "	_grp allowFleeing 0;" \n
+       "	_wp = _grp addWaypoint [_pos, 0];" \n
+       "	_wp setWaypointType ""SAD"";" \n
+       "	[(leader _grp)] call IP_fnc_track;" \n
+       "} forEach _grps;" \n
+       "" \n
+       "IP_Sea = true;" \n
+       "saveGame;" \n
+       "_enemiesLeft = {side _x in [independent, east]} count allUnits;" \n
+       "IP_WinAmount = round(_enemiesLeft * 0.3);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Few_Left">*/
+        class Few_Left
+        {
+          priority = 0.000000;
+          to="ION___Knights_En";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (({side _x in [independent, east]} count allUnits) <= IP_WinAmount)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "AAF_End",
+    "ION___Knights_En",
+    "Buddy_End",
+  };
+};
+/*%FSM</COMPILE>*/

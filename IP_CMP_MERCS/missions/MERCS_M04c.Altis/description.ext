@@ -1,0 +1,26 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "missionConversations.hpp"
+
+SET_MISSION_META(A, "M04c", "An Eye For An Eye", "On the way to the AAC Airfield...", "Attacks on ION contractors by Black Arrow operatives are continuing. Time to kick some ass.", "Campaigns\IP_CMP_MERCS\img\M04c_load.jpg", "Campaigns\IP_CMP_MERCS\img\M04c_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+
+class CfgDebriefing
+{  
+	class Hub01
+	{
+		title = "Mission Accomplished!";
+		subtitle = "Showed 'em!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	class MOut_Renegade
+	{
+		title = "Mission Aborted!";
+		subtitle = "You better run fast, renegade!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,0,1,1};	
+	};
+};

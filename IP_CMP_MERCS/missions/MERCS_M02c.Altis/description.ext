@@ -1,0 +1,25 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(A, "M02c", "Panzerfaust", "On the way to Aggelochori...", "The FIA managed to take control of a tank depot. PMCs and AAF will launch a joined attack to re-take the facility.", "Campaigns\IP_CMP_MERCS\img\M02c_load.jpg", "Campaigns\IP_CMP_MERCS\img\M02c_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+
+class CfgDebriefing
+{  
+	class Hub01
+	{
+		title = "Mission Accomplished!";
+		subtitle = "The depot is back under AAF control!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	class MOut_Renegade
+	{
+		title = "Mission Aborted!";
+		subtitle = "You better run fast, renegade!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,0,1,1};	
+	};
+};

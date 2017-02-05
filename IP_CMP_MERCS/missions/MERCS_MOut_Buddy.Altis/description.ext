@@ -1,0 +1,3 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(B, "MOut_Buddy", "Good Bye Altis", "The Next Morning...", "Raif and Dražen spent all night slowly making their way through the Altian woods when they finally reach their destination.", "Campaigns\IP_CMP_MERCS\img\MOut_Buddy_load.jpg", "Campaigns\IP_CMP_MERCS\img\MOut_Buddy_overview.jpg", 0, 0, 0, 1, 1, 0, 1)

@@ -1,0 +1,139 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,4346,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Handle_Done",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Handle Done"};
+item2[] = {"Win_End",1,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Win End"};
+item3[] = {"On_Mission",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"On Mission"};
+item4[] = {"Done",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Done"};
+item5[] = {"Detected",4,218,-300.000000,0.000000,-200.000000,50.000000,1.000000,"Detected"};
+item6[] = {"QRF",2,250,-300.000000,-75.000000,-200.000000,-25.000000,0.000000,"QRF"};
+link0[] = {0,1};
+link1[] = {1,3};
+link2[] = {3,4};
+link3[] = {3,5};
+link4[] = {4,2};
+link5[] = {5,6};
+link6[] = {6,1};
+globals[] = {25.000000,1,0,0,0,640,480,1,54,6316128,1,-466.307861,-41.984497,309.506470,-211.091980,595,730,1};
+window[] = {2,-1,-1,-1,-1,967,208,1648,208,3,613};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"_handle = [" \n
+       "	[" \n
+       "		[IP_Lord, IP_Main], " \n
+       "		[" \n
+       "			""Templar, this is White King, status report, over!""," \n
+       "			""White King, Templar's approaching the crash site, I can see smoke piling up, over.""," \n
+       "			""Copy that, Templar. Be advised, we've received word of a motorised AAF patrol that just departed from their base in Pyrgos heading into your direction, how copy?""," \n
+       "			""Understood White King, we'll work fast, out.""" \n
+       "		]," \n
+       "		""SIDE""," \n
+       "		IP_ShowIntro" \n
+       "	]," \n
+       "	[""tClean""]	" \n
+       "] spawn IP_fnc_mainInsertion;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	sleep 5;	" \n
+       "	[""tClean"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[IP_Main, ""Okay, that's it. I should call for extraction."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	IP_Extract = false;" \n
+       "	waitUntil {IP_Extract};" \n
+       "	[IP_Main, ""White King, this is Templar, objective complete. I'm coming home, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[""Hub02"", true, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "On_Mission">*/
+    class On_Mission
+    {
+      name = "On_Mission";
+      init = /*%FSM<STATEINIT""">*/"IP_PatrolGo = true;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Detected">*/
+        class Detected
+        {
+          priority = 1.000000;
+          to="QRF";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!isNil ""IP_Detected"") && (isNil ""_advised"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Done">*/
+        class Done
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!alive IP_Heli2) && (IP_Burried == IP_ToBurry)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "QRF">*/
+    class QRF
+    {
+      name = "QRF";
+      init = /*%FSM<STATEINIT""">*/"_handle = [IP_Lord, ""Templar be advised, the AAF patrol reported contact. A QRF at the Selakano airfield is mobilising. Do your job and get out of there, over."", ""SIDE""] spawn IP_fnc_simpleSentence;" \n
+       "_advised = true;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+  };
+};
+/*%FSM</COMPILE>*/

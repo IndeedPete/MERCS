@@ -1,0 +1,26 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "missionConversations.hpp"
+
+SET_MISSION_META(A, "M02a", "Checkpoint Charlie", "On the way to Checkpoint Charlie...", "The AAF is short on staff. They have requested PMCs to man important outposts and roadblocks.", "Campaigns\IP_CMP_MERCS\img\M02a_load.jpg", "Campaigns\IP_CMP_MERCS\img\M02a_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+
+class CfgDebriefing
+{  
+	class Hub01
+	{
+		title = "Mission Accomplished!";
+		subtitle = "You held Checkpoint Charlie!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	class MOut_Renegade
+	{
+		title = "Mission Aborted!";
+		subtitle = "You better run fast, renegade!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,0,1,1};	
+	};
+};

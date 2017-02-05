@@ -1,0 +1,160 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Drop_Complete",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Drop Complete"};
+item2[] = {"Squeak__Squeak_",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Squeak, Squeak!"};
+item3[] = {"Mercs_Killed",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Mercs Killed"};
+item4[] = {"Intro_Done",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Intro Done"};
+item5[] = {"Mercs_Coming",2,4346,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Mercs Coming"};
+item6[] = {"Win_End",1,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Win End"};
+link0[] = {0,4};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {3,6};
+link4[] = {4,5};
+link5[] = {5,1};
+globals[] = {25.000000,1,0,0,0,640,480,1,57,6316128,1,-324.595154,255.234375,498.636993,-247.678253,707,910,1};
+window[] = {2,-1,-1,-1,-1,837,78,1518,78,3,725};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"_intro = [] spawn {" \n
+       "	if (IP_ShowIntro) then {" \n
+       "		0 cutText [""A few weeks later..."", ""BLACK FADED"", 10e10];" \n
+       "		IP_Main action [""SITDOWN"", IP_Main]; " \n
+       "		//1 cutText ["""", ""PLAIN"", 0];" \n
+       "		" \n
+       "		_camera = ""camera"" camCreate [2216.23,22158.32,1.45]; //(getPos IP_Main);" \n
+       "		_camera cameraEffect [""internal"", ""back""];" \n
+       "		" \n
+       "		_camera camPrepareTarget IP_Main; //[-91591.64,41189.98,-28848.70];" \n
+       "		_camera camPreparePos [2216.23,22158.32,1.45];" \n
+       "		_camera camPrepareFOV 0.700;" \n
+       "		_camera camCommitPrepared 0;" \n
+       "" \n
+       "		sleep 5;" \n
+       "		0 cutText ["""", ""BLACK IN"", 5];" \n
+       "		" \n
+       "		[] spawn {" \n
+       "			sleep 5;" \n
+       "			[IP_GL1, nil, true] call BIS_fnc_moduleLightning;" \n
+       "			sleep 7;" \n
+       "			[IP_GL2, nil, true] call BIS_fnc_moduleLightning;" \n
+       "			sleep 6;" \n
+       "			[IP_GL3, nil, true] call BIS_fnc_moduleLightning;" \n
+       "		};" \n
+       "		" \n
+       "		_camera camPrepareTarget player; //[-52749.85,-61134.95,-7113.05];" \n
+       "		_camera camPreparePos [2079.79,22185.61,1.39];" \n
+       "		_camera camPrepareFOV 0.700;" \n
+       "		_camera camCommitPrepared 30;" \n
+       "		waitUntil{camCommitted _camera};" \n
+       "		" \n
+       "		sleep 3;" \n
+       "		" \n
+       "		[""IP_BlackScreen"", false] call BIS_fnc_blackOut;	" \n
+       "		IP_Main cameraEffect [""terminate"", ""back""];" \n
+       "		camDestroy _camera;" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Intro_Done">*/
+        class Intro_Done
+        {
+          priority = 0.000000;
+          to="Mercs_Coming";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _intro"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Squeak__Squeak_">*/
+    class Squeak__Squeak_
+    {
+      name = "Squeak__Squeak_";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	[IP_Commander, ""Hey freshmeat, you've got company! I told you we would find you! You can run but you can't hide!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Sorry Buddy, we have no other options! You know the rules! Come out and at least we'll make it quick!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	sleep 10;" \n
+       "	[IP_Commander, ""Come out, come out, wherever you are!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	sleep 10;" \n
+       "	[IP_Commander, ""Squeak, squeak, little pig! Start praying, I'm coming for ya! Hahaha!"", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "};" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Mercs_Killed">*/
+        class Mercs_Killed
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"({(side _x) == east} count allUnits) == 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Mercs_Coming">*/
+    class Mercs_Coming
+    {
+      name = "Mercs_Coming";
+      init = /*%FSM<STATEINIT""">*/"[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "[] call IP_fnc_showOSD;" \n
+       "[] spawn IP_fnc_m_ambientLightning;" \n
+       "saveGame;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Drop_Complete">*/
+        class Drop_Complete
+        {
+          priority = 0.000000;
+          to="Squeak__Squeak_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_DropComplete"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	sleep 5;" \n
+       "	[IP_Main, ""I told you fuckers not to mess with me! And now, since this is settled: I'm coming for you, Nikos..."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[] execVM ""Campaigns\IP_CMP_MERCS\scn\credits.sqf"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+  };
+};
+/*%FSM</COMPILE>*/

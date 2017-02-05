@@ -1,0 +1,3 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(B, "MOut_CSAT", "Canton Protocol", "A Few Minutes Later...", "CSAT Sub-Lieutenant Malik Nafisi and Raif are preparing the device for transport...", "Campaigns\IP_CMP_MERCS\img\MOut_CSAT_load.jpg", "Campaigns\IP_CMP_MERCS\img\MOut_CSAT_overview.jpg", 0, 0, 0, 1, 1, 0, 1)

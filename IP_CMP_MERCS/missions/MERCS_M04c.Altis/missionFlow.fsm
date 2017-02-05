@@ -1,0 +1,280 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,4346,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Assets_Destroyed",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Assets Destroyed"};
+item2[] = {"Get_Away",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Get Away"};
+item3[] = {"Extraction",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"Extraction"};
+item4[] = {"Handle_Done",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Handle Done"};
+item5[] = {"On_Mission",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"On Mission"};
+item6[] = {"Win_End",1,250,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Win End"};
+item7[] = {"Far_Away",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Far Away"};
+item8[] = {"Call_Extraction",2,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Call Extraction"};
+item9[] = {"Mortar_Fired",4,218,-300.000000,0.000000,-200.000000,50.000000,0.000000,"Mortar Fired"};
+item10[] = {"Spawn_Backup",2,250,-300.000000,-75.000000,-200.000000,-25.000000,0.000000,"Spawn Backup"};
+link0[] = {0,4};
+link1[] = {1,2};
+link2[] = {2,7};
+link3[] = {3,6};
+link4[] = {4,5};
+link5[] = {5,1};
+link6[] = {5,9};
+link7[] = {7,8};
+link8[] = {8,3};
+link9[] = {9,10};
+link10[] = {10,4};
+globals[] = {25.000000,1,0,0,0,640,480,1,151,6316128,1,-430.554718,287.315704,453.171417,-309.094757,857,910,1};
+window[] = {2,-1,-1,-1,-1,993,234,1674,234,3,875};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "skipTime 1;" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	_saySentences = {" \n
+       "		#define EH_SKIP (uiNamespace getVariable ""IP_Cutscene_ehSkip"")" \n
+       "		#define EH_SKIP_SET_NIL uiNamespace setVariable [""IP_Cutscene_ehSkip"", nil]" \n
+       "		" \n
+       "		_guys = _this select 0;" \n
+       "		_sentences = _this select 1;" \n
+       "		" \n
+       "		disableSerialization;" \n
+       "		//add skip mechanics -----------------------------------------------------------------------" \n
+       "		IP_cutscene_skip = false;" \n
+       "" \n
+       "		private[""_ehSkip""];" \n
+       "" \n
+       "		_ehSkip = ([] call BIS_fnc_displayMission) displayAddEventHandler" \n
+       "		[" \n
+       "			""KeyDown""," \n
+       "			""" \n
+       "				if (_this select 1 == 57) then" \n
+       "				{" \n
+       "					if (IP_cutscene_skip) exitWith {};" \n
+       "" \n
+       "					playSound ['click',true];" \n
+       "" \n
+       "					IP_cutscene_skip = true;" \n
+       "				};" \n
+       "" \n
+       "				if !((_this select 1) in (actionKeys 'PersonView' + [1])) then {true};" \n
+       "			""" \n
+       "		];" \n
+       "" \n
+       "		uiNamespace setVariable [""IP_Cutscene_ehSkip"", _ehSkip];" \n
+       "		//add skip mechanics -----------------------------------------------------------------------" \n
+       "		" \n
+       "		for ""_i"" from 0 to ((count _sentences) - 1) do {" \n
+       "			_sentence = _sentences select _i;" \n
+       "			if (_sentence != """" ) then {" \n
+       "				private ""_speaker"";" \n
+       "				if (_i mod 2 == 0) then {_speaker = _guys select 0} else {_speaker = _guys select 1};			" \n
+       "				[_speaker, _sentence, ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			};" \n
+       "			if (IP_cutscene_skip) exitWith {};" \n
+       "		};" \n
+       "		" \n
+       "		([] call BIS_fnc_displayMission) displayRemoveEventHandler ['KeyDown', EH_SKIP];" \n
+       "		EH_SKIP_SET_NIL;" \n
+       "		IP_cutscene_skip = nil;" \n
+       "	};" \n
+       "	" \n
+       "	sleep 2;" \n
+       "	IP_Main switchMove ""Acts_PercMwlkSlowWrflDf2"";" \n
+       "" \n
+       "	IP_Buddy disableAI ""MOVE"";" \n
+       "	IP_Buddy disableAI ""ANIM"";" \n
+       "	IP_Buddy switchMove ""Acts_PercMwlkSlowWrflDf2"";" \n
+       "	" \n
+       "	[IP_Buddy] joinSilent IP_Main;" \n
+       "	[] call IP_fnc_spawnTeam;" \n
+       "	" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	sleep 0.5;" \n
+       "" \n
+       "	[] spawn IP_fnc_showOSD;" \n
+       "	[[IP_Buddy, IP_Contractor], [""There's our guy. Hey there!"", ""Good day, gents! Keen to hear how we're gonna fuck Black Arrow today? Come, talk to me!"", ""Yup, can't wait!""]] call _saySentences;" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	IP_Main switchMove """";" \n
+       "	IP_Buddy switchMove """";" \n
+       "	IP_Buddy enableAI ""MOVE"";" \n
+       "	IP_Buddy enableAI ""ANIM"";" \n
+       "	" \n
+       "	sleep 0.5;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};	" \n
+       "	""tCamp"" call IP_fnc_taskHint;" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Get_Away">*/
+    class Get_Away
+    {
+      name = "Get_Away";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	sleep 5;" \n
+       "	[IP_Buddy, ""That's it! Damn nice explosions! Suck on that you fuckers!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Okay, better get home fast!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[""tCamp"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	saveGame;" \n
+       "	[player, ""tExtract"", [""Get at least 500 metres away from the <marker name=""""mCamp"""">Black Arrow Camp</marker> and call for extraction!"", ""Extract"", """"], nil, true, 1] call BIS_fnc_taskCreate;	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Far_Away">*/
+        class Far_Away
+        {
+          priority = 0.000000;
+          to="Call_Extraction";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && ((getPos (vehicle IP_Main)) distance (getMarkerPos ""mCamp"") > 500)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "On_Mission">*/
+    class On_Mission
+    {
+      name = "On_Mission";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Mortar_Fired">*/
+        class Mortar_Fired
+        {
+          priority = 0.000000;
+          to="Spawn_Backup";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_MortarFired"" && isNil ""_spawned"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Assets_Destroyed">*/
+        class Assets_Destroyed
+        {
+          priority = 0.000000;
+          to="Get_Away";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_ToKill"" && {{alive _x} count IP_ToKill ==  0}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"[""tExtract"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "if (uniform IP_Main == ""U_O_CombatUniform_ocamo"") then {IP_Main setVariable [""IP_Clothes"", ((IP_Main getVariable ""IP_Clothes"") + [""U_O_CombatUniform_ocamo""])]};" \n
+       "[""Hub01"", true, true] call IP_fnc_endMission;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Call_Extraction">*/
+    class Call_Extraction
+    {
+      name = "Call_Extraction";
+      init = /*%FSM<STATEINIT""">*/"[IP_Buddy, ""All right, get us out of here!"", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "saveGame;" \n
+       "IP_Extract = false;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Extraction">*/
+        class Extraction
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_Extract"" && {IP_Extract}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Spawn_Backup">*/
+    class Spawn_Backup
+    {
+      name = "Spawn_Backup";
+      init = /*%FSM<STATEINIT""">*/"_spawned = true;" \n
+       "_handle = [] spawn {" \n
+       "	sleep 30;" \n
+       "	[" \n
+       "		[2,0,0,0]," \n
+       "		[[""mMenSpawn""],[],[],[]]," \n
+       "		[[""GUE""],[],[],[]]," \n
+       "		east," \n
+       "		(getPos IP_Main)," \n
+       "		[4, 8]," \n
+       "		""" \n
+       "			{" \n
+       "				_x setVariable ['IP_Faction', 'BlackArrow'];" \n
+       "				[_x] call IP_fnc_createMerc;" \n
+       "			} forEach (units(_this select 1));" \n
+       "		""" \n
+       "	] spawn IP_fnc_wave;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+  };
+};
+/*%FSM</COMPILE>*/

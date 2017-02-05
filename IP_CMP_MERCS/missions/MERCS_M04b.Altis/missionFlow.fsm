@@ -1,0 +1,320 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,4346,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Insertion_Done",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Insertion Done"};
+item2[] = {"On_Mission",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"On Mission"};
+item3[] = {"Detail_Killed",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Detail Killed"};
+item4[] = {"Extraction",4,218,-175.000000,525.000000,-75.000000,575.000000,0.000000,"Extraction"};
+item5[] = {"Scare",2,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Scare"};
+item6[] = {"LZ_Near",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"LZ Near"};
+item7[] = {"Land",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Land"};
+item8[] = {"Win_End",1,250,-175.000000,600.000000,-75.000000,650.000000,0.000000,"Win End"};
+item9[] = {"Airfield",4,218,-50.000000,150.000000,50.000000,200.000000,1.000000,"Airfield"};
+item10[] = {"HVI_Killed",4,218,-300.000000,150.000000,-200.000000,200.000000,2.000000,"HVI Killed"};
+item11[] = {"Fail_1",1,250,-425.000000,150.000000,-325.000000,200.000000,0.000000,"Fail 1"};
+item12[] = {"Fail_2",1,250,75.000000,150.000000,175.000000,200.000000,0.000000,"Fail 2"};
+item13[] = {"",7,210,-254.000000,321.000000,-246.000000,329.000000,0.000000,""};
+item14[] = {"At_Farm",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"At Farm"};
+item15[] = {"Call_Extraction",2,250,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Call Extraction"};
+item16[] = {"",7,210,-254.000000,471.000000,-246.000000,479.000000,0.000000,""};
+link0[] = {0,6};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,9};
+link4[] = {2,10};
+link5[] = {3,5};
+link6[] = {4,8};
+link7[] = {5,13};
+link8[] = {5,14};
+link9[] = {6,7};
+link10[] = {7,1};
+link11[] = {9,12};
+link12[] = {10,11};
+link13[] = {13,10};
+link14[] = {14,15};
+link15[] = {15,4};
+link16[] = {15,16};
+link17[] = {16,13};
+globals[] = {25.000000,1,0,0,0,640,480,1,149,6316128,1,-554.687561,-15.340796,163.629120,-295.791107,857,910,1};
+window[] = {2,-1,-1,-1,-1,785,26,1466,26,3,875};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "skipTime 1;" \n
+       "" \n
+       "_posStart = getMarkerPos ""mStart"";" \n
+       "_posLZ = getPos IP_LZ;" \n
+       "_dir = [_posStart, _posLZ] call BIS_fnc_dirTo;" \n
+       "" \n
+       "_grp = createGroup civilian;" \n
+       "IP_Pilot = _grp createUnit [""C_man_pilot_F"", _posStart, [], 0, ""NONE""];" \n
+       "IP_Pilot setIdentity ""pilot"";" \n
+       "IP_Pilot setVariable [""IP_Avatar"", ""Campaigns\IP_CMP_MERCS\img\pilotAvatar.jpg""];" \n
+       "IP_Pilot setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\coveralls_black_coION.paa""];" \n
+       "IP_Copilot = _grp createUnit [""C_man_pilot_F"", _posStart, [], 0, ""NONE""];" \n
+       "IP_Heli = createVehicle [""O_Heli_Light_02_unarmed_F"", _posStart, [], 0, ""FLY""];" \n
+       "clearWeaponCargo IP_Heli;" \n
+       "clearMagazineCargo IP_Heli;" \n
+       "clearBackpackCargo IP_Heli;" \n
+       "clearItemCargo IP_Heli;" \n
+       "IP_Heli setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\heli_light_02_ext_coION.paa""];" \n
+       "[IP_Heli] call IP_fnc_heliDoors;" \n
+       "IP_Heli setDir _dir;" \n
+       "IP_Pilot moveInDriver IP_Heli;" \n
+       "IP_Copilot moveInTurret [IP_Heli, [0]];" \n
+       "" \n
+       "_grp setCombatMode ""BLUE"";" \n
+       "_grp setBehaviour ""CARELESS"";" \n
+       "_grp move _posLZ;" \n
+       "{_x setCaptive true} forEach units _grp;" \n
+       "" \n
+       "[] spawn {" \n
+       "	waitUntil{time > 0};" \n
+       "	[IP_Buddy] joinSilent IP_Main;" \n
+       "	[] call IP_fnc_spawnTeam;" \n
+       "	IP_Main moveInCargo [IP_Heli, 5];" \n
+       "	IP_Buddy moveInCargo [IP_Heli, 2];" \n
+       "	{_x moveInCargo IP_Heli} forEach ((units group IP_Main) - [IP_Main, IP_Buddy]);" \n
+       "	" \n
+       "	sleep 2;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "" \n
+       "	[IP_Pilot, ""Gentlemen, we're closing in on the LZ. Get ready, this will be a quick drop. The AAF locked down the whole area."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Copy that. Any word on our supports?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Pilot, ""Yes, our contact left cars and a scout drone at the farm where we're going down."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	if (!(""B_UavTerminal"" in (items IP_Main)) && !(""B_UavTerminal"" in (assignedItems IP_Main))) then {[IP_Buddy, ""I hope you didn't forget the UAV Terminal. Wait, I know that look, you forgot it..."", ""DIRECT""] call IP_fnc_simpleSentence};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "LZ_Near">*/
+        class LZ_Near
+        {
+          priority = 0.000000;
+          to="Land";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(IP_Heli distance _posLZ) < 100"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "On_Mission">*/
+    class On_Mission
+    {
+      name = "On_Mission";
+      init = /*%FSM<STATEINIT""">*/"_wp = _grp addWaypoint [_posStart, 0];" \n
+       "_wp setWaypointType ""MOVE"";" \n
+       "_wp setWaypointStatements [""true"", ""deleteVehicle (vehicle this); {deleteVehicle _x} forEach units group this;""];" \n
+       "" \n
+       "saveGame;" \n
+       "{_x call IP_fnc_taskHint} forEach [""tSecurity"", ""tHVI""];" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	[IP_Buddy, ""All right, let's get going. The HVI should leave the first military base soon."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""The cars are over there and I've got some toys in my backpack."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Use them with caution, we need do disable their vehicle without killing the HVI."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "HVI_Killed">*/
+        class HVI_Killed
+        {
+          priority = 2.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_HVI"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Airfield">*/
+        class Airfield
+        {
+          priority = 1.000000;
+          to="Fail_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"triggerActivated trgAirfield"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Detail_Killed">*/
+        class Detail_Killed
+        {
+          priority = 0.000000;
+          to="Scare";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"{alive _x} count IP_SecurityDetail == 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Scare">*/
+    class Scare
+    {
+      name = "Scare";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	sleep 5;" \n
+       "	[IP_Buddy, ""We've got them!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_HVI, ""Help! Help! What do you want from me?! Please don't hurt me!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Hello Mister, we'd like to inform you that you've picked the wrong security firm to accompany you on your travels."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Please consider travelling with ION incorporated next time."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_HVI, ""Yes, yes, I will! You've made your point! I know I've made a mistake! Please don't hurt me!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Good! Wait for the AAF to pick you up! And if we have to come back you will be the one ending up face down!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Let's get back to the farm and call for extraction."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[""tSecurity"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	saveGame;" \n
+       "	[player, ""tExtract"", [""Get back to the <marker name=""""mFarm"""">Farm</marker> and call for extraction!"", ""Extract"", ""Farm""], ""mFarm"", true, 1] call BIS_fnc_taskCreate;	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "HVI_Killed">*/
+        class HVI_Killed
+        {
+          priority = 2.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_HVI"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "At_Farm">*/
+        class At_Farm
+        {
+          priority = 0.000000;
+          to="Call_Extraction";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && ((getPos (vehicle IP_Main)) distance (getMarkerPos ""mFarm"") < 50)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Land">*/
+    class Land
+    {
+      name = "Land";
+      init = /*%FSM<STATEINIT""">*/"[IP_Pilot, ""Prep for landing!"", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "" \n
+       "IP_Heli land ""GET OUT"";" \n
+       "if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Insertion_Done">*/
+        class Insertion_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"{_x in IP_Heli} count (units group IP_Main) ==  0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"[""tHVI"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "[""tExtract"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "[""Hub01"", true, true] call IP_fnc_endMission;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fail_1">*/
+    class Fail_1
+    {
+      name = "Fail_1";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	sleep 5;	" \n
+       "	[""tHVI"", ""FAILED""] call BIS_fnc_taskSetState;" \n
+       "	[IP_Buddy, ""Jebem, he died! We've lost the HVT!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""Hub01Fail1"", false, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fail_2">*/
+    class Fail_2
+    {
+      name = "Fail_2";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	sleep 5;	" \n
+       "	[""tSecurity"", ""FAILED""] call BIS_fnc_taskSetState;" \n
+       "	[IP_Buddy, ""Jebem, the HVI escaped!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""Hub01Fail2"", false, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Call_Extraction">*/
+    class Call_Extraction
+    {
+      name = "Call_Extraction";
+      init = /*%FSM<STATEINIT""">*/"[IP_Buddy, ""All right, get us out of here!"", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "saveGame;" \n
+       "IP_Extract = false;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "HVI_Killed">*/
+        class HVI_Killed
+        {
+          priority = 2.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_HVI"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Extraction">*/
+        class Extraction
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_Extract"" && {IP_Extract}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+    "Fail_1",
+    "Fail_2",
+  };
+};
+/*%FSM</COMPILE>*/

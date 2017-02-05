@@ -1,0 +1,260 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Close_To_WB",4,218,-300.000000,-75.000000,-200.000000,-25.000000,0.000000,"Close To WB"};
+item2[] = {"End",1,250,-175.000000,225.000000,-75.000000,275.000000,0.000000,"End"};
+item3[] = {"Ambush",2,4346,-300.000000,0.000000,-200.000000,50.000000,0.000000,"Ambush"};
+item4[] = {"All_Dead",4,218,-300.000000,75.000000,-200.000000,125.000000,0.000000,"All Dead"};
+item5[] = {"",7,210,-129.000000,-54.000004,-121.000000,-46.000000,0.000000,""};
+item6[] = {"Ran_Away",4,218,-50.000000,-75.000000,50.000000,-25.000000,0.000000,"Ran Away"};
+item7[] = {"Fuck_That",2,250,-50.000000,0.000000,50.000000,50.000000,0.000000,"Fuck That"};
+item8[] = {"Handle_Done",4,218,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Handle Done"};
+item9[] = {"Hell",2,250,-300.000000,150.000000,-200.000000,200.000000,0.000000,"Hell"};
+item10[] = {"",7,210,-3.999997,171.000000,3.999997,179.000000,0.000000,""};
+item11[] = {"Fled",4,218,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Fled"};
+item12[] = {"Shook_Off",2,250,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Shook Off"};
+link0[] = {0,5};
+link1[] = {1,3};
+link2[] = {3,4};
+link3[] = {3,11};
+link4[] = {4,9};
+link5[] = {5,1};
+link6[] = {5,6};
+link7[] = {6,7};
+link8[] = {7,10};
+link9[] = {8,2};
+link10[] = {9,8};
+link11[] = {10,8};
+link12[] = {11,12};
+link13[] = {12,8};
+globals[] = {25.000000,1,0,0,0,640,480,1,169,6316128,1,-467.570557,137.349121,337.296448,-255.251358,929,910,1};
+window[] = {2,-1,-1,-1,-1,915,156,1596,156,3,947};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	{IP_Agent disableAI _x} forEach [""AUTOTARGET"", ""MOVE"", ""TARGET""];" \n
+       "	(group IP_Agent) setBehaviour ""CARELESS"";" \n
+       "	(group IP_Agent) setCombatMode ""BLUE"";" \n
+       "	" \n
+       "	sleep 1;" \n
+       "	" \n
+       "	IP_Agent switchMove ""Acts_welcomeOnHUB04_AIWalk_1"";" \n
+       "	IP_Main switchMove ""Acts_welcomeOnHUB04_PlayerWalk_1"";" \n
+       "	" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	[" \n
+       "		[IP_Agent, IP_Main]," \n
+       "		[" \n
+       "			""I must say that was good work. You did the right thing by joining us and we couldn't have done it without you.""," \n
+       "			""""," \n
+       "			""Your reward has been transferred to your account. I think that makes us even.""," \n
+       "			""Thanks, what now, Sir?""," \n
+       "			""We're done, the device is off country. But Jackknife wants to talk to you. Maybe a job offer or so. Meet him in the yard, just straight through the hotel.""" \n
+       "		]," \n
+       "		""DIRECT""," \n
+       "		IP_ShowIntro" \n
+       "	] call IP_fnc_simpleConversation;" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 0.5;" \n
+       "	deleteVehicle IP_Agent;" \n
+       "	" \n
+       "	IP_Main switchMove ""AmovPercMstpSlowWrflDnon"";	" \n
+       "	skipTime -24;" \n
+       "	86400 setOvercast 1;" \n
+       "	skipTime 24;" \n
+       "	" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	[] spawn IP_fnc_showOSD;" \n
+       "	1000000 call IP_fnc_addMoney;" \n
+       "	" \n
+       "	sleep 2;" \n
+       "	" \n
+       "	[IP_GL1, nil, true] spawn BIS_fnc_moduleLightning;" \n
+       "	" \n
+       "	5 setRain 1;" \n
+       "	5 setLightnings 1;" \n
+       "	" \n
+       "	sleep 1;" \n
+       "	" \n
+       "	[IP_Main, ""Really? Now? A fucking thunderstorm? Jesus fucking Christ!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	sleep 3;" \n
+       "	" \n
+       "	[] spawn IP_fnc_m_ambientLightning;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Ran_Away">*/
+        class Ran_Away
+        {
+          priority = 0.000000;
+          to="Fuck_That";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgAO)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Close_To_WB">*/
+        class Close_To_WB
+        {
+          priority = 0.000000;
+          to="Ambush";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (IP_Main distance IP_WhiteBoard < 5)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End">*/
+    class End
+    {
+      name = "End";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn IP_scn_credits;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Ambush">*/
+    class Ambush
+    {
+      name = "Ambush";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	saveGame;" \n
+       "	" \n
+       "	{_x hideObject false} forEach (allUnits - [IP_Main]);" \n
+       "	IP_Rival enableSimulation true;" \n
+       "	" \n
+       "	[IP_Rival, ""Hey ION! You thought I'd forget that you and Petrović blew up my beautiful base, right?! Well, I didn't! And now it's payback time, asshole!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	{_x enableSimulation true} forEach (allUnits - [IP_Main]);" \n
+       "	IP_Rival allowDamage true;" \n
+       "	IP_Main setCaptive false;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Fled">*/
+        class Fled
+        {
+          priority = 0.000000;
+          to="Shook_Off";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgAO)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "All_Dead">*/
+        class All_Dead
+        {
+          priority = 0.000000;
+          to="Hell";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && ({(side _x == east) && {alive _x}} count allUnits == 0)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fuck_That">*/
+    class Fuck_That
+    {
+      name = "Fuck_That";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Main, ""Fuck this shit! Alone in a ghost hotel during a thunderstorm surrounded by a rivalling merc band. I recognise a trap when I see one!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""I'm out of here, Altis can kiss my ass..."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	call IP_scn_credits;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Hell">*/
+    class Hell
+    {
+      name = "Hell";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	sleep 10;" \n
+       "	[IP_Main, ""Hell, I think that was the last one! These fucking mercenary vendettas! Okay, I guess it's time to get the fuck out of here..."", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Shook_Off">*/
+    class Shook_Off
+    {
+      name = "Shook_Off";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	sleep 5;" \n
+       "	[IP_Main, ""Whoa, I think I shook them off! Fucking ambush and fucking Jackknife! I guess it's time to finally leave this island..."", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "End",
+  };
+};
+/*%FSM</COMPILE>*/

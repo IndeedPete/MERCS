@@ -1,0 +1,27 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "missionConversations.hpp"
+
+SET_MISSION_META(B, "MMain04", "Uncle Kostas", "On the way to the Central Airbase...", "The task is to infiltrate the AAF and get hold of the Colonel's network credentials without him noticing.", "Campaigns\IP_CMP_MERCS\img\MMain04_load.jpg", "Campaigns\IP_CMP_MERCS\img\MMain04_overview.jpg", 1, 1, 0, 1, 0, 0, 0)
+
+class CfgDebriefing
+{  
+	class Hub02
+	{
+		title = "Mission Accomplished!";
+		subtitle = "You've got the keys!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	
+	class Hub02Fail1
+	{
+		title = "Mission Failed!";
+		subtitle = "You were compromised!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {1,0,0,1};	
+	};
+};

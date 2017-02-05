@@ -1,0 +1,41 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(A, "MTrans01", "Hereford Calling", "On the way to Altis...", "ION contractors under Ian McMillian's command are taking off to a top secret mission.", "Campaigns\IP_CMP_MERCS\img\MTrans01_load.jpg", "Campaigns\IP_CMP_MERCS\img\MTrans01_overview.jpg", 0, 0, 0, 1, 1, 0, 0)
+
+// Temporary as it does not seem to work from the campaign folder
+class CfgMusic
+{
+	tracks[] = {};
+	class Beep2
+	{
+		// how the sound is referred to in the editor (e.g. trigger effects)
+		name = "Beep2";
+		// filename, volume, pitch
+		sound[] = {"snd\Beep2.ogg", 1, 1};
+		// subtitle delay in seconds, subtitle text 
+		titles[] = {1, ""};
+	};
+};
+
+class CfgSounds
+{
+	sounds[] = {};
+	class Beep1
+	{
+		// how the sound is referred to in the editor (e.g. trigger effects)
+		name = "Beep1";
+		// filename, volume, pitch
+		sound[] = {"snd\Beep1.ogg", 1, 1};
+		// subtitle delay in seconds, subtitle text 
+		titles[] = {1, ""};
+	};
+	class Beep3
+	{
+		// how the sound is referred to in the editor (e.g. trigger effects)
+		name = "Beep3";
+		// filename, volume, pitch
+		sound[] = {"snd\Beep3.ogg", 1, 1};
+		// subtitle delay in seconds, subtitle text 
+		titles[] = {1, ""};
+	};
+};

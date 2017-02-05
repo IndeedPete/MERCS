@@ -1,0 +1,365 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Handle_Done",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Handle Done"};
+item2[] = {"Win_End",1,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Win End"};
+item3[] = {"On_Mission",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"On Mission"};
+item4[] = {"Abducted",4,218,-175.000000,75.000000,-75.000000,125.000000,1.000000,"Abducted"};
+item5[] = {"Extract",2,4346,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Extract"};
+item6[] = {"Away",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Away"};
+item7[] = {"Loser",1,250,-300.000000,300.000000,-200.000000,350.000000,0.000000,"Loser"};
+item8[] = {"Doctor_Died",4,218,-300.000000,225.000000,-200.000000,275.000000,5.000000,"Doctor Died"};
+item9[] = {"",7,210,-254.000000,171.000000,-246.000000,179.000000,0.000000,""};
+item10[] = {"",7,210,-254.000015,21.000000,-246.000000,29.000000,0.000000,""};
+item11[] = {"",7,210,-254.000000,171.000000,-246.000000,179.000000,0.000000,""};
+item12[] = {"In_House",4,218,-425.000000,0.000000,-325.000000,50.000000,0.000000,"In House"};
+item13[] = {"",7,210,-254.000000,96.000000,-246.000000,104.000000,0.000000,""};
+item14[] = {"Phone_Call_Done",4,218,-425.000000,75.000000,-325.000000,125.000000,0.000000,"Phone Call Done"};
+item15[] = {"Who_are_you_",2,250,-550.000000,0.000000,-450.000000,50.000000,0.000000,"Who are you?"};
+item16[] = {"",7,210,-629.000000,21.000002,-621.000000,28.999998,0.000000,""};
+item17[] = {"",7,210,-629.000000,-54.000000,-621.000000,-46.000000,0.000000,""};
+item18[] = {"Scientist_Move",2,250,-550.000000,75.000000,-450.000000,125.000000,0.000000,"Scientist Move"};
+item19[] = {"",7,210,-629.000000,96.000000,-621.000000,104.000000,0.000000,""};
+item20[] = {"Feierabend",4,218,-50.000000,0.000000,50.000000,50.000000,0.000000,"Feierabend"};
+item21[] = {"Drive_Home",2,250,-50.000000,-75.000000,50.000000,-25.000000,0.000000,"Drive Home"};
+link0[] = {0,1};
+link1[] = {1,3};
+link2[] = {3,4};
+link3[] = {3,10};
+link4[] = {3,20};
+link5[] = {4,5};
+link6[] = {5,6};
+link7[] = {5,9};
+link8[] = {6,2};
+link9[] = {8,7};
+link10[] = {9,8};
+link11[] = {10,12};
+link12[] = {10,13};
+link13[] = {12,15};
+link14[] = {13,11};
+link15[] = {13,14};
+link16[] = {14,18};
+link17[] = {15,16};
+link18[] = {16,17};
+link19[] = {17,1};
+link20[] = {18,19};
+link21[] = {19,16};
+link22[] = {20,21};
+link23[] = {21,1};
+globals[] = {25.000000,1,0,0,0,640,480,1,128,6316128,1,-610.358704,54.827454,537.792969,-195.927567,825,910,1};
+window[] = {2,-1,-1,-1,-1,967,208,1648,208,3,843};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"_handle = [" \n
+       "	[" \n
+       "		[IP_Main, IP_Lord], " \n
+       "		[" \n
+       "			""White King, this is Templar, approaching AO, over.""," \n
+       "			""Copy that, Templar. Get him alive and try not to alert the AAF. Britain first, out.""" \n
+       "		]," \n
+       "		""SIDE""," \n
+       "		IP_ShowIntro" \n
+       "	]," \n
+       "	[""tKidnap""]," \n
+       "	[IP_Main, 5, true]," \n
+       "	true," \n
+       "	false" \n
+       "] spawn IP_fnc_mainInsertion;" \n
+       "" \n
+       "IP_handle_insertion = _handle;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	[IP_Main, ""All right, that's far enough. Better call for extraction."", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "	saveGame;" \n
+       "	IP_Extract = false;" \n
+       "	waitUntil {IP_Extract};" \n
+       "	[""tExtract"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[""Hub03"", true, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "On_Mission">*/
+    class On_Mission
+    {
+      name = "On_Mission";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Abducted">*/
+        class Abducted
+        {
+          priority = 1.000000;
+          to="Extract";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (!isNil ""IP_ScientistAbducted"") && {IP_ScientistAbducted}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "In_House">*/
+        class In_House
+        {
+          priority = 0.000000;
+          to="Who_are_you_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) &&  (isNil ""_house"") && (triggerActivated trgHouse)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Phone_Call_Done">*/
+        class Phone_Call_Done
+        {
+          priority = 0.000000;
+          to="Scientist_Move";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (isNil ""_phoneCall"") && (!isNil ""IP_PhoneCallDone"") && {IP_PhoneCallDone}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Feierabend">*/
+        class Feierabend
+        {
+          priority = 0.000000;
+          to="Drive_Home";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(isNil ""IP_ScientistAtHome"") && (dayTime > 19)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Extract">*/
+    class Extract
+    {
+      name = "Extract";
+      init = /*%FSM<STATEINIT""">*/"if (isNil ""_phoneCall"") then {[IP_Scientist, 0.03, ""ICON"", ""mil_marker"", ""colorCivilian"", ""Dr. Díaz"", false, {true}] call IP_fnc_track};" \n
+       "{_x setCaptive false} forEach allUnits;" \n
+       "IP_Disguise = nil;" \n
+       "if (IP_TESTMODE) then {hint ""Cover is blown!""};" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	[IP_Scientist, ""Okay, just don't hurt me or my family. We can work something out, my company will pay any ransom!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	IP_Scientist stop false;" \n
+       "	{deleteWaypoint _x} forEach (wayPoints(group IP_Scientist));" \n
+       "	//[IP_Scientist, IP_Main] spawn IP_fnc_follow;" \n
+       "	[IP_Scientist] joinSilent IP_Main;" \n
+       "	sleep 2;" \n
+       "	[IP_Main, ""White King, this is Templar. We've got the package, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Lord, ""Copy that, Templar. Good work, retreat back to base immediately, out."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[""tKidnap"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	saveGame;" \n
+       "	[player, ""tExtract"", [""Get at least 1000 metres away from the <marker name=""""mResearch"""">Research Facility</marker> and <marker name=""""mHouse"""">Diaz's House</marker> and call for extraction!"", ""Extract"", """"], nil, true, 1] call BIS_fnc_taskCreate;	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Doctor_Died">*/
+        class Doctor_Died
+        {
+          priority = 5.000000;
+          to="Loser";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (!alive IP_Scientist)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Away">*/
+        class Away
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && ((getPos (vehicle IP_Main)) distance (getMarkerPos ""mResearch"") > 1000) && ((getPos (vehicle IP_Main)) distance (getMarkerPos ""mHouse"") > 500)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Loser">*/
+    class Loser
+    {
+      name = "Loser";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	sleep 5;" \n
+       "	[""Hub02Fail1"", false, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Who_are_you_">*/
+    class Who_are_you_
+    {
+      name = "Who_are_you_";
+      init = /*%FSM<STATEINIT""">*/"_house = true;" \n
+       "_handle = [] spawn {" \n
+       "	if (IP_Scientist in (list trgHouse)) then {" \n
+       "		[IP_Scientist, ""Who are you?! This is my house! What do you want?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Shut up! Hands where I can see them!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	} else {" \n
+       "		[IP_Son1, ""Who are you?! What do you want here?! Please don't hurt us!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		if ({alive _x} count IP_Sons > 0) then {" \n
+       "			[IP_Main, ""Shut up! Hands where I can see them! So, time to call your daddy."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			[IP_Scientist, ""phoneOpener"", IP_Main] call IP_fnc_addConversation;" \n
+       "		};" \n
+       "	};	" \n
+       "	" \n
+       "	{player action [""Surrender"", _x]} forEach IP_Sons;" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Scientist_Move">*/
+    class Scientist_Move
+    {
+      name = "Scientist_Move";
+      init = /*%FSM<STATEINIT""">*/"_phoneCall = true;" \n
+       "_handle = [] spawn {" \n
+       "	IP_Scientist stop false;" \n
+       "	_grp = group IP_Scientist;" \n
+       "	{deleteWaypoint _x} forEach (wayPoints _grp);" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getPos IP_Hatchback), 0];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", ""IP_Scientist assignAsDriver IP_Hatchback; [IP_Scientist] orderGetIn true;""];" \n
+       "	_wp setWaypointSpeed ""FULL"";" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getPos IP_Hatchback), 1];" \n
+       "	_wp setWaypointType ""GETIN"";" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mUnload""), 2];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", ""unassignVehicle IP_Scientist; [IP_Scientist] orderGetIn false;""];" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mUnload""), 3];" \n
+       "	_wp setWaypointType ""GETOUT"";" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mHouse""), 4];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", ""IP_Scientist move (getPos IP_Son1);""];" \n
+       "		" \n
+       "	[IP_Main, ""And now we're waiting."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Scientist, 0.03, ""ICON"", ""mil_marker"", ""colorCivilian"", ""Dr. Díaz"", false, {true}] call IP_fnc_track;" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Drive_Home">*/
+    class Drive_Home
+    {
+      name = "Drive_Home";
+      init = /*%FSM<STATEINIT""">*/"IP_ScientistAtHome = true;" \n
+       "_handle = [] spawn {" \n
+       "	IP_Scientist stop false;" \n
+       "	_grp = group IP_Scientist;" \n
+       "	{deleteWaypoint _x} forEach (wayPoints _grp);" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getPos IP_SUV), 0];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", ""IP_Scientist assignAsCargo IP_SUV; [IP_Scientist] orderGetIn true;""];" \n
+       "	_wp setWaypointSpeed ""LIMITED"";" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getPos IP_SUV), 1];" \n
+       "	_wp setWaypointType ""GETIN"";" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mUnload""), 2];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", ""unassignVehicle IP_Scientist; [IP_Scientist] orderGetIn false;""];" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mUnload""), 3];" \n
+       "	_wp setWaypointType ""GETOUT"";" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getMarkerPos ""mHouse""), 4];" \n
+       "	_wp setWaypointType ""MOVE"";" \n
+       "	_wp setWaypointStatements [""true"", ""IP_Scientist move (getPos IP_Son1);""];" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+    "Loser",
+  };
+};
+/*%FSM</COMPILE>*/

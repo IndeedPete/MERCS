@@ -1,0 +1,442 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Go_",4,218,-300.000000,75.000000,-200.000000,125.000000,0.000000,"Go!"};
+item2[] = {"Let_s_Go",2,250,-300.000000,150.000000,-200.000000,200.000000,0.000000,"Let's Go"};
+item3[] = {"Clear",4,218,-300.000000,375.000000,-200.000000,425.000000,0.000000,"Clear"};
+item4[] = {"Handle_Done",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Handle Done"};
+item5[] = {"Wave",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Wave"};
+item6[] = {"Win_End",1,250,-300.000000,750.000000,-200.000000,800.000000,0.000000,"Win End"};
+item7[] = {"Both_in_Car",4,218,-300.000000,225.000000,-200.000000,275.000000,0.000000,"Both in Car"};
+item8[] = {"On_the_Way____Fi",2,4346,-300.000000,300.000000,-200.000000,350.000000,0.000000,"On the Way /" \n " Fighting"};
+item9[] = {"",7,210,-129.000000,96.000000,-121.000000,104.000000,0.000000,""};
+item10[] = {"No_Go_",4,218,-50.000000,75.000000,50.000000,125.000000,0.000000,"No Go!"};
+item11[] = {"Boring_End",1,250,-50.000000,150.000000,50.000000,200.000000,0.000000,"Boring End"};
+item12[] = {"Talk",2,250,-300.000000,450.000000,-200.000000,500.000000,0.000000,"Talk"};
+item13[] = {"Took_Money",4,218,-300.000000,675.000000,-200.000000,725.000000,0.000000,"Took Money"};
+item14[] = {"Talk_Done",4,218,-300.000000,525.000000,-200.000000,575.000000,0.000000,"Talk Done"};
+item15[] = {"Decide",2,250,-300.000000,600.000000,-200.000000,650.000000,0.000000,"Decide"};
+link0[] = {0,4};
+link1[] = {1,2};
+link2[] = {2,7};
+link3[] = {3,12};
+link4[] = {4,5};
+link5[] = {5,9};
+link6[] = {7,8};
+link7[] = {8,3};
+link8[] = {9,1};
+link9[] = {9,10};
+link10[] = {10,11};
+link11[] = {12,14};
+link12[] = {13,6};
+link13[] = {14,15};
+link14[] = {15,13};
+globals[] = {25.000000,1,0,0,0,640,480,1,159,6316128,1,-429.327972,99.107674,493.737457,-23.890522,929,910,1};
+window[] = {2,-1,-1,-1,-1,785,26,1466,26,3,947};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	_saySentences = {" \n
+       "		#define EH_SKIP (uiNamespace getVariable ""IP_Cutscene_ehSkip"")" \n
+       "		#define EH_SKIP_SET_NIL uiNamespace setVariable [""IP_Cutscene_ehSkip"", nil]" \n
+       "		" \n
+       "		_guys = _this select 0;" \n
+       "		_sentences = _this select 1;" \n
+       "		" \n
+       "		disableSerialization;" \n
+       "		//add skip mechanics -----------------------------------------------------------------------" \n
+       "		IP_cutscene_skip = false;" \n
+       "" \n
+       "		private[""_ehSkip""];" \n
+       "" \n
+       "		_ehSkip = ([] call BIS_fnc_displayMission) displayAddEventHandler" \n
+       "		[" \n
+       "			""KeyDown""," \n
+       "			""" \n
+       "				if (_this select 1 == 57) then" \n
+       "				{" \n
+       "					if (IP_cutscene_skip) exitWith {};" \n
+       "" \n
+       "					playSound ['click',true];" \n
+       "" \n
+       "					IP_cutscene_skip = true;" \n
+       "				};" \n
+       "" \n
+       "				if !((_this select 1) in (actionKeys 'PersonView' + [1])) then {true};" \n
+       "			""" \n
+       "		];" \n
+       "" \n
+       "		uiNamespace setVariable [""IP_Cutscene_ehSkip"", _ehSkip];" \n
+       "		//add skip mechanics -----------------------------------------------------------------------" \n
+       "		" \n
+       "		for ""_i"" from 0 to ((count _sentences) - 1) do {" \n
+       "			_sentence = _sentences select _i;" \n
+       "			if (_sentence != """" ) then {" \n
+       "				private ""_speaker"";" \n
+       "				if (_i mod 2 == 0) then {_speaker = _guys select 0} else {_speaker = _guys select 1};			" \n
+       "				[_speaker, _sentence, ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			};" \n
+       "			if (IP_cutscene_skip) exitWith {};" \n
+       "		};" \n
+       "		" \n
+       "		([] call BIS_fnc_displayMission) displayRemoveEventHandler ['KeyDown', EH_SKIP];" \n
+       "		EH_SKIP_SET_NIL;" \n
+       "		IP_cutscene_skip = nil;" \n
+       "	};" \n
+       "	" \n
+       "	sleep 2;" \n
+       "		" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	sleep 0.5;" \n
+       "" \n
+       "	[[IP_Manager, IP_Main], [""Mr. Salih! I don't know in what sleazy business you are involved but there is a strange armed man asking for you outside of my hotel!"", ""Sir? I'm not expecting anybody."", ""I don't know and I don't care. Just get him off my premises! And do it fast, there is a lot of work to if we want to re-open this hotel in summer."", """", ""And frankly, your progress so far is little at-"", ""Yeah, yeah, I'll talk to him. Excuse me, Sir!""]] call _saySentences;" \n
+       "	" \n
+       "	if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};	" \n
+       "	[] spawn IP_fnc_showOSD;" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="Wave";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (IP_Main distance IP_Buddy <= 25) && (!(lineIntersects [eyePos IP_Main, eyePos IP_Buddy, IP_Main, IP_Buddy]))"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Let_s_Go">*/
+    class Let_s_Go
+    {
+      name = "Let_s_Go";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	IP_Buddy assignAsCargo IP_Car;" \n
+       "	[IP_Buddy] orderGetIn true;" \n
+       "	[IP_Buddy, ""Great, you drive! There's some gear in the trunk along with a fresh set of clothes for you."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	IP_Car lock 0;" \n
+       "	saveGame;" \n
+       "	""mTrafficker"" setMarkerAlpha 1;" \n
+       "	[player, ""tNikos"", [""Move to the <marker name=""""mTrafficker"""">airfield</marker> and deal with Nikos!"", ""Nikos"", ""Nikos""], IP_Trafficker, true, 1] call BIS_fnc_taskCreate;	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Both_in_Car">*/
+        class Both_in_Car
+        {
+          priority = 0.000000;
+          to="On_the_Way____Fi";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (IP_Main in IP_Car) && (IP_Buddy in IP_Car)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Wave">*/
+    class Wave
+    {
+      name = "Wave";
+      init = /*%FSM<STATEINIT""">*/"IP_Buddy playMoveNow ""Acts_PercMstpSlowWrflDnon_handup1"";" \n
+       "[IP_Buddy, ""Hey Raif! Over here!"", ""DIRECT"", 1] spawn IP_fnc_simpleSentence;" \n
+       "[IP_Buddy, ""buddyOpener""] call IP_fnc_addConversation;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "No_Go_">*/
+        class No_Go_
+        {
+          priority = 0.000000;
+          to="Boring_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!isNil ""IP_BuddyConvDone"") && {!IP_BuddyConvDone}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Go_">*/
+        class Go_
+        {
+          priority = 0.000000;
+          to="Let_s_Go";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!isNil ""IP_BuddyConvDone"") && {IP_BuddyConvDone}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	_saySentences = {" \n
+       "		#define EH_SKIP (uiNamespace getVariable ""IP_Cutscene_ehSkip"")" \n
+       "		#define EH_SKIP_SET_NIL uiNamespace setVariable [""IP_Cutscene_ehSkip"", nil]" \n
+       "		" \n
+       "		_guys = _this select 0;" \n
+       "		_sentences = _this select 1;" \n
+       "		" \n
+       "		disableSerialization;" \n
+       "		//add skip mechanics -----------------------------------------------------------------------" \n
+       "		IP_cutscene_skip = false;" \n
+       "" \n
+       "		private[""_ehSkip""];" \n
+       "" \n
+       "		_ehSkip = ([] call BIS_fnc_displayMission) displayAddEventHandler" \n
+       "		[" \n
+       "			""KeyDown""," \n
+       "			""" \n
+       "				if (_this select 1 == 57) then" \n
+       "				{" \n
+       "					if (IP_cutscene_skip) exitWith {};" \n
+       "" \n
+       "					playSound ['click',true];" \n
+       "" \n
+       "					IP_cutscene_skip = true;" \n
+       "				};" \n
+       "" \n
+       "				if !((_this select 1) in (actionKeys 'PersonView' + [1])) then {true};" \n
+       "			""" \n
+       "		];" \n
+       "" \n
+       "		uiNamespace setVariable [""IP_Cutscene_ehSkip"", _ehSkip];" \n
+       "		//add skip mechanics -----------------------------------------------------------------------" \n
+       "		" \n
+       "		for ""_i"" from 0 to ((count _sentences) - 1) do {" \n
+       "			_sentence = _sentences select _i;" \n
+       "			if (_sentence != """" ) then {" \n
+       "				private ""_speaker"";" \n
+       "				if (_i mod 2 == 0) then {_speaker = _guys select 0} else {_speaker = _guys select 1};			" \n
+       "				[_speaker, _sentence, ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			};" \n
+       "			if (IP_cutscene_skip) exitWith {};" \n
+       "		};" \n
+       "		" \n
+       "		([] call BIS_fnc_displayMission) displayRemoveEventHandler ['KeyDown', EH_SKIP];" \n
+       "		EH_SKIP_SET_NIL;" \n
+       "		IP_cutscene_skip = nil;" \n
+       "	};" \n
+       "	" \n
+       "	[""tNikos"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	sleep 2;" \n
+       "	" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	" \n
+       "	enableSentences false;" \n
+       "	[[IP_Main, IP_Buddy], [" \n
+       "		""Holy moly! That's a lot of cash! Around a quarter million I'd guess."", " \n
+       "		""Congrats! That should get you a decent life! You certainly won't have to work on building sites any more!"", " \n
+       "		""Hey, at least half of that is yours! And we have the chopper. We could go together, finally get off this island.""," \n
+       "		""Nah, I'll pass this time. That's just for you. You're a good man. You've been through some shit but still, you've earned it.""," \n
+       "		""""," \n
+       "		""Use it to do good things. Take it to build something instead of destroying.""," \n
+       "		""""," \n
+       "		""Besides, I'd just spend it on hookers and beer.""," \n
+       "		""Well, thanks I guess. And what about the chopper? Let's leave all this shit behind, come with me.""," \n
+       "		""No Raif, I can't.""," \n
+       "		""Why? Just quit your job with ION, aren't you tired of war?""," \n
+       "		""No, that's the point. I LIVE for this shit. Fighting is what keeps me alive, what fulfils me. It's not about money, it's just about how much I love this fucked up job.""," \n
+       "		""""," \n
+       "		""And now catch your ride before it leaves without you.""" \n
+       "	]] call _saySentences;" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "" \n
+       "	sleep 2;" \n
+       "	if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};	" \n
+       "	" \n
+       "	IP_Main allowDamage false;" \n
+       "	{_x setCaptive true} forEach allUnits;" \n
+       "	IP_Main moveInCargo [IP_Heli, 7];" \n
+       "" \n
+       "	[IP_Buddy] join grpNull;" \n
+       "	IP_Buddy stop true;" \n
+       "	IP_Buddy setUnitPos ""UP"";" \n
+       "	IP_Buddy setPos (getMarkerPos ""mBuddyPos"");" \n
+       "	IP_Buddy setDir ([IP_Buddy, IP_Heli] call BIS_fnc_dirTo);" \n
+       "" \n
+       "	_camera = ""camera"" camCreate (getPos IP_Main);" \n
+       "	_camera cameraEffect [""internal"", ""back""];" \n
+       "" \n
+       "	_camera camPrepareTarget [121899.03,4536.55,-3443.66];" \n
+       "	_camera camPreparePos [22987.24,18840.33,1.69];" \n
+       "	_camera camPrepareFOV 0.700;" \n
+       "	_camera camCommitPrepared 0;" \n
+       "" \n
+       "	sleep 3;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "" \n
+       "	IP_Heli setFuel 1;" \n
+       "	{_x enableSimulation true} forEach [IP_Pilot, IP_CoPilot];" \n
+       "" \n
+       "	sleep 5;" \n
+       "" \n
+       "	_camera camPrepareTarget [-75748.86,34708.74,6.53];" \n
+       "	_camera camPreparePos [22983.77,18839.61,1.64];" \n
+       "	_camera camPrepareFOV 0.700;" \n
+       "	_camera camCommitPrepared 0;" \n
+       "" \n
+       "	sleep 1;" \n
+       "	IP_Buddy switchMove ""AidlPercMstpSrasWrflDnon_Salute"";" \n
+       "	sleep 4;" \n
+       "" \n
+       "	_camera camPrepareTarget IP_Heli;" \n
+       "	_camera camPreparePos [22980.38,18839.03,1.47];" \n
+       "	_camera camPrepareFOV 0.700;" \n
+       "	_camera camCommitPrepared 0;" \n
+       "" \n
+       "	sleep 20;" \n
+       "				" \n
+       "	IP_Main cameraEffect [""terminate"", ""back""];" \n
+       "	camDestroy _camera;" \n
+       "	execVM ""Campaigns\IP_CMP_MERCS\scn\credits.sqf"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "On_the_Way____Fi">*/
+    class On_the_Way____Fi
+    {
+      name = "On_the_Way____Fi";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Buddy] joinSilent IP_Main;	" \n
+       "	sleep 10;" \n
+       "	[IP_Buddy, ""So, how have you been?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Okay, I guess. After I left you guys I was unemployed for nearly two months. Then I found this job."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""And, how is it?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Hard work, little payment. But less dead bodies. Lot of corruption between the companies and authorities though."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""I can imagine. If Nikos has as much money with him as my informants say you won't need to work as a construction worker any more."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Let's hope so. I'm still not sure what to do with Nikos. Anyway, what's going on at ION?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""We've had some turbulent times lately. I guess you've heard about some stuff on the news."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Yes, EUROFORCE, CSAT, AAF - all together on this island on the verge of war? Crazy!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Right. It calmed down a bit, we're back to normal. But I guess we're pulling out within the next year."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Really? Nothing to do any more?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Yes, it's gotten less profitable here. And we've had some losses. McMillian for example - he's still MIA."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Can't say I'd miss him."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""True. But he kept the guys in line and made decent profits. The company's not pleased with our latest results here, and there are more profitable war zones on this planet."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Anyway, I don't care where I fight. As long as I fight."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Solid philosophy."", ""DIRECT"", 1] call IP_fnc_simpleSentence;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Clear">*/
+        class Clear
+        {
+          priority = 0.000000;
+          to="Talk";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"triggerActivated trgAirfield"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Boring_End">*/
+    class Boring_End
+    {
+      name = "Boring_End";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Buddy, ""buddyOpener""] call IP_fnc_removeConversation;" \n
+       "	[IP_Buddy, ""Okay. Then you should probably get back inside to continue your 'honest' job..."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	execVM ""Campaigns\IP_CMP_MERCS\scn\credits.sqf"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Talk">*/
+    class Talk
+    {
+      name = "Talk";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	sleep 5;" \n
+       "	saveGame;" \n
+       "	[IP_Buddy, ""Clear! Hey, Nikos is still alive! Over there!"", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "	[IP_Trafficker, ""traffickerOpener""] call IP_fnc_addConversation;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Talk_Done">*/
+        class Talk_Done
+        {
+          priority = 0.000000;
+          to="Decide";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (!isNil ""IP_TraffickerConvDone"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Decide">*/
+    class Decide
+    {
+      name = "Decide";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Trafficker, ""traffickerOpener""] call IP_fnc_removeConversation;" \n
+       "	[IP_Trafficker, ""Please! Please, don't kill me! Please don't let me die! Please, I'm so sorry! So sorry! GOD, PLEASE SPARE ME!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	IP_Trafficker allowDamage true;" \n
+       "	IP_Suitcase addAction [""Take Suitcase"", {" \n
+       "		IP_MoneyTaken = true;" \n
+       "		deleteVehicle IP_Suitcase;" \n
+       "		250000 call IP_fnc_addMoney;" \n
+       "	}];" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Took_Money">*/
+        class Took_Money
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (!isNil ""IP_MoneyTaken"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+    "Boring_End",
+  };
+};
+/*%FSM</COMPILE>*/

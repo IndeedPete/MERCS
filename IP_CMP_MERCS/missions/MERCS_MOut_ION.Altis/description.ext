@@ -1,0 +1,3 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(B, "MOut_ION", "Return On Investment", "The Next Morning...", "After a night of intense fighting ION air assets are finally entering the Altian airspace to extract the device along with the handful of survivors.", "Campaigns\IP_CMP_MERCS\img\MOut_ION_load.jpg", "Campaigns\IP_CMP_MERCS\img\MOut_ION_overview.jpg", 0, 0, 0, 1, 1, 0, 0)

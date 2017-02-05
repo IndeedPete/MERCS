@@ -1,0 +1,345 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, Protester">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"START",0,4346,-100.000000,-175.000000,0.000000,-125.000000,0.000000,"START"};
+item1[] = {"PMC_near",4,218,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"PMC" \n "near"};
+item2[] = {"True",8,218,150.000000,50.000000,250.000000,100.000000,0.000000,"True"};
+item3[] = {"EXIT",1,250,-225.000000,-175.000000,-125.000000,-125.000000,0.000000,"EXIT"};
+item4[] = {"Behaviour",2,250,-100.000000,-25.000000,0.000000,25.000000,0.000000,"Behaviour"};
+item5[] = {"Idle",2,250,150.000000,275.000000,250.000000,325.000000,0.000000,"Idle"};
+item6[] = {"Delay",4,218,-100.000000,350.000000,0.000000,400.000000,0.000000,"Delay"};
+item7[] = {"Return",2,250,250.000000,-100.000000,350.000000,-50.000000,0.000000,"Return"};
+item8[] = {"Fire",4,218,-100.000000,50.000000,0.000000,100.000000,3.000000,"Fire"};
+item9[] = {"",7,210,296.000000,371.000031,304.000031,378.999969,0.000000,""};
+item10[] = {"Dead_or_Scared",4,218,-225.000000,-25.000000,-125.000000,25.000000,10.000000,"Dead or Scared"};
+item11[] = {"Smoke",4,218,-225.000000,50.000000,-125.000000,100.000000,1.000000,"Smoke"};
+item12[] = {"Scared",2,250,-225.000000,275.000000,-125.000000,325.000000,0.000000,"Scared"};
+item13[] = {"Fire",2,250,-100.000000,125.000000,0.000000,175.000000,0.000000,"Fire"};
+item14[] = {"True",8,218,-100.000000,200.000000,0.000000,250.000000,0.000000,"True"};
+item15[] = {"Smoke",2,250,-225.000000,125.000000,-125.000000,175.000000,0.000000,"Smoke"};
+item16[] = {"Tank",4,218,25.000000,50.000000,125.000000,100.000000,2.000000,"Tank"};
+item17[] = {"Tank",2,250,25.000000,125.000000,125.000000,175.000000,0.000000,"Tank"};
+link0[] = {0,1};
+link1[] = {1,4};
+link2[] = {2,5};
+link3[] = {4,2};
+link4[] = {4,8};
+link5[] = {4,10};
+link6[] = {4,11};
+link7[] = {4,16};
+link8[] = {5,6};
+link9[] = {6,9};
+link10[] = {7,1};
+link11[] = {8,13};
+link12[] = {9,7};
+link13[] = {10,3};
+link14[] = {11,15};
+link15[] = {12,6};
+link16[] = {13,14};
+link17[] = {14,12};
+link18[] = {15,14};
+link19[] = {16,17};
+link20[] = {17,14};
+globals[] = {25.000000,1,0,0,16777215,640,480,1,27,6316128,1,-413.267853,342.257965,389.581696,-249.507416,863,730,1};
+window[] = {2,-1,-1,-1,-1,905,156,1116,156,3,881};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "Protester";
+  class States
+  {
+    /*%FSM<STATE "START">*/
+    class START
+    {
+      name = "START";
+      init = /*%FSM<STATEINIT""">*/"_unit = _this;" \n
+       "_unit setBehaviour ""careless"";" \n
+       "_unit setUnitPos ""up"";" \n
+       "" \n
+       "_unit addEventHandler [""firedNear"",{" \n
+       "	_unit = _this select 0;" \n
+       "	_source = _this select 1;" \n
+       "	_distance = _this select 2;" \n
+       "	_weapon = _this select 3;" \n
+       "	_muzzle = _this select 4;" \n
+       "	_mode = _this select 5;" \n
+       "	_ammo = _this select 6;" \n
+       "" \n
+       "	if (_source in ((units group player) + [IP_Tank])) then {" \n
+       "		if (!(_mode in [""SmokeShellMuzzle"", ""EGLM""]) && (_distance < 20)) then {" \n
+       "			_unit setBehaviour ""aware"";" \n
+       "			IP_CivilianFired = true;" \n
+       "		};" \n
+       "	};" \n
+       "}];" \n
+       "" \n
+       "_unit addEventHandler [""hit"",{" \n
+       "	(_this select 0) setVariable [""IP_Scared"", true];" \n
+       "	_source = _this select 1;" \n
+       "	if ((_source in (units group player)) OR (_source == IP_Tank)) then {" \n
+       "		IP_CivilianHit = true;" \n
+       "	};" \n
+       "}];" \n
+       "" \n
+       "_unit addEventHandler [""killed"",{" \n
+       "	_killer = _this select 1;" \n
+       "	if ((_killer in (units group player)) OR (_killer == IP_Tank)) then {" \n
+       "		IP_CivilianKilled = true;" \n
+       "		{_x addRating 1000} forEach (units group player);" \n
+       "	};" \n
+       "}];" \n
+       "" \n
+       "_run = false;" \n
+       "_smokes = [];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "PMC_near">*/
+        class PMC_near
+        {
+          priority = 0.000000;
+          to="Behaviour";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_smokes = position _unit nearobjects [""SmokeShell"",20];" \n
+           "" \n
+           "{_this distance _x < 15} count (units group player) > 0" \n
+           "||" \n
+           "count _smokes > 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "EXIT">*/
+    class EXIT
+    {
+      name = "EXIT";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Behaviour">*/
+    class Behaviour
+    {
+      name = "Behaviour";
+      init = /*%FSM<STATEINIT""">*/"_fired = false;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Dead_or_Scared">*/
+        class Dead_or_Scared
+        {
+          priority = 10.000000;
+          to="EXIT";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!alive _unit) OR (_unit getVariable ""IP_Scared"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Fire">*/
+        class Fire
+        {
+          priority = 3.000000;
+          to="Fire";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"behaviour _unit != ""careless"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Tank">*/
+        class Tank
+        {
+          priority = 2.000000;
+          to="Tank";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_unit distance IP_Tank < 10"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Smoke">*/
+        class Smoke
+        {
+          priority = 1.000000;
+          to="Smoke";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"count _smokes > 0" \n
+           "||" \n
+           "combatMode _unit == ""white"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "True">*/
+        class True
+        {
+          priority = 0.000000;
+          to="Idle";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Idle">*/
+    class Idle
+    {
+      name = "Idle";
+      init = /*%FSM<STATEINIT""">*/"_time = time;" \n
+       "_delay = 1 + random 1;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Delay">*/
+        class Delay
+        {
+          priority = 0.000000;
+          to="Return";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"//_unit kbwassaid [_unit,""BIS_word"",""BIS_word"",5];" \n
+           "(time - _time) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Return">*/
+    class Return
+    {
+      name = "Return";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "PMC_near">*/
+        class PMC_near
+        {
+          priority = 0.000000;
+          to="Behaviour";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_smokes = position _unit nearobjects [""SmokeShell"",20];" \n
+           "" \n
+           "{_this distance _x < 15} count (units group player) > 0" \n
+           "||" \n
+           "count _smokes > 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Scared">*/
+    class Scared
+    {
+      name = "Scared";
+      init = /*%FSM<STATEINIT""">*/"_unit setUnitPos ""up"";" \n
+       "_unit setVariable [""IP_Scared"", true];" \n
+       "" \n
+       "_nearest = [(units group player), _unit] call BIS_fnc_nearestPosition;" \n
+       "_nearestDis = (_unit distance _nearest) min 30;" \n
+       "" \n
+       "_time = time;" \n
+       "_delay = 1 + random 1 + (_nearestDis * 0.1);" \n
+       "" \n
+       "if !(_run) then {" \n
+       "	_civArea = [""mCivFlee1"", ""mCivFlee2""] call bis_fnc_selectrandom;" \n
+       "	_civPos = _civArea call IP_fnc_SHKPos;" \n
+       "	_unit doMove _civPos;" \n
+       "	_unit setSpeedmode ""full"";" \n
+       "	_run = true;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Delay">*/
+        class Delay
+        {
+          priority = 0.000000;
+          to="Return";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"//_unit kbwassaid [_unit,""BIS_word"",""BIS_word"",5];" \n
+           "(time - _time) > _delay"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fire">*/
+    class Fire
+    {
+      name = "Fire";
+      init = /*%FSM<STATEINIT""">*/"_fired = true;" \n
+       "" \n
+       "_unit setCombatMode ""red"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "True">*/
+        class True
+        {
+          priority = 0.000000;
+          to="Scared";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Smoke">*/
+    class Smoke
+    {
+      name = "Smoke";
+      init = /*%FSM<STATEINIT""">*/"_unit setcombatmode ""white"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "True">*/
+        class True
+        {
+          priority = 0.000000;
+          to="Scared";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Tank">*/
+    class Tank
+    {
+      name = "Tank";
+      init = /*%FSM<STATEINIT""">*/"_unit setcombatmode ""white"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "True">*/
+        class True
+        {
+          priority = 0.000000;
+          to="Scared";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="START";
+  finalStates[] =
+  {
+    "EXIT",
+  };
+};
+/*%FSM</COMPILE>*/

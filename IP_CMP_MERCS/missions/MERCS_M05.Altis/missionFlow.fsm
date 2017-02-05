@@ -1,0 +1,381 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Made_It",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Made It"};
+item2[] = {"Driver",4,218,-300.000000,150.000000,-200.000000,200.000000,1.000000,"Driver"};
+item3[] = {"Drunk_Driving",2,250,-300.000000,75.000000,-200.000000,125.000000,0.000000,"Drunk Driving"};
+item4[] = {"Handle_Done",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Handle Done"};
+item5[] = {"Close",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Close"};
+item6[] = {"Drinking",2,4346,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Drinking"};
+item7[] = {"Fighting",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Fighting"};
+item8[] = {"Close_to_Car",4,218,-50.000000,150.000000,50.000000,200.000000,2.000000,"Close to Car"};
+item9[] = {"Win_End",1,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Win End"};
+item10[] = {"Our_Car_",2,250,-50.000000,75.000000,50.000000,125.000000,0.000000,"Our Car?"};
+link0[] = {0,5};
+link1[] = {1,9};
+link2[] = {2,3};
+link3[] = {3,4};
+link4[] = {4,7};
+link5[] = {5,6};
+link6[] = {6,4};
+link7[] = {7,1};
+link8[] = {7,2};
+link9[] = {7,8};
+link10[] = {8,10};
+link11[] = {10,4};
+globals[] = {25.000000,1,0,0,0,640,480,1,115,6316128,1,-715.550598,389.649475,675.973877,-368.400024,963,910,1};
+window[] = {2,-1,-1,-1,-1,993,234,1674,234,3,981};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "skipTime 1;" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	//private ""_sentences"";" \n
+       "	" \n
+       "	_saySentences = {" \n
+       "		_guys = _this select 0;" \n
+       "		_sentences = _this select 1;" \n
+       "				" \n
+       "		for ""_i"" from 0 to ((count _sentences) - 1) do {" \n
+       "			_sentence = _sentences select _i;" \n
+       "			if (_sentence != """" ) then {" \n
+       "				private ""_speaker"";" \n
+       "				if (_i mod 2 == 0) then {_speaker = _guys select 0} else {_speaker = _guys select 1};			" \n
+       "				[_speaker, _sentence, ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "	" \n
+       "	sleep 2;" \n
+       "		" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	sleep 0.5;" \n
+       "" \n
+       "	[] spawn IP_fnc_showOSD;" \n
+       "	_sentences = [""So, where are we going?"", ""Ah, there is this really cool place. Beer 50 cents, shots 25. Today's ladies night. It will be awesome, trust me!"", ""I can't remember the last time I went out. Didn't have many opportunities during the war."", ""I hear you. But you just need to get out sometimes. To forget about all that shit. At least for a moment."", ""True. And you think it's safe?"", ""Well, as safe as it can get on Altis. Just don't get lost and you'll be fine.""];" \n
+       "	_sentences = if ((headGear IP_Main) == """") then {(_sentences + ["""", ""By the way, where is your hat?! You need a cool hat for partying! It's just wrong to go without!""])} else {(_sentences + ["""", ""By the way, that's a cool hat! It will get you some numbers for sure.""])};" \n
+       "	[[IP_Main, IP_Buddy], _sentences] call _saySentences;" \n
+       "	if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};	" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Close">*/
+        class Close
+        {
+          priority = 0.000000;
+          to="Drinking";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) &&!(IP_Buddy in IP_Car)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Drunk_Driving">*/
+    class Drunk_Driving
+    {
+      name = "Drunk_Driving";
+      init = /*%FSM<STATEINIT""">*/"_driving = true;" \n
+       "_handle = [IP_Buddy, ""Are you sure you should be driving? You might kill somebody! *burp*"", ""DIRECT""] spawn IP_fnc_simpleSentence;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="Fighting";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Drinking">*/
+    class Drinking
+    {
+      name = "Drinking";
+      init = /*%FSM<STATEINIT""">*/"IP_Car lock 0;" \n
+       "[25,300,150,20,10] spawn IP_fnc_tpw_park;" \n
+       "[10,15,200,75,60] spawn IP_fnc_tpw_animals;" \n
+       "_handle = [] spawn {	" \n
+       "	_saySentences = {" \n
+       "		#define EH_SKIP (uiNamespace getVariable ""IP_Cutscene_ehSkip"")" \n
+       "		#define EH_SKIP_SET_NIL uiNamespace setVariable [""IP_Cutscene_ehSkip"", nil]" \n
+       "		" \n
+       "		_guys = _this select 0;" \n
+       "		_sentences = _this select 1;" \n
+       "		" \n
+       "		disableSerialization;" \n
+       "		//add skip mechanics -----------------------------------------------------------------------" \n
+       "		IP_cutscene_skip = false;" \n
+       "" \n
+       "		private[""_ehSkip""];" \n
+       "" \n
+       "		_ehSkip = ([] call BIS_fnc_displayMission) displayAddEventHandler" \n
+       "		[" \n
+       "			""KeyDown""," \n
+       "			""" \n
+       "				if (_this select 1 == 57) then" \n
+       "				{" \n
+       "					if (IP_cutscene_skip) exitWith {};" \n
+       "" \n
+       "					playSound ['click',true];" \n
+       "" \n
+       "					IP_cutscene_skip = true;" \n
+       "				};" \n
+       "" \n
+       "				if !((_this select 1) in (actionKeys 'PersonView' + [1])) then {true};" \n
+       "			""" \n
+       "		];" \n
+       "" \n
+       "		uiNamespace setVariable [""IP_Cutscene_ehSkip"", _ehSkip];" \n
+       "		//add skip mechanics -----------------------------------------------------------------------" \n
+       "		" \n
+       "		for ""_i"" from 0 to ((count _sentences) - 1) do {" \n
+       "			_sentence = _sentences select _i;" \n
+       "			if (_sentence != """" ) then {" \n
+       "				private ""_speaker"";" \n
+       "				if (_i mod 2 == 0) then {_speaker = _guys select 0} else {_speaker = _guys select 1};			" \n
+       "				[_speaker, _sentence, ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			};" \n
+       "			if (IP_cutscene_skip) exitWith {};" \n
+       "		};" \n
+       "		" \n
+       "		([] call BIS_fnc_displayMission) displayRemoveEventHandler ['KeyDown', EH_SKIP];" \n
+       "		EH_SKIP_SET_NIL;" \n
+       "		IP_cutscene_skip = nil;" \n
+       "	};" \n
+       "	" \n
+       "	[IP_Buddy, ""Okay, it's not far from here. Get out."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	waitUntil {!(IP_Main in IP_Car)};" \n
+       "	IP_Car lock 2;" \n
+       "	if ((primaryWeapon IP_Main != """") OR (secondaryWeapon IP_Main != """") OR (handgunWeapon IP_Main != """") OR (count magazines IP_Main > 0) OR (backpack IP_Main != """") OR (vest IP_Main != """")) then {" \n
+       "		[IP_Buddy, ""What the heck is wrong with you?! Leave your gear in the car, dammit! We're going for a drink and not to battle. R'n'R remember?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		waitUntil {(primaryWeapon IP_Main == """") && (secondaryWeapon IP_Main == """") && (handgunWeapon IP_Main == """") && (count magazines IP_Main == 0) && (backpack IP_Main == """") && (vest IP_Main == """") && !dialog};" \n
+       "	};" \n
+       "	[IP_Buddy, ""Let's go, this place is just down the road."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 1;" \n
+       "	99 cutText [""A few hours of heavy drinking later..."",""PLAIN""];" \n
+       "	skipTime 9.25;" \n
+       "	sleep 5;" \n
+       "	" \n
+       "	IP_InCutscene = true;" \n
+       "	" \n
+       "	IP_Main setPos (getMarkerPos ""mMainPos"");" \n
+       "	IP_Main setDir 200;" \n
+       "	IP_Main switchMove ""acts_StandingSpeakingUnarmed"";" \n
+       "	[] call IP_fnc_m_drunkMode;" \n
+       "	" \n
+       "	IP_Buddy setPos [(getMarkerPos ""mBuddyPos"") select 0, (getMarkerPos ""mBuddyPos"") select 1, 10];" \n
+       "	IP_Buddy setDir 200;" \n
+       "	IP_Buddy playMove ""Acts_AidlPercMstpSlowWrflDnon_pissing"";" \n
+       "	" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	" \n
+       "	[[IP_Main, IP_Buddy], [" \n
+       "		""Hey, try not to kill yourself! *hicks*""," \n
+       "		""Don't worry, I'm just taking a piiiisssss! Wanted to do that up on that fucking castle but it is SO DAMN FAR! *Buuuuurrrp*""," \n
+       "		""And this is to you, Altis! Ži.. Živ... Živj-""," \n
+       "		""Živ-je-li! Fucking Živjeli! Look at my cock, Altis!""" \n
+       "	]] call _saySentences;" \n
+       "	" \n
+       "	{" \n
+       "		""Bo_GBU12_LGB_MI10"" createVehicle (getMarkerPos _x);" \n
+       "		sleep 0.5;" \n
+       "		addCamShake [10, 1, 25];" \n
+       "	} forEach [""mExplosion1"", ""mExplosion2"", ""mExplosion3""];" \n
+       "	" \n
+       "	sleep 2;" \n
+       "	" \n
+       "	IP_Firefight = true;" \n
+       "	{[(getMarkerPos _x), ""FIRE_BIG""] spawn IP_fnc_createFireEffect} forEach [""mExplosion1"", ""mExplosion2"", ""mExplosion3""];" \n
+       "	" \n
+       "	[] spawn {" \n
+       "		{" \n
+       "			if ((_x getVariable [""IP_Hide"", 1]) == 0) then {" \n
+       "				_x enableSimulation true;" \n
+       "				_x hideObject false;" \n
+       "			};" \n
+       "			" \n
+       "			if ((_x getVariable [""IP_Hide"", 0]) == 1) then {deleteVehicle _x};" \n
+       "			" \n
+       "			if ((_x getVariable [""IP_DeadBody"", false])) then {[_x] call IP_fnc_deadBody};" \n
+       "			" \n
+       "			if ((_x getVariable [""IP_Fire"", """"]) != """") then {" \n
+       "				[(getPos _x), (_x getVariable ""IP_Fire"")] spawn IP_fnc_createFireEffect;" \n
+       "				_x say3D ""burning_car_loop1"";" \n
+       "			};" \n
+       "			" \n
+       "			if ((_x getVariable [""IP_CarAlarm"", false])) then {[_x] call IP_fnc_carAlarm};" \n
+       "			" \n
+       "			sleep 0.03;" \n
+       "		} forEach allMissionObjects ""ALL"";" \n
+       "	};" \n
+       "	" \n
+       "	[[IP_Main, IP_Buddy], [" \n
+       "		""""," \n
+       "		""Wohoo, fireworks!""," \n
+       "		""I don't think that was fireworks!""," \n
+       "		""You're right, that's gunfire! Fuck, sounds like FIA, we have to get back to the car!""" \n
+       "	]] call _saySentences;" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 0.5;" \n
+       "	IP_Main switchMove """";" \n
+       "	IP_Buddy switchMove """";" \n
+       "	//[IP_Buddy] joinSilent IP_Main;" \n
+       "	[IP_Buddy, IP_Main] spawn IP_fnc_follow;" \n
+       "	enableSentences false;" \n
+       "	sleep 0.5;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};" \n
+       "	""mCar"" setMarkerAlpha 1;" \n
+       "	""mCar"" setMarkerPos [(getPos IP_Car select 0), (getPos IP_Car select 1)];" \n
+       "	[player, ""tEscape"", [""Escape from the warzone!"", ""Escape"", """"], nil, true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, [""tCar"", ""tEscape""], [""Get back to your car!"", ""Back to Car"", ""Car""], IP_Car, true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "	IP_InCutscene = false;" \n
+       "	" \n
+       "	[IP_Buddy, ""Don't worry about me, just get out of the combat zone, I'll find a way if you lose me! *hicks*"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="Fighting";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fighting">*/
+    class Fighting
+    {
+      name = "Fighting";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Close_to_Car">*/
+        class Close_to_Car
+        {
+          priority = 2.000000;
+          to="Our_Car_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(IP_Main distance IP_Car < 5) && ((""tCar"" call BIS_fnc_taskState) != ""SUCCEEDED"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Driver">*/
+        class Driver
+        {
+          priority = 1.000000;
+          to="Drunk_Driving";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(vehicle IP_Main != IP_Main) && {((driver vehicle IP_Main) == IP_Main) && isNil ""_driving""}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Made_It">*/
+        class Made_It
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_Extract"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	sleep 5;	" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	[IP_Buddy, ""Whoa! We made it! *Hicks*"", ""DIRECT"", 1] call IP_fnc_simpleSentence;" \n
+       "	[""tEscape"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	" \n
+       "	_carWeapons = (IP_MERCS_PlayerBox select 0) + weaponCargo IP_Car;" \n
+       "	_carMagazines = (IP_MERCS_PlayerBox select 1) + magazineCargo IP_Car;" \n
+       "	_carItems = (IP_MERCS_PlayerBox select 2) + itemCargo IP_Car;" \n
+       "	_carBackpacks = (IP_MERCS_PlayerBox select 3) + backpackCargo IP_Car;" \n
+       "	IP_MERCS_PlayerBox = [_carWeapons, _carMagazines, _carItems, _carBackpacks];" \n
+       "	saveVar ""IP_MERCS_PlayerBox"";" \n
+       "	" \n
+       "	[""Hub01"", true, 5] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Our_Car_">*/
+    class Our_Car_
+    {
+      name = "Our_Car_";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	IP_Car lock 0;" \n
+       "" \n
+       "	IP_Car lockDriver false;" \n
+       "	[IP_Main, ""There's our car! I think!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Really, are you sure? I- I- see two cars, which one is ours?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Just two? I see four! It's the fifth one, I know!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""tCar"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="Fighting";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+  };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,52 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(A, "M01b", "Ransom Demand", "On the way to the Stadium...", "The pirates sent a ransom demand for the kidnapped girl. Her father is paying for the safe delivery of the money.", "Campaigns\IP_CMP_MERCS\img\M01b_load.jpg", "Campaigns\IP_CMP_MERCS\img\M01b_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+
+class CfgDebriefing
+{  
+	class Hub01
+	{
+		title = "Mission Accomplished!";
+		subtitle = "You got the ransom back!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	class Hub01Fail1
+	{
+		title = "Mission Failed!";
+		subtitle = "You were detected!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {1,0,0,1};	
+	};
+	class Hub01Fail2
+	{
+		title = "Mission Failed!";
+		subtitle = "The pirates escaped with the money!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {1,0,0,1};	
+	};
+	class Hub01Fail3
+	{
+		title = "Mission Failed!";
+		subtitle = "You murdered your own people!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {1,0,0,1};	
+	};
+	class MOut_Renegade
+	{
+		title = "Mission Aborted!";
+		subtitle = "You better run fast, renegade!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,0,1,1};	
+	};
+};

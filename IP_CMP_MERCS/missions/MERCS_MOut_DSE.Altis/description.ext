@@ -1,0 +1,3 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(B, "MOut_DSE", "Payback", "The Next Evening...", "Alexander Engel meets Raif at the Ghost Hotel to handout his final reward. Plus there's Jackknife with an offer Raif can't refuse...", "Campaigns\IP_CMP_MERCS\img\MOut_DSE_load.jpg", "Campaigns\IP_CMP_MERCS\img\MOut_DSE_overview.jpg", 0, 0, 0, 1, 1, 0, 1)

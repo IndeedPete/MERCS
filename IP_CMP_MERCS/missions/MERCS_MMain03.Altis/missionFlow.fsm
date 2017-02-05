@@ -1,0 +1,305 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Handle_Done",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Handle Done"};
+item2[] = {"Win_End",1,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Win End"};
+item3[] = {"No_one_There",2,4346,-175.000000,0.000000,-75.000000,50.000000,0.000000,"No-one There"};
+item4[] = {"Handle_Done",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Handle Done"};
+item5[] = {"On_Mission",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"On Mission"};
+item6[] = {"Close_to_Farmer",4,218,-50.000000,150.000000,50.000000,200.000000,0.000000,"Close to Farmer"};
+item7[] = {"Howdy",2,250,-50.000000,75.000000,50.000000,125.000000,0.000000,"Howdy"};
+item8[] = {"Close_to_Hacker",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Close to Hacker"};
+item9[] = {"AAF_Cleared",4,218,-425.000000,150.000000,-325.000000,200.000000,0.000000,"AAF Cleared"};
+item10[] = {"Next_Call",2,250,-550.000000,150.000000,-450.000000,200.000000,0.000000,"Next Call"};
+item11[] = {"",7,210,-254.000000,171.000000,-246.000000,179.000000,0.000000,""};
+item12[] = {"",7,210,-254.000000,246.000000,-246.000000,254.000000,0.000000,""};
+item13[] = {"AAF_Task_Done",4,218,-425.000000,225.000000,-325.000000,275.000000,0.000000,"AAF Task Done"};
+item14[] = {"Repositioning",2,250,-550.000000,225.000000,-450.000000,275.000000,0.000000,"Repositioning"};
+item15[] = {"",7,210,-629.000000,245.999969,-621.000000,254.000031,0.000000,""};
+item16[] = {"",7,210,-629.000000,171.000000,-621.000000,179.000000,0.000000,""};
+item17[] = {"",7,210,-629.000000,96.000000,-621.000000,104.000000,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,3};
+link2[] = {3,4};
+link3[] = {4,5};
+link4[] = {5,6};
+link5[] = {5,8};
+link6[] = {5,11};
+link7[] = {6,7};
+link8[] = {7,4};
+link9[] = {8,2};
+link10[] = {9,10};
+link11[] = {10,16};
+link12[] = {11,9};
+link13[] = {11,12};
+link14[] = {12,13};
+link15[] = {13,14};
+link16[] = {14,15};
+link17[] = {15,16};
+link18[] = {16,17};
+link19[] = {17,4};
+globals[] = {25.000000,1,0,0,0,640,480,1,113,6316128,1,-670.439880,110.793030,487.678711,-374.044861,825,910,1};
+window[] = {2,-1,-1,-32000,-32000,889,130,1570,130,3,843};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"_handle = [" \n
+       "	[" \n
+       "		[IP_Lord, IP_Main], " \n
+       "		[" \n
+       "			""Templar, what's your position? Over.""," \n
+       "			""White King, I'm close to the pickup, should be there in no time, over.""," \n
+       "			""Copy, be on your guard. This client is 'special', over.""," \n
+       "			""Understood, but I think I can handle one guy, over.""" \n
+       "		]," \n
+       "		""SIDE""," \n
+       "		IP_ShowIntro" \n
+       "	]," \n
+       "	[""tPickup""]" \n
+       "] spawn IP_fnc_mainInsertion;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="No_one_There";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (triggerActivated trgChapel)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	if ((""tCheckpoint"" call BIS_fnc_taskExists) && {(""tCheckpoint"" call BIS_fnc_taskState) == ""SUCCEEDED""}) then {" \n
+       "		[IP_Hacker, ""Ah, there you are, Raif! I can call you Raif, right?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Give me one good reason why I shouldn't shoot you right now! I mean, really?! Playing stupid games in a war zone?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Hacker, ""Oh, Raif, look at you, so angry! Come on, it was necessary. I'm a careful person. And now we should go before the AAF is all over this area."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	} else {" \n
+       "		IP_Hacker setUnitPos ""UP"";" \n
+       "		IP_Hacker stop false;" \n
+       "		IP_Hacker selectWeapon ""hgun_P07_F"";" \n
+       "		IP_Hacker doWatch IP_Main;" \n
+       "		IP_Hacker doTarget IP_Main;" \n
+       "		" \n
+       "		[IP_Main, ""Got you!"", ""DIRECT"", 1] call IP_fnc_simpleSentence;" \n
+       "		[IP_Hacker, ""Don't come closer! Stay where you are!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""Hey, I'm just here to pick you up, no need for violence!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Hacker, ""How can I know that you're not form the AAF or the European Intelligence Service?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		[IP_Main, ""What?! Well, I guess you can't..."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		" \n
+       "		IP_Hacker doWatch ObjNull;" \n
+       "		IP_Hacker doTarget ObjNull;" \n
+       "		IP_Hacker playMove ""AmovPercMstpSrasWpstDnon_AmovPercMstpSlowWpstDnon"";" \n
+       "		[IP_Hacker, ""Hm, that answer is as good as any other. You're not as stupid as I thought you would be. Let's go!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	};" \n
+       "" \n
+       "	[IP_Main, ""White King, this is Templar, we found him, requesting immediate extraction, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[""tFind"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[""Hub02"", true, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "No_one_There">*/
+    class No_one_There
+    {
+      name = "No_one_There";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Main, ""What the hell?! There's no-one here!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""White King, this is Templar, we're at the RV but the package isn't here, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Lord, ""Oh hell, Templar. This happened before. Can you see any hints? Over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Yeah, there's a laptop here, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Lord, ""Copy. He must have left some instructions on it. Try to follow his trace and radio in when you found him, over and out."", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Great, 'Bitish Fucktards' helpful and cryptic as always..."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[""tPickup"", ""CANCELED""] call BIS_fnc_taskSetState;" \n
+       "	[player, ""tFind"", [(""Follow the hints to find "" + profileName + ""!""), (""Find "" + profileName), """"], nil, true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "	" \n
+       "	IP_LaptopChapel addAction [""Use Laptop"", {" \n
+       "		_text = ""Come find me.<br/><br/><br/><br/>0000 0101 1000 0001 0010 0100<br/><br/>0000 0111 0011 0001 0010 0010<br/><br/><br/><br/>Follow the hints,<br/><br/>"" + profileName;" \n
+       "		_handle = createDialog ""IP_DLG_LAPTOP"";" \n
+       "		((findDisplay 50000) displayCtrl 1100) ctrlSetStructuredText (parseText _text);" \n
+       "		_firstTime = [""Laptop Chapel"", _text] call IP_m_fnc_createNote;" \n
+       "		if (!_firstTime) exitWith {};" \n
+       "		[] spawn {" \n
+       "			waitUntil {!dialog};" \n
+       "			[IP_Main, ""What the hell? Wait, are those binary numbers?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "		};" \n
+       "	}];" \n
+       "	" \n
+       "	_insertion = if (isNil ""IP_MERCS_Insertion"") then {""heli""} else {IP_MERCS_Insertion};" \n
+       "	if (_insertion == ""heli"") then {[IP_Main, IP_SuppReq, IP_SuppPro_Trans] call BIS_fnc_addSupportLink};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "On_Mission">*/
+    class On_Mission
+    {
+      name = "On_Mission";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Close_to_Hacker">*/
+        class Close_to_Hacker
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(IP_Main distance IP_Hacker < 15) && !(lineIntersects [eyePos IP_Main, eyePos IP_Hacker, IP_Main, IP_Hacker])"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "AAF_Cleared">*/
+        class AAF_Cleared
+        {
+          priority = 0.000000;
+          to="Next_Call";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!isNil ""IP_PhoneCallDone"") && (triggerActivated trgCheckpoint) && (isNil ""_checkpoint"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "AAF_Task_Done">*/
+        class AAF_Task_Done
+        {
+          priority = 0.000000;
+          to="Repositioning";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(isNil ""_repositioning"") && (""tCheckpoint"" call BIS_fnc_taskExists) && {(""tCheckpoint"" call BIS_fnc_taskState) == ""SUCCEEDED""}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Close_to_Farmer">*/
+        class Close_to_Farmer
+        {
+          priority = 0.000000;
+          to="Howdy";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(isNil ""_farmer"") && (IP_Main distance IP_Farmer < 15)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Howdy">*/
+    class Howdy
+    {
+      name = "Howdy";
+      init = /*%FSM<STATEINIT""">*/"_farmer = true;" \n
+       "_handle = [IP_Farmer, ""You guys! Welcome to my country! Welcome to the US of A!"", ""DIRECT""] spawn IP_fnc_simpleSentence;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Next_Call">*/
+    class Next_Call
+    {
+      name = "Next_Call";
+      init = /*%FSM<STATEINIT""">*/"_checkpoint = true;" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	sleep 5;" \n
+       "	IP_PhoneCallAction = [IP_Hacker, ""phoneOpenerCheckpoint"", IP_Main] call IP_fnc_addConversation;" \n
+       "	[IP_Main, ""Uh, this guy again!"", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "	while {isNil ""IP_PhoneAnswered""} do {" \n
+       "		IP_Main say3D ""ringtone"";" \n
+       "		sleep 4;" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Repositioning">*/
+    class Repositioning
+    {
+      name = "Repositioning";
+      init = /*%FSM<STATEINIT""">*/"_repositioning = true;" \n
+       "IP_Hacker setPos [8380.98,12449.4,0.10143814];" \n
+       "IP_Hacker setDir 300;" \n
+       "removeAllWeapons IP_Hacker;" \n
+       "[IP_Hacker, ""STAND_U3"", ""ASIS""] call BIS_fnc_ambientAnim;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Handle_Done">*/
+        class Handle_Done
+        {
+          priority = 0.000000;
+          to="On_Mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+  };
+};
+/*%FSM</COMPILE>*/

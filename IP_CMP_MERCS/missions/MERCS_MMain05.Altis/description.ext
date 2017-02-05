@@ -1,0 +1,27 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "missionConversations.hpp"
+
+SET_MISSION_META(B, "MMain05", "Enforced Cooperation", "On the way to the Central Research Facility...", "The British Knights require the 'assistance' of a Deep Space Engineering employee. Contractors are sent out to enforce this 'cooperation'.", "Campaigns\IP_CMP_MERCS\img\MMain05_load.jpg", "Campaigns\IP_CMP_MERCS\img\MMain05_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+
+class CfgDebriefing
+{  
+	class Hub03
+	{
+		title = "Mission Accomplished!";
+		subtitle = "Dr. Díaz is ours!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	
+	class Hub02Fail1
+	{
+		title = "Mission Failed!";
+		subtitle = "Dr. Díaz died!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {1,0,0,1};	
+	};
+};

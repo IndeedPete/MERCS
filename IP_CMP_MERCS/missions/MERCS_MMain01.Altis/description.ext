@@ -1,0 +1,26 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+
+SET_MISSION_META(B, "MMain01", "Force Recon", "On the way to Black Mesa...", "The British Knights send out ION contractors to reconnoitre one of the research facilities.", "Campaigns\IP_CMP_MERCS\img\MMain01_load.jpg", "Campaigns\IP_CMP_MERCS\img\MMain01_overview.jpg", 1, 1, 0, 1, 1, 0, 1)
+
+class CfgDebriefing
+{  
+	class Hub02
+	{
+		title = "Mission Accomplished!";
+		subtitle = "Recon Completed, Team Extracted!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	
+	class Hub02Fail1
+	{
+		title = "Mission Failed!";
+		subtitle = "You were detected!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {1,0,0,1};	
+	};
+};

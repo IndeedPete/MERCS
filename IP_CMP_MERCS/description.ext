@@ -1,0 +1,263 @@
+class Campaign
+{
+	name = "IP_CMP_MERCS";
+	firstBattle = Missions;
+	disableMP = 1;
+	enableHub = 1;
+
+	briefingName = "M.E.R.C.S.";
+	author = "IndeedPete";
+	overviewPicture = "\Campaigns\IP_CMP_MERCS\img\cmp_overview.jpg";
+	overviewText = "Version: 1.03<br/><br/>Born in Karthoum, Sudan, Raif Salih became an orphan at the early age of two. Growing up as one of the poorest people in one of the poorest countries on this planet he basically had no other option than to join the military - the Sudanese Armed Forces (SAF).<br/><br/>After years of internecine conflict in East Africa, Ethiopian forces led a major offensive against their neighbours. Raif’s friends fell before the onslaught and the SAF were deadlocked in a war they could not win, despite their successful defence of Khartoum at the centre of the country.<br/><br/>Raif understood that even if the Ethiopians relented, there would be nothing left of what he had once called home. Taking what little he had, he deserted the SAF, slipped through enemy lines, and travelled for weeks on foot through the East Sahara desert. Eventually, Raif reached Alexandria in Egypt and secured safe passage to Greece, where he believed he could begin again. Now, his only hope is that ‘Nikos’, the man that brokered his European dream, is as trustworthy as he appears...";
+
+	class MissionDefault
+	{
+		lives = -1;
+
+		Hub01 = Hub01;
+		Hub01Fail1 = Hub01;
+		Hub01Fail2 = Hub01;
+		Hub01Fail3 = Hub01;
+		MOut_Renegade = MOut_Renegade;
+		
+		Hub02 = Hub02;
+		Hub02Fail1 = Hub02;
+		Hub02Fail2 = Hub02;
+		Hub02Fail3 = Hub02;
+		
+		Hub03 = Hub03;
+		Hub03Fail1 = Hub03;
+		Hub03Fail2 = Hub03;
+		Hub03Fail3 = Hub03;
+		
+		lost = ;
+		end1 = ;
+		end2 = ;
+		end3 = ;
+		end4 = ;
+		end5 = ;
+		end6 = ;
+	};
+
+	class Missions
+	{
+		name = "The Beginning";
+		cutScene = ;
+		firstMission = MIn;
+		end1 = ;
+		end2 = ;
+		end3 = ;
+		end4 = ;
+		end5 = ;
+		end6 = ;
+		lost = ;
+
+		#define _CAMPAIGN 1
+		
+		class Hub01: MissionDefault
+		{
+			M01a = M01a;
+			M01b = M01b;
+			M01c = M01c;
+			M02a = M02a;
+			M02b = M02b;
+			M02c = M02c;
+			M03 = M03;
+			M04a = M04a;
+			M04b = M04b;
+			M04c = M04c;
+			M05 = M05;
+			MOut_Quit = MOut_Quit;
+			MTrans01 = MTrans01;
+			template = MERCS_Hub01.Stratis;
+		};
+		
+		class Hub02: MissionDefault
+		{
+			M06 = M06;
+			M07a = M07a;
+			M07b = M07b;
+			M07c = M07c;
+			MMain01 = MMain01;
+			MMain02 = MMain02;
+			MMain03 = MMain03;
+			MMain04 = MMain04;
+			MMain05 = MMain05;
+			template = MERCS_Hub02.Altis;
+		};
+		
+		class Hub03: MissionDefault
+		{
+			MMain06 = MMain06;
+			template = MERCS_Hub03.Altis;
+		};
+		
+		class MIn: MissionDefault
+		{
+			template = MERCS_MIn.Stratis;
+		};	
+		
+		class M01a: MissionDefault
+		{
+			template = MERCS_M01a.Altis;
+		};	
+		
+		class M01b: MissionDefault
+		{
+			template = MERCS_M01b.Altis;
+		};	
+		
+		class M01c: MissionDefault
+		{
+			template = MERCS_M01c.Altis;
+		};	
+		
+		class M02a: MissionDefault
+		{
+			template = MERCS_M02a.Altis;
+		};
+		
+		class M02b: MissionDefault
+		{
+			template = MERCS_M02b.Altis;
+		};
+		
+		class M02c: MissionDefault
+		{
+			template = MERCS_M02c.Altis;
+		};
+		
+		class M03: MissionDefault
+		{
+			template = MERCS_M03.Altis;
+		};
+		
+		class M04a: MissionDefault
+		{
+			template = MERCS_M04a.Altis;
+		};
+		
+		class M04b: MissionDefault
+		{
+			template = MERCS_M04b.Altis;
+		};
+		
+		class M04c: MissionDefault
+		{
+			template = MERCS_M04c.Altis;
+		};
+		
+		class M05: MissionDefault
+		{
+			template = MERCS_M05.Altis;
+		};
+		
+		class M06: MissionDefault
+		{
+			template = MERCS_M06.Altis;
+		};
+		
+		class M07a: MissionDefault
+		{
+			template = MERCS_M07a.Altis;
+		};
+		
+		class M07b: MissionDefault
+		{
+			template = MERCS_M07b.Altis;
+		};
+		
+		class M07c: MissionDefault
+		{
+			template = MERCS_M07c.Altis;
+		};
+		
+		class MMain01: MissionDefault
+		{
+			template = MERCS_MMain01.Altis;
+		};
+		
+		class MMain02: MissionDefault
+		{
+			template = MERCS_MMain02.Altis;
+		};
+		
+		class MMain03: MissionDefault
+		{
+			template = MERCS_MMain03.Altis;
+		};
+		
+		class MMain04: MissionDefault
+		{
+			template = MERCS_MMain04.Altis;
+		};
+		
+		class MMain05: MissionDefault
+		{
+			template = MERCS_MMain05.Altis;
+		};
+		
+		class MMain06: MissionDefault
+		{
+			MMain07 = MMain07;
+			MOut_AAF = MOut_AAF;
+			MOut_CSAT = MOut_CSAT;
+			MOut_EF = MOut_EF;
+			MOut_DSE = MOut_DSE;
+			template = MERCS_MMain06.Altis;
+		};
+		
+		class MMain07: MissionDefault
+		{
+			MOut_AAF = MOut_AAF;
+			MOut_ION = MOut_ION;
+			MOut_Buddy = MOut_Buddy;
+			template = MERCS_MMain07.Altis;
+		};
+		
+		class MTrans01: MissionDefault
+		{
+			template = MERCS_MTrans01.Altis;
+		};
+		
+		class MOut_AAF: MissionDefault
+		{
+			template = MERCS_MOut_AAF.Altis;
+		};
+		
+		class MOut_Buddy: MissionDefault
+		{
+			template = MERCS_MOut_Buddy.Altis;
+		};
+		
+		class MOut_CSAT: MissionDefault
+		{
+			template = MERCS_MOut_CSAT.Altis;
+		};
+		
+		class MOut_DSE: MissionDefault
+		{
+			template = MERCS_MOut_DSE.Altis;
+		};
+		
+		class MOut_EF: MissionDefault
+		{
+			template = MERCS_MOut_EF.Altis;
+		};	
+		
+		class MOut_ION: MissionDefault
+		{
+			template = MERCS_MOut_ION.Altis;
+		};
+		
+		class MOut_Quit: MissionDefault
+		{
+			template = MERCS_MOut_Quit.Altis;
+		};
+		
+		class MOut_Renegade: MissionDefault
+		{
+			template = MERCS_MOut_Renegade.Altis;
+		};	
+	};
+};

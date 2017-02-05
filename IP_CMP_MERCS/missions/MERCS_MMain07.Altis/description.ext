@@ -1,0 +1,26 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "missionConversations.hpp"
+
+SET_MISSION_META(B, "MMain07", "Case Of Defence", "Back at the Camp...", "What's left of the British Knights and ION contractors regroups back at the camp. Hostile forces are approaching and a tough fight lies ahead.", "Campaigns\IP_CMP_MERCS\img\MMain07_load.jpg", "Campaigns\IP_CMP_MERCS\img\MMain07_overview.jpg", 0, 0, 0, 0, 1, 0, 1)
+
+class CfgDebriefing
+{  
+	class MOut_AAF
+	{
+		title = "Mission Accomplished!";
+		subtitle = "Device Destroyed!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_AAF_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	class MOut_ION
+	{
+		title = "Mission Accomplished!";
+		subtitle = "You held the camp!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+};

@@ -1,0 +1,782 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Near_VIP",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Near VIP"};
+item2[] = {"Pickup_VIP",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Pickup VIP"};
+item3[] = {"Near_Car",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Near Car"};
+item4[] = {"Unfortunate_Car",2,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Unfortunate Car"};
+item5[] = {"In_Car",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"In Car"};
+item6[] = {"Let_s_Go",2,250,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Let's Go"};
+item7[] = {"Near_Parking",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Near Parking"};
+item8[] = {"Look_for_VIP",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Look for VIP"};
+item9[] = {"",7,210,-254.000000,471.000000,-246.000000,479.000000,0.000000,""};
+item10[] = {"Near_Entrance",4,218,-175.000000,525.000000,-75.000000,575.000000,2.000000,"Near Entrance"};
+item11[] = {"First_Facility",2,250,-175.000000,600.000000,-75.000000,650.000000,0.000000,"First Facility"};
+item12[] = {"Near_Entrance",4,218,-50.000000,825.000000,50.000000,875.000000,0.000000,"Near Entrance"};
+item13[] = {"Second_Facility",2,250,-50.000000,900.000000,50.000000,950.000000,0.000000,"Second Facility"};
+item14[] = {"Airport",4,218,-175.000000,900.000000,-75.000000,950.000000,0.000000,"Airport"};
+item15[] = {"Win_End",1,250,-175.000000,975.000000,-75.000000,1025.000000,0.000000,"Win End"};
+item16[] = {"",7,210,-129.000000,846.000000,-120.999992,854.000000,0.000000,""};
+item17[] = {"Checkpoint",4,218,-300.000000,825.000000,-200.000000,875.000000,0.000000,"Checkpoint"};
+item18[] = {"Wait",4,218,-175.000000,675.000000,-75.000000,725.000000,0.000000,"Wait"};
+item19[] = {"Driving",2,250,-175.000000,750.000000,-75.000000,800.000000,0.000000,"Driving"};
+item20[] = {"",7,210,-254.000000,771.000000,-246.000000,779.000000,0.000000,""};
+item21[] = {"",7,210,-254.000000,20.999998,-246.000000,29.000000,0.000000,""};
+item22[] = {"VIP_Dead",4,218,-300.000000,-75.000000,-200.000000,-25.000000,3.000000,"VIP Dead"};
+item23[] = {"Fail_1",1,250,-300.000000,-150.000000,-200.000000,-100.000000,0.000000,"Fail 1"};
+item24[] = {"",7,210,-254.000000,171.000000,-246.000000,179.000000,0.000000,""};
+item25[] = {"",7,210,-254.000000,321.000000,-246.000000,329.000000,0.000000,""};
+item26[] = {"",7,210,-4.000000,21.000000,4.000000,28.999998,0.000000,""};
+item27[] = {"Car_Broken",4,218,-50.000000,-75.000000,50.000000,-25.000000,3.000000,"Car Broken"};
+item28[] = {"Fail_2",1,250,-50.000000,-150.000000,50.000000,-100.000000,0.000000,"Fail 2"};
+item29[] = {"",7,210,-4.000000,171.000000,4.000000,179.000000,0.000000,""};
+item30[] = {"",7,210,-4.000000,321.000000,4.000000,329.000000,0.000000,""};
+item31[] = {"",7,210,-253.999985,621.000000,-246.000015,629.000000,0.000000,""};
+item32[] = {"",7,210,-4.000000,471.000000,4.000000,479.000000,0.000000,""};
+item33[] = {"",7,210,-3.999999,621.000000,3.999999,629.000000,0.000000,""};
+item34[] = {"",7,210,-4.000000,771.000000,4.000000,779.000000,0.000000,""};
+item35[] = {"At_Checkpoint",2,250,-300.000000,900.000000,-200.000000,950.000000,0.000000,"At Checkpoint"};
+item36[] = {"Routine",4,218,-300.000000,975.000000,-200.000000,1025.000000,0.000000,"Routine"};
+item37[] = {"Control",2,4346,-300.000000,1050.000000,-200.000000,1100.000000,0.000000,"Control"};
+item38[] = {"",7,210,-254.000000,1146.000000,-246.000015,1154.000000,0.000000,""};
+item39[] = {"",7,210,-554.000000,1146.000000,-546.000000,1154.000000,0.000000,""};
+item40[] = {"",7,210,-553.999939,696.000000,-546.000000,704.000000,0.000000,""};
+item41[] = {"",7,210,-404.000000,921.000000,-396.000000,929.000000,0.000000,""};
+item42[] = {"Ambush",4,218,-450.000000,975.000000,-350.000000,1025.000000,1.000000,"Ambush"};
+item43[] = {"Attack",2,250,-450.000000,1050.000000,-350.000000,1100.000000,0.000000,"Attack"};
+item44[] = {"",7,210,120.999992,921.000000,129.000000,929.000000,0.000000,""};
+item45[] = {"",7,210,121.000000,696.000000,129.000000,704.000000,0.000000,""};
+item46[] = {"",7,210,-404.000000,1146.000000,-396.000000,1154.000000,0.000000,""};
+link0[] = {0,7};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,24};
+link4[] = {2,29};
+link5[] = {3,4};
+link6[] = {4,5};
+link7[] = {4,25};
+link8[] = {4,30};
+link9[] = {5,6};
+link10[] = {6,9};
+link11[] = {6,10};
+link12[] = {6,32};
+link13[] = {7,8};
+link14[] = {8,1};
+link15[] = {8,21};
+link16[] = {8,26};
+link17[] = {9,25};
+link18[] = {10,11};
+link19[] = {11,18};
+link20[] = {11,31};
+link21[] = {11,33};
+link22[] = {12,13};
+link23[] = {13,44};
+link24[] = {14,15};
+link25[] = {16,12};
+link26[] = {16,14};
+link27[] = {16,17};
+link28[] = {17,35};
+link29[] = {18,19};
+link30[] = {19,16};
+link31[] = {19,20};
+link32[] = {19,34};
+link33[] = {20,31};
+link34[] = {21,22};
+link35[] = {22,23};
+link36[] = {24,21};
+link37[] = {25,24};
+link38[] = {26,27};
+link39[] = {27,28};
+link40[] = {29,26};
+link41[] = {30,29};
+link42[] = {31,9};
+link43[] = {32,30};
+link44[] = {33,32};
+link45[] = {34,33};
+link46[] = {35,36};
+link47[] = {35,41};
+link48[] = {36,37};
+link49[] = {37,38};
+link50[] = {38,46};
+link51[] = {39,40};
+link52[] = {40,18};
+link53[] = {41,42};
+link54[] = {42,43};
+link55[] = {43,46};
+link56[] = {44,45};
+link57[] = {45,18};
+link58[] = {46,39};
+globals[] = {25.000000,1,0,0,0,640,480,1,129,6316128,1,-626.678223,269.137695,1371.226929,477.375580,912,910,1};
+window[] = {2,-1,-1,-1,-1,785,26,1466,26,3,930};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "skipTime 1;" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	waitUntil{time > 0};	" \n
+       "	[] call IP_fnc_spawnTeam;" \n
+       "	{_x moveInCargo IP_Car} forEach ((units group IP_Main) - [IP_Main]);" \n
+       "	" \n
+       "	sleep 5;" \n
+       "" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "" \n
+       "	sleep 1;" \n
+       "" \n
+       "	{_x call IP_fnc_taskHint} forEach [""tProtect"", ""tPickup""];" \n
+       "	saveGame;" \n
+       "	[] call IP_fnc_showOSD;" \n
+       "" \n
+       "	[IP_Buddy, ""Got everything? Good, get us to the airport, it's just down the road. And hurry up, we're late already."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Will do! Gosh, I love this car, real old school."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""It's a fucking old German car which takes way too much fuel."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""No! This, my fellow brother in arms, is a masterpiece of German engineering. A 2019 BMW X6, right from the heart of Bavaria - the beautiful town Munich."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Its xDrive50i twin-turbo-charged 4.4 litre engine bears 408 HP which accelerates these 2.2 tons of steel and carbon from 0 to 100 in 5.4 seconds."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""It reaches its top speed at nothing less than 250 KM/H."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""This is the exact wording from the brochure, right?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Yes! I've always dreamed of driving a car like this."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Na, I'm more the Audi guy, I guess. Have you seen the new Quattro? Damn, sporty, elegant, fast - everything I like."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Anyway, stay with ION, work hard and in a few years you will have your own."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Oh, and it won't make 250. Never ever with those additional heavy amour plates."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""We'll see..."", ""DIRECT"", 2] call IP_fnc_simpleSentence;	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Near_Parking">*/
+        class Near_Parking
+        {
+          priority = 0.000000;
+          to="Look_for_VIP";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (IP_Car distance (getMarkerPos ""mAirport"") < 10)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Pickup_VIP">*/
+    class Pickup_VIP
+    {
+      name = "Pickup_VIP";
+      init = /*%FSM<STATEINIT""">*/"IP_handle_pickup = [] spawn {" \n
+       "	[0] call BIS_fnc_cinemaBorder;" \n
+       "	[IP_Main, ""I'm sorry, but I think this is my client. Is there any problem, officer?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""There is no problem. I believe the officer was about to leave."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Hey, I'm-"", ""DIRECT"", 1] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""Raif Salih, born and raised in Karthoum, Staff-Sergeant with the SAF and now private contractor with ION Incorporated."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""You are well informed, Sir."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""I always do background checks on the people I work with. I suppose Dražen Petrović is outside waiting in the car? Let's go, I need to get some work done."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Yes, please follow me, Sir."", ""DIRECT"", 2] call IP_fnc_simpleSentence;" \n
+       "	[1] call BIS_fnc_cinemaBorder;" \n
+       "};" \n
+       "" \n
+       "IP_Agent stop false;" \n
+       "IP_handle_VIP = [IP_Agent, IP_Main, {scriptDone IP_handle_pickup}] spawn IP_fnc_follow;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "VIP_Dead">*/
+        class VIP_Dead
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_Agent"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Car_Broken">*/
+        class Car_Broken
+        {
+          priority = 3.000000;
+          to="Fail_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!canMove IP_Car) && (isNil ""IP_Attack"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Near_Car">*/
+        class Near_Car
+        {
+          priority = 0.000000;
+          to="Unfortunate_Car";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(IP_Main distance IP_Car < 5) OR (IP_Agent distance IP_Car < 5)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Unfortunate_Car">*/
+    class Unfortunate_Car
+    {
+      name = "Unfortunate_Car";
+      init = /*%FSM<STATEINIT""">*/"[IP_Agent, ""Great, you got the biggest eye-catcher you could find. I hope this won't proove to be a bullet magnet."", ""DIRECT""] spawn IP_fnc_simpleSentence;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "VIP_Dead">*/
+        class VIP_Dead
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_Agent"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Car_Broken">*/
+        class Car_Broken
+        {
+          priority = 3.000000;
+          to="Fail_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!canMove IP_Car) && (isNil ""IP_Attack"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "In_Car">*/
+        class In_Car
+        {
+          priority = 0.000000;
+          to="Let_s_Go";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(IP_Main in IP_Car) && (IP_Agent in IP_Car)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Let_s_Go">*/
+    class Let_s_Go
+    {
+      name = "Let_s_Go";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Buddy, ""All set? Good, where to Mr. Engel?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""A research facility not far from here. Here are the coordinates. And drive fast, I want to catch the next plane back to Germany."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[""tPickup"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	""mResearch1"" setMarkerAlpha 1;" \n
+       "	[player, ""tResearch1"", [""Take the VIP to the <marker name=""""mResearch1"""">Research Facility</marker>!"", ""Research Facility"", ""Research Facility""], ""mResearch1"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "	" \n
+       "	[IP_Main, ""Oh, you're from Germany, Sir? How is it there?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Raif, don't annoy the client! Just drive!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""It's stable at the moment. As for the rest of the ride I would recommend to follow the advise of Mr. Petrović."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Understood, sorry Sir."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	IP_Car say2D ""ringtone"";" \n
+       "	sleep 4;" \n
+       "	IP_Car say2D ""ringtone"";" \n
+       "	sleep 4;" \n
+       "	" \n
+       "	[IP_Agent, ""(On the Phone) Ja? ... Altis, ist ziemlich heruntergekommen ... Ja, hm. ... Ich bin gleich da. ... Unsere Investition schützen? Was glauben Sie mache ich hier?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""(On the Phone) Es war Ihre Idee. Entgegen meiner Einwände. Erinnern Sie- ... Okay, wie Sie meinen. Ich melde mich, sobald ich was weiß."", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "VIP_Dead">*/
+        class VIP_Dead
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_Agent"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Car_Broken">*/
+        class Car_Broken
+        {
+          priority = 3.000000;
+          to="Fail_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!canMove IP_Car) && (isNil ""IP_Attack"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Near_Entrance">*/
+        class Near_Entrance
+        {
+          priority = 2.000000;
+          to="First_Facility";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(scriptDone _handle) && (IP_Car distance (getMarkerPos ""mResearch1"") < 10) && (speed IP_Car < 5)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Look_for_VIP">*/
+    class Look_for_VIP
+    {
+      name = "Look_for_VIP";
+      init = /*%FSM<STATEINIT""">*/"[IP_Buddy, ""Damn, where is this guy? He should be waiting here. Go inside and look for him, he should be the only well-dressed civie in there. I'll wait here."", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "saveGame;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "VIP_Dead">*/
+        class VIP_Dead
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_Agent"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Car_Broken">*/
+        class Car_Broken
+        {
+          priority = 3.000000;
+          to="Fail_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!canMove IP_Car) && (isNil ""IP_Attack"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Near_VIP">*/
+        class Near_VIP
+        {
+          priority = 0.000000;
+          to="Pickup_VIP";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"IP_Main distance IP_Agent < 5"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "First_Facility">*/
+    class First_Facility
+    {
+      name = "First_Facility";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Agent, ""That's it. Stop the car and wait here. It won't take too long."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Okay Sir, please let us go ahead, we need to check the environment first."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""No, you will stay in the car. If you set one foot past the bar gate the guards will shoot you."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""But we can't protect you in there! So what's the point of hiring us then?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""I pay you to drive me, not to think for me. I ensure you no body will harm me in there. And now stand down."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""All right, as you wish..."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 4;" \n
+       "	skipTime 1;" \n
+       "	IP_Agent setPos (getMarkerPos ""mResearchVIP1"");" \n
+       "	sleep 1;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	[] call IP_fnc_showOSD;" \n
+       "	[IP_Buddy, ""Finally, there he comes back!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	waitUntil {IP_Agent in IP_Car};" \n
+       "	" \n
+       "	[IP_Agent, ""Now get me to these coordinates."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Sir, that's way outside the Green Zone! I cannot recommend to-"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""Do we really have to have this conversation again, Mr. Salih? I pay, I give the orders."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""I think my colleague understands. But we might have to cross an AAF checkpoint. So you better have some documents ready, boss."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""Don't worry about the AAF, they won't be an issue. Now get moving."", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "	" \n
+       "	[""tResearch1"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	""mResearch2"" setMarkerAlpha 1;" \n
+       "	[player, ""tResearch2"", [""Take the VIP to the <marker name=""""mResearch2"""">Research Facility</marker>!"", ""Research Facility"", ""Research Facility""], ""mResearch2"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "VIP_Dead">*/
+        class VIP_Dead
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_Agent"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Car_Broken">*/
+        class Car_Broken
+        {
+          priority = 3.000000;
+          to="Fail_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!canMove IP_Car) && (isNil ""IP_Attack"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Wait">*/
+        class Wait
+        {
+          priority = 0.000000;
+          to="Driving";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Second_Facility">*/
+    class Second_Facility
+    {
+      name = "Second_Facility";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Agent, ""Stop the car. I don't expect to have a discussion this time. Am I right, Mr. Salih?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""No, Sir. I keep my mouth shut."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""Good. Seems like we're making some progress here."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "	sleep 4;" \n
+       "	skipTime 1;" \n
+       "	IP_Agent setPos (getMarkerPos ""mResearchVIP2"");" \n
+       "	sleep 1;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	sleep 0.5;" \n
+       "	" \n
+       "	[] call IP_fnc_showOSD;" \n
+       "	[IP_Buddy, ""There we go again. I wonder where we have to take him now."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	waitUntil {IP_Agent in IP_Car};" \n
+       "	" \n
+       "	[IP_Agent, ""Back to the airport. Double time."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Understood."", ""DIRECT"", 1] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	// Prepare Checkpoints for Ambush" \n
+       "	{deleteVehicle _x} forEach ((IP_CheckpointStaff1 + IP_CheckpointStaff2 + IP_CheckpointStaff3) + [(gunner IP_MG1), (gunner IP_MG2), (gunner IP_MG3)] - [IP_MG1, IP_MG2, IP_MG3]);" \n
+       "	{_x allowDamage true} forEach [IP_BarGate1, IP_BarGate2, IP_BarGate3];" \n
+       "	" \n
+       "	[""tResearch2"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[player, ""tDrop"", [""Take the VIP back to the <marker name=""""mAirport"""">Central Airport</marker>!"", ""Drop VIP"", ""Central Airport""], ""mAirport"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "	" \n
+       "	[IP_Agent, ""I need you to be double aware now. Keep your eyes sharp."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Hate to say it Sir, but if you're expecting trouble you should tell us."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""Maybe. For now just focus on getting me back to the airport in one piece."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	sleep 30;" \n
+       "	" \n
+       "	IP_Car say2D ""ringtone"";" \n
+       "	sleep 4;" \n
+       "	IP_Car say2D ""ringtone"";" \n
+       "	sleep 4;" \n
+       "	" \n
+       "	[IP_Agent, ""(On the Phone) Hallo? ... Ja, ich hab' alles. ... Wir sollten uns treffen. Dringend. ..."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""(On the Phone) Sehr ernst. Die Testergebnisse liegen weit über den Erwartungen. ..."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""(On the Phone) Ja, ich schätze es ist extrem wahrscheinlich, dass wir unterwegs abgefangen werden."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""(On the Phone) Die AAF wird mich nicht schützen können. Die Söldner werden als Schutzschilde herhalten müssen."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""(On the Phone) Verstanden. Ich war schon in schlimmeren Situationen. Wünschen Sie mir Glück."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait">*/
+        class Wait
+        {
+          priority = 0.000000;
+          to="Driving";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	sleep 10;	" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	[""tDrop"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[""tProtect"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[IP_Main, ""There we go, Sir. Can we do anything else for you?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""No, you've done your job. Despite your undesired curiosity I will forward a letter of appreciation to your superior."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""Hub01"", true, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Driving">*/
+    class Driving
+    {
+      name = "Driving";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "VIP_Dead">*/
+        class VIP_Dead
+        {
+          priority = 3.000000;
+          to="Fail_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive IP_Agent"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Car_Broken">*/
+        class Car_Broken
+        {
+          priority = 3.000000;
+          to="Fail_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!canMove IP_Car) && (isNil ""IP_Attack"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Checkpoint">*/
+        class Checkpoint
+        {
+          priority = 0.000000;
+          to="At_Checkpoint";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!isNil ""IP_Checkpoint"") && {(isNil ""IP_Attack"" OR {!(IP_Checkpoint in IP_Attack)}) && ((triggerActivated trgCheckpoint1) OR (triggerActivated trgCheckpoint2) OR (triggerActivated trgCheckpoint3))}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Airport">*/
+        class Airport
+        {
+          priority = 0.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"""tDrop"" call BIS_fnc_taskExists && {(scriptDone _handle) && ((vehicle IP_Agent) distance (getMarkerPos ""mAirport"") < 10)}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Near_Entrance">*/
+        class Near_Entrance
+        {
+          priority = 0.000000;
+          to="Second_Facility";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(IP_Car distance (getMarkerPos ""mResearch2"") < 10) && (speed IP_Car < 5) && ((""tResearch2"" call BIS_fnc_taskState) != ""SUCCEEDED"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fail_1">*/
+    class Fail_1
+    {
+      name = "Fail_1";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	sleep 5;	" \n
+       "	[""tProtect"", ""FAILED""] call BIS_fnc_taskSetState;" \n
+       "	[IP_Buddy, ""Damn, the VIP is down! Fuck!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""Hub01Fail1"", false, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fail_2">*/
+    class Fail_2
+    {
+      name = "Fail_2";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	sleep 5;	" \n
+       "	[""tProtect"", ""FAILED""] call BIS_fnc_taskSetState;	" \n
+       "	[IP_Buddy, ""How can you be so stupid?! Who taught you to drive?! How are we supposed to transport the VIP without an armoured SUV?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[""Hub01Fail2"", false, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "At_Checkpoint">*/
+    class At_Checkpoint
+    {
+      name = "At_Checkpoint";
+      init = /*%FSM<STATEINIT""">*/"_which = str(IP_Checkpoint);" \n
+       "_trigger = call (compile (""trgCheckpoint"" + _which));" \n
+       "_officer = call (compile (""IP_Officer"" + _which));" \n
+       "_bargate = call (compile (""IP_BarGate"" + _which));" \n
+       "" \n
+       "[IP_Buddy, ""Checkpoint ahead! Slow down!"", ""DIRECT""] spawn IP_fnc_simpleSentence;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Ambush">*/
+        class Ambush
+        {
+          priority = 1.000000;
+          to="Attack";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((""tResearch2"" call BIS_fnc_taskState) == ""SUCCEEDED"") && (speed IP_Car < 5)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Routine">*/
+        class Routine
+        {
+          priority = 0.000000;
+          to="Control";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"speed IP_Car < 5"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Control">*/
+    class Control
+    {
+      name = "Control";
+      init = /*%FSM<STATEINIT""">*/"_handle = [_trigger, _officer, _bargate] spawn {" \n
+       "	_trigger = _this select 0;" \n
+       "	_officer = _this select 1;" \n
+       "	_bargate = _this select 2;" \n
+       "	" \n
+       "	_officer setBehaviour ""SAFE"";" \n
+       "	_officer setSpeedMode ""LIMITED"";" \n
+       "	_officer move (getPos IP_Car);" \n
+       "	" \n
+       "	[0] call BIS_fnc_cinemaBorder;" \n
+       "	[IP_Buddy, ""Yeah, take it slow you Greenback asshat."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	waitUntil {_officer distance IP_Car < 4};" \n
+       "	_officer stop true;" \n
+       "	" \n
+       "	[_officer, ""Are you aware that you're about to leave the Green Zone? That's no man's land beyond the bar gate."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Sir, we're ION contractors and have an important mission outside the Green Zone."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[_officer, ""Show me the contract and permission papers."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""Officer, we appreciate your concern but we're in a hurry. Take a look at this."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[_officer, ""Oh, I didn't know. I'm sorry for the inconvenience, Sir. Open the bar gate! Let them pass, now!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Agent, ""Thank you, officer."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[1] call BIS_fnc_cinemaBorder;" \n
+       "	_bargate animate [""Door_1_rot"", 1];	" \n
+       "	saveGame;" \n
+       "	" \n
+       "	if (isNil ""IP_CarConversation"") then {" \n
+       "		[] spawn {" \n
+       "			IP_CarConversation = true;" \n
+       "			[IP_Main, ""I take it this is more than just driving around a simple businessman, right Mr. Engel?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			[IP_Agent, ""You start to annoy me with your questions, Mr. Salih."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			[IP_Buddy, ""God dammit, shut up, Raif!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "" \n
+       "			sleep 60;" \n
+       "			" \n
+       "			IP_Car say2D ""ringtone"";" \n
+       "			sleep 4;" \n
+       "			IP_Car say2D ""ringtone"";" \n
+       "			sleep 4;" \n
+       "			" \n
+       "			[IP_Agent, ""(On the Phone) Ist es erledigt? ... Dann sagen Sie ihm, dass ich Ihn erledige, wenn- ... In Ordnung, ich verlasse mich auf Sie."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "			[IP_Agent, ""(On the Phone) Ich denke, Ihnen ist klar was mit Ihrem Sohn passiert, wenn Ihr Mann seine Aufgabe nicht erfüllt. Rufen Sie erst wieder an, wenn das erledigt ist."", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "		};" \n
+       "	};" \n
+       "	" \n
+       "	waitUntil {!triggerActivated _trigger};" \n
+       "	_bargate animate [""Door_1_rot"", 0];	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait">*/
+        class Wait
+        {
+          priority = 0.000000;
+          to="Driving";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Attack">*/
+    class Attack
+    {
+      name = "Attack";
+      init = /*%FSM<STATEINIT""">*/"saveGame;" \n
+       "" \n
+       "if (isNil ""IP_Attack"") then {IP_Attack = []};" \n
+       "IP_Attack = IP_Attack + [IP_Checkpoint];" \n
+       "" \n
+       "_spawnPoints = switch (IP_Checkpoint) do {" \n
+       "	case 1: {[""mMenSpawn1"", ""mMenSpawn2"", ""mMenSpawn3""]};" \n
+       "	case 2: {[""mMenSpawn4"", ""mMenSpawn5"", ""mMenSpawn6""]};" \n
+       "	case 3: {[""mMenSpawn7"", ""mMenSpawn8"", ""mMenSpawn9""]};" \n
+       "};" \n
+       "" \n
+       "_wave = [" \n
+       "	[(2 + (round(random 1))), 0, 0, 0]," \n
+       "	[_spawnPoints, [], [], []]," \n
+       "	[[""GUE""], [], [], []]," \n
+       "	east," \n
+       "	(getPos(vehicle IP_Agent))," \n
+       "	[4, 4]," \n
+       "	""" \n
+       "		{" \n
+       "			_x setVariable ['IP_Faction', 'Rogues'];" \n
+       "			[_x] call IP_fnc_createMerc;" \n
+       "		} forEach (units(_this select 1));" \n
+       "	""" \n
+       "] spawn IP_fnc_wave;" \n
+       "" \n
+       "_handle = [] spawn {" \n
+       "	[IP_Main, ""Wait, where are the guards?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""It's a trap. Revert! Revert, we have to get out of here!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy] joinSilent IP_Main;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait">*/
+        class Wait
+        {
+          priority = 0.000000;
+          to="Driving";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+    "Fail_1",
+    "Fail_2",
+  };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,35 @@
+#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "missionConversations.hpp"
+
+SET_MISSION_META(A, "M04a", "Sauerland Express", "On the way to the former FOB Sauerland...", "EUROFORCE cut a deal with the AAF to ship out old but valuable equipment from the former occupation. PMCs are tasked to ensure the safe transportation.", "Campaigns\IP_CMP_MERCS\img\M04a_load.jpg", "Campaigns\IP_CMP_MERCS\img\M04a_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+
+class CfgDebriefing
+{  
+	class Hub01
+	{
+		title = "Mission Accomplished!";
+		subtitle = "The client received his cargo!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,1,0,1};	
+	};
+	class Hub01Fail1
+	{
+		title = "Mission Failed!";
+		subtitle = "One of the trucks has been destroyed!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {1,0,0,1};	
+	};
+	class MOut_Renegade
+	{
+		title = "Mission Aborted!";
+		subtitle = "You better run fast, renegade!";
+		description = "";
+		pictureBackground = "\A3\Data_F\Flags\Flag_ION_CO.paa";
+		picture = "b_inf";
+		pictureColor[] = {0,0,1,1};	
+	};
+};

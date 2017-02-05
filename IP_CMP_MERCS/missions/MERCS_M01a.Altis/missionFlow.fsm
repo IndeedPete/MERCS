@@ -1,0 +1,737 @@
+/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,4346,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item1[] = {"Insertion_Done",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Insertion Done"};
+item2[] = {"Go_to_Car",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Go to Car"};
+item3[] = {"Car_Reached",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Car Reached"};
+item4[] = {"Get_In",2,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Get In"};
+item5[] = {"In_Car",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"In Car"};
+item6[] = {"Move_to_Contact",2,250,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Move to Contact"};
+item7[] = {"LZ_Near",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"LZ Near"};
+item8[] = {"Land",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Land"};
+item9[] = {"Car_Broke_Down",4,218,-25.000000,450.000000,75.000000,500.000000,0.000000,"Car Broke Down"};
+item10[] = {"Walk_Instead",2,250,125.000000,450.000000,225.000000,500.000000,0.000000,"Walk Instead"};
+item11[] = {"Near_House",4,218,-175.000000,525.000000,-75.000000,575.000000,0.000000,"Near House"};
+item12[] = {"Get_Out",2,250,-175.000000,600.000000,-75.000000,650.000000,0.000000,"Get Out"};
+item13[] = {"Near_Pirates",4,218,-175.000000,675.000000,-75.000000,725.000000,0.000000,"Near Pirates"};
+item14[] = {"Talk_to_Pirates",2,250,-175.000000,750.000000,-75.000000,800.000000,0.000000,"Talk to Pirates"};
+item15[] = {"",7,210,171.000000,696.000000,179.000000,704.000000,0.000000,""};
+item16[] = {"Pirates_Killed",4,218,-175.000000,825.000000,-75.000000,875.000000,0.000000,"Pirates Killed"};
+item17[] = {"Check_House",2,250,-175.000000,900.000000,-75.000000,950.000000,0.000000,"Check House"};
+item18[] = {"In_Room",4,218,-175.000000,975.000000,-75.000000,1025.000000,0.000000,"In Room"};
+item19[] = {"Body_Found",2,250,-175.000000,1050.000000,-75.000000,1100.000000,0.000000,"Body Found"};
+item20[] = {"Backup_Killed",4,218,-175.000000,1125.000000,-75.000000,1175.000000,0.000000,"Backup Killed"};
+item21[] = {"Phone_Call",2,250,-175.000000,1200.000000,-75.000000,1250.000000,0.000000,"Phone Call"};
+item22[] = {"",7,210,-129.000000,1296.000000,-120.999992,1304.000000,0.000000,""};
+item23[] = {"Call_Successfull",4,218,-300.000000,1275.000000,-200.000000,1325.000000,0.000000,"Call Successfull"};
+item24[] = {"Call_Failed",4,218,-50.000000,1275.000000,50.000000,1325.000000,0.000000,"Call Failed"};
+item25[] = {"Fucked_Up",2,250,-50.000000,1350.000000,50.000000,1400.000000,0.000000,"Fucked Up"};
+item26[] = {"True",8,218,-50.000000,1425.000000,50.000000,1475.000000,0.000000,"True"};
+item27[] = {"Spawn_Backup",2,250,-50.000000,1500.000000,50.000000,1550.000000,0.000000,"Spawn Backup"};
+item28[] = {"Task_Success",2,250,-300.000000,1350.000000,-200.000000,1400.000000,0.000000,"Task Success"};
+item29[] = {"Hint_Found",4,218,-300.000000,1425.000000,-200.000000,1475.000000,1.000000,"Hint Found"};
+item30[] = {"Good_Job",2,250,-300.000000,1500.000000,-200.000000,1550.000000,0.000000,"Good Job"};
+item31[] = {"True",8,218,-175.000000,1500.000000,-75.000000,1550.000000,0.000000,"True"};
+item32[] = {"True",8,218,-450.000000,1350.000000,-350.000000,1400.000000,0.000000,"True"};
+item33[] = {"Car_Defeated",4,218,-50.000000,1575.000000,50.000000,1625.000000,0.000000,"Car Defeated"};
+item34[] = {"Showed_Them",2,250,-50.000000,1650.000000,50.000000,1700.000000,0.000000,"Showed Them"};
+item35[] = {"Done",4,218,-50.000000,1725.000000,50.000000,1775.000000,0.000000,"Done"};
+item36[] = {"Go_to_Factory",2,250,-50.000000,1800.000000,50.000000,1850.000000,0.000000,"Go to Factory"};
+item37[] = {"",7,210,-404.000000,1821.000000,-396.000000,1829.000000,0.000000,""};
+item38[] = {"Factory_Clear",4,218,-50.000000,1875.000000,50.000000,1925.000000,0.000000,"Factory Clear"};
+item39[] = {"Look_for_Hints",2,250,-50.000000,1950.000000,50.000000,2000.000000,0.000000,"Look for Hints"};
+item40[] = {"Hint_Found",4,218,75.000000,1650.000000,175.000000,1700.000000,1.000000,"Hint Found"};
+item41[] = {"",7,210,121.000000,1971.000000,129.000000,1979.000000,0.000000,""};
+item42[] = {"Win_End",1,250,200.000000,1650.000000,300.000000,1700.000000,0.000000,"Win End"};
+link0[] = {0,7};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {3,4};
+link4[] = {4,5};
+link5[] = {5,6};
+link6[] = {6,9};
+link7[] = {6,11};
+link8[] = {7,8};
+link9[] = {8,1};
+link10[] = {9,10};
+link11[] = {10,15};
+link12[] = {11,12};
+link13[] = {12,13};
+link14[] = {13,14};
+link15[] = {14,16};
+link16[] = {15,13};
+link17[] = {16,17};
+link18[] = {17,18};
+link19[] = {18,19};
+link20[] = {19,20};
+link21[] = {20,21};
+link22[] = {21,22};
+link23[] = {22,23};
+link24[] = {22,24};
+link25[] = {23,28};
+link26[] = {24,25};
+link27[] = {25,26};
+link28[] = {26,27};
+link29[] = {27,33};
+link30[] = {28,29};
+link31[] = {28,32};
+link32[] = {29,30};
+link33[] = {30,31};
+link34[] = {31,27};
+link35[] = {32,37};
+link36[] = {33,34};
+link37[] = {34,35};
+link38[] = {34,40};
+link39[] = {35,36};
+link40[] = {36,38};
+link41[] = {37,36};
+link42[] = {38,39};
+link43[] = {39,41};
+link44[] = {40,42};
+link45[] = {41,40};
+globals[] = {25.000000,1,0,0,0,640,480,1,50,6316128,1,-301.684113,71.674408,254.118378,-338.824493,573,910,1};
+window[] = {2,-1,-1,-1,-1,780,156,1356,156,3,591};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "missionFlow";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
+       "skipTime 1;" \n
+       "" \n
+       "_posStart = getMarkerPos ""mStart"";" \n
+       "_posLZ = getPos IP_LZ;" \n
+       "_dir = [_posStart, _posLZ] call BIS_fnc_dirTo;" \n
+       "" \n
+       "_grp = createGroup civilian;" \n
+       "IP_Pilot = _grp createUnit [""C_man_pilot_F"", _posStart, [], 0, ""NONE""];" \n
+       "IP_Pilot setIdentity ""pilot"";" \n
+       "IP_Pilot setVariable [""IP_Avatar"", ""Campaigns\IP_CMP_MERCS\img\pilotAvatar.jpg""];" \n
+       "IP_Pilot setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\coveralls_black_coION.paa""];" \n
+       "IP_Copilot = _grp createUnit [""C_man_pilot_F"", _posStart, [], 0, ""NONE""];" \n
+       "IP_Heli = createVehicle [""O_Heli_Light_02_unarmed_F"", _posStart, [], 0, ""FLY""];" \n
+       "IP_Heli setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\heli_light_02_ext_coION.paa""];" \n
+       "clearWeaponCargo IP_Heli;" \n
+       "clearMagazineCargo IP_Heli;" \n
+       "clearBackpackCargo IP_Heli;" \n
+       "clearItemCargo IP_Heli;" \n
+       "[IP_Heli] call IP_fnc_heliDoors;" \n
+       "IP_Heli setDir _dir;" \n
+       "IP_Pilot moveInDriver IP_Heli;" \n
+       "IP_Copilot moveInTurret [IP_Heli, [0]];" \n
+       "" \n
+       "_grp setCombatMode ""BLUE"";" \n
+       "_grp setBehaviour ""CARELESS"";" \n
+       "_grp move _posLZ;" \n
+       "{_x setCaptive true} forEach units _grp;" \n
+       "" \n
+       "[] spawn {" \n
+       "	waitUntil{time > 0};" \n
+       "	IP_Main moveInCargo [IP_Heli, 5];" \n
+       "	IP_Buddy moveInCargo [IP_Heli, 2];" \n
+       "	[] call IP_fnc_spawnTeam;" \n
+       "	{_x moveInCargo IP_Heli} forEach ((units group IP_Main) - [IP_Main]);" \n
+       "	" \n
+       "	{_x setCaptive true} forEach ([IP_Buddy, IP_Pirate1, IP_Pirate2] + units group IP_Main);" \n
+       "	sleep 2;" \n
+       "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "" \n
+       "	[IP_Pilot, ""Guys, three minutes till touchdown. We will go down at that old stadium. That's close enough I hope."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Thanks, buddy! Hey, Raif, right? See that? That's Kavala down there. Beautiful old castle but be aware of the pickpockets!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Yes, beautiful countryside. I'll never understand how they manage to fuck up such great looking countries. Just like they did with Sudan."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Never been there. I've visited Africa many times but not Sudan. How is it?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Pretty fucked at the moment. But it was beautiful when I grew up."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "LZ_Near">*/
+        class LZ_Near
+        {
+          priority = 0.000000;
+          to="Land";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(IP_Heli distance _posLZ) < 100"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Go_to_Car">*/
+    class Go_to_Car
+    {
+      name = "Go_to_Car";
+      init = /*%FSM<STATEINIT""">*/"[IP_Buddy] orderGetIn false;" \n
+       "_wp = _grp addWaypoint [_posStart, 0];" \n
+       "_wp setWaypointType ""MOVE"";" \n
+       "_wp setWaypointStatements [""true"", ""deleteVehicle (vehicle this); {deleteVehicle _x} forEach units group this;""];" \n
+       "" \n
+       """tHint"" call IP_fnc_taskHint;" \n
+       "saveGame;" \n
+       "" \n
+       "IP_Buddy setBehaviour ""SAFE"";" \n
+       "IP_Buddy setSpeedMode ""LIMITED"";" \n
+       "IP_Buddy move (getPos IP_Car);" \n
+       "" \n
+       "[] spawn {" \n
+       "	[] call IP_fnc_showOSD;" \n
+       "	[IP_Buddy, ""Okay, our car is down there. We will drive to a place near-by. Here, take the keys!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Wait, to whom are we going to? And how did the car get here?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Just some guys. They have ties to the pirates. Maybe we can get some info from them."", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "	[IP_Buddy, ""We have informants and helpers all over the island. Getting a car organised is peanuts."", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "	[IP_Buddy, ""But since we don't pay them well make sure the car is actually fit to drive. I really don't want the engine to break down again because some idiot thinks frying oil is as good as gas."", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "	[IP_Buddy, ""There we go. Get in, you drive."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Car_Reached">*/
+        class Car_Reached
+        {
+          priority = 0.000000;
+          to="Get_In";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(IP_Buddy distance IP_Car < 10) OR (IP_Main in IP_Car)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Get_In">*/
+    class Get_In
+    {
+      name = "Get_In";
+      init = /*%FSM<STATEINIT""">*/"IP_Buddy assignAsCargo IP_Car;" \n
+       "[IP_Buddy] orderGetIn true;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "In_Car">*/
+        class In_Car
+        {
+          priority = 0.000000;
+          to="Move_to_Contact";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(IP_Buddy in IP_Car) && (IP_Main in IP_Car)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Move_to_Contact">*/
+    class Move_to_Contact
+    {
+      name = "Move_to_Contact";
+      init = /*%FSM<STATEINIT""">*/"""mHouse"" setMarkerAlpha 1;" \n
+       "[player, ""tHouse"", [""Drive to the <marker name=""""mHouse"""">Pirate's Hideout</marker> and question them about the girl!"", ""Talk to the Pirates"", ""Pirate Hideout""], ""mHouse"", true, 1] call BIS_fnc_taskCreate;" \n
+       "saveGame;" \n
+       "" \n
+       "[] spawn {" \n
+       "	[IP_Buddy, ""Get us to a place north of Negades, here are the coordinates."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""There are those pirates?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Well, that's one of their hideouts I know. We'll just go there and see who's home."", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "	[IP_Main, ""What?! I thought you had some informant waiting for us and now we're just walking into a pirate hideout or what?"", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "	[IP_Buddy, ""Nailed it! We'll go there and talk to them."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""So we just ask them: 'Hey, how's it going? Did you guys kidnap that girl?'."", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "	[IP_Buddy, ""That's two for two! Yes, we simply ask."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""And if they shoot at us?"", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "	[IP_Buddy, ""We shoot back. I found that the simplest way is usually the best. Don't over-complicate things."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""I'm dying today..."", ""DIRECT""] call IP_fnc_simpleSentence;	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Near_House">*/
+        class Near_House
+        {
+          priority = 0.000000;
+          to="Get_Out";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"vehicle player distance (getMarkerPos ""mHouse"") < 75"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Car_Broke_Down">*/
+        class Car_Broke_Down
+        {
+          priority = 0.000000;
+          to="Walk_Instead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!canMove IP_Car"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Land">*/
+    class Land
+    {
+      name = "Land";
+      init = /*%FSM<STATEINIT""">*/"[IP_Pilot, ""Okay, we're going down now. Sit tight."", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "" \n
+       "IP_Heli land ""GET OUT"";" \n
+       "if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Insertion_Done">*/
+        class Insertion_Done
+        {
+          priority = 0.000000;
+          to="Go_to_Car";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"{_x in IP_Heli} count (units group IP_Main) ==  0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Walk_Instead">*/
+    class Walk_Instead
+    {
+      name = "Walk_Instead";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	[IP_Buddy, ""For God's sake, what the fuck did you do?! Now, we have to walk, idiot!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy] orderGetIn false;" \n
+       "	IP_Buddy setBehaviour ""AWARE"";" \n
+       "	IP_Buddy setSpeedMode ""NORMAL"";" \n
+       "	IP_Buddy move (getMarkerPos ""mHouseBuddy"");" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Near_Pirates">*/
+        class Near_Pirates
+        {
+          priority = 0.000000;
+          to="Talk_to_Pirates";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(IP_Main distance (getMarkerPos ""mHouse"") < 20) OR (IP_Buddy distance (getMarkerPos ""mHouse"") < 20)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Get_Out">*/
+    class Get_Out
+    {
+      name = "Get_Out";
+      init = /*%FSM<STATEINIT""">*/"[IP_Buddy, ""That's it, stop the car. Ready your weapon, I don't know how they will react."", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "[IP_Buddy] orderGetIn false;" \n
+       "IP_Buddy move (getMarkerPos ""mHouseBuddy"");"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Near_Pirates">*/
+        class Near_Pirates
+        {
+          priority = 0.000000;
+          to="Talk_to_Pirates";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(IP_Main distance (getMarkerPos ""mHouse"") < 20) OR (IP_Buddy distance (getMarkerPos ""mHouse"") < 20)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Talk_to_Pirates">*/
+    class Talk_to_Pirates
+    {
+      name = "Talk_to_Pirates";
+      init = /*%FSM<STATEINIT""">*/"IP_Pirate1 doWatch IP_Buddy;" \n
+       "IP_Pirate1 doTarget IP_Buddy;" \n
+       "IP_Pirate2 stop false;" \n
+       "" \n
+       "_nul = [] spawn {" \n
+       "	[IP_Pirate1, ""What do you want here?! Identify yourself!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Hey man, how's it going? We are some private investigators and thought you might be able to help us out here."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Pirate1, ""ION contractors?! This is the wrong time. You better go away. Now, or I'll shoot you!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Listen, it's just a quick question. We'd simply like to know where this girl is. You guys didn't take her, did you?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Pirate1, ""Drop them!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "" \n
+       "	IP_Buddy setBehaviour ""AWARE"";" \n
+       "	IP_Buddy setSpeedMode ""NORMAL"";" \n
+       "	IP_Buddy setUnitPos ""UP"";" \n
+       "	{_x setCaptive false} forEach ([IP_Buddy, IP_Pirate1, IP_Pirate2] + units group IP_Main);" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Pirates_Killed">*/
+        class Pirates_Killed
+        {
+          priority = 0.000000;
+          to="Check_House";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!alive IP_Pirate1) && (!alive IP_Pirate2)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Check_House">*/
+    class Check_House
+    {
+      name = "Check_House";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	sleep 1;" \n
+       "	saveGame;	" \n
+       "	[IP_Buddy, ""Damn, these fuckers get more aggressive day by day! Check inside for hints, they surely have her."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""I'll stay out here on overwatch. And take the SMG from the dead guy. Also search them for money while you're already down there."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[[""MERCS"", ""Looting""]] call BIS_fnc_advHint;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "In_Room">*/
+        class In_Room
+        {
+          priority = 0.000000;
+          to="Body_Found";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"triggerActivated trgRoom"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Body_Found">*/
+    class Body_Found
+    {
+      name = "Body_Found";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	[IP_Main, ""Fuck! There's a dead body here!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Is it a girl?!"", ""DIRECT"", 1] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Nope, a man! Looks like a civie! And there are some documents lying around!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Then don't give a damn! That's not our business! Look for anything regarding the girl! And work fast, we're getting company!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "" \n
+       "	_pos = getMarkerPos ""mPirateSpawn"";" \n
+       "	_grp = createGroup east;" \n
+       "	_grp allowFleeing 0;" \n
+       "	_count = 2 + round(random 1);" \n
+       "	" \n
+       "	for ""_i"" from 0 to _count do {" \n
+       "		_unit = _grp createUnit [""O_Soldier_lite_F"", _pos, [], 0, ""FORM""];" \n
+       "		_unit setVariable [""IP_Spawned"", true];" \n
+       "		if (_i == 0) then {[_unit, true] call IP_fnc_m_createPirate; [_unit] spawn IP_fnc_track;} else {[_unit] call IP_fnc_m_createPirate};" \n
+       "	};" \n
+       "	" \n
+       "	_wp = _grp addWaypoint [(getPos IP_Buddy), 0];" \n
+       "	_wp setWaypointType ""SAD"";" \n
+       "	[_grp, 0] setWaypointBehaviour ""COMBAT"";" \n
+       "	" \n
+       "	waitUntil{({(side _x) == east && {_x getVariable ""IP_Spawned""}} count allUnits) == 0};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Backup_Killed">*/
+        class Backup_Killed
+        {
+          priority = 0.000000;
+          to="Phone_Call";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phone_Call">*/
+    class Phone_Call
+    {
+      name = "Phone_Call";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	sleep 5;" \n
+       "	[IP_Buddy, ""Okay, we're clear for now! Found anything?!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Not yet! Still looking!"", ""DIRECT"", 1] call IP_fnc_simpleSentence;" \n
+       "	" \n
+       "	[] spawn {" \n
+       "		while {!dialog && isNil ""IP_PhoneAnswered""} do {" \n
+       "			IP_Phone say3D ""ringtone"";" \n
+       "			sleep 4;" \n
+       "		};" \n
+       "	};" \n
+       "	" \n
+       "	[IP_Main, ""There's a phone ringing somewhere! Wait a sec!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	IP_Phone addAction [""Answer Phone"", {[IP_Main, IP_Caller, ""phoneOpener""] call IP_fnc_openConversation}];" \n
+       "	[[""MERCS"", ""Phone""]] call BIS_fnc_advHint;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Call_Failed">*/
+        class Call_Failed
+        {
+          priority = 0.000000;
+          to="Fucked_Up";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_PhoneCallDone"" && {!IP_PhoneCallDone}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Call_Successfull">*/
+        class Call_Successfull
+        {
+          priority = 0.000000;
+          to="Task_Success";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_PhoneCallDone"" && {IP_PhoneCallDone}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Fucked_Up">*/
+    class Fucked_Up
+    {
+      name = "Fucked_Up";
+      init = /*%FSM<STATEINIT""">*/"saveGame;" \n
+       "[""tHouse"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "[IP_Buddy, ""Sounds like you blew it, dumbass! That was a perfect opportunity! Now, we likely have to deal with their backup!"", ""DIRECT""] spawn IP_fnc_simpleSentence;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "True">*/
+        class True
+        {
+          priority = 0.000000;
+          to="Spawn_Backup";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Spawn_Backup">*/
+    class Spawn_Backup
+    {
+      name = "Spawn_Backup";
+      init = /*%FSM<STATEINIT""">*/"_pos = getMarkerPos ""mPirateCarSpawn"";" \n
+       "_grp = createGroup east;" \n
+       "_grp allowFleeing 0;" \n
+       "_vehicle = ""B_G_Offroad_01_armed_F"" createVehicle _pos;" \n
+       "_vehicle setDir 235;" \n
+       "" \n
+       "for ""_i"" from 0 to 2 do {" \n
+       "	_unit = _grp createUnit [""O_Soldier_lite_F"", _pos, [], 0, ""FORM""];" \n
+       "	_unit setVariable [""IP_Spawned"", true];" \n
+       "	if (_i == 0) then {[_unit, true] call IP_fnc_m_createPirate; [_unit] spawn IP_fnc_track;} else {[_unit] call IP_fnc_m_createPirate};" \n
+       "};" \n
+       "	" \n
+       "(units _grp select 0) moveInDriver _vehicle;" \n
+       "(units _grp select 1) moveInGunner _vehicle;" \n
+       "(units _grp select 2) moveInCargo _vehicle;" \n
+       "	" \n
+       "_wp = _grp addWaypoint [(getPos IP_Buddy), 0];" \n
+       "_wp setWaypointType ""SAD"";" \n
+       "[_grp, 0] setWaypointBehaviour ""COMBAT"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Car_Defeated">*/
+        class Car_Defeated
+        {
+          priority = 0.000000;
+          to="Showed_Them";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"({(side _x) == east && {_x getVariable ""IP_Spawned""}} count allUnits) == 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Task_Success">*/
+    class Task_Success
+    {
+      name = "Task_Success";
+      init = /*%FSM<STATEINIT""">*/"saveGame;" \n
+       "[""tHouse"", ""SUCCEEDED""] call BIS_fnc_taskSetState;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Hint_Found">*/
+        class Hint_Found
+        {
+          priority = 1.000000;
+          to="Good_Job";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""IP_HintFound"" && {IP_HintFound}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "True">*/
+        class True
+        {
+          priority = 0.000000;
+          to="Go_to_Factory";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Good_Job">*/
+    class Good_Job
+    {
+      name = "Good_Job";
+      init = /*%FSM<STATEINIT""">*/"[IP_Buddy, ""Good job, that's the confirmation we need! We might have drawn some attention though, get ready!"", ""DIRECT""] spawn IP_fnc_simpleSentence;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "True">*/
+        class True
+        {
+          priority = 0.000000;
+          to="Spawn_Backup";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Showed_Them">*/
+    class Showed_Them
+    {
+      name = "Showed_Them";
+      init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
+       "	sleep 1;	" \n
+       "	[IP_Buddy, ""Showed them! Fucking .50 Cal! Looks like they came from that old facory in Gori."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Hint_Found">*/
+        class Hint_Found
+        {
+          priority = 1.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(isNil ""_handle"" OR {scriptDone _handle}) &&  !dialog &&  !isNil ""IP_HintFound"" && {IP_HintFound}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Done">*/
+        class Done
+        {
+          priority = 0.000000;
+          to="Go_to_Factory";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"scriptDone _handle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Go_to_Factory">*/
+    class Go_to_Factory
+    {
+      name = "Go_to_Factory";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	[IP_Buddy, ""That Factory is a little bit to the north of here within the mountains."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""So we can easily approach from high ground. That hopefully makes up for their numbers."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""We're walking right into their base?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""I doubt that there is a real base. They likely just hid the girl there. But we won't find out if we're not going."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""So, let's see what you've learned in the army. I'm all yours!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy] joinSilent IP_Main;" \n
+       "	group IP_Main selectLeader IP_Main;" \n
+       "	IP_Buddy setUnitPos ""AUTO"";" \n
+       "	" \n
+       "	""mFactory"" setMarkerAlpha 1;" \n
+       "	[player, ""tFactory"", [""Go to the <marker name=""""mFactory"""">old Factory in Gori</marker> and search for hints about the girl!"", ""Search the Factory"", ""Factory""], ""mFactory"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	saveGame;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Factory_Clear">*/
+        class Factory_Clear
+        {
+          priority = 0.000000;
+          to="Look_for_Hints";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"triggerActivated trgFactory"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Look_for_Hints">*/
+    class Look_for_Hints
+    {
+      name = "Look_for_Hints";
+      init = /*%FSM<STATEINIT""">*/"saveGame;" \n
+       "[""tFactory"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "[IP_Buddy, ""Looks clear! Search for hints! Wait, there's a survivor over there! Try to question him, I'll cover you!"", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+       "[IP_Survivor, ""survivorOpener""] call IP_fnc_addConversation; "/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Hint_Found">*/
+        class Hint_Found
+        {
+          priority = 1.000000;
+          to="Win_End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(isNil ""_handle"" OR {scriptDone _handle}) &&  !dialog &&  !isNil ""IP_HintFound"" && {IP_HintFound}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Win_End">*/
+    class Win_End
+    {
+      name = "Win_End";
+      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	[""tHint"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+       "	[IP_Buddy, ""Okay, we have enough info for now. That should earn us the reward. No reason to overwork ourselves. Let's call for extraction."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[[""MERCS"", ""TacPad""]] call BIS_fnc_advHint;" \n
+       "	if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};" \n
+       "	IP_Extract = false;" \n
+       "	waitUntil {IP_Extract};" \n
+       "	[""Hub01"", true, true] call IP_fnc_endMission;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "Win_End",
+  };
+};
+/*%FSM</COMPILE>*/
