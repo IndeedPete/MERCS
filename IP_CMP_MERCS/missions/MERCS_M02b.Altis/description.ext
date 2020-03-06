@@ -1,6 +1,6 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 
-SET_MISSION_META(A, "M02b", "Riot Control", "On the way to Negades...", "Anti-government protests broke out throughout the whole country. The AAF can't handle the situation and requested help to control the riots.", "Campaigns\IP_CMP_MERCS\img\M02b_load.jpg", "Campaigns\IP_CMP_MERCS\img\M02b_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+SET_MISSION_META(A, "M02b", "Riot Control", "On the way to Negades...", "Anti-government protests broke out throughout the whole country. The AAF can't handle the situation and requested help to control the riots.", "IP_CMP_MERCS\IP_CMP_MERCS\img\M02b_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\M02b_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
 
 class CfgDebriefing
 {  

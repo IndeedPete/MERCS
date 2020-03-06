@@ -194,14 +194,14 @@ class FSM
        "	IP_Pilot setRank ""CAPTAIN"";" \n
        "	IP_Pilot setVariable [""IP_Faction"", ""EFMil""];" \n
        "	IP_Pilot setIdentity ""planePilot"";" \n
-       "	IP_Pilot setVariable [""IP_Avatar"", ""Campaigns\IP_CMP_MERCS\img\planePilotAvatar.jpg""];" \n
+       "	IP_Pilot setVariable [""IP_Avatar"", ""IP_CMP_MERCS\IP_CMP_MERCS\img\planePilotAvatar.jpg""];" \n
        "	//IP_Pilot linkItem ""NVGoggles"";" \n
        "	[IP_Pilot, 5] call IP_fnc_setSkill;" \n
        "	" \n
        "	//IP_Plane = createVehicle [""B_Plane_CAS_01_F"", _posStart, [], 0, ""FLY""];" \n
        "	//[IP_Plane, _dir] call IP_fnc_setDirFly; // IP_Plane setDir _dir;" \n
-       "	//IP_Plane setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\plane_cas_01_ext01_coEF1.paa""];" \n
-       "	//IP_Plane setObjectTexture [1, ""Campaigns\IP_CMP_MERCS\txt\plane_cas_01_ext02_coEF1.paa""];" \n
+       "	//IP_Plane setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext01_coEF1.paa""];" \n
+       "	//IP_Plane setObjectTexture [1, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext02_coEF1.paa""];" \n
        "	IP_Pilot moveInDriver IP_Plane;" \n
        "	//IP_Plane enableSimulation false;" \n
        "	" \n
@@ -223,8 +223,8 @@ class FSM
        "	" \n
        "	//IP_Plane2 = createVehicle [""B_Plane_CAS_01_F"", _posStart, [], 0, ""FLY""];" \n
        "	//[IP_Plane2, _dir] call IP_fnc_setDirFly; // IP_Plane2 setDir _dir;" \n
-       "	//IP_Plane2 setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\plane_cas_01_ext01_coEF1.paa""];" \n
-       "	//IP_Plane2 setObjectTexture [1, ""Campaigns\IP_CMP_MERCS\txt\plane_cas_01_ext02_coEF2.paa""];" \n
+       "	//IP_Plane2 setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext01_coEF1.paa""];" \n
+       "	//IP_Plane2 setObjectTexture [1, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext02_coEF2.paa""];" \n
        "	IP_Pilot2 moveInDriver IP_Plane2;" \n
        "	//IP_Plane2 enableSimulation false;" \n
        "	IP_Plane2 allowDamage false;" \n

@@ -1,13 +1,14 @@
-private "_category";
+private ["_res", "_cans"];
+params [
+	["_top", configFile, [configFile]],
+	["_class", "", [""]]
+];
+if (_class isEqualTo "") exitWith {"No class given!" call BIS_fnc_error};
 
-_top = _this select 0;
-_entry = _this select 1;
-_category = "";
-
-_categories = (missionConfigFile >> _top) call IP_fnc_getConfigEntries;
+_res = "";
+_cans = "true" configClasses _top;
 {
-	_path = (missionConfigFile >> _top >> _x >> _entry);
-	if ((isClass _path)/* OR (isNumber _path) OR (isText _path) OR (isArray _path)*/) exitWith {_category = _x};
-} forEach _categories;
+	if (isClass(_x >> _class)) exitWith {_res = _x};
+} forEach _cans;
 
-_category
+if (typeName _res == "CONFIG") then {(configName _res)} else {""};

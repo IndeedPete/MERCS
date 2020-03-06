@@ -312,7 +312,7 @@ class FSM
        "				" \n
        "	IP_Main cameraEffect [""terminate"", ""back""];" \n
        "	camDestroy _camera;" \n
-       "	execVM ""Campaigns\IP_CMP_MERCS\scn\credits.sqf"";" \n
+       "	execVM ""IP_CMP_MERCS\IP_CMP_MERCS\scn\credits.sqf"";" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -366,7 +366,7 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
        "	[IP_Buddy, ""buddyOpener""] call IP_fnc_removeConversation;" \n
        "	[IP_Buddy, ""Okay. Then you should probably get back inside to continue your 'honest' job..."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
-       "	execVM ""Campaigns\IP_CMP_MERCS\scn\credits.sqf"";" \n
+       "	execVM ""IP_CMP_MERCS\IP_CMP_MERCS\scn\credits.sqf"";" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links

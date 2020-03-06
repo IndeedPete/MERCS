@@ -1,7 +1,7 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 #include "missionConversations.hpp"
 
-SET_MISSION_META(A, "M01a", "Daddy's Girl", "On the way to Kavala...", "A young female tourist disappeared and has probably been kidnapped. Her father is paying for any hints regarding her status.", "Campaigns\IP_CMP_MERCS\img\M01a_load.jpg", "Campaigns\IP_CMP_MERCS\img\M01a_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+SET_MISSION_META(A, "M01a", "Daddy's Girl", "On the way to Kavala...", "A young female tourist disappeared and has probably been kidnapped. Her father is paying for any hints regarding her status.", "IP_CMP_MERCS\IP_CMP_MERCS\img\M01a_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\M01a_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
 
 // Temporary as it does not seem to work from the campaign folder
 class CfgSounds

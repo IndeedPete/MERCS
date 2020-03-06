@@ -91,7 +91,7 @@ IP_Contact addEventhandler ["Killed", {
 
 // Hostage Setup
 IP_Hostage setIdentity "hostage";
-IP_Hostage setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\hostageAvatar.jpg"];
+IP_Hostage setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\hostageAvatar.jpg"];
 removeHeadgear IP_Hostage;
 [IP_Hostage, "SIT_LOW", "ASIS", {(player distance IP_Hostage) < 3}] call BIS_fnc_ambientAnimCombat;
 IP_Hostage stop true;

@@ -3,7 +3,7 @@
 /*
 item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
 item1[] = {"Cutscene_Done",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Cutscene Done"};
-item2[] = {"Win_End",1,250,-175.000000,900.000000,-75.000000,950.000000,0.000000,"Win End"};
+item2[] = {"Win_End",1,4346,-175.000000,900.000000,-75.000000,950.000000,0.000000,"Win End"};
 item3[] = {"Running_Complete",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Running Complete"};
 item4[] = {"Intro_Done",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Intro Done"};
 item5[] = {"Shootingrange",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Shootingrange"};
@@ -15,7 +15,7 @@ item10[] = {"",7,210,-253.999985,171.000000,-246.000000,179.000000,0.000000,""};
 item11[] = {"Briefing",2,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Briefing"};
 item12[] = {"",7,210,-254.000000,321.000000,-246.000015,329.000000,0.000000,""};
 item13[] = {"Briefing_Done",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"Briefing Done"};
-item14[] = {"Attack",2,4346,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Attack"};
+item14[] = {"Attack",2,250,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Attack"};
 item15[] = {"",7,210,-254.000015,471.000000,-246.000000,479.000000,0.000000,""};
 item16[] = {"Clear",4,218,-175.000000,525.000000,-75.000000,575.000000,0.000000,"Clear"};
 item17[] = {"Cemetery",2,250,-175.000000,600.000000,-75.000000,650.000000,0.000000,"Cemetery"};
@@ -52,8 +52,8 @@ link24[] = {20,21};
 link25[] = {20,22};
 link26[] = {21,18};
 link27[] = {22,2};
-globals[] = {25.000000,1,0,0,0,640,480,1,129,6316128,1,-609.090759,49.443481,634.144104,-131.202225,783,910,1};
-window[] = {2,-1,-1,-1,-1,915,156,1596,156,3,801};
+globals[] = {0.000000,0,0,0,0,640,480,1,129,6316128,1,-609.090759,49.443481,1439.019287,-728.220459,378,1244,1};
+window[] = {0,-1,-1,-32000,-32000,889,130,1570,130,1,396};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -71,7 +71,7 @@ class FSM
        "	waitUntil {time > 0};	" \n
        "	sleep 1;" \n
        "	" \n
-       "	_video = [""\A3\Missions_F_EPB\video\B_Hub01_few_hours_later.ogv""] spawn BIS_fnc_playVideo;" \n
+       "	_video = [""\A3\Missions_F_EPA\video\B_Hub01_few_hours_later.ogv""] spawn BIS_fnc_playVideo;" \n
        "	IP_Weather = ["""", [""CLEAR"", ""OVERCAST""]] call IP_fnc_setWeather;" \n
        "	waitUntil {scriptDone _video};" \n
        "	" \n
@@ -292,7 +292,7 @@ class FSM
        "	skipTime 46.5;" \n
        "	sleep 1;" \n
        "	" \n
-       "	_video = [""\A3\Missions_F_EPB\video\B_out2_sometime_later.ogv""] spawn BIS_fnc_playVideo;" \n
+       "	_video = [""\A3\Missions_F_EPA\video\B_out2_sometime_later.ogv""] spawn BIS_fnc_playVideo;" \n
        "	IP_Weather = ["""", [""FOGGY"", ""LIGHTFOG""]] call IP_fnc_setWeather;" \n
        "	waitUntil {scriptDone _video};" \n
        "	" \n
@@ -534,7 +534,7 @@ class FSM
        "	skipTime 78;" \n
        "	sleep 1;" \n
        "	" \n
-       "	_video = [""\A3\Missions_F_EPB\video\B_out2_sometime_later.ogv""] spawn BIS_fnc_playVideo;" \n
+       "	_video = [""\A3\Missions_F_EPA\video\B_out2_sometime_later.ogv""] spawn BIS_fnc_playVideo;" \n
        "	IP_Weather = ["""", [""RAINY"", ""LIGHTRAIN""]] call IP_fnc_setWeather;" \n
        "	waitUntil {scriptDone _video};" \n
        "	" \n

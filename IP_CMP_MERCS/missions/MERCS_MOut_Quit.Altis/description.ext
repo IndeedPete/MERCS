@@ -1,4 +1,4 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 #include "missionConversations.hpp"
 
-SET_MISSION_META(A, "MOut_Quit", "Hasta La Vista", "At the Ghost Hotel near Iraklia...", "Raif Salih paid off his debts and quit his loose work agreement with ION. Around six months later he is stuck in a dead end job as construction worker on Altis. One day, an old friend drops by for a visit and offers a way out...", "Campaigns\IP_CMP_MERCS\img\MOut_Quit_load.jpg", "Campaigns\IP_CMP_MERCS\img\MOut_Quit_overview.jpg", 0, 0, 1, 1, 0, 0, 0)
+SET_MISSION_META(A, "MOut_Quit", "Hasta La Vista", "At the Ghost Hotel near Iraklia...", "Raif Salih paid off his debts and quit his loose work agreement with ION. Around six months later he is stuck in a dead end job as construction worker on Altis. One day, an old friend drops by for a visit and offers a way out...", "IP_CMP_MERCS\IP_CMP_MERCS\img\MOut_Quit_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\MOut_Quit_overview.jpg", 0, 0, 1, 1, 0, 0, 0)

@@ -54,14 +54,14 @@ IP_m_fnc_destroyed = {
 
 // HQ Dummy
 IP_HQ allowDamage false;
-IP_HQ setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\EF_Flag.jpg"];
+IP_HQ setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\EF_Flag.jpg"];
 (group IP_HQ) setGroupID ["Gamemaster"];
 
 // Planes
-IP_Plane setObjectTexture [1, "Campaigns\IP_CMP_MERCS\txt\plane_cas_01_ext01_coEF1.paa"];
-IP_Plane setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\plane_cas_01_ext02_coEF1.paa"];
-IP_Plane2 setObjectTexture [1, "Campaigns\IP_CMP_MERCS\txt\plane_cas_01_ext01_coEF1.paa"];
-IP_Plane2 setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\plane_cas_01_ext02_coEF2.paa"];
+IP_Plane setObjectTexture [1, "IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext01_coEF1.paa"];
+IP_Plane setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext02_coEF1.paa"];
+IP_Plane2 setObjectTexture [1, "IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext01_coEF1.paa"];
+IP_Plane2 setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext02_coEF2.paa"];
 {
 	_x enableSimulation false;
 	_x hideObject true;
@@ -71,7 +71,7 @@ IP_Plane2 setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\plane_cas_01_ext02_co
 {_x setMarkerAlpha 0} forEach ["mPatPyrgos", "mPatHQ", "mPatAO"];
 
 // Briefing
-player createDiaryRecord ["Diary", ["Target Information", "TRANSMISSION BY EUROFORCE COMMAND (EUCOM) - PRIORITY ALPHA<br/><br/>Satellite image of the AAF Headquarters - primary target areas marked in red.<img image='Campaigns\IP_CMP_MERCS\img\briefing\Briefing_M07a_Sat.jpg' width='292' height='170'/><br/><br/>Opportunity Target - 'Ace Of Spades'<br/>AAF Commander In Chief - Colonel Georgious Akhanteros<img image='Campaigns\IP_CMP_MERCS\img\briefing\Briefing_M07a_Colonel.jpg' width='240' height='185'/>"]];
+player createDiaryRecord ["Diary", ["Target Information", "TRANSMISSION BY EUROFORCE COMMAND (EUCOM) - PRIORITY ALPHA<br/><br/>Satellite image of the AAF Headquarters - primary target areas marked in red.<img image='IP_CMP_MERCS\IP_CMP_MERCS\img\briefing\Briefing_M07a_Sat.jpg' width='292' height='170'/><br/><br/>Opportunity Target - 'Ace Of Spades'<br/>AAF Commander In Chief - Colonel Georgious Akhanteros<img image='IP_CMP_MERCS\IP_CMP_MERCS\img\briefing\Briefing_M07a_Colonel.jpg' width='240' height='185'/>"]];
 [
 	"The CONTRACTOR is tasked to infiltrate the AOR on his own and locate an appropriate overview position close to the AAF Headquarters near Pyrgos. Once the CONTRACTOR is in position he will start reconnoitring the AOR and mark targets around the AAF Headquarters at his own will. The target coordinates will be uploaded into EUNET. The CONTRACTOR will then call in EUROFORCE air assets who will engage the AAF Headquarters as well as the marked targets. The CONTRACTOR constantly provides BDA. On mission completion, the CONTRACTOR will extract on his own.",
 	"EUROFORCE requested our services for recon and BDA in the tactical bombardment of the AAF Headquarters at Pyrgos. Hitting their Headquarters and possibly taking our their leader - Colonel Georgious Akhanteros - would be a severe strike against the AAF and probably the base for a Blueflag ground attack. We will help them out this time but we need to observe the situation so the Blueflags won't become a thread to the Knights and us."

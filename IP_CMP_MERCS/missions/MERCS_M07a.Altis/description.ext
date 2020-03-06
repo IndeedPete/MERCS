@@ -1,6 +1,6 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 
-SET_MISSION_META(B, "M07a", "Badass One", "On the way to Pyrgos...", "EUROFORCE air assets plan to engage the AAF Headquarters at Pyrgos. ION contractors are tasked to provide reconnaissance and BDA.", "Campaigns\IP_CMP_MERCS\img\M07a_load.jpg", "Campaigns\IP_CMP_MERCS\img\M07a_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+SET_MISSION_META(B, "M07a", "Badass One", "On the way to Pyrgos...", "EUROFORCE air assets plan to engage the AAF Headquarters at Pyrgos. ION contractors are tasked to provide reconnaissance and BDA.", "IP_CMP_MERCS\IP_CMP_MERCS\img\M07a_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\M07a_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
 
 class CfgDebriefing
 {  

@@ -37,7 +37,7 @@ IP_Commander setVariable ["IP_LiveFeed", false];
 // Sergeant
 IP_Sergeant setFace "GreekHead_A3_09";
 IP_Sergeant setName "Kostas Strambopoulos";
-IP_Sergeant setVariable ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\drillSergeantAvatar.jpg'];
+IP_Sergeant setVariable ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\drillSergeantAvatar.jpg'];
 IP_Sergeant allowDamage false;
 IP_Sergeant setVariable ["IP_LiveFeed", true];
 removeAllWeapons IP_Sergeant;
@@ -67,17 +67,17 @@ IP_Colonel setVariable ["IP_Cemetery", true];
 [IP_Colonel, "colonelOpener"] call IP_fnc_addConversation;
 
 // Whiteboard
-IP_Whiteboard setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\wb\MMain04_WB1.paa"];
+IP_Whiteboard setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\MMain04_WB1.paa"];
 
 // Marker
 {_x setMarkerAlpha 0} forEach ["mRecruits", "mMeet"];
 
 // Briefing
 _prefix = "OPERATION CRUSADER Phase IV<br/><br/>";
-_suffix = "<br/><br/><img image='Campaigns\IP_CMP_MERCS\img\BK_LogoSmall.paa' width='128'/>";
+_suffix = "<br/><br/><img image='IP_CMP_MERCS\IP_CMP_MERCS\img\BK_LogoSmall.paa' width='128'/>";
 _rank = if (isClass(campaignConfigFile >> "campaign")) then {(getText(missionConfigFile >> "Factions" >> "ION" >> "Ranks" >> (([] call IP_fnc_getMainRankData) select 0) >> "displayName"))} else {"Section Leader"};
 
-player createDiaryRecord ["Diary", ["Target Information", "AAF Commander In Chief - Colonel Georgious Akhanteros<img image='Campaigns\IP_CMP_MERCS\img\briefing\Briefing_M07a_Colonel.jpg' width='240' height='185'/>"]];
+player createDiaryRecord ["Diary", ["Target Information", "AAF Commander In Chief - Colonel Georgious Akhanteros<img image='IP_CMP_MERCS\IP_CMP_MERCS\img\briefing\Briefing_M07a_Colonel.jpg' width='240' height='185'/>"]];
 player createDiaryRecord ["Diary", ["Signal", (_prefix + "White King - Command, Lord Commander Titus<br/>Black Knight - Attack/Extraction, Executive Ian McMillian" + _suffix)]];
 player createDiaryRecord ["Diary", ["Execution", (_prefix + "1. Raif Salih will report in as volunteer for the AAF's extended recruitment program.<br/>2. Raif Salih will get close to Colonel Arkhanteros and copy his credentials using the smartphone app.<br/>3. Raif Salih will be contacted and extracted." + _suffix)]];
 player createDiaryRecord ["Diary", ["Mission", (_prefix + "The task is to infiltrate the AAF using their extended recruitment program, find a way to get close to Colonel Arkhanteros, apply the smartphone app to read out his credentials without him noticing and then extract without being compromised. Any behaviour leading to compromise is to be avoided." + _suffix)]];

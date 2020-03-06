@@ -39,14 +39,14 @@ IP_TankCrew = units(group IP_TankLeader);
 
 // Tanks
 {
-	_x setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\mbt_01_body_coEF.paa"];
-	_x setObjectTexture [1, "Campaigns\IP_CMP_MERCS\txt\mbt_01_tow_coEF.paa"];
+	_x setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\mbt_01_body_coEF.paa"];
+	_x setObjectTexture [1, "IP_CMP_MERCS\IP_CMP_MERCS\txt\mbt_01_tow_coEF.paa"];
 	if (IP_TESTMODE) then {_x allowDamage false};
 } forEach [IP_Tank1, IP_Tank2];
 
 // Briefing
 _prefix = "";
-_suffix = "<br/><br/><img image='Campaigns\IP_CMP_MERCS\img\BK_LogoSmall.paa' width='128'/>";
+_suffix = "<br/><br/><img image='IP_CMP_MERCS\IP_CMP_MERCS\img\BK_LogoSmall.paa' width='128'/>";
 _rank = if (isClass(campaignConfigFile >> "campaign")) then {(getText(missionConfigFile >> "Factions" >> "ION" >> "Ranks" >> (([] call IP_fnc_getMainRankData) select 0) >> "displayName"))} else {"Section Leader"};
 
 player createDiaryRecord ["Diary", ["Signal", (_prefix + "White King - Command, Lord Commander Titus<br/>Black Knight - Attack, Executive Ian McMillian<br/>Paladin - Support, Knight Captain Gabriel<br/>Templar - Attack, " + _rank + " Raif Salih<br/>Archer - Mortar Support, Senior Contractor Ahmet Birol" + _suffix)]];

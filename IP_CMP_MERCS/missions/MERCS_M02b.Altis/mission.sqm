@@ -3318,7 +3318,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.60000002;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\MERCS.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\MERCS.paa""];";
 		};
 	};
 	class Markers

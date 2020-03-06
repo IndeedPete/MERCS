@@ -55,7 +55,7 @@ class rscTitles
 	};
 	
 	// Include Dictionary Rsc - idd = 20002
-	#include "\Campaigns\IP_CMP_MERCS\cfg\dict\dialogs.hpp"
+	#include "\IP_CMP_MERCS\IP_CMP_MERCS\cfg\dict\dialogs.hpp"
 	
 	// Include Credit Image (overview)
 	class IP_RSC_MAIN_PICTURE
@@ -69,7 +69,7 @@ class rscTitles
 			class IP_PIC_MAIN: RscPicture
 			{
 				idc = -1;
-				text = "\Campaigns\IP_CMP_MERCS\img\cmp_overview.jpg"; //--- ToDo: Localize;
+				text = "\IP_CMP_MERCS\IP_CMP_MERCS\img\cmp_overview.jpg"; //--- ToDo: Localize;
 				x = 0;
 				y = 0;
 				w = 1;
@@ -79,10 +79,10 @@ class rscTitles
 	};
 	
 	// Include Glass Details - idds = 20004, 20005, 20006
-	#include "\Campaigns\IP_CMP_MERCS\cfg\glass\dialogs.hpp"
+	#include "\IP_CMP_MERCS\IP_CMP_MERCS\cfg\glass\dialogs.hpp"
 	
 	// Include Hazard Zone (RAD Only) - idd = 20007
-	#include "\Campaigns\IP_CMP_MERCS\cfg\hazard\dialogs.hpp"
+	#include "\IP_CMP_MERCS\IP_CMP_MERCS\cfg\hazard\dialogs.hpp"
 };
 
 class IP_DLG_CONVERSATION

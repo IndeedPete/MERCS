@@ -6839,7 +6839,7 @@ class Mission
 			vehicle="UserTexture10m_F";
 			leader=1;
 			skill=0.60000002;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\misc\surfers_scrapyard.paa""]";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\misc\surfers_scrapyard.paa""]";
 		};
 		class Item441
 		{
@@ -6875,7 +6875,7 @@ class Mission
 			vehicle="UserTexture10m_F";
 			leader=1;
 			skill=0.60000002;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\misc\surfers_scrapyard.paa""]";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\misc\surfers_scrapyard.paa""]";
 		};
 		class Item444
 		{
@@ -6911,7 +6911,7 @@ class Mission
 			vehicle="UserTexture10m_F";
 			leader=1;
 			skill=0.60000002;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\misc\surfers_scrapyard.paa""]";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\misc\surfers_scrapyard.paa""]";
 		};
 		class Item447
 		{
@@ -7040,7 +7040,7 @@ class Mission
 			vehicle="FlagPole_F";
 			leader=1;
 			skill=0.60000002;
-			init="this setFlagTexture ""Campaigns\IP_CMP_MERCS\txt\Black_Arrow_Flag.paa"";";
+			init="this setFlagTexture ""IP_CMP_MERCS\IP_CMP_MERCS\txt\Black_Arrow_Flag.paa"";";
 		};
 		class Item459
 		{

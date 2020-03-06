@@ -1,3 +1,4 @@
+private ["_i", "_enhancement", "_price"];
 _i = _this;
 if (_i == -1) exitWith {hint "You have to select a camp enhancement first!"};
 
@@ -5,17 +6,17 @@ _enhancement = IP_AvailableCampEnhancements select _i;
 _price = getNumber(missionConfigFile >> "ShopCampEnhancements" >> _enhancement >> "price");
 
 if (_price call IP_fnc_purchase) then {
-	_inPosession = player getVariable ["IP_CampEnhancements",[]];
-	player setVariable ["IP_CampEnhancements", (_inPosession + [_enhancement])];
+	_inPosession = player getVariable ["IP_ShopCampEnhancements", []];
+	player setVariable ["IP_ShopCampEnhancements", (_inPosession + [_enhancement])];
 	call IP_fnc_closeShop;
 	IP_AvailableCampEnhancements = IP_AvailableCampEnhancements - [_enhancement];
 	
 	_enhancement spawn {
-		["IP_BlackScreen", false] call BIS_fnc_blackOut;
+		["IP_BlackScreen", false] call IP_fnc_blackOut;
 		sleep 0.5;
 		
 		{
-			_campEnhancement = _x getVariable ["IP_CampEnhancement", ""];
+			_campEnhancement = _x getVariable ["IP_ShopCampEnhancement", ""];
 			if (_campEnhancement == _this) then {
 				_x enableSimulation true;
 				_x hideObject false;
@@ -32,16 +33,13 @@ if (_price call IP_fnc_purchase) then {
 			};
 		};
 		
-		skipTime 3;
-		call IP_scn_dynamicCampInit;
-		IP_Weather = [(IP_Weather select 0)] call IP_fnc_setWeather;
-		
-		sleep 0.5;
-		["IP_BlackScreen"] call BIS_fnc_blackIn;
-		
 		_title = getText(missionConfigFile >> "ShopCampEnhancements" >> _this >> "title");
-		["EnhancementDeployed", [_title]] call BIS_fnc_showNotification; //hint ("The camp enhancement '" + _title + "' has been deployed!");
-		[] spawn IP_fnc_showOSD;
-		[player, 10006] call IP_fnc_openShop;
+		_buildTime = if (isNumber(missionConfigFile >> "ShopCampEnhancements" >> _this >> "buildTime")) then {(getNumber(missionConfigFile >> "ShopCampEnhancements" >> _this >> "buildTime"))} else {(getNumber(missionConfigFile >> "ShopMetaInformation" >> "defaultBuildTime"))};
+		if (_buildTime > 0) then {skipTime _buildTime};		
+		sleep 0.5;
+		["IP_BlackScreen"] call IP_fnc_blackIn;
+		
+		["EnhancementDeployed", [_title]] call BIS_fnc_showNotification;
+		["CampEnhancements"] call IP_fnc_openShop;
 	};
 };

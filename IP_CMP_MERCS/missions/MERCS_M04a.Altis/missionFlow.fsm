@@ -3,13 +3,13 @@
 /*
 item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
 item1[] = {"Ambush",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Ambush"};
-item2[] = {"Fight_Or_Flee",2,4346,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Fight Or Flee"};
+item2[] = {"Fight_Or_Flee",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Fight Or Flee"};
 item3[] = {"Mercs_Defeated",4,218,-300.000000,225.000000,-200.000000,275.000000,0.000000,"Mercs Defeated"};
 item4[] = {"Black_Arrow_",2,250,-300.000000,300.000000,-200.000000,350.000000,0.000000,"Black Arrow!"};
 item5[] = {"At_Airfield",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"At Airfield"};
 item6[] = {"Intro_Done",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Intro Done"};
 item7[] = {"Driving",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Driving"};
-item8[] = {"Win_End",1,250,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Win End"};
+item8[] = {"Win_End",1,4346,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Win End"};
 item9[] = {"",7,210,-254.000000,20.999998,-246.000000,29.000000,0.000000,""};
 item10[] = {"Trucks_Destroyed",4,218,-300.000000,-75.000000,-200.000000,-25.000000,3.000000,"Trucks Destroyed"};
 item11[] = {"Fail_1",1,250,-300.000000,-150.000000,-200.000000,-100.000000,0.000000,"Fail 1"};
@@ -37,7 +37,7 @@ link15[] = {14,3};
 link16[] = {14,5};
 link17[] = {15,12};
 link18[] = {16,5};
-globals[] = {25.000000,1,0,0,0,640,480,1,136,6316128,1,-484.351196,49.782166,542.600525,27.518101,757,730,1};
+globals[] = {25.000000,1,0,0,0,640,480,1,136,6316128,1,-484.351196,49.782166,633.621826,-262.480316,757,1270,1};
 window[] = {2,-1,-1,-1,-1,837,78,1518,78,3,775};
 *//*%FSM</HEAD>*/
 class FSM
@@ -124,7 +124,7 @@ class FSM
        "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
        "	sleep 0.5;" \n
        "	" \n
-       "	IP_Main switchMove """";" \n
+       "	IP_Main switchMove ""amovpercmstpslowwrfldnon"";" \n
        "	IP_Buddy switchMove """";" \n
        "	IP_Buddy enableAI ""MOVE"";" \n
        "	IP_Buddy enableAI ""ANIM"";" \n
@@ -298,6 +298,7 @@ class FSM
       name = "Win_End";
       init = /*%FSM<STATEINIT""">*/"_blackArrow spawn {" \n
        "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	IP_Main switchMove ""amovpercmstpslowwrfldnon"";" \n
        "	[""tTransport"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
        "	[IP_Main, ""Sir, we've got a delivery! Here are your trucks!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "	[IP_EFOfficer, ""Great, the transport machine will arrive soon. You're done here!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n

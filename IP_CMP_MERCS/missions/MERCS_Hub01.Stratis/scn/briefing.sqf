@@ -44,6 +44,8 @@ if ((count _sentences > 0) && IP_ShowIntro) then {
 	IP_Buddy stop true;
 
 	_animation = ["Acts_A_M01_briefing", "Acts_A_M02_briefing", "Acts_A_M03_briefing", "Acts_A_M04_briefing"] call BIS_fnc_selectRandom;
+	IP_Commander disableAI "ANIM";
+	IP_Commander disableAI "MOVE";
 	IP_Commander switchMove _animation;
 	
 	sleep 0.5;

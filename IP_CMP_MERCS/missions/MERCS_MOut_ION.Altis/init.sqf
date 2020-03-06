@@ -8,7 +8,7 @@ _campEnhancements = if (isNil "IP_MERCS_CampEnhancements") then {[]} else {IP_ME
 
 // Scenes
 IP_m_scn_outro = compile(preprocessFileLineNumbers "scn\outro.sqf");
-IP_scn_credits = compile(preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\scn\credits.sqf");
+IP_scn_credits = compile(preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\scn\credits.sqf");
 
 // All Objects
 {
@@ -94,8 +94,8 @@ if (IP_HostageSaved) then {
 } else {deleteVehicle IP_Hostage};
 
 // Whiteboards
-IP_StratMap setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\wb\Hub02_WBStratMap1.paa"];
-IP_Whiteboard setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\wb\Hub03_WB1.paa"];
+IP_StratMap setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\Hub02_WBStratMap1.paa"];
+IP_Whiteboard setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\Hub03_WB1.paa"];
 
 // Heli
 IP_Heli setObjectTexture [0, "\a3\air_f_beta\Heli_Transport_02\Data\Skins\heli_transport_02_1_ion_co.paa"];

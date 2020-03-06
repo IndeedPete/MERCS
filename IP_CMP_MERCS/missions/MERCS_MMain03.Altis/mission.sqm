@@ -2779,7 +2779,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\checkpoint.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\checkpoint.paa""];";
 		};
 		class Item116
 		{
@@ -2791,7 +2791,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\checkpoint.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\checkpoint.paa""];";
 		};
 		class Item117
 		{
@@ -2949,7 +2949,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\checkpoint.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\checkpoint.paa""];";
 		};
 		class Item133
 		{

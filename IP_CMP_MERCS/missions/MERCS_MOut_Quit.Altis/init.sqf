@@ -51,7 +51,7 @@ IP_Main forceAddUniform "U_C_WorkerCoveralls";
 IP_Main addHeadgear "H_Cap_grn_BI";
 [] spawn {
 	waitUntil {time > 0};
-	IP_Main setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\coveralls_dirty_coMODMain.paa"];
+	IP_Main setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_dirty_coMODMain.paa"];
 };
 
 // Buddy Setup
@@ -99,7 +99,7 @@ IP_Manager setVariable ["IP_LiveFeed", true];
 // Trafficker Setup
 IP_Trafficker setIdentity "trafficker";
 IP_Trafficker setVariable ["IP_LiveFeed", true];
-IP_Trafficker setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\traffickerAvatar.jpg"];
+IP_Trafficker setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\traffickerAvatar.jpg"];
 [IP_Trafficker, 5] call IP_fnc_setSkill;
 [IP_Trafficker] call IP_fnc_track;
 IP_Trafficker addVest "V_TacVest_blk";

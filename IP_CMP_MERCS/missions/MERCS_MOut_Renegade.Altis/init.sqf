@@ -33,7 +33,7 @@ IP_Buddy allowDamage true;
 // Commander Setup
 IP_Commander setIdentity "commander";
 IP_Commander setVariable ["IP_LiveFeed", true];
-IP_Commander setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\commanderAvatar.jpg"];
+IP_Commander setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\commanderAvatar.jpg"];
 IP_Commander setVariable ["IP_Faction", "ION"];
 [IP_Commander, "Executive"] call BIS_fnc_setUnitInsignia;
 [IP_Commander, 5] call IP_fnc_setSkill;

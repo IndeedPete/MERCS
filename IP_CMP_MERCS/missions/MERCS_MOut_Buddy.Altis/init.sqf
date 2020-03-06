@@ -4,7 +4,7 @@ IP_TESTMODE = if ((getNumber(missionConfigFile >> "MainValues" >> "testmode")) =
 IP_ShowIntro = true;
 
 // Scenes
-IP_scn_credits = compile(preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\scn\credits.sqf");
+IP_scn_credits = compile(preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\scn\credits.sqf");
 
 // Adjust Date
 private "_date";

@@ -1,4 +1,5 @@
 _time = [_this, 0, 0, [0]] call BIS_fnc_param;
+if (_time == 0) exitWith {};
 
 closeDialog 0;
 ["IP_BlackScreen", false] call BIS_fnc_blackOut;

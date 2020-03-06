@@ -1,6 +1,6 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 
-SET_MISSION_META(B, "M07b", "Close Quarters Battle", "On the way to Kavala...", "CSAT requested help with the extraction of a covert agent in the city of Kavala.", "Campaigns\IP_CMP_MERCS\img\M07b_load.jpg", "Campaigns\IP_CMP_MERCS\img\M07b_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+SET_MISSION_META(B, "M07b", "Close Quarters Battle", "On the way to Kavala...", "CSAT requested help with the extraction of a covert agent in the city of Kavala.", "IP_CMP_MERCS\IP_CMP_MERCS\img\M07b_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\M07b_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
 
 class CfgDebriefing
 {  

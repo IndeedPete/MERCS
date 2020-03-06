@@ -1,4 +1,4 @@
-_on = if (isNil "IP_MERCS_PPEffects") then {true} else {IP_MERCS_PPEffects};
+_on = if (isNil "IP_MERCS_PPEffects") then {false} else {IP_MERCS_PPEffects};
 
 IP_MERCS_PPEffects = if (_on) then {
 	if (!isNil "IP_ColourCorrections") then {ppEffectDestroy IP_ColourCorrections};

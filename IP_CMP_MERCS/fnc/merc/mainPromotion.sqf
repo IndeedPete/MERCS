@@ -1,5 +1,5 @@
 private ["_count", "_n", "_rank", "_nMinusOne", "_displayName", "_insignia"];
-_count = count IP_MERCS_MissionsDone;
+_count = if (isNil "IP_MERCS_MissionsDone") then {0} else {count IP_MERCS_MissionsDone};
 _n = [_count] call IP_fnc_getMainRankData;
 _rank = _n select 0;
 _nMinusOne = [(_count - 1)] call IP_fnc_getMainRankData;

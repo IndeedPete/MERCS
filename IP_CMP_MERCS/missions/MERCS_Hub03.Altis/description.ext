@@ -1,4 +1,4 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 #include "missionConversations.hpp"
 
-SET_MISSION_META(B, "Hub03", "Meet And Greet", "Back at the Camp...", "Back at the camp the men are preparing for the final assault. In the meantime, Raif gets the chance to cut a deal or two...", "Campaigns\IP_CMP_MERCS\img\Hub03_load.jpg", "Campaigns\IP_CMP_MERCS\img\Hub03_overview.jpg", 0, 0, 0, 0, 1, 1, 1)
+SET_MISSION_META(B, "Hub03", "Meet And Greet", "Back at the Camp...", "Back at the camp the men are preparing for the final assault. In the meantime, Raif gets the chance to cut a deal or two...", "IP_CMP_MERCS\IP_CMP_MERCS\img\Hub03_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\Hub03_overview.jpg", 0, 0, 0, 0, 1, 1, 1)

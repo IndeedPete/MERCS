@@ -39,7 +39,7 @@ IP_m_fnc_stratMap = {
 		_title = getText(missionConfigFile >> "ShopMissions" >> _mission >> "title");
 		_desc = getText(missionConfigFile >> "ShopMissions" >> _mission >> "description");
 		_client = getText(missionConfigFile >> "Factions" >> (getText(missionConfigFile >> "ShopMissions" >> _mission >> "client")) >> "displayName");
-		_overview = "Campaigns\IP_CMP_MERCS\img\" + _mission + "_overview.jpg";
+		_overview = "IP_CMP_MERCS\IP_CMP_MERCS\img\" + _mission + "_overview.jpg";
 		_missionsData set [(count _missionsData), [_pos, _code, _title, _desc, _client, _overview, 1, []]];
 	};
 	
@@ -132,7 +132,7 @@ IP_scn_end = {
 		};
 		
 		if ((_x getVariable ["IP_Faction", ""]) == "EFMil") then {
-			_x setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa"];
+			_x setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_coMOD.paa"];
 			[_x, "TFAegis"] call BIS_fnc_setUnitInsignia;
 		};
 		
@@ -236,12 +236,12 @@ if (IP_BuddyDied) then {
 };
 
 // Shop Setup
-call IP_fnc_shopInit;
+[] call IP_fnc_shopInit;
 
 // Whiteboards
-IP_StratMap setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\wb\Hub02_WBStratMap1.paa"];
+IP_StratMap setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\Hub02_WBStratMap1.paa"];
 IP_StratMap addAction ["Open Strategic Map", {call IP_m_fnc_stratMap}];
-IP_Whiteboard setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\wb\Hub03_WB1.paa"];
+IP_Whiteboard setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\Hub03_WB1.paa"];
 
 // People
 _animSet = ["BRIEFING", "GUARD", "STAND_U1", "STAND_U2", "STAND_U3"];

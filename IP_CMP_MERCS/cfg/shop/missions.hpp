@@ -55,7 +55,7 @@ class ShopMissions
 	
 	class M01c
     {
-		briefing[] = {"Okay, this one is urgent.", "Since the botched ransom delivery things got silent around this missing girl.", "Her father panicked and issued an immediate rescue operation.", "The little intel we have indicates that she's been held in a known pirate compound in northern Altis.", "Since the compound is a thorn in the FIA's side you might be able to get some support from them.", "In any case, do whatever is necessary to get her out in one piece. And don't touch her or I'll touch you. I don't want Jerusalem all over again!"};
+		briefing[] = {"Okay, this one is urgent.", "Since the botched ransom delivery things got silent around this missing girl.", "Her father panicked and issued an immediate rescue operation.", "The little intel we have indicates that she's being held in a known pirate compound in northern Altis.", "Since the compound is a thorn in the FIA's side you might be able to get some support from them.", "In any case, do whatever is necessary to get her out in one piece. And don't touch her or I'll touch you. I don't want Jerusalem all over again!"};
 		buddyEquipment[] = {"GRENADIER", "V_TacVestIR_blk", "", "H_Watchcap_sgg", "", "true", "true"};
 		comingHome[] = {"Damn, we couldn't save her.", "She was dead long before we showed up, don't worry too much.", "How can you be so cold? She was just 18 years old, still a child!", "She's another dead body in another senseless conflict. I just think of the money. That's the only way to keep me sane I'm afraid."};
 		client = "Private";
@@ -83,7 +83,7 @@ class ShopMissions
 	
 	class M02b
     {
-		briefing[] = {"All right, here's the situation.", "Violent riots broke out throughout the whole country.", "Protesters have taken control of strategic important roads and government buildings.", "Your job is to clear one of those roads so the AAF can move in reinforcements to one of the major flashpoints.", "Do whatever is necessary to deal with the rioting civies. But keep an eye out for the FIA. Dismiss!"};
+		briefing[] = {"All right, here's the situation.", "Violent riots broke out throughout the whole country.", "Protesters have taken control of strategically important roads and government buildings.", "Your job is to clear one of those roads so the AAF can move in reinforcements to one of the major flashpoints.", "Do whatever is necessary to deal with the rioting civies. But keep an eye out for the FIA. Dismiss!"};
 		buddyEquipment[] = {"GRENADIER", "V_TacVest_blk_POLICE", "G_Aviator", "H_Beret_blk_POLICE", "", "false", "true"};
 		comingHome[] = {"I don't know how I should feel about this.", "", "These guys have every right to be angry and to protest. And we're just beating them down.", "It's not that simple. And it's not our problem anyway."};
 		client = "AltisMil";
@@ -97,7 +97,7 @@ class ShopMissions
 	
 	class M02c
     {
-		briefing[] = {"Listen up, this is a big one.", "These FIA 'terrorists' took control of an AAF armour depot and captured several tanks.", "Since we've got violent riots all over the country Greenbacks are overwhelmed and not able to handle the situation on their own.", "Your job is to help them re-taking control of the facility. Keep your heads down!"};
+		briefing[] = {"Listen up, this is a big one.", "These FIA 'terrorists' took control of an AAF armour depot and captured several tanks.", "Since we've got violent riots all over the country Greenbacks are overwhelmed and not able to handle the situation on their own.", "Your job is to help them re-taking control of the facility. Keep your heads down, this will be tough!"};
 		buddyEquipment[] = {"AUTORIFLEMAN", "V_PlateCarrierIA2_dgtl", "G_Combat", "H_HelmetSpecB_blk", "", "false", "true"};
 		comingHome[] = {"", "McMillian will be glad to hear his former employee is operating on Altis.", "What do you think he will do?", "Nothing, I guess. Jackknife's a pain in the ass but not enough that it would make sense to send a team after him.", "Maybe not yet..."};
 		client = "AltisMil";
@@ -153,7 +153,7 @@ class ShopMissions
 	
 	class M04c
     {
-		briefing[] = {"Seems like Black Arrow had a hard time understanding our last message.", "We've sent home three more ION contractors this morning - in bags. If Black Arrow wants war they'll get war!", "We need to strike hard, right where they live! We've located one of their operating bases on Altis.", "I want you to get your asses over there and unleash hell on them! Make a point!", "I'll give you all assets I can spare. This will end today!"};
+		briefing[] = {"Seems like Black Arrow had a hard time understanding our last message.", "We've sent home three more ION contractors this morning - in bags. If Black Arrow wants war they'll get war!", "We need to strike hard, right where they live! We've located one of their operating bases on Altis.", "I want you to get your asses over there and unleash hell on them! Make a point!", "I'll give you any asset I can spare. This will end today!"};
 		buddyEquipment[] = {"GRENADIER", "V_PlateCarrierGL_rgr", "G_Aviator", "H_MilCap_rucamo", "", "false", "true"}; 
 		comingHome[] = {"", "Wow, I can't get these big ass explosions out of my head! It was like in those old movies! You know, Michael Bay? Where shit's blowing up all the time?", "You realise that many people died, do you?", "Come on, it was them or us. We didn't start this war."};
 		client = "ION";

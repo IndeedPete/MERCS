@@ -6,87 +6,87 @@ class CfgFunctions
 		{
 			class alert
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\alert.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\alert.sqf";
 			};			
 			class ambientArty
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\ambientArty.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\ambientArty.sqf";
 			};			
 			class ambientVehicleFire
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\ambientVehicleFire.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\ambientVehicleFire.sqf";
 			};			
 			class deadBody
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\deadBody.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\deadBody.sqf";
 			};			
 			class heliDoors
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\heliDoors.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\heliDoors.sqf";
 			};			
 			class hunt
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\hunt.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\hunt.sqf";
 			};			
 			class join
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\join.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\join.sqf";
 			};			
 			class QRF
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\QRF.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\QRF.sqf";
 			};			
 			class radio
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\radio.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\radio.sqf";
 			};
 			class randomDeadBodiesArea
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\randomDeadBodiesArea.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\randomDeadBodiesArea.sqf";
 			};	
 			class randomPatrolArea
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\randomPatrolArea.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\randomPatrolArea.sqf";
 			};
 			class spawnAirVehicle
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\spawnAirVehicle.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\spawnAirVehicle.sqf";
 			};			
 			class spawnLandVehicle
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\spawnLandVehicle.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\spawnLandVehicle.sqf";
 			};			
 			class spawnMenGroup
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\spawnMenGroup.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\spawnMenGroup.sqf";
 			};			
 			class spawnWaterVehicle
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\spawnWaterVehicle.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\spawnWaterVehicle.sqf";
 			};			
 			class taskhint
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\taskhint.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\taskhint.sqf";
 			};			
 			class teleport
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\teleport.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\teleport.sqf";
 			};			
 			class textTiles
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\textTiles.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\textTiles.sqf";
 			};			
 			class track
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\Track.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\Track.sqf";
 			};			
 			class wave
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\wave.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\wave.sqf";
 			};			
 			class waveController
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\base\waveController.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\waveController.sqf";
 			};
 		};
 		
@@ -94,31 +94,31 @@ class CfgFunctions
 		{
 			class addConversation
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\conv\addConversation.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\conv\addConversation.sqf";
 			};
 			class closeConversation
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\conv\closeConversation.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\conv\closeConversation.sqf";
 			};
 			class openConversation
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\conv\openConversation.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\conv\openConversation.sqf";
 			};
 			class removeConversation
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\conv\removeConversation.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\conv\removeConversation.sqf";
 			};
 			class selectResponse
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\conv\selectResponse.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\conv\selectResponse.sqf";
 			};
 			class simpleConversation
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\conv\simpleConversation.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\conv\simpleConversation.sqf";
 			};
 			class simpleSentence
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\conv\simpleSentence.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\conv\simpleSentence.sqf";
 			};
 		};
 		
@@ -126,23 +126,23 @@ class CfgFunctions
 		{
 			class glassDeActivate
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\glass\glassDeActivate.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\glass\glassDeActivate.sqf";
 			};
 			class glassBoot
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\glass\glassBoot.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\glass\glassBoot.sqf";
 			};
 			class glassCore
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\glass\glassCore.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\glass\glassCore.sqf";
 			};
 			class glassDetails
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\glass\glassDetails.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\glass\glassDetails.sqf";
 			};
 			class glassStatus
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\glass\glassStatus.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\glass\glassStatus.sqf";
 			};
 		};
 		
@@ -150,23 +150,23 @@ class CfgFunctions
 		{
 			class createGenericTask
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\gmg\createGenericTask.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\gmg\createGenericTask.sqf";
 			};
 			class dirToOrientation
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\gmg\dirToOrientation.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\gmg\dirToOrientation.sqf";
 			};
 			class getEnemyFactions
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\gmg\getEnemyFactions.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\gmg\getEnemyFactions.sqf";
 			};
 			class missionDispatcher
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\gmg\missionDispatcher.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\gmg\missionDispatcher.sqf";
 			};
 			class simpleMissionFlow
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\gmg\simpleMissionFlow.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\gmg\simpleMissionFlow.sqf";
 			};
 		};
 		
@@ -174,102 +174,102 @@ class CfgFunctions
 		{
 			class applyTemplate
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\applyTemplate.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\applyTemplate.sqf";
 			};
 			class automaticRearm
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\automaticRearm.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\automaticRearm.sqf";
 			};
 			class buddyEquipment
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\buddyEquipment.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\buddyEquipment.sqf";
 			};
 			class buddyInit
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\buddyInit.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\buddyInit.sqf";
 			};
 			class carAlarm
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\carAlarm.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\carAlarm.sqf";
 			};
 			class carLead
 			{
 				ext = ".fsm";
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\carLead.fsm";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\carLead.fsm";
 			};
 			class CASHeliInit
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\CASHeliInit.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\CASHeliInit.sqf";
 			};
 			class cheatEndMission
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\cheatEndMission.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\cheatEndMission.sqf";
 			};
 			class createBriefing
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\createBriefing.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\createBriefing.sqf";
 			};
 			class createBK
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\createBK.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\createBK.sqf";
 			};
 			class createMerc
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\createMerc.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\createMerc.sqf";
 			};
 			class endMission
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\endMission.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\endMission.sqf";
 			};
 			class follow
 			{
 				ext = ".fsm";
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\follow.fsm";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\follow.fsm";
 			};
 			class getMainRankData
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\getMainRankData.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\getMainRankData.sqf";
 			};
 			class mainInit
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\mainInit.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\mainInit.sqf";
 			};
 			class mainInsertion
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\mainInsertion.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\mainInsertion.sqf";
 			};
 			class mainPromotion
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\mainPromotion.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\mainPromotion.sqf";
 			};
 			class missionInit
 			{
 				preInit = 1;
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\missionInit.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\missionInit.sqf";
 			};
 			class setSkill
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\setSkill.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\setSkill.sqf";
 			};
 			class setWeather
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\setWeather.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\setWeather.sqf";
 			};
 			class spawnTeam
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\spawnTeam.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\spawnTeam.sqf";
 			};
 			class showOSD
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\showOSD.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\showOSD.sqf";
 			};
 			class suppressiveFire
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\suppressiveFire.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\suppressiveFire.sqf";
 			};
 			class takeMoney
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\merc\takeMoney.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\takeMoney.sqf";
 			};
 		};
 		
@@ -277,15 +277,15 @@ class CfgFunctions
 		{
 			class openRestDialog
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\rest\openRestDialog.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\rest\openRestDialog.sqf";
 			};
 			class rest
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\rest\rest.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\rest\rest.sqf";
 			};
 			class setRestHoursTime
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\rest\setRestHoursTime.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\rest\setRestHoursTime.sqf";
 			};
 		};
 		
@@ -293,155 +293,291 @@ class CfgFunctions
 		{
 			class addMoney
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\addMoney.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\addMoney.sqf";
 			};
 			class addPerson
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\addPerson.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\addPerson.sqf";
 			};
-			class buyClothes
+			class addSupports
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\buyClothes.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\addSupports.sqf";
+			};
+			class amountButtonAction
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\amountButtonAction.sqf";
+			};
+			class amountSetTotal
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\amountSetTotal.sqf";
+			};
+			class arrayMerge
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\arrayMerge.sqf";
+			};
+			class buttonAction
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\buttonAction.sqf";
 			};
 			class buyEnhancement
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\buyEnhancement.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\buyEnhancement.sqf";
 			};
 			class buyItem
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\buyItem.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\buyItem.sqf";
 			};
 			class buyMagazine
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\buyMagazine.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\buyMagazine.sqf";
 			};
 			class buyOrSellMagazine
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\buyOrSellMagazine.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\buyOrSellMagazine.sqf";
+			};			
+			class buyOrSellStock
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\buyOrSellStock.sqf";
+			};
+			class buyUniform
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\buyUniform.sqf";
 			};
 			class buyVehicle
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\buyVehicle.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\buyVehicle.sqf";
 			};
 			class buyWeapon
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\buyWeapon.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\buyWeapon.sqf";
 			};
 			class clusterArray
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\clusterArray.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\clusterArray.sqf";
 			};
 			class calculateBasicCostRate
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\calculateBasicCostRate.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\calculateBasicCostRate.sqf";
 			};
 			class calculateCurrentMissionReward
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\calculateCurrentMissionReward.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\calculateCurrentMissionReward.sqf";
 			};
 			class calculateTotalCostRate
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\calculateTotalCostRate.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\calculateTotalCostRate.sqf";
 			};
 			class closeShop
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\closeShop.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\closeShop.sqf";
 			};
-			class clothesDetail
+			class createCampVehicle
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\clothesDetail.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\createCampVehicle.sqf";
+			};
+			class createMerc
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\createMerc.sqf";
+			};
+			class determinePrice
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\determinePrice.sqf";
 			};
 			class enhancementDetail
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\enhancementDetail.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\enhancementDetail.sqf";
+			};
+			class getCargoSeats
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\getCargoSeats.sqf";
 			};
 			class getConfigCategory
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\getConfigCategory.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\getConfigCategory.sqf";
 			};
 			class getConfigEntries
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\getConfigEntries.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\getConfigEntries.sqf";
+			};
+			class getPrice
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\getPrice.sqf";
 			};
 			class getRank
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\getRank.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\getRank.sqf";
+			};
+			class getTopConfig
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\getTopConfig.sqf";
+			};
+			class handleInsertion
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\handleInsertion.sqf";
+			};
+			class insert
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\insert.sqf";
+			};
+			class insertionFilter
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\insertionFilter.sqf";
 			};
 			class itemDetail
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\itemDetail.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\itemDetail.sqf";
 			};
-			class magazineAmountSetTotal
+			class itemFilter
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\magazineAmountSetTotal.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\itemFilter.sqf";
 			};
 			class magazineDetail
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\magazineDetail.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\magazineDetail.sqf";
+			};
+			class magazineFilter
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\magazineFilter.sqf";
 			};
 			class missionDetail
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\missionDetail.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\missionDetail.sqf";
+			};
+			class missionDone
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\missionDone.sqf";
 			};
 			class numberText
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\numberText.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\numberText.sqf";
+			};
+			class onLBDblClick
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\onLBDblClick.sqf";
+			};
+			class onLBSelChanged
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\onLBSelChanged.sqf";
 			};
 			class openMagazineAmountDialog
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\openMagazineAmountDialog.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\openMagazineAmountDialog.sqf";
 			};
 			class openShop
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\openShop.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\openShop.sqf";
+			};
+			class openStockAmountDialog
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\openStockAmountDialog.sqf";
 			};
 			class personDetail
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\personDetail.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\personDetail.sqf";
+			};
+			class personnelFilter
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\personnelFilter.sqf";
 			};
 			class purchase
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\purchase.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\purchase.sqf";
 			};
-			class putOnClothes
+			class putOnUniform
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\putOnClothes.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\putOnUniform.sqf";
 			};
 			class removePerson
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\removePerson.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\removePerson.sqf";
+			};
+			class round
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\round.sqf";
 			};
 			class selectMission
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\selectMission.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\selectMission.sqf";
 			};
 			class sellItem
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\sellItem.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\sellItem.sqf";
 			};
 			class sellMagazine
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\sellMagazine.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\sellMagazine.sqf";
 			};
 			class sellVehicle
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\sellVehicle.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\sellVehicle.sqf";
 			};
 			class sellWeapon
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\sellWeapon.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\sellWeapon.sqf";
+			};
+			class setMissionDone
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\setMissionDone.sqf";
+			};
+			class shopFilter
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\shopFilter.sqf";
 			};
 			class shopInit
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\shopInit.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\shopInit.sqf";
+			};
+			class spawnTeam
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\spawnTeam.sqf";
+			};
+			class startMission
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\startMission.sqf";
+			};
+			class stockDetail
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\stockDetail.sqf";
+			};
+			class strategicMap
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\strategicMap.sqf";
+			};
+			class uniformDetail
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\uniformDetail.sqf";
+			};
+			class uniformFilter
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\uniformFilter.sqf";
+			};
+			class uniqueArray
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\uniqueArray.sqf";
+			};
+			class unpackOnContainerClosed
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\unpackOnContainerClosed.sqf";
+			};
+			class updateStocks
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\updateStocks.sqf";
 			};
 			class vehicleDetail
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\vehicleDetail.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\vehicleDetail.sqf";
+			};
+			class vehicleFilter
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\vehicleFilter.sqf";
 			};
 			class weaponDetail
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\shop\weaponDetail.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\weaponDetail.sqf";
+			};
+			class weaponFilter
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\weaponFilter.sqf";
 			};
 		};
 		
@@ -449,15 +585,15 @@ class CfgFunctions
 		{
 			class extraction
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\tacPad\extraction.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\tacPad\extraction.sqf";
 			};
 			class openTacPadDialog
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\tacPad\openTacPadDialog.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\tacPad\openTacPadDialog.sqf";
 			};
 			class PPEffects
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\tacPad\PPEffects.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\tacPad\PPEffects.sqf";
 			};
 		};
 		
@@ -465,75 +601,75 @@ class CfgFunctions
 		{
 			class ambientLife
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\TPW\ambientLife.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\TPW\ambientLife.sqf";
 			};
 			class createFireEffect
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\other\createFireEffect.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\other\createFireEffect.sqf";
 			};			
 			class explosionDetector
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\other\explosionDetector.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\other\explosionDetector.sqf";
 			};			
 			class getLoadout
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\loadout\get_loadout.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\loadout\get_loadout.sqf";
 			};			
 			class halo
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\parachuting\fn_halo.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\parachuting\fn_halo.sqf";
 			};
 			class paradrop
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\parachuting\fn_paradrop.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\parachuting\fn_paradrop.sqf";
 			};			
 			class repetitiveCleanup
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\other\repetitive_cleanup.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\other\repetitive_cleanup.sqf";
 			};	
 			class setDirFly
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\other\setDirFly.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\other\setDirFly.sqf";
 			};	
 			class setLoadout
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\loadout\set_loadout.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\loadout\set_loadout.sqf";
 			};
 			class SHKPos
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\SHK_pos\SHKPos.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\SHK_pos\SHKPos.sqf";
 			};
 			class streetLightsBlinking
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\other\streetLightsBlinking.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\other\streetLightsBlinking.sqf";
 			};		
 			class tpw_animals
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\TPW\tpw_animals.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\TPW\tpw_animals.sqf";
 			};
 			class tpw_cars
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\TPW\tpw_cars.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\TPW\tpw_cars.sqf";
 			};
 			class tpw_civs
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\TPW\tpw_civs.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\TPW\tpw_civs.sqf";
 			};
 			class tpw_core
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\TPW\tpw_core.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\TPW\tpw_core.sqf";
 			};
 			class tpw_houselights
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\TPW\tpw_houselights.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\TPW\tpw_houselights.sqf";
 			};
 			class tpw_park
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\TPW\tpw_park.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\TPW\tpw_park.sqf";
 			};
 			class tpw_streetlights
 			{
-				file = "Campaigns\IP_CMP_MERCS\fnc\TPW\tpw_streetlights.sqf";
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\TPW\tpw_streetlights.sqf";
 			};
 		};
 	};

@@ -252,7 +252,7 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="IP_Drone";
-					init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\uav_02_coION.paa""];";
+					init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\uav_02_coION.paa""];";
 				};
 			};
 		};
@@ -1709,7 +1709,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.60000002;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\MERCS.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\MERCS.paa""];";
 		};
 		class Item1
 		{
@@ -1926,7 +1926,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\checkpoint.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\checkpoint.paa""];";
 		};
 		class Item22
 		{
@@ -2702,7 +2702,7 @@ class Mission
 			vehicle="FlagPole_F";
 			leader=1;
 			skill=0.60000002;
-			init="this setFlagTexture ""Campaigns\IP_CMP_MERCS\txt\Black_Arrow_Flag.paa"";";
+			init="this setFlagTexture ""IP_CMP_MERCS\IP_CMP_MERCS\txt\Black_Arrow_Flag.paa"";";
 		};
 		class Item100
 		{
@@ -2713,7 +2713,7 @@ class Mission
 			vehicle="FlagPole_F";
 			leader=1;
 			skill=0.60000002;
-			init="this setFlagTexture ""Campaigns\IP_CMP_MERCS\txt\Black_Arrow_Flag.paa"";";
+			init="this setFlagTexture ""IP_CMP_MERCS\IP_CMP_MERCS\txt\Black_Arrow_Flag.paa"";";
 		};
 		class Item101
 		{
@@ -3455,7 +3455,7 @@ class Mission
 			vehicle="FlagPole_F";
 			leader=1;
 			skill=0.60000002;
-			init="this setFlagTexture ""Campaigns\IP_CMP_MERCS\txt\Black_Arrow_Flag.paa"";";
+			init="this setFlagTexture ""IP_CMP_MERCS\IP_CMP_MERCS\txt\Black_Arrow_Flag.paa"";";
 		};
 	};
 	class Markers

@@ -12,7 +12,7 @@ _len - NUMBER (OPTIONAL): Fixed delay. - 20 - DEFAULT: ((count (toArray _sentenc
 ----------
 Requires:
 Dialog "IP_DLG_SIMPLESENTENCE"
-.jpg - "Campaigns\IP_CMP_MERCS\img\defaultAvatar.jpg"
+.jpg - "IP_CMP_MERCS\IP_CMP_MERCS\img\defaultAvatar.jpg"
 */
 
 private ["_speaker", "_sentence", "_add", "_len", "_text"];
@@ -116,7 +116,7 @@ if (_liveFeed && {(vehicle _speaker) == _speaker}) then {
 	player cameraEffect ["terminate", "back"];
 	camDestroy _camera;
 } else {
-	_picture = _speaker getVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\defaultAvatar.jpg"];
+	_picture = _speaker getVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\defaultAvatar.jpg"];
 	((uiNamespace getVariable "DLG_SimpleSentence") displayCtrl 1200) ctrlSetText _picture;
 	sleep _len;
 };

@@ -10,7 +10,7 @@ class SURF_RSC_RAD
 		class SURF_PIC_RAD: RscPicture
 		{
 			idc = 1200;
-			text = "\Campaigns\IP_CMP_MERCS\img\rad.paa"; // Path to image
+			text = "\IP_CMP_MERCS\IP_CMP_MERCS\img\rad.paa"; // Path to image
 			colorText[] = {1,1,1,1.0}; // RGBA
 			x = 0.89375 * safezoneW + safezoneX;
 			y = 0.22 * safezoneH + safezoneY;

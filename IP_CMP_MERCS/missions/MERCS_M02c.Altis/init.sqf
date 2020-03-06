@@ -15,20 +15,20 @@ IP_RivalGroup = group IP_Rival;
 IP_Rival allowDamage false;
 IP_Rival setIdentity "rival";
 IP_Rival setVariable ["IP_LiveFeed", true];
-IP_Rival setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\rivalAvatar.jpg"];
+IP_Rival setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\rivalAvatar.jpg"];
 IP_Rival setVariable ["IP_Faction", "BlackArrow"];
 removeAllWeapons IP_Rival;
 removeHeadgear IP_Rival;
 removeVest IP_Rival;
 removeUniform IP_Rival;
 IP_Rival forceAddUniform "U_O_CombatUniform_ocamo";
-IP_Rival setObjectMaterial [0, "Campaigns\IP_CMP_MERCS\txt\clothingMOD.rvmat"];
-IP_Rival setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\clothing_rus_coBA.paa"];
+IP_Rival setObjectMaterial [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothingMOD.rvmat"];
+IP_Rival setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing_rus_coBA.paa"];
 IP_Rival addVest "V_PlateCarrier1_blk";
 IP_Rival addItem "FirstAidKit";
 IP_Rival addMagazines ["9Rnd_45ACP_Mag", 3];
 IP_Rival addWeapon "hgun_ACPC2_F";
-IP_Rival addMagazines ["150Rnd_762x51_Box", 3];
+IP_Rival addMagazines ["150Rnd_762x54_Box_Tracer", 3];
 IP_Rival addMagazines ["handGrenade", 2];
 IP_Rival addMagazine "SmokeShell";
 IP_Rival addMagazine "SmokeShellGreen";
@@ -50,8 +50,8 @@ IP_Officer setVariable ["IP_LiveFeed", true];
 [] spawn {
 	waitUntil {time > 0};
 	sleep 0.5;
-	[IP_Officer, 0.83] call BIS_fnc_setHeight;
-	[IP_Officer, "LEAN_ON_TABLE", "ASIS"] call BIS_fnc_ambientAnim;
+	//[IP_Officer, 0.83] call BIS_fnc_setHeight;
+	[IP_Officer, "LEAN_ON_TABLE", "ASIS", IP_Arr] call BIS_fnc_ambientAnim;
 };
 
 // Mortar
@@ -67,7 +67,7 @@ IP_Officer setVariable ["IP_LiveFeed", true];
 		_killer = _this select 1;
 		_killer addRating 10000;
 	}];
-} forEach [IP_Tank1, IP_Tank2, IP_Tank3];
+} forEach [/*IP_Tank1,*/ IP_Tank2, IP_Tank3];
 
 // All Units
 {
@@ -102,7 +102,7 @@ IP_Officer setVariable ["IP_LiveFeed", true];
 			_x enableGunLights "forceOn";
 		};
 	};
-} forEach (allUnits - [IP_Buddy, IP_Main, IP_Rival, IP_Tank1, IP_Tank2, IP_Tank3]);
+} forEach (allUnits - [IP_Buddy, IP_Main, IP_Rival, /*IP_Tank1,*/ IP_Tank2, IP_Tank3]);
 
 // Music
 [] call BIS_fnc_jukebox;

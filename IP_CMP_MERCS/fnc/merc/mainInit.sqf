@@ -5,16 +5,16 @@ if (!(isClass(campaignConfigFile >> "campaign"))) exitWith {
 
 // Necessary to prevent lost uniform bug after briefing.
 _this spawn {
-	_unit = [_this, 0, IP_Main, [objNull]] call BIS_fnc_param;
+	_unit = [_this, 0, player, [objNull]] call BIS_fnc_param;
 	_keepLoadout = getNumber(missionConfigFile >> "keepLoadout");
 	
-	_mainLoadout = IP_MERCS_MainLoadout;
-	_money = IP_MERCS_Money; 
-	_debts = IP_MERCS_Debts; 
-	_team = IP_MERCS_Team; 
-	_clothes = IP_MERCS_Clothes;
-	_playerBox = IP_MERCS_PlayerBox;
-	_missionsDone = IP_MERCS_MissionsDone;
+	_mainLoadout = if (isNil "IP_MERCS_MainLoadout") then {[]} else {IP_MERCS_MainLoadout};
+	_money = if (isNil "IP_MERCS_Money") then {0} else {IP_MERCS_Money}; 
+	_debts = if (isNil "IP_MERCS_Debts") then {0} else {IP_MERCS_Debts};
+	_team = if (isNil "IP_MERCS_Team") then {[]} else {IP_MERCS_Team}; 
+	_clothes = if (isNil "IP_MERCS_Clothes") then {[]} else {IP_MERCS_Clothes};
+	_playerBox = if (isNil "IP_MERCS_PlayerBox") then {[[], [], [], []]} else {IP_MERCS_PlayerBox};
+	_missionsDone = if (isNil "IP_MERCS_MissionsDone") then {[]} else {IP_MERCS_MissionsDone};
 	
 	// Special for Stage B
 	_campEnhancements = if (isNil "IP_MERCS_CampEnhancements") then {[]} else {IP_MERCS_CampEnhancements};
@@ -33,15 +33,16 @@ _this spawn {
 	{
 		_unit setVariable _x;
 	} forEach [
-		["IP_Money", _money],
+		["IP_ShopBox", IP_PlayerBox],
+		["IP_ShopMoney", _money],
 		["IP_Debts", _debts],
-		["IP_Team", _team],
-		["IP_Clothes", _clothes],
-		["IP_CampEnhancements", _campEnhancements],
-		["IP_CampVehicles", _campVehicles],
+		["IP_ShopTeam", _team],
+		["IP_ShopUniforms", _clothes],
+		["IP_ShopCampEnhancements", _campEnhancements],
+		["IP_ShopCampVehicles", _campVehicles],
 		["IP_KilledTeammates", _killedTeammates],
-		["IP_Picture", ("Campaigns\IP_CMP_MERCS\img\" + _picture)],
-		["IP_Avatar", ("Campaigns\IP_CMP_MERCS\img\" + _avatar)],
+		["IP_Picture", ("IP_CMP_MERCS\IP_CMP_MERCS\img\" + _picture)],
+		["IP_Avatar", ("IP_CMP_MERCS\IP_CMP_MERCS\img\" + _avatar)],
 		["IP_LiveFeed", true],
 		["IP_Faction", "ION"]
 	];

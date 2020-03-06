@@ -1,7 +1,7 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 #include "missionConversations.hpp"
 
-SET_MISSION_META(B, "MMain04", "Uncle Kostas", "On the way to the Central Airbase...", "The task is to infiltrate the AAF and get hold of the Colonel's network credentials without him noticing.", "Campaigns\IP_CMP_MERCS\img\MMain04_load.jpg", "Campaigns\IP_CMP_MERCS\img\MMain04_overview.jpg", 1, 1, 0, 1, 0, 0, 0)
+SET_MISSION_META(B, "MMain04", "Uncle Kostas", "On the way to the Central Airbase...", "The task is to infiltrate the AAF and get hold of the Colonel's network credentials without him noticing.", "IP_CMP_MERCS\IP_CMP_MERCS\img\MMain04_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\MMain04_overview.jpg", 1, 1, 0, 1, 0, 0, 0)
 
 class CfgDebriefing
 {  

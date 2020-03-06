@@ -16,7 +16,7 @@ IP_Agent setIdentity "agent";
 IP_Agent setVariable ["IP_Faction", "DSE"];
 [IP_Agent, 5] call IP_fnc_setSkill;
 IP_Agent addGoggles "G_Aviator";
-IP_Agent setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\agentAvatar.jpg"];
+IP_Agent setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\agentAvatar.jpg"];
 IP_Agent setVariable ["IP_LiveFeed", true];
 IP_Agent addEventHandler [
 	"HandleDamage",{

@@ -6,10 +6,16 @@ if ((_fixedDate != 1) && (!isNil "IP_MERCS_Date")) then {
 	setDate _date;
 };
 
+if ((date select 0) != 2037) then {
+	_date = date;
+	_date set [0, 2037];
+	setDate _date;
+};
+
 if ((_fixedWeather != 1) && (!isNil "IP_MERCS_Weather")) then {
 	[] spawn {
 		_weather = IP_MERCS_Weather;
-		waitUntil {time > 0};		
+		waitUntil {time > 0};
 		IP_Weather = [(_weather select 0)] call IP_fnc_setWeather;
 	};
 };

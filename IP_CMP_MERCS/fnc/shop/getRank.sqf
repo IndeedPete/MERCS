@@ -1,9 +1,10 @@
-private ["_unit", "_displayNameShort", "_rank", "_faction"];
+private ["_unit", "_displayNameShort", "_var", "_rank"];
 
 _unit = [_this, 0, player, [objNull]] call BIS_fnc_param;
 _displayNameShort = [_this, 1, true, [false]] call BIS_fnc_param;
+_var = _unit getVariable ["IP_Rank", ""];
 
-_rank = if ((_unit getVariable ["IP_Rank", ""]) == "") then {
+_rank = if (_var isEqualTo "") then {
 	_rank = rank _unit;
 	_faction = _unit getVariable ["IP_Faction", ""];
 	
@@ -34,7 +35,15 @@ _rank = if ((_unit getVariable ["IP_Rank", ""]) == "") then {
 		}
 	}
 } else {
-	(_unit getVariable "IP_Rank")
+	if (typeName _var == "ARRAY") then {
+		if (_displayNameShort) then {
+			((_var select 1) + ".")
+		} else {
+			(_var select 0)
+		};
+	} else {
+		(_var + ".")
+	};
 };
 
 _rank

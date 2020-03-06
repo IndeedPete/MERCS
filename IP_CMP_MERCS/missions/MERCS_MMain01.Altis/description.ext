@@ -1,6 +1,6 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 
-SET_MISSION_META(B, "MMain01", "Force Recon", "On the way to Black Mesa...", "The British Knights send out ION contractors to reconnoitre one of the research facilities.", "Campaigns\IP_CMP_MERCS\img\MMain01_load.jpg", "Campaigns\IP_CMP_MERCS\img\MMain01_overview.jpg", 1, 1, 0, 1, 1, 0, 1)
+SET_MISSION_META(B, "MMain01", "Force Recon", "On the way to Black Mesa...", "The British Knights send out ION contractors to reconnoitre one of the research facilities.", "IP_CMP_MERCS\IP_CMP_MERCS\img\MMain01_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\MMain01_overview.jpg", 1, 1, 0, 1, 1, 0, 1)
 
 class CfgDebriefing
 {  

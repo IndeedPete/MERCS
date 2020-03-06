@@ -15,7 +15,7 @@ _camera camPreparePos [3157.71,21908.15,3.75];
 _camera camPrepareFOV 0.700;
 _camera camCommitPrepared 0;
 
-_video = ["\A3\Missions_F_EPB\video\B_out2_sometime_later.ogv"] spawn BIS_fnc_playVideo;
+_video = ["\A3\Missions_F_EPA\video\B_out2_sometime_later.ogv"] spawn BIS_fnc_playVideo;
 sleep 7;
 waitUntil {scriptDone _video};
 0 fadeSound 1;
@@ -206,7 +206,7 @@ if (!IP_BuddyDied) then {
 CUTOUT
 sleep 0.25;
 
-_video = ["\A3\Missions_F_EPB\video\B_Hub01_10_days_later.ogv"] spawn BIS_fnc_playVideo;
+_video = ["\A3\Missions_F_EPA\video\B_Hub01_10_days_later.ogv"] spawn BIS_fnc_playVideo;
 skipTime (10 * 24 + 12);
 ["", ["CLEAR", "SUNNY"]] call IP_fnc_setWeather;
 if (!isNil "IP_ColourCorrections") then {ppEffectDestroy IP_ColourCorrections};

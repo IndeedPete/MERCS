@@ -126,8 +126,8 @@ if ((dayTime < 7) OR (dayTime > 19)) then {{_x linkItem "NVGoggles"} forEach [IP
 if (!("B_Heli_Light_01_F" in IP_CampVehicles)) then {{deleteVehicle _x} forEach ((units(group IP_Heli)) + [IP_Heli])};
 
 // Whiteboards
-IP_StratMap setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\wb\Hub02_WBStratMap1.paa"];
-IP_Whiteboard setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\wb\Hub03_WB1.paa"];
+IP_StratMap setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\Hub02_WBStratMap1.paa"];
+IP_Whiteboard setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\Hub03_WB1.paa"];
 
 // Tasks
 private "_rewards";

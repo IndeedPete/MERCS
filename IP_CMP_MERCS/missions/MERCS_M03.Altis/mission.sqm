@@ -4007,7 +4007,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\checkpoint.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\checkpoint.paa""];";
 		};
 		class Item81
 		{
@@ -4019,7 +4019,7 @@ class Mission
 			vehicle="Land_Billboard_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\green_zone_exit.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\green_zone_exit.paa""];";
 		};
 		class Item82
 		{
@@ -4031,7 +4031,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\checkpoint.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\checkpoint.paa""];";
 		};
 		class Item83
 		{
@@ -4043,7 +4043,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\checkpoint.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\checkpoint.paa""];";
 		};
 		class Item84
 		{
@@ -4055,7 +4055,7 @@ class Mission
 			vehicle="Land_Billboard_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\green_zone_enter.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\green_zone_enter.paa""];";
 		};
 		class Item85
 		{
@@ -4079,7 +4079,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\checkpoint.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\checkpoint.paa""];";
 		};
 		class Item87
 		{
@@ -4091,7 +4091,7 @@ class Mission
 			vehicle="Land_Billboard_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\green_zone_exit.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\green_zone_exit.paa""];";
 		};
 		class Item88
 		{
@@ -4103,7 +4103,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\checkpoint.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\checkpoint.paa""];";
 		};
 		class Item89
 		{
@@ -4115,7 +4115,7 @@ class Mission
 			vehicle="Land_Billboard_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\green_zone_enter.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\green_zone_enter.paa""];";
 		};
 		class Item90
 		{
@@ -4441,7 +4441,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\checkpoint.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\checkpoint.paa""];";
 		};
 		class Item123
 		{
@@ -4453,7 +4453,7 @@ class Mission
 			vehicle="Land_Billboard_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\green_zone_exit.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\green_zone_exit.paa""];";
 		};
 		class Item124
 		{
@@ -4465,7 +4465,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\checkpoint.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\checkpoint.paa""];";
 		};
 		class Item125
 		{
@@ -4477,7 +4477,7 @@ class Mission
 			vehicle="Land_Billboard_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\green_zone_enter.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\green_zone_enter.paa""];";
 		};
 		class Item126
 		{
@@ -4674,7 +4674,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\DSE_Logo.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\DSE_Logo.paa""];";
 		};
 		class Item145
 		{
@@ -4686,7 +4686,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\DSE_Logo.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\DSE_Logo.paa""];";
 		};
 		class Item146
 		{
@@ -4698,7 +4698,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\DSE_Logo.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\DSE_Logo.paa""];";
 		};
 		class Item147
 		{
@@ -4754,7 +4754,7 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_Billboard_F";
 			skill=0.60000002;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\MERCS.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\MERCS.paa""];";
 		};
 	};
 	class Markers

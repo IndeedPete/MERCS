@@ -1,128 +1,170 @@
+private ["_setNavigation", "_setFilter", "_getFilterNames", "_name", "_funds", "_picture", "_catCfg"];
+
 _setNavigation = {
 	for "_i" from 0 to ((count IP_Navigation) - 1) do {
-		_index = lbAdd [2100, (IP_Navigation select _i select 0)];
-		lbSetValue [2100, _i, (IP_Navigation select _i select 1)];
+		_entry = IP_Navigation select _i;
+		_displayName = getText(missionConfigFile >> "ShopCategories" >> _entry >> "displayName");
+		_index = lbAdd [2100, _displayName];
+		lbSetValue [2100, _index, _i];
+	};
+	
+	_index = IP_Navigation find IP_LastOpened;
+	lbSetCurSel [2100, _index];
+};
+
+_setFilter = {
+	params [
+		["_filters", [], [[]]],
+		["_selectedIndex", -1, [0]]
+	];
+	
+	for "_i" from 0 to ((count _filters) - 1) do {
+		_index = lbAdd [2101, (_filters select _i)];
+		lbSetValue [2101, _index, _i];
+	};
+	
+	if (_selectedIndex >= 0) then {
+		lbSetCurSel [2101, _selectedIndex];
 	};
 };
 
-_unit = [_this, 0, player, [ObjNull]] call BIS_fnc_param;
-_dialog = [_this, 1, IP_LastOpened, [0]] call BIS_fnc_param;
-_selectedIndex = [_this, 2, 0, [0]] call BIS_fnc_param;
-IP_LastOpened = _dialog;
+_getFilterNames = {
+	private ["_cfg", "_categories", "_filterNames"];
+	_cfg = _this select 0;
+	_categories = _this select 1;
+	_filterNames = [];
+	
+	{
+		_add = if (isText(_cfg >> _x >> "displayName")) then {(getText(_cfg >> _x >> "displayName"))} else {_x};
+		_filterNames pushBack _add;
+	} forEach _categories;	
+	
+	_filterNames
+};
 
-_name = name _unit;
-_rank = [_unit, false] call IP_fnc_getRank;
-_money = [(_unit getVariable ["IP_Money", 0])] call IP_fnc_numberText;
-_status = if ((getText(missionConfigFile >> "stage")) == "B") then {"Employed"} else {"Independent"};
-_picture = _unit getVariable ["IP_Picture", ""];
-_clothes = _unit getVariable ["IP_Clothes", []];
-_campEnhancements = _unit getVariable ["IP_CampEnhancements", []];
-_campVehicles = _unit getVariable ["IP_CampVehicles", []];
-_totalCostRate = call IP_fnc_calculateTotalCostRate;
+params [
+	["_category", IP_LastOpened, [""]],
+	["_selectedIndex", 0, [0]]
+];
+IP_LastOpened = _category;
 
-switch (_dialog) do {
-	// Missions / Home
-	case 10000: {
-		_handle = createDialog "IP_DLG_HOME";
-		ctrlSetText [1000, (ctrlText 1000 + _name)];
-		ctrlSetText [1001, (ctrlText 1001 + _rank)];
-		ctrlSetText [1002, (ctrlText 1002 + _money)];
-		ctrlSetText [1003, (ctrlText 1003 + _status)];
-		ctrlSetText [1200, _picture];
+_box = player getVariable ["IP_ShopBox", ObjNull];
+if (isNull _box) exitWith {"Shop box is null!" call BIS_fnc_error};
+_name = name player;
+_rank = [player, false] call IP_fnc_getRank;
+_funds = [(player getVariable ["IP_ShopMoney", 0])] call IP_fnc_numberText;
+_catCfg = (missionConfigFile >> "ShopCategories" >> _category);
+_currency = getText(missionConfigFile >> "ShopMetaInformation" >> "currencyShort");
+
+switch (_category) do {
+	// Missions
+	case "Missions": {
+		_last = player getVariable ["IP_ShopInsertion", ""];
+		_picture = player getVariable ["IP_ShopPicture", (getText(missionConfigFile >> "ShopMetaInformation" >> "defaultPicture"))];
+		_filterNames = [] call IP_fnc_insertionFilter;
+		_index = _filterNames find _last;		
 		
+		_handle = createDialog "IP_DLG_SHOP_MISSIONS";
 		call _setNavigation;
-
+		if (count(_filterNames select 0) > 0) then {[(_filterNames select 0), _index] call _setFilter};
+		
+		ctrlSetText [1800, (getText(_catCfg >> "displayName"))];
+		ctrlSetText [1200, _picture];
+		ctrlSetText [1000, ((getText(_catCfg >> "labelName")) + (name player))];
+		ctrlSetText [1001, ((getText(_catCfg >> "labelRank")) + ([player, false] call IP_fnc_getRank))];
+		ctrlSetText [1002, ((getText(_catCfg >> "labelFunds")) + _currency + " " + _funds)];
+		((findDisplay 10000) displayCtrl 1100) ctrlSetStructuredText (parseText "");
+		
 		for "_i" from 0 to ((count IP_AvailableMissions) - 1) do {
-			_title = getText(missionConfigFile >> "ShopMissions" >> (IP_AvailableMissions select _i) >> "title"); 
-			//_loc = getText(missionConfigFile >> "ShopMissions" >> (IP_AvailableMissions select _i) >> "location"); 
-			_rew = [(getNumber(missionConfigFile >> "ShopMissions" >> (IP_AvailableMissions select _i) >> "reward"))] call IP_fnc_numberText;  
-			_text = _title + /*" " + _loc +*/ " €" + _rew;
+			_entry = IP_AvailableMissions select _i;
+			_title = getText(missionConfigFile >> "ShopMissions" >> _entry >> "title"); 
+			_rew = [(getNumber(missionConfigFile >> "ShopMissions" >> _entry >> "reward"))] call IP_fnc_numberText;  
+			_text = _title + " " + _currency + " " + _rew;
 			_index = lbAdd [1500, _text];
 		};
 	};
 	
 	// Personnel
-	case 10001: {
-		_handle = createDialog "IP_DLG_PERSONNEL";
-		ctrlSetText [1000, (ctrlText 1000 + _name)];
-		ctrlSetText [1001, (ctrlText 1001 + _rank)];
-		ctrlSetText [1003, (str(100 * _totalCostRate) + "%")];
-
-		call _setNavigation;
-			
-		for "_i" from 0 to ((count IP_AvailablePersonnel) - 1) do {
-			_entry = IP_AvailablePersonnel select _i;
-			_title = getText (configFile >> "CfgVehicles" >> _entry >> "displayName");
-			_costRate = str(100 * (getNumber(missionConfigFile >> "ShopPersonnel" >> _entry >> "costRate"))) + "%";
-			_text = _title + " " + _costRate;
-			_index = lbAdd [1500, _text];
-		};
+	case "Personnel": {
+		_lastFilter = missionNamespace getVariable ["IP_PersonnelFilter", "All"];
+		_filterIndex = IP_PersonnelFilters find _lastFilter;
+		_filterNames = [(missionConfigFile >> "ShopPersonnel"), IP_PersonnelFilters] call _getFilterNames;
+		_tcr = [] call IP_fnc_calculateTotalCostRate;
 		
-		_team = _unit getVariable "IP_Team";
+		_handle = createDialog "IP_DLG_SHOP_ITEMS";
+		call _setNavigation;
+		[_filterNames, _filterIndex] call _setFilter;
+		
+		ctrlSetText [1800, (getText(_catCfg >> "displayName"))];
+		ctrlSetText [1002, (getText(_catCfg >> "labelFunds"))];
+		ctrlSetText [1003, (str(_tcr * 100) + "%")];
+		ctrlSetText [1004, (getText(_catCfg >> "labelLeft"))];
+		ctrlSetText [1005, (getText(_catCfg >> "labelRight"))];
+		ctrlSetText [1601, (getText(_catCfg >> "labelPurchaseButton"))];
+		ctrlSetText [1602, (getText(_catCfg >> "labelSellButton"))];
+		_txt = if (player getVariable ["IP_ShopTeamSilenced", false]) then {(getText(_catCfg >> "labelAdditionalButtonOn"))} else {(getText(_catCfg >> "labelAdditionalButtonOff"))};
+		ctrlSetText [1603, _txt];
+		((findDisplay 10001) displayCtrl 1100) ctrlSetStructuredText (parseText "");	
+		
+		_team = player getVariable ["IP_ShopTeam", []];
 		for "_i" from 0 to ((count _team) - 1) do {
 			_entry = _team select _i;
-			_title = getText (configFile >> "CfgVehicles" >> _entry >> "displayName");
-			_costRate = str(100 * (getNumber(missionConfigFile >> "ShopPersonnel" >> _entry >> "costRate"))) + "%";
-			_text = _title + " " + _costRate; 
+			_title = getText(configFile >> "CfgVehicles" >> _entry >> "displayName");
+			_category = [(missionConfigFile >> "ShopPersonnel"), _entry] call IP_fnc_getConfigCategory;
+			_costRate = str((getNumber(missionConfigFile >> "ShopWeapons" >> _category >> _entry >> "costRate")) * 100);
+			_text = _title + " " + _costRate + "%"; 
 			_index = lbAdd [1501, _text];
 		};
 	};
 	
 	// Weapons
-	case 10002: {
-		_handle = createDialog "IP_DLG_WEAPONS";
-		ctrlSetText [1000, (ctrlText 1000 + _name)];
-		ctrlSetText [1001, (ctrlText 1001 + _rank)];
-		ctrlSetText [1002, (ctrlText 1002 + _money)];
-		ctrlSetText [1003, (ctrlText 1003 + _status)];
+	case "Weapons": {
+		_lastFilter = missionNamespace getVariable ["IP_WeaponFilter", "All"];
+		_filterIndex = IP_WeaponFilters find _lastFilter;
+		_filterNames = [(missionConfigFile >> "ShopWeapons"), IP_WeaponFilters] call _getFilterNames;
 		
-		call _setNavigation;
-			
-		for "_i" from 0 to ((count IP_AvailableWeapons) - 1) do {
-			_entry = IP_AvailableWeapons select _i;
-			_title = getText(configFile >> "CfgWeapons" >> _entry >> "displayName");
-			_picture = getText(configFile >> "CfgWeapons" >> _entry >> "picture");
-			_price = [(getNumber(missionConfigFile >> "ShopWeapons" >> _entry >> "price"))] call IP_fnc_numberText;
-			_text = _title + " €" + _price;
-			_index = lbAdd [1500, _text];
-			lbSetPicture [1500, _i, _picture];
-		};
+		_handle = createDialog "IP_DLG_SHOP_ITEMS";
+		call _setNavigation;		
+		[_filterNames, _filterIndex] call _setFilter;		
 		
-		_weapons = weaponCargo IP_PlayerBox;		
+		ctrlSetText [1800, (getText(_catCfg >> "displayName"))];
+		ctrlSetText [1003, (_currency + " " + _funds)];
+		ctrlSetText [1004, (getText(_catCfg >> "labelLeft"))];
+		ctrlSetText [1005, (getText(_catCfg >> "labelRight"))];
+		ctrlSetText [1603, (getText(_catCfg >> "labelAdditionalButton"))];
+		((findDisplay 10001) displayCtrl 1100) ctrlSetStructuredText (parseText "");	
+		
+		_weapons = weaponCargo _box;		
 		for "_i" from 0 to ((count _weapons) - 1) do {
 			_entry = _weapons select _i;
 			_title = getText(configFile >> "CfgWeapons" >> _entry >> "displayName");
 			_picture = getText(configFile >> "CfgWeapons" >> _entry >> "picture");
 			_index = lbAdd [1501, _title];
-			lbSetPicture [1501, _i, _picture];
+			lbSetPicture [1501, _index, _picture];
 		};
 		
 		lbSetCurSel [1500, _selectedIndex];
 	};
 	
 	// Magazines
-	case 10003: {
-		private ["_temp", "_clusteredMags", "_i"];
+	case "Magazines": {
+		IP_MagazineFilters = ["All", "Throw", "Put"] + ([((weaponCargo _box) + (weapons player))] call IP_fnc_uniqueArray);
+		_lastFilter = missionNamespace getVariable ["IP_MagazineFilter", "All"];
+		if !(_lastFilter in IP_MagazineFilters) then {IP_MagazineFilters pushBack _lastFilter};
+		_filterIndex = IP_MagazineFilters find _lastFilter;
+		_filterNames = [(configFile >> "CfgWeapons"), IP_MagazineFilters] call _getFilterNames;
 		
-		_handle = createDialog "IP_DLG_MAGAZINES";
-		ctrlSetText [1000, (ctrlText 1000 + _name)];
-		ctrlSetText [1001, (ctrlText 1001 + _rank)];
-		ctrlSetText [1002, (ctrlText 1002 + _money)];
-		ctrlSetText [1003, (ctrlText 1003 + _status)];
+		_handle = createDialog "IP_DLG_SHOP_ITEMS";
+		call _setNavigation;		
+		[_filterNames, _filterIndex] call _setFilter;		
 		
-		call _setNavigation;
+		ctrlSetText [1800, (getText(_catCfg >> "displayName"))];
+		ctrlSetText [1003, (_currency + " " + _funds)];
+		ctrlSetText [1004, (getText(_catCfg >> "labelLeft"))];
+		ctrlSetText [1005, (getText(_catCfg >> "labelRight"))];
+		((findDisplay 10001) displayCtrl 1100) ctrlSetStructuredText (parseText "");
 		
-		for "_i" from 0 to ((count IP_AvailableMagazines) - 1) do {
-			_entry = IP_AvailableMagazines select _i;
-			_title = getText(configFile >> "CfgMagazines" >> _entry >> "displayName");
-			_picture = getText(configFile >> "CfgMagazines" >> _entry >> "picture");
-			_price = [(getNumber(missionConfigFile >> "ShopMagazines" >> _entry >> "price"))] call IP_fnc_numberText;
-			_text = _title + " €" + _price;
-			_index = lbAdd [1500, _text];
-			lbSetPicture [1500, _i, _picture];
-		};
-		
-		_magazines = (magazineCargo IP_PlayerBox) call IP_fnc_clusterArray;		
+		_magazines = (magazineCargo _box) call IP_fnc_clusterArray;		
 		for "_i" from 0 to ((count _magazines) - 1) do {
 			_cell = _magazines select _i;
 			_entry = _cell select 0;
@@ -132,147 +174,194 @@ switch (_dialog) do {
 			
 			_text = str(_count) + " " +  _title;
 			_index = lbAdd [1501, _text];
-			lbSetPicture [1501, _i, _picture];
-			lbSetData [1501, _i, _entry];
+			lbSetPicture [1501, _index, _picture];
+			lbSetData [1501, _index, _entry];
 		};
 		
 		lbSetCurSel [1500, _selectedIndex];
 	};
 	
 	// Items
-	case 10004: {
-		_getParent = {
-			_entry = _this;				
-			_parent = if (isClass(configFile >> "CfgWeapons" >> _entry)) then {
-				"CfgWeapons"
-			} else {
-				_ret = if (isClass(configFile >> "CfgVehicles" >> _entry)) then {"CfgVehicles"} else {"CfgGlasses"};
-				_ret
-			};				
-			_parent
-		};
+	case "Items": {
+		_lastFilter = missionNamespace getVariable ["IP_ItemFilter", "All"];
+		_filterIndex = IP_ItemFilters find _lastFilter;
+		_filterNames = [(missionConfigFile >> "ShopItems"), IP_ItemFilters] call _getFilterNames;
 		
-		_handle = createDialog "IP_DLG_ITEMS";
-		ctrlSetText [1000, (ctrlText 1000 + _name)];
-		ctrlSetText [1001, (ctrlText 1001 + _rank)];
-		ctrlSetText [1002, (ctrlText 1002 + _money)];
-		ctrlSetText [1003, (ctrlText 1003 + _status)];
+		_handle = createDialog "IP_DLG_SHOP_ITEMS";
+		call _setNavigation;		
+		[_filterNames, _filterIndex] call _setFilter;		
 		
-		call _setNavigation;
-			
-		for "_i" from 0 to ((count IP_AvailableItems) - 1) do {			
-			_entry = IP_AvailableItems select _i;
-			_parent = _entry call _getParent;
-			_title = getText (configFile >> _parent >> _entry >> "displayName");
-			_picture = getText(configFile >> _parent >> _entry >> "picture");			
-			_category = ["ShopItems", _entry] call IP_fnc_getConfigCategory;
-			_price = [(getNumber(missionConfigFile >> "ShopItems" >> _category >> _entry >> "price"))] call IP_fnc_numberText;
-			_text = _title + " €" + _price;
-			
-			_index = lbAdd [1500, _text];
-			lbSetPicture [1500, _i, _picture];
-		};
+		ctrlSetText [1800, (getText(_catCfg >> "displayName"))];
+		ctrlSetText [1003, (_currency + " " + _funds)];
+		ctrlSetText [1004, (getText(_catCfg >> "labelLeft"))];
+		ctrlSetText [1005, (getText(_catCfg >> "labelRight"))];
+		((findDisplay 10001) displayCtrl 1100) ctrlSetStructuredText (parseText "");	
 		
-		_items = ((itemCargo IP_PlayerBox) + (backpackCargo IP_PlayerBox)) call IP_fnc_clusterArray;	
+		_items = ((itemCargo _box) + (backpackCargo _box)) call IP_fnc_clusterArray;	
 		for "_i" from 0 to ((count _items) - 1) do {
 			_cell = _items select _i;
 			_entry = _cell select 0;
 			_count = _cell select 1;
-			_parent = _entry call _getParent;
+			_parent = _entry call IP_fnc_getTopConfig;
 			_title = getText (configFile >> _parent >> _entry >> "displayName");
-			_picture = getText(configFile >> _parent >> _entry >> "picture");
-			
+			_picture = getText(configFile >> _parent >> _entry >> "picture");			
 			_text = str(_count) + " " +  _title;
 			_index = lbAdd [1501, _text];
-			lbSetPicture [1501, _i, _picture];
-			lbSetData [1501, _i, _entry];
+			lbSetPicture [1501, _index, _picture];
+			lbSetData [1501, _index, _entry];
 		};
 		
 		lbSetCurSel [1500, _selectedIndex];
 	};
 	
-	// Clothes
-	case 10005: {
-		_handle = createDialog "IP_DLG_CLOTHES";
-		ctrlSetText [1000, (ctrlText 1000 + _name)];
-		ctrlSetText [1001, (ctrlText 1001 + _rank)];
-		ctrlSetText [1002, (ctrlText 1002 + _money)];
-		ctrlSetText [1003, (ctrlText 1003 + _status)];
+	// Uniforms
+	case "Uniforms": {
+		private "_uniformsInPossession";
+		_lastFilter = missionNamespace getVariable ["IP_UniformFilter", "All"];
+		_filterIndex = IP_UniformFilters find _lastFilter;
+		_filterNames = [(missionConfigFile >> "ShopUniforms"), IP_UniformFilters] call _getFilterNames;
 		
+		_handle = createDialog "IP_DLG_SHOP_ITEMS";
 		call _setNavigation;
+		[_filterNames, _filterIndex] call _setFilter;
+		
+		ctrlSetText [1800, (getText(_catCfg >> "displayName"))];
+		ctrlSetText [1003, (_currency + " " + _funds)];
+		ctrlSetText [1004, (getText(_catCfg >> "labelLeft"))];
+		ctrlSetText [1005, (getText(_catCfg >> "labelRight"))];
+		ctrlSetText [1602, (getText(_catCfg >> "labelSellButton"))];
+		((findDisplay 10001) displayCtrl 1100) ctrlSetStructuredText (parseText "");	
+		
+		_uniformsInPossession = player getVariable ["IP_ShopUniforms", []];
+		_uniform = uniform player;
+		if ((_uniform != "") && {{_x == _uniform} count _uniformsInPossession == 0}) then {			
+			private "_categoryIndex";
+			_categoryIndex = 0;
 			
-		for "_i" from 0 to ((count IP_AvailableClothes) - 1) do {
-			private "_title";			
-			_entry = IP_AvailableClothes select _i;
-			if (isText(missionConfigFile >> "ShopClothes" >> _entry >> "displayName")) then {_title = getText(missionConfigFile >> "ShopClothes" >> _entry >> "displayName")} else {_title = getText(configFile >> "CfgWeapons" >> _entry >> "displayName")};
-			_picture = getText(configFile >> "CfgWeapons" >> _entry >> "picture");
-			_price = [(getNumber(missionConfigFile >> "ShopClothes" >> _entry >> "price"))] call IP_fnc_numberText;
-			_text = _title + " €" + _price;
-			_index = lbAdd [1500, _text];
-			lbSetPicture [1500, _i, _picture];
+			{
+				_subset = _x;
+				if ({_x == _uniform} count _subset > 0) exitWith {
+					_categoryIndex = _forEachIndex;
+				};
+			} forEach IP_AvailableUniforms;
+			
+			_arr = (IP_AvailableUniforms select _categoryIndex) - [_uniform];
+			IP_AvailableUniforms set [_categoryIndex, _arr];
+			_uniformsInPossession pushBack _uniform;
+			player setVariable ["IP_ShopUniforms", _uniformsInPossession];
 		};
 		
-		for "_i" from 0 to ((count _clothes) - 1) do {
-			private "_text";			
-			_entry = _clothes select _i;
-			if (isText(missionConfigFile >> "ShopClothes" >> _entry >> "displayName")) then {_text = getText(missionConfigFile >> "ShopClothes" >> _entry >> "displayName")} else {_text = getText(configFile >> "CfgWeapons" >> _entry >> "displayName")};
+		for "_i" from 0 to ((count _uniformsInPossession) - 1) do {
+			_entry = _uniformsInPossession select _i;
+			_title = getText(configFile >> "CfgWeapons" >> _entry >> "displayName");
 			_picture = getText(configFile >> "CfgWeapons" >> _entry >> "picture");
-			_index = lbAdd [1501, _text];
-			lbSetPicture [1501, _i, _picture];
+			_index = lbAdd [1501, _title];
+			lbSetPicture [1501, _index, _picture];
 		};
+		
+		lbSetCurSel [1500, _selectedIndex];
 	};
 	
-	// Enhancements
-	case 10006: {
-		_handle = createDialog "IP_DLG_ENHANCEMENTS";
-		ctrlSetText [1000, (ctrlText 1000 + _name)];
-		ctrlSetText [1001, (ctrlText 1001 + _rank)];
-		ctrlSetText [1002, (ctrlText 1002 + _money)];
-		ctrlSetText [1003, (ctrlText 1003 + _status)];
-		
+	// Camp Enhancements
+	case "CampEnhancements": {
+		_handle = createDialog "IP_DLG_SHOP_ITEMS";
 		call _setNavigation;
-			
+		
+		ctrlSetText [1800, (getText(_catCfg >> "displayName"))];
+		ctrlSetText [1003, (_currency + " " + _funds)];
+		ctrlSetText [1004, (getText(_catCfg >> "labelLeft"))];
+		ctrlSetText [1005, (getText(_catCfg >> "labelRight"))];
+		((findDisplay 10001) displayCtrl 1100) ctrlSetStructuredText (parseText "");
+	
 		for "_i" from 0 to ((count IP_AvailableCampEnhancements) - 1) do {
 			_entry = IP_AvailableCampEnhancements select _i;
 			_title = getText(missionConfigFile >> "ShopCampEnhancements" >> _entry >> "title");
 			_price = [(getNumber(missionConfigFile >> "ShopCampEnhancements" >> _entry >> "price"))] call IP_fnc_numberText;
-			_text = _title + " €" + _price;
+			_text = _title + " " + _currency + " " + _price;
 			_index = lbAdd [1500, _text];
 		};
 		
-		for "_i" from 0 to ((count _campEnhancements) - 1) do {		
-			_entry = _campEnhancements select _i;
+		_enhancementInPossession = player getVariable ["IP_ShopCampEnhancements", []];
+		for "_i" from 0 to ((count _enhancementInPossession) - 1) do {		
+			_entry = _enhancementInPossession select _i;
 			_title = getText(missionConfigFile >> "ShopCampEnhancements" >> _entry >> "title");
 			_index = lbAdd [1501, _title];
 		};
+		
+		lbSetCurSel [1500, _selectedIndex];
 	};
 	
-	// Vehicles
-	case 10007: {
-		_handle = createDialog "IP_DLG_VEHICLES";
-		ctrlSetText [1000, (ctrlText 1000 + _name)];
-		ctrlSetText [1001, (ctrlText 1001 + _rank)];
-		ctrlSetText [1002, (ctrlText 1002 + _money)];
-		ctrlSetText [1003, (ctrlText 1003 + _status)];
+	// Camp Vehicles
+	case "CampVehicles": {
+		_lastFilter = missionNamespace getVariable ["IP_CampVehicleFilter", "All"];
+		_filterIndex = IP_CampVehicleFilters find _lastFilter;
+		_filterNames = [(missionConfigFile >> "ShopCampVehicles"), IP_CampVehicleFilters] call _getFilterNames;
 		
-		call _setNavigation;
-			
-		for "_i" from 0 to ((count IP_AvailableCampVehicles) - 1) do {
-			_entry = IP_AvailableCampVehicles select _i;
-			_picture = getText(configFile >> "CfgVehicles" >> _entry >> "picture");
-			_title = getText(configFile >> "CfgVehicles" >> _entry >> "displayName");
-			_price = [(getNumber(missionConfigFile >> "ShopCampVehicles" >> _entry >> "price"))] call IP_fnc_numberText;
-			_text = _title + " €" + _price;
-			_index = lbAdd [1500, _text];
-			lbSetPicture [1500, _i, _picture];
-		};
+		_handle = createDialog "IP_DLG_SHOP_ITEMS";
+		call _setNavigation;		
+		[_filterNames, _filterIndex] call _setFilter;		
 		
-		for "_i" from 0 to ((count _campVehicles) - 1) do {		
-			_entry = _campVehicles select _i;
+		ctrlSetText [1800, (getText(_catCfg >> "displayName"))];
+		ctrlSetText [1003, (_currency + " " + _funds)];
+		ctrlSetText [1004, (getText(_catCfg >> "labelLeft"))];
+		ctrlSetText [1005, (getText(_catCfg >> "labelRight"))];
+		ctrlSetText [1603, (getText(_catCfg >> "labelAdditionalButton"))];
+		((findDisplay 10001) displayCtrl 1100) ctrlSetStructuredText (parseText "");
+		
+		_vehiclesInPossession = player getVariable ["IP_ShopCampVehicles", []];	
+		for "_i" from 0 to ((count _vehiclesInPossession) - 1) do {		
+			_entry = _vehiclesInPossession select _i;
 			_picture = getText(configFile >> "CfgVehicles" >> _entry >> "picture");
 			_title = getText(configFile >> "CfgVehicles" >> _entry >> "displayName");
 			_index = lbAdd [1501, _title];
-			lbSetPicture [1501, _i, _picture];
+			lbSetPicture [1501, _index, _picture];
 		};
+		
+		lbSetCurSel [1500, _selectedIndex];
 	};
+	
+	// Stock Market
+	case "StockMarket": {
+		_lastAccess = if !(isNil "IP_LastStockMarketAccess") then {IP_LastStockMarketAccess} else {date};
+		_handle = createDialog "IP_DLG_SHOP_ITEMS";
+		call _setNavigation;
+		
+		ctrlSetText [1800, (getText(_catCfg >> "displayName"))];
+		ctrlSetText [1003, (_currency + " " + _funds)];
+		ctrlSetText [1004, (getText(_catCfg >> "labelLeft"))];
+		ctrlSetText [1005, (getText(_catCfg >> "labelRight"))];
+		((findDisplay 10001) displayCtrl 1100) ctrlSetStructuredText (parseText "");
+		
+		if (((dateToNumber date) - (dateToNumber _lastAccess) >= 0.000114173) OR {(date select 0) > (_lastAccess select 0)}) then {
+			[] call IP_fnc_updateStocks;
+			IP_LastStockMarketAccess = date;
+		};
+	
+		for "_i" from 0 to ((count IP_AvailableStocks) - 1) do {
+			_entry = IP_AvailableStocks select _i;
+			_identifier = _entry select 0;
+			_title = getText(missionConfigFile >> "ShopStocks" >> _identifier >> "displayName");
+			_price = _entry select 1;
+			_lastPrice = if (count IP_LastStocks > 0) then {((IP_LastStocks select _i) select 1)} else {-1};
+			_picture = if (_price >= _lastPrice) then {"stock_up_co"} else {"stock_down_co"};
+			_text = _title + " " + _currency + " " + str(_price);
+			_index = lbAdd [1500, _text];
+			lbSetPicture [1500, _index, ("Campaigns\IP_CMP_ICE\img\shop\" + _picture + ".paa")];
+		};
+		
+		_stocksInDepot = player getVariable ["IP_ShopStocks", []];
+		for "_i" from 0 to ((count _stocksInDepot) - 1) do {		
+			_entry = _stocksInDepot select _i;
+			_identifier = _entry select 0;
+			_count = [(_entry select 1)] call IP_fnc_numberText;
+			_title = getText(missionConfigFile >> "ShopStocks" >> _identifier >> "displayName");
+			_text = _count + " " +  _title;
+			_index = lbAdd [1501, _text];
+			lbSetData [1501, _index, _identifier];
+		};
+		
+		lbSetCurSel [1500, _selectedIndex];
+	};
+	
+	default {["Category %1 not recognised!", _category] call BIS_fnc_error};
 };

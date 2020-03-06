@@ -7,7 +7,7 @@ IP_Weather = if (isNil "IP_MERCS_Weather") then {["CLEAR", "SUNNY"]} else {IP_ME
 //IP_MainGroup = group IP_EFOfficer;
 
 // Scenes
-IP_scn_credits = compile(preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\scn\credits.sqf");
+IP_scn_credits = compile(preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\scn\credits.sqf");
 
 // Main Setup
 [] call IP_fnc_mainInit;
@@ -32,7 +32,7 @@ IP_CSATOfficer setCaptive true;
 IP_HQ allowDamage false;
 IP_HQ enableSimulation false;
 IP_HQ hideObject true;
-IP_HQ setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\CSAT_Flag.jpg"];
+IP_HQ setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\CSAT_Flag.jpg"];
 (group IP_HQ) setGroupID ["Sultan"];
 
 // Device Truck
@@ -45,7 +45,7 @@ IP_DeviceTruck setCaptive true;
 	
 	if ((side _x) == west) then {
 		_x setVariable ["IP_Faction", "EFMil"];
-		_x setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa"];
+		_x setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_coMOD.paa"];
 		[_x, "TFAegis"] call BIS_fnc_setUnitInsignia;
 		_x enableSimulation false;
 		_x hideObject true;

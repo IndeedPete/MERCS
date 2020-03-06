@@ -1,57 +1,82 @@
-private "_classes";
+private ["_i", "_vehiclesInPossession", "_vehicle", "_category", "_unique", "_divisor", "_price"];
 _i = _this;
-if (_i == -1) exitWith {hint "You have to select a vehicle!"};
+if (_i == -1) exitWith {hint "You have to select a vehicle first!"};
 
-_vehicle = (player getVariable ["IP_CampVehicles", []]) select _i;
-_price = getNumber(missionConfigFile >> "ShopCampVehicles" >> _vehicle >> "price") / IP_SellingPriceDivisor;
-_isCar = ((getNumber(missionConfigFile >> "ShopCampVehicles" >> _vehicle >> "isCar")) == 1);
+_vehiclesInPossession = player getVariable ["IP_ShopCampVehicles", []];
+_vehicle = _vehiclesInPossession select _i;
+_category = [(missionConfigFile >> "ShopCampVehicles"), _vehicle] call IP_fnc_getConfigCategory;
+_unique = if (isNumber(missionConfigFile >> "ShopCampVehicles" >> _category >> _vehicle >> "unique")) then {(getNumber(missionConfigFile >> "ShopCampVehicles" >> _category >> _vehicle >> "unique"))} else {0};
+_divisor = getNumber(missionConfigFile >> "ShopMetaInformation" >> "sellingDisvisor");
+_price = getNumber(missionConfigFile >> "ShopCampVehicles" >> _category >> _vehicle >> "price") / _divisor;
 
-_inPosession = player getVariable ["IP_CampVehicles",[]];
-call IP_fnc_closeShop;
-
-if (_isCar) then {
-	_classes = [];
-	{
-		_classes = _classes + [(typeOf _x)];
-		deleteVehicle _x;
-	} forEach IP_GarageVehicles;
-	IP_GarageVehicles = [];
-	
-	_count = {_x == _vehicle} count _classes;
-	_classes = _classes - [_vehicle];
-	player setVariable ["IP_CampVehicles", (_inPosession - [_vehicle])];
-	if (_count > 1) then {		
-		for "_i" from 1 to (_count - 1) do {
-			_classes = _classes + [_vehicle]; // Adds other vehicles of the same class back to array
-			player setVariable ["IP_CampVehicles", ((player getVariable "IP_CampVehicles") + [_vehicle])];
-		};		
+switch (true) do {
+	case (_category in ["Cars", "Armour"]): {
+		private ["_garageVehicles", "_i"];
+		_garageVehicles = player getVariable ["IP_ShopGarageVehicles", []];
+		
+		_count = {_x == _vehicle} count _vehiclesInPossession;
+		_vehiclesInPossession = _vehiclesInPossession - [_vehicle];
+		if (_count > 1) then {		
+			for "_i" from 1 to (_count - 1) do {
+				_vehiclesInPossession pushBack _vehicle;
+			};
+		};
+		
+		{deleteVehicle _x} forEach _garageVehicles;
+		_garageVehicles = [];		
+		_i = 0;		
+		{
+			_cat = [(missionConfigFile >> "ShopCampVehicles"), _x] call IP_fnc_getConfigCategory;			
+			if (_cat in ["Cars", "Armour"]) then {
+				_marker = "mShopGarage" + str(_i);
+				_created = [_x, _marker, _cat] call IP_fnc_createCampVehicle;
+				_garageVehicles pushBack _created;
+				_i = _i + 1;
+			};
+		} forEach _vehiclesInPossession;
+		
+		player setVariable ["IP_ShopCampVehicles", _vehiclesInPossession];
+		player setVariable ["IP_ShopGarageVehicles", _garageVehicles];
 	};
 	
-	{
-		_spot = (count IP_GarageVehicles) + 1;
-		_marker = "mGarageSpot" + str(_spot);
-		_pos = getMarkerPos _marker;
+	case (_category == "Air"): {
+		private ["_hangarVehicles", "_i"];
+		_hangarVehicles = player getVariable ["IP_ShopHangarVehicles", []];
 		
-		_created = _x createVehicle _pos;
-		_created setDir 180;
-		_created setPos _pos;
-		_created lockDriver true;
-		clearItemCargo _created;
-		
-		IP_GarageVehicles = IP_GarageVehicles + [_created];
-	} forEach _classes;
-} else {
-	player setVariable ["IP_CampVehicles", (_inPosession - [_vehicle])];
-	IP_AvailableCampVehicles = IP_AvailableCampVehicles + [_vehicle];
-	_identifier = getText(missionConfigFile >> "ShopCampVehicles" >> _vehicle >> "identifier");
-	{
-		_campVehicle = _x getVariable ["IP_CampVehicle", ""];
-		if (_campVehicle == _identifier) then {
-			_x enableSimulation false;
-			_x hideObject true;
+		_count = {_x == _vehicle} count _vehiclesInPossession;
+		_vehiclesInPossession = _vehiclesInPossession - [_vehicle];
+		if (_count > 1) then {		
+			for "_i" from 1 to (_count - 1) do {
+				_vehiclesInPossession pushBack _vehicle;
+			};
 		};
-	} forEach (allMissionObjects "All");
+		
+		{deleteVehicle _x} forEach _hangarVehicles;
+		_hangarVehicles = [];		
+		_i = 0;		
+		{
+			_cat = [(missionConfigFile >> "ShopCampVehicles"), _x] call IP_fnc_getConfigCategory;			
+			if (_cat == "Air") then {
+				_marker = "mShopHangar" + str(_i);
+				_created = [_x, _marker, _cat] call IP_fnc_createCampVehicle;
+				_hangarVehicles pushBack _created;
+				_i = _i + 1;
+			};
+		} forEach _vehiclesInPossession;
+		
+		player setVariable ["IP_ShopCampVehicles", _vehiclesInPossession];
+		player setVariable ["IP_ShopHangarVehicles", _hangarVehicles];
+	};
+	
+	default {["%1 is not a recognised camp vehicle category!", _category] call BIS_fnc_error};
 };
 
+call IP_fnc_closeShop;
+if (_unique == 1) then {
+	_index = IP_CampVehicleCategories find _category;
+	_sub = IP_AvailableCampVehicles select _index;
+	_sub pushBack _vehicle;
+	IP_AvailableCampVehicles set [_index, _sub];
+};
 _price call IP_fnc_addMoney;
-[player, 10007] spawn IP_fnc_openShop;
+["CampVehicles", _i] spawn IP_fnc_openShop;

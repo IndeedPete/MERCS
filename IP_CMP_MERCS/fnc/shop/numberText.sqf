@@ -9,8 +9,10 @@ _digitsCount = count _digits - 1;
 
 _modBase = _digitsCount % _mod;
 _numberText = "";
+
 {
 	_numberText = _numberText + str(_x);
-	if ((_forEachIndex - _modBase) % (_mod) == 0 && _forEachIndex != _digitsCount) then {_numberText = _numberText + "."};
+	if ((_forEachIndex - _modBase) % _mod == 0 && _forEachIndex != _digitsCount) then {_numberText = _numberText + "."};
 } forEach _digits;
+
 _numberText

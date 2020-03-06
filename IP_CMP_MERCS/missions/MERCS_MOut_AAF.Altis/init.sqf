@@ -7,7 +7,7 @@ IP_ShowIntro = true;
 call(compile(preprocessFileLineNumbers "fnc\HazardAreas.sqf"));
 
 // Scenes
-IP_scn_credits = compile(preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\scn\credits.sqf");
+IP_scn_credits = compile(preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\scn\credits.sqf");
 
 // Wetter
 // SetWind Je nach ground zero

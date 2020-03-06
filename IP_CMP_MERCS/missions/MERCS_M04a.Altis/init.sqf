@@ -16,7 +16,7 @@ IP_Corporal setVariable ["IP_LiveFeed", true];
 IP_EFOfficer setIdentity "ef_officer";
 IP_EFOfficer allowDamage false;
 IP_EFOfficer setVariable ["IP_LiveFeed", true];
-IP_EFOfficer setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\EFOfficerAvatar.jpg"];
+IP_EFOfficer setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\EFOfficerAvatar.jpg"];
 [IP_EFOfficer, 'TFAegis'] call BIS_fnc_setUnitInsignia;
 IP_EFOfficer setVariable ["IP_Rank", "Lt.Cdr."];
 [IP_EFOfficer, "STAND1", "ASIS"] call BIS_fnc_ambientAnim;
@@ -51,7 +51,7 @@ IP_Box enableSimulation false;
 	switch (side _x) do {
 		case west: {
 			_x setVariable ["IP_Faction", "EFMil"];
-			_x setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa"];
+			_x setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_coMOD.paa"];
 			[_x, "TFAegis"] call BIS_fnc_setUnitInsignia;
 			_x addEventHandler ["HIT", {
 				if ((_this select 1) == (vehicle player)) then {

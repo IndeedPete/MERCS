@@ -89,6 +89,7 @@ IP_fnc_m_drunkMode = {
 
 	uiNamespace setVariable ["IP_DisplayEH_DrunkMode", _ehDrunk];
 	
+	/*
 	[] spawn {
 		_delay = 0.01;
 		_range = 10;
@@ -104,7 +105,7 @@ IP_fnc_m_drunkMode = {
 			_range = _range * -1;
 			_step = _step * -1;	
 		};
-	};
+	};*/
 };
 
 // Adjust Mission Date

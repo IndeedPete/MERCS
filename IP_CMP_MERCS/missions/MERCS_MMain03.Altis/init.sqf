@@ -61,7 +61,7 @@ IP_Farmer setName "Farmer Pete";
 IP_Farmer setFace "GreekHead_A3_04";
 IP_Farmer addHeadgear "H_Cap_usblack";
 IP_Farmer setVariable ["IP_LiveFeed", true];
-IP_Farmer setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\farmerAvatar.jpg"];
+IP_Farmer setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\farmerAvatar.jpg"];
 [IP_Farmer, "BRIEFING", "ASIS"] call BIS_fnc_ambientAnim;
 [IP_Farmer, "farmerOpener"] call IP_fnc_addConversation;
 IP_Farmer addEventhandler ["Killed", {
@@ -107,10 +107,10 @@ IP_LaptopShack addAction ["Use Laptop", {
 
 // Briefing
 _prefix = "OPERATION CRUSADER Phase III<br/><br/>";
-_suffix = "<br/><br/><img image='Campaigns\IP_CMP_MERCS\img\BK_LogoSmall.paa' width='128'/>";
+_suffix = "<br/><br/><img image='IP_CMP_MERCS\IP_CMP_MERCS\img\BK_LogoSmall.paa' width='128'/>";
 _rank = if (isClass(campaignConfigFile >> "campaign")) then {(getText(missionConfigFile >> "Factions" >> "ION" >> "Ranks" >> (([] call IP_fnc_getMainRankData) select 0) >> "displayName"))} else {"Section Leader"};
 
-player createDiaryRecord ["Diary", ["Contact Information", ("The most recent picture of " + profileName + ".<br/><img image='Campaigns\IP_CMP_MERCS\img\hackerAvatar.jpg' width='310' height='232'/>")]];
+player createDiaryRecord ["Diary", ["Contact Information", ("The most recent picture of " + profileName + ".<br/><img image='IP_CMP_MERCS\IP_CMP_MERCS\img\hackerAvatar.jpg' width='310' height='232'/>")]];
 player createDiaryRecord ["Diary", ["Signal", (_prefix + "White King - Command, Lord Commander Titus<br/>Templar - Attack/Recon, " + _rank + " Raif Salih" + _suffix)]];
 player createDiaryRecord ["Diary", ["Execution", (_prefix + "1. Callsign 'Templar' will insert on foot, by car or by helicopter close to the <marker name=""mPickup"">Pickup Point</marker>.<br/>2. Templar will meet with " + profileName + " at the <marker name=""mPickup"">Pickup Point</marker>.<br/>3. Templar will extract and return to base." + _suffix)]];
 player createDiaryRecord ["Diary", ["Mission", (_prefix + "The task is to get to the <marker name=""mPickup"">Pickup Point</marker>, meet with " + profileName + " and then return to base with him." + _suffix)]];

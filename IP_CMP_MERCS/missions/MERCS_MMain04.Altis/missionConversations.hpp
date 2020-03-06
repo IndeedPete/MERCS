@@ -14,7 +14,7 @@ class Conversations
 		responses[] = {"colonelExitYes"};
 		sentences[] = {
 			"Yes, Sir! And I am proud to serve in this exceptional force! (Start Copying)",
-			"You are welcome. And you did an outstanding job today. It's courageous people like you that make this country great. It doesn't matter where we're coming from as long as we stand strong in unity, opposing the terrorist thread! We must hold the line against the traitors! Fight with blood, sweat and tears for every centimetre of this proud country! We need to continue the fight! I won't rest until every FIA terrorist lies before me like this, covered in his own blood!"
+			"You are welcome. And you did an outstanding job today. It's courageous people like you that make this country great. It doesn't matter where we're coming from as long as we stand strong in unity, opposing the terrorist threat! We must hold the line against the traitors! Fight with blood, sweat and tears for every centimetre of this proud country! We need to continue the fight! I won't rest until every FIA terrorist lies before me like this, covered in his own blood!"
 		};
 	};
 	class colonelExitYes

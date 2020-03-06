@@ -174,7 +174,7 @@ class FSM
        "		west," \n
        "		(getMarkerPos ""mOfficer"")," \n
        "		[4, 4]," \n
-       "		""{_x setVariable ['IP_Faction', 'EFMil']; _x setObjectTexture [0, 'Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa']; [_x, 'TFAegis'] call BIS_fnc_setUnitInsignia;} forEach units (_this select 1);""" \n
+       "		""{_x setVariable ['IP_Faction', 'EFMil']; _x setObjectTexture [0, 'IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_coMOD.paa']; [_x, 'TFAegis'] call BIS_fnc_setUnitInsignia;} forEach units (_this select 1);""" \n
        "	] call IP_fnc_wave;" \n
        "	" \n
        "	[" \n
@@ -184,7 +184,7 @@ class FSM
        "		west," \n
        "		(getMarkerPos ""mEU"")," \n
        "		[4, 8]," \n
-       "		""{_x setVariable ['IP_Faction', 'EFMil']; _x setObjectTexture [0, 'Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa']; [_x, 'TFAegis'] call BIS_fnc_setUnitInsignia;} forEach units (_this select 1); IP_AmbushGroup = (_this select 1);""" \n
+       "		""{_x setVariable ['IP_Faction', 'EFMil']; _x setObjectTexture [0, 'IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_coMOD.paa']; [_x, 'TFAegis'] call BIS_fnc_setUnitInsignia;} forEach units (_this select 1); IP_AmbushGroup = (_this select 1);""" \n
        "	] call IP_fnc_wave;" \n
        "	" \n
        "	[""mAO2"", {true}, 0, 0, [20, 40], ""ROCKET""] spawn IP_fnc_ambientArty;" \n
@@ -312,7 +312,7 @@ class FSM
        "	IP_ParatrooperGrp = [_posEnd, west, (configFile >> ""CfgGroups"" >> ""West"" >> ""BLU_F"" >> ""Infantry"" >> ""BUS_InfSquad"")] call BIS_fnc_spawnGroup;" \n
        "	{" \n
        "		_x setVariable [""IP_Faction"", ""EFMil""];" \n
-       "		_x setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa""];" \n
+       "		_x setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_coMOD.paa""];" \n
        "		[_x, 'TFAegis'] call BIS_fnc_setUnitInsignia;" \n
        "		_x moveInCargo _heli;" \n
        "	} forEach (units IP_ParatrooperGrp);" \n
@@ -403,7 +403,7 @@ class FSM
        "		west," \n
        "		(getMarkerPos ""mPickup"")," \n
        "		[4, 6]," \n
-       "		""{_x setVariable ['IP_Faction', 'EFMil']; _x setObjectTexture [0, 'Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa'];} forEach units (_this select 1); IP_AmbushGroup = (_this select 1);""" \n
+       "		""{_x setVariable ['IP_Faction', 'EFMil']; _x setObjectTexture [0, 'IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_coMOD.paa'];} forEach units (_this select 1); IP_AmbushGroup = (_this select 1);""" \n
        "	] call IP_fnc_wave;" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;

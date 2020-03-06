@@ -1,5 +1,5 @@
 IP_TESTMODE = if ((getNumber(missionConfigFile >> "MainValues" >> "testmode")) == 1) then {true} else {false};
-_cmpPath = "Campaigns\IP_CMP_MERCS\";
+_cmpPath = "IP_CMP_MERCS\IP_CMP_MERCS\";
 
 // Variables
 IP_ShowIntro = true;
@@ -64,11 +64,11 @@ IP_scn_dynamicCampInit = {
 			[IP_Pilot, "helicopterOpener"] call IP_fnc_addConversation;
 			waitUntil{time > 0};
 			while {(dayTime >= 7) AND (dayTime <= 19)} do {
+				sleep (300 + random 300);
 				IP_Heli setFuel 1;
 				IP_Heli engineOn true;			
 				sleep (10 + random 10);			
 				IP_Heli setFuel 0;
-				sleep (90 + random 30);
 			};
 		};
 	};
@@ -96,7 +96,7 @@ _animSet = ["BRIEFING", "GUARD", "STAND_U1", "STAND_U2", "STAND_U3"] call BIS_fn
 [IP_Commander, "commanderOpener"] call IP_fnc_addConversation;
 
 // Shop Setup
-call IP_fnc_shopInit;
+[] call IP_fnc_shopInit;
 
 // Shooting Range
 _nul = [IP_Shooter, [[IP_SR_TargetBig], [IP_SR_TargetSmall], [IP_MR_TargetBig, "MIDDLE"], [IP_MR_TargetSmall, "MIDDLE"], [IP_LR_TargetBig, "DOWN"], [IP_LR_TargetSmall, "DOWN"]]] spawn IP_scn_ambientShootingRange;
@@ -136,7 +136,7 @@ removeVest IP_ToiletGuy;
 };
 
 // Whiteboard
-IP_Whiteboard setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\wb\Hub01_WB1.paa"];
+IP_Whiteboard setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\Hub01_WB1.paa"];
 
 // Capturing Init
 [player, "tCapture", ["Capture Stratis by leaving the base and eliminating all rogues at every red marked location! This task and the progress you make stays persistent when leaving the hub for a contract mission. (OPTIONAL)", "Capture Stratis (OPTIONAL)", ""], nil, true, 1] call BIS_fnc_taskCreate;

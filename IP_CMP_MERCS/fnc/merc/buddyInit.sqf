@@ -5,7 +5,7 @@ _keepLoadout = getNumber(missionConfigFile >> "keepLoadout");
 _unit setIdentity "buddy";
 _unit setRank "LIEUTENANT";
 _unit setVariable ["IP_LiveFeed", true];
-_unit setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\buddyAvatar.jpg"];
+_unit setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\buddyAvatar.jpg"];
 _unit setVariable ["IP_Faction", "ION"];
 _unit allowDamage false;
 _unit allowFleeing 0;

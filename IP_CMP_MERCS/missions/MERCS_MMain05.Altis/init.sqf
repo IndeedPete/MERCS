@@ -115,10 +115,10 @@ if ((dayTime < 7) OR (dayTime > 19)) then {
 
 // Briefing
 _prefix = "OPERATION CRUSADER Phase V<br/><br/>";
-_suffix = "<br/><br/><img image='Campaigns\IP_CMP_MERCS\img\BK_LogoSmall.paa' width='128'/>";
+_suffix = "<br/><br/><img image='IP_CMP_MERCS\IP_CMP_MERCS\img\BK_LogoSmall.paa' width='128'/>";
 _rank = if (isClass(campaignConfigFile >> "campaign")) then {(getText(missionConfigFile >> "Factions" >> "ION" >> "Ranks" >> (([] call IP_fnc_getMainRankData) select 0) >> "displayName"))} else {"Section Leader"};
 
-player createDiaryRecord ["Diary", ["Target Information", "Dr. Joaquín Díaz at work.<br/><img image='Campaigns\IP_CMP_MERCS\img\scientistAvatar.jpg' width='310' height='232'/>"]];
+player createDiaryRecord ["Diary", ["Target Information", "Dr. Joaquín Díaz at work.<br/><img image='IP_CMP_MERCS\IP_CMP_MERCS\img\scientistAvatar.jpg' width='310' height='232'/>"]];
 player createDiaryRecord ["Diary", ["Signal", (_prefix + "White King - Command, Lord Commander Titus<br/>Templar - Attack, " + _rank + " Raif Salih" + _suffix)]];
 player createDiaryRecord ["Diary", ["Execution", (_prefix + "1. Callsign 'Templar' will insert on foot, by car, by boat or by helicopter close to the <marker name=""mResearch"">AO around the Research Facility</marker>.<br/>2. Templar will find a way to abduct Dr. Joaquín Díaz.<br/>3. Templar will extract with Dr. Joaquín Díaz and return to base.<br/><br/>The mission will be considered a failure if Dr. Joaquín Díaz dies!" + _suffix)]];
 player createDiaryRecord ["Diary", ["Mission", (_prefix + "The task is to abduct Dr. Joaquín Díaz. The British Knights' tactical officer identified three recommended ways to do so. First one would be to wait close to the <marker name=""mResearch"">Research Facility</marker> until Dr. Díaz's shift is over at around 1900 and then ambush his armed escort. Second way would be to break into his <marker name=""mHouse"">House in Anthrakia</marker> during daytime, take his sons as hostages and call him to leave his work early. Third option would be a night attack on his <marker name=""mHouse"">House in Anthrakia</marker> while he is at home. A direct attack on the <marker name=""mResearch"">Research Facility</marker> is not recommended. Furthermore, the AAF checkpoints, roadblocks and bases should be avoided." + _suffix)]];
@@ -137,7 +137,7 @@ _blacklisted = ["I_soldier_AA_F", "I_soldier_AAA_F"];
 {
 	if (((side _x) == civilian) && {_x getVariable ["IP_Scientist", false]}) then {
 		_x setVariable ["IP_Faction", "DSE"];
-		_x setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\scientist_02_coDSE.paa"];
+		_x setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\scientist_02_coDSE.paa"];
 	};
 	
 	if ((side _x) == east) then {

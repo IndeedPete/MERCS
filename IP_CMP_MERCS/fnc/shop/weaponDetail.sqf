@@ -1,28 +1,38 @@
+private ["_getOrigin", "_getPrice", "_getMags", "_getOptics", "_getMuzzles", "_getPointerStr", "_control", "_i", "_text"];
+
 _getOrigin = {
 	private "_origin";	
-	_weapon = _this;
+	_weapon = _this select 0;
+	_category = _this select 1;
+	_cfg = missionConfigFile >> "ShopWeapons" >> _category;
 	
-	_origin = getText(missionConfigFile >> "ShopWeapons" >> _weapon >> "origin");
-	if (isClass(missionConfigFile >> "ShopWeapons" >> _origin)) then {_origin = getText(missionConfigFile >> "ShopWeapons" >> _origin >> "origin")};	
+	_origin = getText(_cfg >> _weapon >> "origin");
+	if (isClass(_cfg >> _origin)) then {_origin = getText(_cfg >> _origin >> "origin")};	
 	
-	_origin = "Origin: " + getText(missionConfigFile >> "Factions" >> _origin >> "displayNameShort") + "<br/>";
+	_origin = if (isText(missionConfigFile >> "Factions" >> _origin >> "displayNameShort")) then {"Origin: " + getText(missionConfigFile >> "Factions" >> _origin >> "displayNameShort") + "<br/>"} else {""};
 	_origin
 };
 
 _getPrice = {
-	private "_amount";	
+	private "_amount";
 	_weapon = _this select 0;
 	_buying = _this select 1;
+	//_category = _this select 2;
+	_currency = getText(missionConfigFile >> "ShopMetaInformation" >> "currencyShort");
+	_divisor = getNumber(missionConfigFile >> "ShopMetaInformation" >> "sellingDisvisor");
+	//_cfg = missionConfigFile >> "ShopWeapons" >> _category;
 	
-	_amount = if (isNumber(missionConfigFile >> "ShopWeapons" >> _weapon >> "price")) then {
-		(getNumber(missionConfigFile >> "ShopWeapons" >> _weapon >> "price"))
+	
+	_amount = ["ShopWeapons", _weapon] call IP_fnc_getPrice;
+	/*_amount = if (isNumber(_cfg >> _weapon >> "price")) then {
+		(getNumber(_cfg >> _weapon >> "price"))
 	} else {
-		_ref = getText(missionConfigFile >> "ShopWeapons" >> _weapon >> "price");
-		(getNumber(missionConfigFile >> "ShopWeapons" >> _ref >> "price"))
-	};
+		_ref = getText(_cfg >> _weapon >> "price");
+		(getNumber(_cfg >> _ref >> "price"))
+	};*/
 	
-	if (!_buying) then {_amount = _amount / IP_SellingPriceDivisor};	
-	_price = ("Price: €" + ([_amount] call IP_fnc_numberText) + "<br/>");
+	if (!_buying) then {_amount = _amount / _divisor};	
+	_price = ("Price: " + _currency + " " + ([_amount] call IP_fnc_numberText) + "<br/>");
 	_price
 };
 
@@ -98,28 +108,32 @@ _getPointerStr = {
 	_pointerStr
 };
 
-private "_text";
 _control = str(_this select 0);
 _i = _this select 1;
+if (_i < 0) exitWith {};
 
 if (_control == "Control #1500") then {
-	_weapon = IP_AvailableWeapons select _i;
+	_weapons = IP_WeaponFilter call IP_fnc_weaponFilter;
+	_weapon = _weapons select _i;
+	_category = [(missionConfigFile >> "ShopWeapons"), _weapon] call IP_fnc_getConfigCategory;
 	
 	_description = getText(configFile >> "CfgWeapons" >> _weapon >> "descriptionShort") + "<br/>";
-	_origin = _weapon call _getOrigin;
-	_price = [_weapon, true] call _getPrice;
+	_origin = [_weapon, _category] call _getOrigin;
+	_price = [_weapon, true, _category] call _getPrice;
 	_magazines = _weapon call _getMags;
 	_optics = _weapon call _getOptics;
 	_muzzles = _weapon call _getMuzzles;
 	_pointerStr = _weapon call _getPointerStr;
 	_text = _description + _origin + _price + _magazines + _optics + _muzzles + _pointerStr;
 } else {
-	_weapons = weaponCargo IP_PlayerBox;	
-	_weapon = _weapons select _i;
+	_box = player getVariable ["IP_ShopBox", ObjNull];
+	_weapons = weaponCargo _box;	
+	_weapon = [(_weapons select _i)] call BIS_fnc_baseWeapon;
+	_category = [(missionConfigFile >> "ShopWeapons"), _weapon] call IP_fnc_getConfigCategory;
 	
 	_description = getText(configFile >> "CfgWeapons" >> _weapon >> "descriptionShort") + "<br/>";
-	_origin = _weapon call _getOrigin;
-	_price = [_weapon, false] call _getPrice;
+	_origin = [_weapon, _category] call _getOrigin;
+	_price = [_weapon, false, _category] call _getPrice;
 	_magazines = _weapon call _getMags;
 	_optics = _weapon call _getOptics;
 	_muzzles = _weapon call _getMuzzles;
@@ -127,4 +141,4 @@ if (_control == "Control #1500") then {
 	_text = _description + _origin + "Selling " + _price + _magazines + _optics + _muzzles + _pointerStr;
 };
 
-((findDisplay 10002) displayCtrl 1100) ctrlSetStructuredText (parseText _text);
+((findDisplay 10001) displayCtrl 1100) ctrlSetStructuredText (parseText _text);

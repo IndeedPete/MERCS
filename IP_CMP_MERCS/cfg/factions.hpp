@@ -73,43 +73,43 @@ class Factions
 			{
 				displayName = "Knight Brother";
 				displayNameShort = "Knight";
-				texture = "Campaigns\IP_CMP_MERCS\txt\coveralls_urbancamo_coBK.paa";
+				texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_urbancamo_coBK.paa";
 			};
 			class CORPORAL // Not Existent
 			{
 				displayName = "Knight Brother";
 				displayNameShort = "Knight";
-				texture = "Campaigns\IP_CMP_MERCS\txt\coveralls_urbancamo_coBK.paa";
+				texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_urbancamo_coBK.paa";
 			};
 			class SERGEANT
 			{
 				displayName = "Knight Brother";
 				displayNameShort = "Knight";
-				texture = "Campaigns\IP_CMP_MERCS\txt\coveralls_urbancamo_coBK.paa";
+				texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_urbancamo_coBK.paa";
 			};
 			class LIEUTENANT
 			{
 				displayName = "Knight Lieutenant";
 				displayNameShort = "Lieutenant";
-				texture = "Campaigns\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKLieutenant.paa";
+				texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKLieutenant.paa";
 			};
 			class CAPTAIN
 			{
 				displayName = "Knight Captain";
 				displayNameShort = "Captain";
-				texture = "Campaigns\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKCaptain.paa";
+				texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKCaptain.paa";
 			};
 			class MAJOR
 			{
 				displayName = "Lord Commander";
 				displayNameShort = "Lord";
-				texture = "Campaigns\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKLord.paa";
+				texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKLord.paa";
 			};
 			class COLONEL // Not Existent (Yet)
 			{
 				displayName = "High Constable";
 				displayNameShort = "Constable";
-				texture = "Campaigns\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKLord.paa";
+				texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKLord.paa";
 			};
 		};
 	};
@@ -243,7 +243,7 @@ class Factions
 			{
 				displayName = "Contractor";
 				displayNameShort = "Contractor";
-				insignia = "Campaigns\IP_CMP_MERCS\img\ranks\Rank_ION_Contractor.paa";
+				insignia = "IP_CMP_MERCS\IP_CMP_MERCS\img\ranks\Rank_ION_Contractor.paa";
 				rankInsignia = "Contractor";
 				rate = 0.25;
 			};
@@ -251,7 +251,7 @@ class Factions
 			{
 				displayName = "Senior Contractor";
 				displayNameShort = "Senior Contractor";
-				insignia = "Campaigns\IP_CMP_MERCS\img\ranks\Rank_ION_SeniorContractor.paa";
+				insignia = "IP_CMP_MERCS\IP_CMP_MERCS\img\ranks\Rank_ION_SeniorContractor.paa";
 				rankInsignia = "SeniorContractor";
 				rate = 0.2;
 			};
@@ -259,7 +259,7 @@ class Factions
 			{
 				displayName = "Detail Leader";
 				displayNameShort = "Detail Leader";
-				insignia = "Campaigns\IP_CMP_MERCS\img\ranks\Rank_ION_DetailLeader.paa";
+				insignia = "IP_CMP_MERCS\IP_CMP_MERCS\img\ranks\Rank_ION_DetailLeader.paa";
 				rankInsignia = "DetailLeader";
 				rate = 0.15;
 			};
@@ -267,7 +267,7 @@ class Factions
 			{
 				displayName = "Section Leader";
 				displayNameShort = "Section Leader";
-				insignia = "Campaigns\IP_CMP_MERCS\img\ranks\Rank_ION_SectionLeader.paa";
+				insignia = "IP_CMP_MERCS\IP_CMP_MERCS\img\ranks\Rank_ION_SectionLeader.paa";
 				rankInsignia = "SectionLeader";
 				rate = 0.1;
 			};
@@ -275,7 +275,7 @@ class Factions
 			{
 				displayName = "Executive";
 				displayNameShort = "Executive";
-				insignia = "Campaigns\IP_CMP_MERCS\img\ranks\Rank_ION_Executive.paa";
+				insignia = "IP_CMP_MERCS\IP_CMP_MERCS\img\ranks\Rank_ION_Executive.paa";
 				rankInsignia = "Executive";
 				rate = 0.05;
 			};

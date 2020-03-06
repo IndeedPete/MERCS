@@ -1,6 +1,6 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 
-SET_MISSION_META(B, "M07c", "Diplomatic Incident", "On the way to the factory near Kore...", "The British Knights move out in an attempt to further escalate the conflict between AAF and FIA.", "Campaigns\IP_CMP_MERCS\img\M07c_load.jpg", "Campaigns\IP_CMP_MERCS\img\M07c_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+SET_MISSION_META(B, "M07c", "Diplomatic Incident", "On the way to the factory near Kore...", "The British Knights move out in an attempt to further escalate the conflict between AAF and FIA.", "IP_CMP_MERCS\IP_CMP_MERCS\img\M07c_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\M07c_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
 
 class CfgDebriefing
 {  

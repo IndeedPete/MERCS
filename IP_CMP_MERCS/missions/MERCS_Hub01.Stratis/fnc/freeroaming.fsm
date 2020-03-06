@@ -46,8 +46,8 @@ link20[] = {17,14};
 link21[] = {18,19};
 link22[] = {19,20};
 link23[] = {20,7};
-globals[] = {25.000000,1,0,0,0,640,480,1,85,6316128,1,-626.954285,330.466095,628.484863,-234.141418,1010,910,1};
-window[] = {2,-1,-1,-1,-1,967,208,1648,208,3,1028};
+globals[] = {25.000000,1,0,0,0,640,480,1,85,6316128,1,-626.954285,330.466095,628.484863,-234.141418,1010,1270,1};
+window[] = {2,-1,-1,-1,-1,863,104,1544,104,3,1028};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -103,7 +103,8 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"_handle = [] spawn {" \n
        "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
        "	sleep 0.5;" \n
-       "" \n
+       "	" \n
+       "	(vehicle player) setVelocity [0, 0, 0];" \n
        "	{" \n
        "		if (side _x == west) then {" \n
        "			_x enableSimulation false;" \n
@@ -197,9 +198,10 @@ class FSM
        "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
        "	sleep 0.5;" \n
        "" \n
+       "	(vehicle player) setVelocity [0, 0, 0];" \n
        "	IP_Main setDamage 0;" \n
        "	[IP_Main, IP_TacPadIndex] call BIS_fnc_removeCommMenuItem;" \n
-       "	{deleteVehicle _x} forEach ((units(group IP_Main)) - [IP_Main, IP_Shooter]);" \n
+       "	{deleteVehicle _x} forEach ((units(group IP_Main)) - [IP_Main]);" \n
        "	" \n
        "	{" \n
        "		if ((_x getVariable [""IP_ToCapture"", """"]) != """") then {" \n

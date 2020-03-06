@@ -71,7 +71,7 @@ IP_Merc1 setVariable ["IP_LiveFeed", true];
 group IP_Merc1 setGroupID ["Sabre"];
 [IP_Merc1, "STAND", "ASIS"] call BIS_fnc_ambientAnim;
 IP_Pilot setGroupID ["Starforce"];
-IP_Pilot setVariable ["IP_Avatar", ("Campaigns\IP_CMP_MERCS\img\pilotAvatar.jpg")];
+IP_Pilot setVariable ["IP_Avatar", ("IP_CMP_MERCS\IP_CMP_MERCS\img\pilotAvatar.jpg")];
 
 // Pirate Setup
 {_x allowDamage false} forEach [IP_Car, IP_Pirate1, IP_Pirate2];

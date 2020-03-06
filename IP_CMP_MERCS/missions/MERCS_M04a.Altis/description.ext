@@ -1,7 +1,7 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 #include "missionConversations.hpp"
 
-SET_MISSION_META(A, "M04a", "Sauerland Express", "On the way to the former FOB Sauerland...", "EUROFORCE cut a deal with the AAF to ship out old but valuable equipment from the former occupation. PMCs are tasked to ensure the safe transportation.", "Campaigns\IP_CMP_MERCS\img\M04a_load.jpg", "Campaigns\IP_CMP_MERCS\img\M04a_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+SET_MISSION_META(A, "M04a", "Sauerland Express", "On the way to the former FOB Sauerland...", "EUROFORCE cut a deal with the AAF to ship out old but valuable equipment from the former occupation. PMCs are tasked to ensure the safe transportation.", "IP_CMP_MERCS\IP_CMP_MERCS\img\M04a_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\M04a_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
 
 class CfgDebriefing
 {  

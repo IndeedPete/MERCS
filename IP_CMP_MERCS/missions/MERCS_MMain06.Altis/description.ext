@@ -1,7 +1,7 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 #include "missionConversations.hpp"
 
-SET_MISSION_META(B, "MMain06", "Smash And Grab", "On the way to Black Mesa...", "The British Knights and ION contractors launch an attack on DSE's research facility code name 'Black Mesa' in order to extract the device.", "Campaigns\IP_CMP_MERCS\img\MMain06_load.jpg", "Campaigns\IP_CMP_MERCS\img\MMain06_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+SET_MISSION_META(B, "MMain06", "Smash And Grab", "On the way to Black Mesa...", "The British Knights and ION contractors launch an attack on DSE's research facility code name 'Black Mesa' in order to extract the device.", "IP_CMP_MERCS\IP_CMP_MERCS\img\MMain06_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\MMain06_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
 
 class CfgDebriefing
 {  
@@ -37,7 +37,7 @@ class CfgDebriefing
 		title = "Mission Accomplished!";
 		subtitle = "Device Secured!";
 		description = "";
-		pictureBackground = "\Campaigns\IP_CMP_MERCS\txt\DSE_Logo.paa";
+		pictureBackground = "\IP_CMP_MERCS\IP_CMP_MERCS\txt\DSE_Logo.paa";
 		picture = "b_inf";
 		pictureColor[] = {0,1,0,1};	
 	};
@@ -46,7 +46,7 @@ class CfgDebriefing
 		title = "Mission Accomplished!";
 		subtitle = "Device Secured!";
 		description = "";
-		pictureBackground = "\Campaigns\IP_CMP_MERCS\txt\EF_Flag.paa";
+		pictureBackground = "\IP_CMP_MERCS\IP_CMP_MERCS\txt\EF_Flag.paa";
 		picture = "b_inf";
 		pictureColor[] = {0,1,0,1};	
 	};

@@ -16,8 +16,8 @@ saveProfileNamespace;
 IP_Main setIdentity "main";
 IP_Main setVariable ["IP_Money", (getNumber(missionConfigFile >> "MainValues" >> "startMoney"))];
 IP_Main setVariable ["IP_Debts", (getNumber(missionConfigFile >> "MainValues" >> "startDebts"))];
-IP_Main setVariable ["IP_Picture", "Campaigns\IP_CMP_MERCS\img\main.jpg"];
-IP_Main setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\mainAvatar1.jpg"];
+IP_Main setVariable ["IP_Picture", "IP_CMP_MERCS\IP_CMP_MERCS\img\main.jpg"];
+IP_Main setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\mainAvatar1.jpg"];
 IP_Main setVariable ["IP_LiveFeed", true];
 IP_Main setVariable ["IP_Team", []];
 IP_Main setVariable ["IP_Clothes", [getText(missionConfigFile >> "MainValues" >> "startUniform")]];
@@ -53,7 +53,7 @@ IP_Commander allowDamage false;
 // Trafficker Setup
 IP_Trafficker setIdentity "trafficker";
 IP_Trafficker setVariable ["IP_LiveFeed", true];
-IP_Trafficker setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\traffickerAvatar.jpg"];
+IP_Trafficker setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\traffickerAvatar.jpg"];
 IP_Trafficker allowDamage false;
 IP_Trafficker moveInDriver IP_Boat1;
 

@@ -1,7 +1,5 @@
-private ["_list", "_clusteredArray"];
-
+private ["_array", "_list", "_clusteredArray"];
 _array = _this;
-
 _list = [];
 _clusteredArray = [];
 

@@ -5558,7 +5558,7 @@ class Mission
 			vehicle="Land_Laptop_unfolded_F";
 			leader=1;
 			skill=0.40000001;
-			init="this setPos (IP_BriefingTable3 modelToWorld [0,0,0.4]); this enableSimulation false; this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\laptop\Laptop_BKLockscreen.paa""];";
+			init="this setPos (IP_BriefingTable3 modelToWorld [0,0,0.4]); this enableSimulation false; this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\laptop\Laptop_BKLockscreen.paa""];";
 		};
 		class Item153
 		{
@@ -5837,7 +5837,7 @@ class Mission
 			vehicle="Land_Laptop_unfolded_F";
 			leader=1;
 			skill=0.40000001;
-			init="this setPos (IP_Table3 modelToWorld [-0.3,0,0.4]); this enableSimulation false; this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\laptop\Laptop_BIForums.paa""];";
+			init="this setPos (IP_Table3 modelToWorld [-0.3,0,0.4]); this enableSimulation false; this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\laptop\Laptop_BIForums.paa""];";
 		};
 		class Item179
 		{
@@ -6023,7 +6023,7 @@ class Mission
 			vehicle="Land_Laptop_unfolded_F";
 			leader=1;
 			skill=0.60000002;
-			init="this setPos (IP_Table5 modelToWorld [-0.6,0.1,0.42]); this enableSimulation false; this addAction [""Open Shop"", {nul = [player, IP_LastOpened] spawn IP_fnc_openShop}]; this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\laptop\Laptop_Shop2.paa""];";
+			init="this setPos (IP_Table5 modelToWorld [-0.6,0.1,0.42]); this enableSimulation false; this addAction [""Open Shop"", {nul = [player, IP_LastOpened] spawn IP_fnc_openShop}]; this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\laptop\Laptop_Shop2.paa""];";
 		};
 		class Item196
 		{

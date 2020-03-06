@@ -62,24 +62,24 @@
       pos = [parameters] call SHK_pos;
 */
 // Functions
-SHK_pos_getPos = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_getpos.sqf";
-SHK_pos_getPosMarker = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_getposmarker.sqf";
+SHK_pos_getPos = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_getpos.sqf";
+SHK_pos_getPosMarker = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_getposmarker.sqf";
 
 // Sub functions
-SHK_pos_fnc_findClosestPosition = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_findclosestposition.sqf";
-SHK_pos_fnc_getMarkerCorners = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getmarkercorners.sqf";
-SHK_pos_fnc_getMarkerShape = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getmarkershape.sqf";
-SHK_pos_fnc_getPos = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getpos.sqf";
-SHK_pos_fnc_getPosFromCircle = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getposfromcircle.sqf";
-SHK_pos_fnc_getPosFromEllipse = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getposfromellipse.sqf";
-SHK_pos_fnc_getPosFromRectangle = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getposfromrectangle.sqf";
-SHK_pos_fnc_getPosFromSquare = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getposfromsquare.sqf";
-SHK_pos_fnc_isBlacklisted = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_isblacklisted.sqf";
-SHK_pos_fnc_isInCircle = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_isincircle.sqf";
-SHK_pos_fnc_isInEllipse = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_isinellipse.sqf";
-SHK_pos_fnc_isInRectangle = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_isinrectangle.sqf";
-SHK_pos_fnc_isSamePosition = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_issameposition.sqf";
-SHK_pos_fnc_rotatePosition = compile preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_rotateposition.sqf";
+SHK_pos_fnc_findClosestPosition = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_findclosestposition.sqf";
+SHK_pos_fnc_getMarkerCorners = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getmarkercorners.sqf";
+SHK_pos_fnc_getMarkerShape = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getmarkershape.sqf";
+SHK_pos_fnc_getPos = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getpos.sqf";
+SHK_pos_fnc_getPosFromCircle = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getposfromcircle.sqf";
+SHK_pos_fnc_getPosFromEllipse = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getposfromellipse.sqf";
+SHK_pos_fnc_getPosFromRectangle = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getposfromrectangle.sqf";
+SHK_pos_fnc_getPosFromSquare = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_getposfromsquare.sqf";
+SHK_pos_fnc_isBlacklisted = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_isblacklisted.sqf";
+SHK_pos_fnc_isInCircle = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_isincircle.sqf";
+SHK_pos_fnc_isInEllipse = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_isinellipse.sqf";
+SHK_pos_fnc_isInRectangle = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_isinrectangle.sqf";
+SHK_pos_fnc_isSamePosition = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_issameposition.sqf";
+SHK_pos_fnc_rotatePosition = compile preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shk_pos\shk_pos_fnc_rotateposition.sqf";
 
 // Wrapper function
 // Decide which function to call based on parameters.

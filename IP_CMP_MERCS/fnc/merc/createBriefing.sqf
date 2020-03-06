@@ -33,10 +33,10 @@ _contract = "GENERAL ASSIGNMENT CONTRACT
 			<br/>BIC/SWIFT: CRESCHZZ80A
 			<br/>Reason for Payment: 10-Digit Client Number
 			<br/>
-			<br/>Prior to the above stated start date in order to commence the OPERATION. The COMPANY keeps 10 percent plus a percentage amount based on the CONTRACTOR's rank within the COMPANY of the charged service fee as general share for conveying, accommodation, transportation and miscellaneous. The CONTRACTOR receives the remaining amount as payout for his efforts. 
+			<br/>prior to the above stated start date in order to commence the OPERATION. The COMPANY keeps 10 percent plus a percentage amount based on the CONTRACTOR's rank within the COMPANY of the charged service fee as general share for conveying, accommodation, transportation and miscellaneous. The CONTRACTOR receives the remaining amount as payout for his efforts. 
 			<br/>
 			<br/>The Standard Uniform Code of Military Justice, hereafter referred to as the UCMJ, is understood to be voluntarily applied to the CONTRACTOR in full within the AOR during the lifetime of the OPERATION. The CONTRACTOR agrees that the rules of engagement, hereafter referred to as the ROE (expounded in detail in Annex II), fall under the remit of the UCMJ. Furthermore, the OPERATION stipulates NO UNAUTHORIZED USE OF DEADLY FORCE unless fired upon. The COMPANY reserves the right to extend or narrow the scope of the UCMJ as appropriate. Amendments to the UCMJ are to be detailed and countersigned in future addenda to this contract. Agile changes to the ROE are authorized under tactical COMPANY authorized supervision.The CONTRACTOR agrees to the full liability of any and all deviations from the ROE within the OPERATION AOR notwithstanding CLIENT or COMPANY contractual addenda.
-			<br/><img image='Campaigns\IP_CMP_MERCS\img\ui_ion_stamp_ca.paa' width='100'/>";
+			<br/><img image='IP_CMP_MERCS\IP_CMP_MERCS\img\ui_ion_stamp_ca.paa' width='100'/>";
 
 _contract = format [_contract, _contractor, _client, _tDate, _location, _text, _reward];
 

@@ -17,7 +17,7 @@ if (IP_TESTMODE) then {IP_Officer allowDamage false};
 
 // HQ Dummy
 IP_HQ allowDamage false;
-IP_HQ setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\CSAT_Flag.jpg"];
+IP_HQ setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\CSAT_Flag.jpg"];
 (group IP_HQ) setGroupID ["Sultan"];
 
 // Marker

@@ -37,7 +37,7 @@ IP_m_fnc_stratMap = {
 		_title = getText(missionConfigFile >> "ShopMissions" >> _mission >> "title");
 		_desc = getText(missionConfigFile >> "ShopMissions" >> _mission >> "description");
 		_client = getText(missionConfigFile >> "Factions" >> (getText(missionConfigFile >> "ShopMissions" >> _mission >> "client")) >> "displayName");
-		_overview = "Campaigns\IP_CMP_MERCS\img\" + _mission + "_overview.jpg";
+		_overview = "IP_CMP_MERCS\IP_CMP_MERCS\img\" + _mission + "_overview.jpg";
 		_missionsData set [(count _missionsData), [_pos, _code, _title, _desc, _client, _overview, 1, []]];
 	};
 	
@@ -182,10 +182,10 @@ if (IP_BuddyDied) then {
 };
 
 // Shop Setup
-call IP_fnc_shopInit;
+[] call IP_fnc_shopInit;
 
 // Whiteboards
-IP_StratMap setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\wb\Hub02_WBStratMap1.paa"];
+IP_StratMap setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\Hub02_WBStratMap1.paa"];
 IP_StratMap addAction ["Open Strategic Map", {call IP_m_fnc_stratMap}];
 _WB = switch ({_x in ["MMain01", "MMain02", "MMain03", "MMain04"]} count _missionsDone) do {
 	case 1: {"Hub02_WB2"};
@@ -194,7 +194,7 @@ _WB = switch ({_x in ["MMain01", "MMain02", "MMain03", "MMain04"]} count _missio
 	case 4: {"Hub02_WB5"};
 	default {"Hub02_WB1"};
 };
-IP_Whiteboard setObjectTexture [0, ("Campaigns\IP_CMP_MERCS\txt\wb\" + _WB + ".paa")];
+IP_Whiteboard setObjectTexture [0, ("IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\" + _WB + ".paa")];
 
 // People
 _animSet = ["BRIEFING", "GUARD", "STAND_U1", "STAND_U2", "STAND_U3"];
@@ -224,10 +224,10 @@ if ("MMain03" in _missionsDone) then {
 	[IP_Hacker, "hacker", "hub"] call IP_fnc_applyTemplate;
 	[IP_Hacker, "SIT_AT_TABLE", "ASIS"] call BIS_fnc_ambientAnim;
 	[IP_Hacker, "hackerOpener"] call IP_fnc_addConversation;
-	IP_HackerLaptop setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\laptop\Laptop_Code.paa"];
+	IP_HackerLaptop setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\laptop\Laptop_Code.paa"];
 } else {
 	deleteVehicle IP_Hacker;
-	IP_HackerLaptop setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\laptop\Laptop_BKLockscreen.paa"];
+	IP_HackerLaptop setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\laptop\Laptop_BKLockscreen.paa"];
 };
 
 // Jukebox

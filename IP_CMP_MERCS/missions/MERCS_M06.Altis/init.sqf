@@ -44,7 +44,7 @@ if (!(isNil "IP_MERCS_BuddyDied") && {IP_MERCS_BuddyDied}) then {
 [IP_Lord, "lord", "command"] call IP_fnc_applyTemplate;
 
 // Crashsite
-IP_Heli2 setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\heli_light_02_ext_coION.paa"];
+IP_Heli2 setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\heli_light_02_ext_coION.paa"];
 {IP_Heli2 animate [_x, 1]} forEach ["dvere1", "dvere1_posunZ", "dvere2"];
 IP_Heli2 setDamage 0.9;
 [(getPos IP_Heli2), "SMOKE_BIG"] call IP_fnc_createFireEffect;
@@ -55,7 +55,7 @@ clearBackpackCargo IP_Heli2;
 
 IP_Pilot2 setIdentity "pilot";
 removeBackpack IP_Pilot2;
-IP_Pilot2 setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\coveralls_black_coION.paa"];
+IP_Pilot2 setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_black_coION.paa"];
 [IP_Pilot2] call IP_fnc_deadBody;
 IP_Pilot2 addAction ["Bury", _bury];
 

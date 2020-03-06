@@ -5,15 +5,15 @@ _mainLoadout = [IP_Main] call IP_fnc_getLoadout;
 _buddyLoadout = if ((isNil "IP_Buddy") OR {isNull IP_Buddy} OR {!alive IP_Buddy}) then {[]} else {[IP_Buddy] call IP_fnc_getLoadout};
 _isHub = if (getNumber(missionConfigFile >> "isHub") == 1) then {true} else {false};
 
-_money = IP_Main getVariable "IP_Money";
+_money = IP_Main getVariable "IP_ShopMoney";
 _debts = IP_Main getVariable "IP_Debts";
-_team = IP_Main getVariable "IP_Team";
-_clothes = IP_Main getVariable "IP_Clothes";
-_campEnhancements = IP_Main getVariable ["IP_CampEnhancements", []];
-_campVehicles = IP_Main getVariable ["IP_CampVehicles", []];
+_team = IP_Main getVariable "IP_ShopTeam";
+_clothes = IP_Main getVariable "IP_ShopUniforms";
+_campEnhancements = IP_Main getVariable ["IP_ShopCampEnhancements", []];
+_campVehicles = IP_Main getVariable ["IP_ShopCampVehicles", []];
 _killedTeammates = IP_Main getVariable ["IP_KilledTeammates", []];
 _mission = IP_Main getVariable ["IP_Mission", (getText(missionConfigFile >> "name"))];
-_insertion = IP_Main getVariable ["IP_Insertion", "foot"];
+_insertion = IP_Main getVariable ["IP_ShopInsertion", "foot"];
 
 if ((getNumber(missionConfigFile >> "keepLoadout")) == 1) then {
 	IP_MERCS_MainLoadout = _mainLoadout;
@@ -32,6 +32,9 @@ IP_MERCS_CampVehicles = _campVehicles;
 IP_MERCS_KilledTeammates = _killedTeammates;
 
 IP_MERCS_Date = date;
+if (isNil "IP_Weather") then {
+	IP_Weather = ["CLEAR", "SUNNY"];
+};
 IP_MERCS_Weather = IP_Weather;
 
 {saveVar _x} forEach ["IP_MERCS_MainLoadout", "IP_MERCS_Money", "IP_MERCS_Debts", "IP_MERCS_Team", "IP_MERCS_Clothes", "IP_MERCS_Mission", "IP_MERCS_Insertion", "IP_MERCS_CampEnhancements", "IP_MERCS_CampVehicles", "IP_MERCS_KilledTeammates", "IP_MERCS_Date", "IP_MERCS_Weather"];

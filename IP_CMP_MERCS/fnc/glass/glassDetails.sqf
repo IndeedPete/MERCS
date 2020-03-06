@@ -8,7 +8,7 @@ while {CHECK} do {
 	if (!CHECK) exitWith {};
 	_target = cursorTarget;
 	_damage = damage _target;
-	_picture = cursorTarget getVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\defaultAvatar.jpg"];
+	_picture = cursorTarget getVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\defaultAvatar.jpg"];
 	_faction = _target getVariable "IP_Faction";
 	_faction = if (!isNil "_faction") then {("> " + (getText(missionConfigFile >> "Factions" >> _faction >> "displayNameShort")) + "<br/>")} else {""};
 	_distance = round(player distance _target);

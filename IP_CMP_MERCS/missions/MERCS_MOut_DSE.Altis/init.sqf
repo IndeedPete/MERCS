@@ -15,7 +15,7 @@ IP_fnc_m_ambientLightning = {
 };
 
 // Scenes
-IP_scn_credits = compile(preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\scn\credits.sqf");
+IP_scn_credits = compile(preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\scn\credits.sqf");
 
 // Adjust Date
 private "_date";
@@ -47,7 +47,7 @@ IP_Rival enableSimulation false;
 IP_Rival hideObject true;
 
 // Whiteboard
-IP_Whiteboard setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\wb\MOut_DSE_WB1.paa"];
+IP_Whiteboard setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\MOut_DSE_WB1.paa"];
 
 // Flickering Lights
 [[22001.1,21050,0.00143814], "Lamps_base_F"] spawn IP_fnc_streetLightsBlinking;

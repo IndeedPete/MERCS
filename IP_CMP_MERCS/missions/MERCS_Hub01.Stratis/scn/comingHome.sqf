@@ -46,18 +46,19 @@ _saySentences = {
 	IP_cutscene_skip = nil;
 };
 
-private ["_lastSuccessfulMission", "_sentences", "_reward"];
+private ["_lastMission", "_lastSuccessfulMission", "_sentences", "_reward", "_missionsDone"];
 
 ["IP_BlackScreen", false] call BIS_fnc_blackOut;
 sleep 2;
 skipTime 1;
 call IP_scn_dynamicCampInit;
 
-_lastMission = IP_MERCS_Mission;
+_lastMission = if (isNil "IP_MERCS_Mission") then {""} else {IP_MERCS_Mission};
 _lastSuccessfulMission = "";
 _sentences = [];
 _reward = 0;
-if (_lastMission in IP_MERCS_MissionsDone) then {
+_missionsDone = if (isNil "IP_MERCS_MissionsDone") then {""} else {IP_MERCS_MissionsDone};
+if (_lastMission in _missionsDone) then {
 	_lastSuccessfulMission = _lastMission;
 	_sentences = getArray(missionConfigFile >> "ShopMissions" >> _lastSuccessfulMission >> "comingHome");
 	_reward = _lastSuccessfulMission call IP_fnc_calculateCurrentMissionReward;

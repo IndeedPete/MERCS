@@ -48,7 +48,7 @@ IP_fnc_m_createPoliceman = {
 // Tank Setup
 clearWeaponCargo IP_Tank;
 clearMagazineCargo IP_Tank;
-IP_Tank setObjectTexture [1, "Campaigns\IP_CMP_MERCS\txt\mbt_01_body_coEF.paa"];
+IP_Tank setObjectTexture [1, "IP_CMP_MERCS\IP_CMP_MERCS\txt\mbt_01_body_coEF.paa"];
 
 // Officer Setup
 IP_Officer setVariable ["IP_LiveFeed", true];

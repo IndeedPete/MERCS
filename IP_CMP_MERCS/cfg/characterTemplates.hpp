@@ -7,7 +7,7 @@ class CharacterTemplates {
 		identity = "agent";
 		rank = "CAPTAIN";
 		skill = 5;
-		variables = "[['IP_Faction', 'DSE'], ['IP_LiveFeed', true], ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\agentAvatar.jpg'], ['IP_Rank', 'Agent']]";
+		variables = "[['IP_Faction', 'DSE'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\agentAvatar.jpg'], ['IP_Rank', 'Agent']]";
 		
 		class combat {
 			code = "[_this] call IP_fnc_automaticRearm;";
@@ -27,9 +27,9 @@ class CharacterTemplates {
 		magazines = "[['30Rnd_556x45_Stanag', 10], ['16Rnd_9x21_Mag', 3], ['HandGrenade', 4], ['SmokeShell', 2], ['SmokeShellRed', 1], ['SmokeShellGreen', 1]]";
 		rank = "CAPTAIN";
 		skill = 5;
-		texture = "Campaigns\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKGabriel.paa";
+		texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKGabriel.paa";
 		uniform = "U_C_WorkerCoveralls";
-		variables = "[['IP_Faction', 'BritishKnights'], ['IP_LiveFeed', true], ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\captainAvatar.jpg'], ['IP_ConvSpecial', 'Tactical Officer']]";
+		variables = "[['IP_Faction', 'BritishKnights'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\captainAvatar.jpg'], ['IP_ConvSpecial', 'Tactical Officer']]";
 		vest = "V_PlateCarrierH_CTRG";
 		weapons[] = {"arifle_TRG21_ARCO_pointer_F", "", "hgun_P07_F"};
 		
@@ -52,7 +52,7 @@ class CharacterTemplates {
 		identity = "Bootcamp_I_Akhanteros";
 		rank = "COLONEL";
 		skill = 5;
-		variables = "[['IP_Faction', 'AltisMil'], ['IP_LiveFeed', true], ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\briefing\Briefing_M07a_Colonel.jpg'], ['IP_ConvSpecial', 'Commander in chief of the AAF and de-facto ruler of Altis.']]";
+		variables = "[['IP_Faction', 'AltisMil'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\briefing\Briefing_M07a_Colonel.jpg'], ['IP_ConvSpecial', 'Commander in chief of the AAF and de-facto ruler of Altis.']]";
 	};
 
 	// Commander
@@ -61,9 +61,9 @@ class CharacterTemplates {
 		identity = "commander";
 		rank = "CAPTAIN";
 		skill = 5;
-		texture = "Campaigns\IP_CMP_MERCS\txt\clothing1_mtp_coION.paa";
+		texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_mtp_coION.paa";
 		uniform = "U_B_CTRG_3";
-		variables = "[['IP_Faction', 'ION'], ['IP_LiveFeed', true], ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\commanderAvatar.jpg'], ['IP_ConvSpecial', 'Head of IONs Mediterranean operations.']]";
+		variables = "[['IP_Faction', 'ION'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\commanderAvatar.jpg'], ['IP_ConvSpecial', 'Head of IONs Mediterranean operations.']]";
 		
 		class combat {
 			code = "[_this] call IP_fnc_automaticRearm; _this allowDamage false; (group _this) setGroupID ['Black Knight'];";
@@ -95,7 +95,7 @@ class CharacterTemplates {
 			code = "[_this, 'GryffinRegiment'] call BIS_fnc_setUnitInsignia;";
 			headgear = "H_Beret_ocamo";
 			night[] = {"false", "true"};
-			variables = "[['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\CSATOfficerAvatar2.jpg']]";
+			variables = "[['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\CSATOfficerAvatar2.jpg']]";
 		};
 		
 		class covert {
@@ -105,7 +105,7 @@ class CharacterTemplates {
 			night[] = {"false", "false"};
 			uniform = "U_C_Journalist";
 			weapons[] = {"hgun_Rook40_F"};
-			variables = "[['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\CSATOfficerAvatar1.jpg']]";
+			variables = "[['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\CSATOfficerAvatar1.jpg']]";
 			vest = "V_Press_F";
 		};
 	};
@@ -116,8 +116,8 @@ class CharacterTemplates {
 		identity = "ef_officer";
 		rank = "CAPTAIN";
 		skill = 5;
-		texture = "Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa";
-		variables = "[['IP_Faction', 'EFMil'], ['IP_LiveFeed', true], ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\EFOfficerAvatar.jpg'], ['IP_Rank', 'Lt.Cdr.']]";
+		texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_coMOD.paa";
+		variables = "[['IP_Faction', 'EFMil'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\EFOfficerAvatar.jpg'], ['IP_Rank', 'Lt.Cdr.']]";
 	};
 	
 	// IT-Security Specialist
@@ -129,9 +129,9 @@ class CharacterTemplates {
 		rank = "LIEUTENANT";
 		skill = 5;
 		speaker = "Male12ENG";
-		texture = "Campaigns\IP_CMP_MERCS\txt\ig_guerrilla2_1_coMOD.paa";
+		texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\ig_guerrilla2_1_coMOD.paa";
 		uniform = "U_BG_Guerilla2_1";
-		variables = "[['IP_Faction', 'Private'], ['IP_LiveFeed', true], ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\hackerAvatar.jpg'], ['IP_Rank', 'Freelancer'], ['IP_ConvSpecial', 'IT-Security Specialist']]";
+		variables = "[['IP_Faction', 'Private'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\hackerAvatar.jpg'], ['IP_Rank', 'Freelancer'], ['IP_ConvSpecial', 'IT-Security Specialist']]";
 		
 		class combat {
 			items[] = {"FirstAidKit"};
@@ -154,9 +154,9 @@ class CharacterTemplates {
 		items[] = {"FirstAidKit"};
 		rank = "MAJOR";
 		skill = 5;
-		texture = "Campaigns\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKTitus.paa";
+		texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKTitus.paa";
 		uniform = "U_C_WorkerCoveralls";
-		variables = "[['IP_Faction', 'BritishKnights'], ['IP_LiveFeed', true], ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\lordAvatar.jpg'], ['IP_ConvSpecial', 'Head of the British Knights detachment on Altis.']]";
+		variables = "[['IP_Faction', 'BritishKnights'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\lordAvatar.jpg'], ['IP_ConvSpecial', 'Head of the British Knights detachment on Altis.']]";
 		
 		class combat {
 			code = "[_this] call IP_fnc_automaticRearm; _this allowDamage false; (group _this) setGroupID ['White King'];";
@@ -184,12 +184,12 @@ class CharacterTemplates {
 		items[] = {"FirstAidKit"};
 		magazines = "[['30Rnd_65x39_caseless_mag', 8], ['1Rnd_HE_Grenade_shell', 6], ['16Rnd_9x21_Mag', 3], ['HandGrenade', 2], ['SmokeShell', 2], ['DemoCharge_Remote_Mag', 1], ['ATMine_Range_Mag', 3]]";
 		rank = "LIEUTENANT";
-		//texture = "Campaigns\IP_CMP_MERCS\txt\clothing1_mtp_coION.paa";
-		texture[] = {"Campaigns\IP_CMP_MERCS\txt\clothingMOD.rvmat", "Campaigns\IP_CMP_MERCS\txt\clothing_rus_coBA.paa"};
+		//texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_mtp_coION.paa";
+		texture[] = {"IP_CMP_MERCS\IP_CMP_MERCS\txt\clothingMOD.rvmat", "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing_rus_coBA.paa"};
 		uniform = "U_O_CombatUniform_ocamo";//"U_B_CTRG_3";
 		night[] = {"false", "true"};
 		weapons[] = {"arifle_MX_Black_F", "", "hgun_P07_F", "Binocular"};
-		variables = "[['IP_Faction', 'ION'], ['IP_LiveFeed', true], ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\mainAvatar4.jpg'], ['IP_Team', ['B_CTRG_soldier_M_medic_F', 'B_CTRG_soldier_AR_A_F', 'B_CTRG_soldier_engineer_exp_F', 'B_CTRG_soldier_GL_LAT_F']]]";
+		variables = "[['IP_Faction', 'ION'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\mainAvatar4.jpg'], ['IP_Team', ['B_CTRG_soldier_M_medic_F', 'B_CTRG_soldier_AR_A_F', 'B_CTRG_soldier_engineer_exp_F', 'B_CTRG_soldier_GL_LAT_F']]]";
 		vest = "V_PlateCarrier3_rgr";
 	};
 	
@@ -213,9 +213,9 @@ class CharacterTemplates {
 		identity = "medic";
 		rank = "LIEUTENANT";
 		skill = 5;
-		texture = "Campaigns\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKVictus.paa";
+		texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_urbancamo_coBKVictus.paa";
 		uniform = "U_C_WorkerCoveralls";
-		variables = "[['IP_Faction', 'BritishKnights'], ['IP_LiveFeed', true], ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\medicAvatar.jpg'], ['IP_ConvSpecial', 'Staff Medic.']]";
+		variables = "[['IP_Faction', 'BritishKnights'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\medicAvatar.jpg'], ['IP_ConvSpecial', 'Staff Medic.']]";
 		vest = "V_PlateCarrierL_CTRG";		
 		
 		class combat {
@@ -245,9 +245,9 @@ class CharacterTemplates {
 		night[] = {"false", "false"};
 		rank = "CAPTAIN";
 		skill = 5;
-		texture[] = {"Campaigns\IP_CMP_MERCS\txt\clothingMOD.rvmat", "Campaigns\IP_CMP_MERCS\txt\clothing_rus_coBA.paa"};
+		texture[] = {"IP_CMP_MERCS\IP_CMP_MERCS\txt\clothingMOD.rvmat", "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing_rus_coBA.paa"};
 		uniform = "U_O_CombatUniform_ocamo";
-		variables = "[['IP_Faction', 'BlackArrow'], ['IP_LiveFeed', true], ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\rivalAvatar.jpg']]";
+		variables = "[['IP_Faction', 'BlackArrow'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\rivalAvatar.jpg']]";
 		vest = "V_PlateCarrier1_blk";
 		weapons[] = {"LMG_Zafir_pointer_F", "", "hgun_ACPC2_F"};
 	};
@@ -257,8 +257,8 @@ class CharacterTemplates {
 		code = "removeGoggles _this; removeHeadgear _this;";
 		identity = "scientist";
 		items[] = {"FirstAidKit"};
-		texture = "Campaigns\IP_CMP_MERCS\txt\scientist_02_coScientist.paa";
-		variables = "[['IP_Faction', 'DSE'], ['IP_LiveFeed', true], ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\scientistAvatar.jpg']]";
+		texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\scientist_02_coScientist.paa";
+		variables = "[['IP_Faction', 'DSE'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\scientistAvatar.jpg']]";
 	};
 	
 	// Trafficker
@@ -268,7 +268,7 @@ class CharacterTemplates {
 		magazines = "[['30Rnd_65x39_caseless_mag', 6], ['HandGrenade', 2], ['1Rnd_HE_Grenade_shell', 6]]";
 		rank = "CAPTAIN";
 		skill = 5;
-		variables = "[['IP_LiveFeed', true], ['IP_Avatar', 'Campaigns\IP_CMP_MERCS\img\traffickerAvatar.jpg']]";
+		variables = "[['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\traffickerAvatar.jpg']]";
 		vest = "V_TacVest_blk";
 		weapons[] = {"arifle_MX_GL_Hamr_pointer_F"};
 	};

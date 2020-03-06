@@ -1,6 +1,6 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 
-SET_MISSION_META(B, "MOut_AAF", "Ground Zero", "Twenty-four Hours Later...", "Twenty-four hours after the catastrophe Raif is barely holding together, fighting a serious radiation poisoning...", "Campaigns\IP_CMP_MERCS\img\MOut_AAF_load.jpg", "Campaigns\IP_CMP_MERCS\img\MOut_AAF_overview.jpg", 0, 0, 0, 1, 1, 0, 0)
+SET_MISSION_META(B, "MOut_AAF", "Ground Zero", "Twenty-four Hours Later...", "Twenty-four hours after the catastrophe Raif is barely holding together, fighting a serious radiation poisoning...", "IP_CMP_MERCS\IP_CMP_MERCS\img\MOut_AAF_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\MOut_AAF_overview.jpg", 0, 0, 0, 1, 1, 0, 0)
 
 class CfgSounds
 {

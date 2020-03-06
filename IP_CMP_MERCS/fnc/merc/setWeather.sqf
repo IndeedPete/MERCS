@@ -88,7 +88,7 @@ skipTime 24;
 sleep 1;
 simulWeatherSync;
 
-if ((isNil "IP_MERCS_PPEffects") OR {IP_MERCS_PPEffects}) then {
+if (!(isNil "IP_MERCS_PPEffects") && {IP_MERCS_PPEffects}) then {
 	IP_ColourCorrections = ppEffectCreate ["ColorCorrections", 2000];
 	IP_ColourCorrections ppEffectEnable true;
 	IP_ColourCorrections ppEffectAdjust (_weatherInitialArray select 3);

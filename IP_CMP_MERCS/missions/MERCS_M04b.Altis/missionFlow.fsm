@@ -58,15 +58,15 @@ class FSM
        "_grp = createGroup civilian;" \n
        "IP_Pilot = _grp createUnit [""C_man_pilot_F"", _posStart, [], 0, ""NONE""];" \n
        "IP_Pilot setIdentity ""pilot"";" \n
-       "IP_Pilot setVariable [""IP_Avatar"", ""Campaigns\IP_CMP_MERCS\img\pilotAvatar.jpg""];" \n
-       "IP_Pilot setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\coveralls_black_coION.paa""];" \n
+       "IP_Pilot setVariable [""IP_Avatar"", ""IP_CMP_MERCS\IP_CMP_MERCS\img\pilotAvatar.jpg""];" \n
+       "IP_Pilot setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_black_coION.paa""];" \n
        "IP_Copilot = _grp createUnit [""C_man_pilot_F"", _posStart, [], 0, ""NONE""];" \n
        "IP_Heli = createVehicle [""O_Heli_Light_02_unarmed_F"", _posStart, [], 0, ""FLY""];" \n
        "clearWeaponCargo IP_Heli;" \n
        "clearMagazineCargo IP_Heli;" \n
        "clearBackpackCargo IP_Heli;" \n
        "clearItemCargo IP_Heli;" \n
-       "IP_Heli setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\heli_light_02_ext_coION.paa""];" \n
+       "IP_Heli setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\heli_light_02_ext_coION.paa""];" \n
        "[IP_Heli] call IP_fnc_heliDoors;" \n
        "IP_Heli setDir _dir;" \n
        "IP_Pilot moveInDriver IP_Heli;" \n

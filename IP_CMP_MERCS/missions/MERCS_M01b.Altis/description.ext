@@ -1,6 +1,6 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 
-SET_MISSION_META(A, "M01b", "Ransom Demand", "On the way to the Stadium...", "The pirates sent a ransom demand for the kidnapped girl. Her father is paying for the safe delivery of the money.", "Campaigns\IP_CMP_MERCS\img\M01b_load.jpg", "Campaigns\IP_CMP_MERCS\img\M01b_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+SET_MISSION_META(A, "M01b", "Ransom Demand", "On the way to the Stadium...", "The pirates sent a ransom demand for the kidnapped girl. Her father is paying for the safe delivery of the money.", "IP_CMP_MERCS\IP_CMP_MERCS\img\M01b_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\M01b_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
 
 class CfgDebriefing
 {  

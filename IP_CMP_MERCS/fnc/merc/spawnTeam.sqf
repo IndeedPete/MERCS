@@ -5,7 +5,7 @@ _night = [_this, 3, [((dayTime < 7) OR (dayTime > 19)), true], [[]]] call BIS_fn
 _addMoney = [_this, 4, false, [true]] call BIS_fnc_param;
 _code = [_this, 5, {}, [{}]] call BIS_fnc_param;
 
-_team = _unit getVariable ["IP_Team", []];
+_team = _unit getVariable ["IP_ShopTeam", []];
 if (count _team == 0) exitWith {};
 
 _grp = group _unit;
@@ -23,13 +23,13 @@ _veh = vehicle _unit;
 		[_teammate, _skill, _silenced, _night] call IP_fnc_createBK;
 		_teammate addEventHandler ["Killed", {
 			_class = typeOf (_this select 0);
-			_team = IP_Main getVariable ["IP_Team", []];
+			_team = IP_Main getVariable ["IP_ShopTeam", []];
 			_killedTeammates = IP_Main getVariable ["IP_KilledTeammates", []];
 			
 			_team = _team - [_class];
 			_killedTeammates = _killedTeammates + [_class];
 			
-			IP_Main setVariable ["IP_Team", _team];
+			IP_Main setVariable ["IP_ShopTeam", _team];
 			IP_Main setVariable ["IP_KilledTeammates", _killedTeammates];
 		}];
 	} else {

@@ -1,4 +1,4 @@
-class IP_DLG_HOME
+class IP_DLG_SHOP_MISSIONS
 {
     idd = 10000;
     movingenable = true;   
@@ -9,295 +9,148 @@ class IP_DLG_HOME
 		{
 			idc = -1;
 			text = ""; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
+			x = 0.298906 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.402187 * safezoneW;
+			h = 0.528 * safezoneH;
 		};
 		
 		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT START (by Bender, v1.063, #Hetowu)
+		// GUI EDITOR OUTPUT START (by IndeedPete, v1.063, #Vusahe)
 		////////////////////////////////////////////////////////
 
-		class IP_FRM_MAIN: RscFrame
+		class IP_FRM_SHOP_MAIN: RscFrame
 		{
 			idc = 1800;
 			text = "Mission Control"; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
+			x = 0.298906 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.402187 * safezoneW;
+			h = 0.528 * safezoneH;
 		};
-		class IP_BTN_CLOSE: RscButton
+		class IP_BTN_SHOP_CLOSE: RscButton
 		{
 			idc = 1600;
 			text = "Close"; //--- ToDo: Localize;
-			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 3.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
+			x = 0.659844 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.0360937 * safezoneW;
+			h = 0.022 * safezoneH;
 			action = "call IP_fnc_closeShop";
 		};
-		class IP_PIC_PROFILE: RscPicture
+		class IP_PIC_SHOP_PROFILE: RscPicture
 		{
 			idc = 1200;
 			text = "#(argb,8,8,3)color(1,1,1,1)";
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 1.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11 * GUI_GRID_W;
-			h = 11 * GUI_GRID_H;
+			x = 0.567031 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.231 * safezoneH;
 		};
-		class IP_TXT_NAME: RscText
+		class IP_TXT_SHOP_NAME: RscText
 		{
 			idc = 1000;
 			text = "NAME: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 13 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.511 * safezoneH + safezoneY;
+			w = 0.134062 * safezoneW;
+			h = 0.022 * safezoneH;
 		};
-		class IP_TXT_RANK: RscText
+		class IP_TXT_SHOP_RANK: RscText
 		{
 			idc = 1001;
-			text = "RANK: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 14.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
+			text = "RANK: Senior Contractor"; //--- ToDo: Localize;
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.544 * safezoneH + safezoneY;
+			w = 0.134062 * safezoneW;
+			h = 0.022 * safezoneH;
 		};
-		class IP_TXT_MONEY: RscText
+		class IP_TXT_SHOP_MONEY: RscText
 		{
 			idc = 1002;
-			text = "MONEY: €"; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 16 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
+			text = "FUNDS: "; //--- ToDo: Localize;
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.577 * safezoneH + safezoneY;
+			w = 0.134062 * safezoneW;
+			h = 0.022 * safezoneH;
 		};
-		class IP_TXT_DEBTS: RscText
+		class IP_TXT_SHOP_LABEL_INSERTION: RscText
 		{
 			idc = 1003;
-			text = "STATUS: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 17.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
+			text = "Insertion:"; //--- ToDo: Localize;
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.61 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.022 * safezoneH;
 		};
-		class IP_LSB_MISSIONS: RscListbox
+		class IP_LSB_SHOP_MISSIONS: RscListbox
 		{
 			idc = 1500;
 			text = "Available Missions"; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 1.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 24 * GUI_GRID_W;
-			h = 10.5 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_missionDetail";
-			onLBDblClick = "(lbCurSel 1500) call IP_fnc_selectMission";
+			x = 0.304062 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.2475 * safezoneW;
+			h = 0.231 * safezoneH;
+			onLBSelChanged = "IP_LastLSB = 1500; _this call IP_fnc_onLBSelChanged";
+			onLBDblClick = "[(lbCurSel 1500), 1500] call IP_fnc_onLBDblClick";
 		};
-		class IP_STX_MISSION: RscStructuredText
+		class IP_STX_SHOP_MISSION: RscStructuredText
 		{
 			idc = 1100;
 			text = "Mission Summary"; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 12.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 24 * GUI_GRID_W;
-			h = 11.5 * GUI_GRID_H;
+			x = 0.304062 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.2475 * safezoneW;
+			h = 0.253 * safezoneH;
 		};
 		class IP_BTN_SELECTMISSION: RscButton
 		{
 			idc = 1601;
-			text = "Select Mission"; //--- ToDo: Localize;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 6.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1500) call IP_fnc_selectMission";
+			text = "Select"; //--- ToDo: Localize;
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.0464063 * safezoneW;
+			h = 0.022 * safezoneH;
+			tooltip = "Select Mission"; //--- ToDo: Localize;
+			action = "1601 call IP_fnc_buttonAction";
 		};
-		class IP_CMB_NAVIGATION: RscCombo
+		class IP_CMB_SHOP_NAVIGATION: RscCombo
 		{
 			idc = 2100;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			onLBSelChanged = "call IP_fnc_closeShop; [player, ((_this select 0) lbValue (_this select 1))] spawn IP_fnc_openShop;";
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.698 * safezoneH + safezoneY;
+			w = 0.134062 * safezoneW;
+			h = 0.022 * safezoneH;
+			onLBSelChanged = "if ((IP_Navigation select ((_this select 0) lbValue (_this select 1))) != IP_LastOpened) then {[] call IP_fnc_closeShop; [(IP_Navigation select ((_this select 0) lbValue (_this select 1)))] spawn IP_fnc_openShop;};";
 		};
-		class IP_TXT_NAVIGATION: RscText
+		class IP_TXT_SHOP_LABEL_NAVIGATION: RscText
 		{
 			idc = 1004;
 			text = "Navigation:"; //--- ToDo: Localize;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 20 * GUI_GRID_H + GUI_GRID_Y;
-			w = 5.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.665 * safezoneH + safezoneY;
+			w = 0.0567187 * safezoneW;
+			h = 0.022 * safezoneH;
 		};
-		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT END
-		////////////////////////////////////////////////////////
-	};
-};
-
-class IP_DLG_PERSONNEL
-{
-    idd = 10001;
-    movingenable = true;   
-    
-    class Controls
-    {
-		class IP_BOX_MAIN: BOX
+		class IP_CMB_SHOP_INSERTION: RscCombo
 		{
-			idc = -1;
-			text = ""; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
+			idc = 2101;
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.643 * safezoneH + safezoneY;
+			w = 0.134062 * safezoneW;
+			h = 0.022 * safezoneH;
+			onLBSelChanged = "[((_this select 0) lbValue (_this select 1))] call IP_fnc_shopFilter;";
 		};
-		
-		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT START (by Bender, v1.063, #Wukaze)
-		////////////////////////////////////////////////////////
-
-		class IP_FRM_PERSONNEL: RscFrame
-		{
-			idc = 1800;
-			text = "Personnel"; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
-		};
-		class IP_BTN_CLOSE: RscButton
-		{
-			idc = 1600;
-			text = "Close"; //--- ToDo: Localize;
-			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 3.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "call IP_fnc_closeShop";
-		};
-		class IP_TXT_NAME: RscText
-		{
-			idc = 1000;
-			text = "NAME: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 13 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_RANK: RscText
-		{
-			idc = 1001;
-			text = "RANK: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 14.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_COST: RscText
-		{
-			idc = 1002;
-			text = "TOTAL COST RATE: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 16 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_RATE: RscText
-		{
-			idc = 1003;
-			text = ""; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 17 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_AVAILABLEPERSONNEL: RscListbox
-		{
-			idc = 1500;
-			text = "Available Missions"; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 18.5 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_personDetail";
-			onLBDblClick = "(lbCurSel 1500) call IP_fnc_addPerson";
-		};
-		class IP_TXT_AVAILABLEPERSONNEL: RscText
-		{
-			idc = 1004;
-			text = "Available Personnel"; //--- ToDo: Localize;
-			x = 1.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 1 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_TEAM: RscListbox
-		{
-			idc = 1501;
-			x = 20 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 19 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_personDetail";
-			onLBDblClick = "(lbCurSel 1501) call IP_fnc_removePerson";
-		};
-		class IP_TXT_TEAM: RscText
-		{
-			idc = 1005;
-			text = "Team"; //--- ToDo: Localize;
-			x = 20.7 * GUI_GRID_W + GUI_GRID_X;
-			y = 1.26 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_STX_PERSON: RscStructuredText
-		{
-			idc = 1100;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 12.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 24 * GUI_GRID_W;
-			h = 11.5 * GUI_GRID_H;
-		};
-		class IP_CMB_NAVIGATION: RscCombo
-		{
-			idc = 2100;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			onLBSelChanged = "call IP_fnc_closeShop; [player, ((_this select 0) lbValue (_this select 1))] spawn IP_fnc_openShop;";
-		};
-		class IP_TXT_NAVIGATION: RscText
-		{
-			idc = 1004;
-			text = "Navigation:"; //--- ToDo: Localize;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 20 * GUI_GRID_H + GUI_GRID_Y;
-			w = 5.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_BTN_ADD: RscButton
-		{
-			idc = 1601;
-			text = "Add"; //--- ToDo: Localize;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 2.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1500) call IP_fnc_addPerson";
-		};
-		class IP_BTN_REMOVE: RscButton
+		class IP_BTN_SHOP_INSERT: RscButton
 		{
 			idc = 1602;
-			text = "Remove"; //--- ToDo: Localize;
-			x = 31 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1501) call IP_fnc_removePerson";
+			text = "Insert"; //--- ToDo: Localize;
+			x = 0.613438 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.04125 * safezoneW;
+			h = 0.022 * safezoneH;
+			tooltip = "Insert to Mission"; //--- ToDo: Localize;
+			action = "1602 call IP_fnc_buttonAction";
 		};
 		////////////////////////////////////////////////////////
 		// GUI EDITOR OUTPUT END
@@ -305,1019 +158,190 @@ class IP_DLG_PERSONNEL
 	};
 };
 
-class IP_DLG_WEAPONS
+class IP_DLG_SHOP_ITEMS
 {
-    idd = 10002;
-    movingenable = true;   
-    
-    class Controls
-    {
-		class IP_BOX_MAIN: BOX
-		{
-			idc = -1;
-			text = ""; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
-		};
-		
-		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT START (by Bender, v1.063, #Wukaze)
-		////////////////////////////////////////////////////////
-
-		class IP_FRM_WEAPONS: RscFrame
-		{
-			idc = 1800;
-			text = "Weapons"; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
-		};
-		class IP_BTN_CLOSE: RscButton
-		{
-			idc = 1600;
-			text = "Close"; //--- ToDo: Localize;
-			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 3.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "call IP_fnc_closeShop";
-		};
-		class IP_TXT_NAME: RscText
-		{
-			idc = 1000;
-			text = "NAME: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 13 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_RANK: RscText
-		{
-			idc = 1001;
-			text = "RANK: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 14.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_MONEY: RscText
-		{
-			idc = 1002;
-			text = "MONEY: €"; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 16 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_DEBTS: RscText
-		{
-			idc = 1003;
-			text = "STATUS: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 17.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_AVAILABLEWEAPONS: RscListbox
-		{
-			idc = 1500;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 18.5 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_weaponDetail";
-			onLBDblClick = "(lbCurSel 1500) call IP_fnc_buyWeapon";
-		};
-		class IP_TXT_AVAILABLEWEAPONS: RscText
-		{
-			idc = 1004;
-			text = "Available Weapons"; //--- ToDo: Localize;
-			x = 1.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 1 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_BOX: RscListbox
-		{
-			idc = 1501;
-			x = 20 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 19 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_weaponDetail";
-			onLBDblClick = "(lbCurSel 1501) call IP_fnc_sellWeapon";
-		};
-		class IP_TXT_BOX: RscText
-		{
-			idc = 1005;
-			text = "In Possession"; //--- ToDo: Localize;
-			x = 20.7 * GUI_GRID_W + GUI_GRID_X;
-			y = 1.26 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_STX_WEAPON: RscStructuredText
-		{
-			idc = 1100;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 12.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 24 * GUI_GRID_W;
-			h = 11.5 * GUI_GRID_H;
-		};
-		class IP_CMB_NAVIGATION: RscCombo
-		{
-			idc = 2100;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			onLBSelChanged = "call IP_fnc_closeShop; [player, ((_this select 0) lbValue (_this select 1))] spawn IP_fnc_openShop;";
-		};
-		class IP_TXT_NAVIGATION: RscText
-		{
-			idc = 1004;
-			text = "Navigation:"; //--- ToDo: Localize;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 20 * GUI_GRID_H + GUI_GRID_Y;
-			w = 5.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_BTN_ADD: RscButton
-		{
-			idc = 1601;
-			text = "Purchase"; //--- ToDo: Localize;
-			x = 26 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1500) call IP_fnc_buyWeapon";
-		};
-		class IP_BTN_REMOVE: RscButton
-		{
-			idc = 1602;
-			text = "Sell"; //--- ToDo: Localize;
-			x = 31 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1501) call IP_fnc_sellWeapon";
-		};
-		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT END
-		////////////////////////////////////////////////////////
-	};
-};
+	idd = 10001;
+	movingEnable = true;
 	
-class IP_DLG_MAGAZINES
-{
-    idd = 10003;
-    movingenable = true;   
-    
-    class Controls
-    {
+	class Controls
+	{
 		class IP_BOX_MAIN: BOX
 		{
 			idc = -1;
 			text = ""; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
+			x = 0.298906 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.402187 * safezoneW;
+			h = 0.528 * safezoneH;
 		};
 		
 		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT START (by Bender, v1.063, #Wukaze)
+		// GUI EDITOR OUTPUT START (by IndeedPete, v1.063, #Bixelu)
 		////////////////////////////////////////////////////////
 
-		class IP_FRM_MAGAZINES: RscFrame
+		class IP_FRM_SHOP_CATEGORY: RscFrame
 		{
 			idc = 1800;
-			text = "Magazines"; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
+			text = "Shop Category"; //--- ToDo: Localize;
+			x = 0.298906 * safezoneW + safezoneX;
+			y = 0.236 * safezoneH + safezoneY;
+			w = 0.402187 * safezoneW;
+			h = 0.528 * safezoneH;
 		};
-		class IP_BTN_CLOSE: RscButton
+		class IP_BTN_SHOP_CLOSE: RscButton
 		{
 			idc = 1600;
 			text = "Close"; //--- ToDo: Localize;
-			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 3.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
+			x = 0.654688 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.04125 * safezoneW;
+			h = 0.022 * safezoneH;
 			action = "call IP_fnc_closeShop";
 		};
-		class IP_TXT_NAME: RscText
-		{
-			idc = 1000;
-			text = "NAME: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 13 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_RANK: RscText
-		{
-			idc = 1001;
-			text = "RANK: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 14.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_MONEY: RscText
-		{
-			idc = 1002;
-			text = "MONEY: €"; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 16 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_DEBTS: RscText
-		{
-			idc = 1003;
-			text = "STATUS: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 17.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_AVAILABLEMAGAZINES: RscListbox
+		class IP_LSB_SHOP_ITEMS_LEFT: RscListbox
 		{
 			idc = 1500;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 18.5 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_magazineDetail";
-			onLBDblClick = "[(lbCurSel 1500), false] call IP_fnc_openMagazineAmountDialog";
+			text = "Shop Items Left"; //--- ToDo: Localize;
+			x = 0.304062 * safezoneW + safezoneX;
+			y = 0.28 * safezoneH + safezoneY;
+			w = 0.190781 * safezoneW;
+			h = 0.22 * safezoneH;
+			onLBSelChanged = "IP_LastLSB = 1500; _this call IP_fnc_onLBSelChanged";
+			onLBDblClick = "[(lbCurSel 1500), 1500] call IP_fnc_onLBDblClick";
 		};
-		class IP_TXT_AVAILABLEMAGAZINES: RscText
-		{
-			idc = 1004;
-			text = "Available Magazines"; //--- ToDo: Localize;
-			x = 1.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 1 * GUI_GRID_H + GUI_GRID_Y;
-			w = 12 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_BOX: RscListbox
-		{
-			idc = 1501;
-			x = 20 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 19 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_magazineDetail";
-			onLBDblClick = "[(lbCurSel 1501), true] call IP_fnc_openMagazineAmountDialog";
-		};
-		class IP_TXT_BOX: RscText
-		{
-			idc = 1005;
-			text = "In Possession"; //--- ToDo: Localize;
-			x = 20.7 * GUI_GRID_W + GUI_GRID_X;
-			y = 1.26 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_STX_MAGAZINE: RscStructuredText
-		{
-			idc = 1100;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 12.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 24 * GUI_GRID_W;
-			h = 11.5 * GUI_GRID_H;
-		};
-		class IP_CMB_NAVIGATION: RscCombo
-		{
-			idc = 2100;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			onLBSelChanged = "call IP_fnc_closeShop; [player, ((_this select 0) lbValue (_this select 1))] spawn IP_fnc_openShop;";
-		};
-		class IP_TXT_NAVIGATION: RscText
-		{
-			idc = 1004;
-			text = "Navigation:"; //--- ToDo: Localize;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 20 * GUI_GRID_H + GUI_GRID_Y;
-			w = 5.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_BTN_ADD: RscButton
+		class IP_BTN_SHOP_PURCHASE: RscButton
 		{
 			idc = 1601;
 			text = "Purchase"; //--- ToDo: Localize;
-			x = 26 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "[(lbCurSel 1500), false] call IP_fnc_openMagazineAmountDialog";
+			x = 0.54125 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.022 * safezoneH;
+			action = "1601 call IP_fnc_buttonAction";
 		};
-		class IP_BTN_REMOVE: RscButton
+		class IP_TXT_SHOP_ITEMS_LEFT: RscText
+		{
+			idc = 1004;
+			text = "Shop Items Left"; //--- ToDo: Localize;
+			x = 0.304062 * safezoneW + safezoneX;
+			y = 0.247 * safezoneH + safezoneY;
+			w = 0.190781 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class IP_LSB_SHOP_ITEMS_RIGHT: RscListbox
+		{
+			idc = 1501;
+			text = "Shop Items Right"; //--- ToDo: Localize;
+			x = 0.505156 * safezoneW + safezoneX;
+			y = 0.28 * safezoneH + safezoneY;
+			w = 0.190781 * safezoneW;
+			h = 0.22 * safezoneH;
+			onLBSelChanged = "IP_LastLSB = 1501; _this call IP_fnc_onLBSelChanged";
+			onLBDblClick = "[(lbCurSel 1501), 1501] call IP_fnc_onLBDblClick";
+		};
+		class IP_TXT_SHOP_ITEMS_RIGHT: RscText
+		{
+			idc = 1005;
+			text = "Shop Items Right"; //--- ToDo: Localize;
+			x = 0.505156 * safezoneW + safezoneX;
+			y = 0.247 * safezoneH + safezoneY;
+			w = 0.0928125 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class IP_STX_SHOP_INFO: RscStructuredText
+		{
+			idc = 1100;
+			text = "Info Box"; //--- ToDo: Localize;
+			x = 0.304062 * safezoneW + safezoneX;
+			y = 0.511 * safezoneH + safezoneY;
+			w = 0.190781 * safezoneW;
+			h = 0.22 * safezoneH;
+		};
+		class IP_CMB_SHOP_NAVIGATION: RscCombo
+		{
+			idc = 2100;
+			text = "Navigation"; //--- ToDo: Localize;
+			x = 0.5825 * safezoneW + safezoneX;
+			y = 0.698 * safezoneH + safezoneY;
+			w = 0.113437 * safezoneW;
+			h = 0.022 * safezoneH;
+			onLBSelChanged = "if ((IP_Navigation select ((_this select 0) lbValue (_this select 1))) != IP_LastOpened) then {[] call IP_fnc_closeShop; [(IP_Navigation select ((_this select 0) lbValue (_this select 1)))] spawn IP_fnc_openShop;};";
+		};
+		class IP_TXT_SHOP_NAVIGATION_LABEL: RscText
+		{
+			idc = 1000;
+			text = "Navigation:"; //--- ToDo: Localize;
+			x = 0.579426 * safezoneW + safezoneX;
+			y = 0.665 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class IP_CMB_SHOP_FILTER: RscCombo
+		{
+			idc = 2101;
+			text = "Filter"; //--- ToDo: Localize;
+			x = 0.5825 * safezoneW + safezoneX;
+			y = 0.643 * safezoneH + safezoneY;
+			w = 0.113437 * safezoneW;
+			h = 0.022 * safezoneH;
+			onLBSelChanged = "[((_this select 0) lbValue (_this select 1))] call IP_fnc_shopFilter;";
+		};
+		class IP_TXT_SHOP_LABEL_FILTER: RscText
+		{
+			idc = 1001;
+			text = "Filter:"; //--- ToDo: Localize;
+			x = 0.579895 * safezoneW + safezoneX;
+			y = 0.61 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.022 * safezoneH;
+		};
+		class IP_BTN_SHOP_SELL: RscButton
 		{
 			idc = 1602;
 			text = "Sell"; //--- ToDo: Localize;
-			x = 31 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "[(lbCurSel 1501), true] call IP_fnc_openMagazineAmountDialog";
+			x = 0.597969 * safezoneW + safezoneX;
+			y = 0.731 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.022 * safezoneH;
+			action = "1602 call IP_fnc_buttonAction";
 		};
-		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT END
-		////////////////////////////////////////////////////////
-	};
-};
-
-class IP_DLG_ITEMS
-{
-    idd = 10004;
-    movingenable = true;   
-    
-    class Controls
-    {
-		class IP_BOX_MAIN: BOX
+		class IP_BTN_SHOP_FUNCTION: RscButton
 		{
-			idc = -1;
-			text = ""; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
+			idc = 1603;
+			text = "Additional Function"; //--- ToDo: Localize;
+			x = 0.5825 * safezoneW + safezoneX;
+			y = 0.588 * safezoneH + safezoneY;
+			w = 0.113437 * safezoneW;
+			h = 0.022 * safezoneH;
+			action = "1603 call IP_fnc_buttonAction";
 		};
-		
-		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT START (by Bender, v1.063, #Wukaze)
-		////////////////////////////////////////////////////////
-
-		class IP_FRM_ITEMS: RscFrame
-		{
-			idc = 1800;
-			text = "Items"; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
-		};
-		class IP_BTN_CLOSE: RscButton
-		{
-			idc = 1600;
-			text = "Close"; //--- ToDo: Localize;
-			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 3.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "call IP_fnc_closeShop";
-		};
-		class IP_TXT_NAME: RscText
-		{
-			idc = 1000;
-			text = "NAME: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 13 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_RANK: RscText
-		{
-			idc = 1001;
-			text = "RANK: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 14.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_MONEY: RscText
+		class IP_TXT_SHOP_LABEL_FUNDS: RscText
 		{
 			idc = 1002;
-			text = "MONEY: €"; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 16 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
+			text = "Available Funds:"; //--- ToDo: Localize;
+			x = 0.579948 * safezoneW + safezoneX;
+			y = 0.511 * safezoneH + safezoneY;
+			w = 0.118594 * safezoneW;
+			h = 0.022 * safezoneH;
 		};
-		class IP_TXT_DEBTS: RscText
+		class IP_TXT_SHOP_FUNDS: RscText
 		{
 			idc = 1003;
-			text = "STATUS: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 17.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_AVAILABLEITEMS: RscListbox
-		{
-			idc = 1500;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 18.5 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_itemDetail";
-			onLBDblClick = "(lbCurSel 1500) call IP_fnc_buyItem";
-		};
-		class IP_TXT_AVAILABLEITEMS: RscText
-		{
-			idc = 1004;
-			text = "Available Items"; //--- ToDo: Localize;
-			x = 1.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 1 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_BOX: RscListbox
-		{
-			idc = 1501;
-			x = 20 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 19 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_itemDetail";
-			onLBDblClick = "(lbCurSel 1501) call IP_fnc_sellItem";
-		};
-		class IP_TXT_BOX: RscText
-		{
-			idc = 1005;
-			text = "In Possession"; //--- ToDo: Localize;
-			x = 20.7 * GUI_GRID_W + GUI_GRID_X;
-			y = 1.26 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_STX_ITEM: RscStructuredText
-		{
-			idc = 1100;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 12.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 24 * GUI_GRID_W;
-			h = 11.5 * GUI_GRID_H;
-		};
-		class IP_CMB_NAVIGATION: RscCombo
-		{
-			idc = 2100;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			onLBSelChanged = "call IP_fnc_closeShop; [player, ((_this select 0) lbValue (_this select 1))] spawn IP_fnc_openShop;";
-		};
-		class IP_TXT_NAVIGATION: RscText
-		{
-			idc = 1004;
-			text = "Navigation:"; //--- ToDo: Localize;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 20 * GUI_GRID_H + GUI_GRID_Y;
-			w = 5.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_BTN_ADD: RscButton
-		{
-			idc = 1601;
-			text = "Purchase"; //--- ToDo: Localize;
-			x = 26 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1500) call IP_fnc_buyItem";
-		};
-		class IP_BTN_REMOVE: RscButton
-		{
-			idc = 1602;
-			text = "Sell"; //--- ToDo: Localize;
-			x = 31 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1501) call IP_fnc_sellItem";
+			text = "9999999.99"; //--- ToDo: Localize;
+			x = 0.580417 * safezoneW + safezoneX;
+			y = 0.544 * safezoneH + safezoneY;
+			w = 0.113437 * safezoneW;
+			h = 0.022 * safezoneH;
 		};
 		////////////////////////////////////////////////////////
 		// GUI EDITOR OUTPUT END
-		////////////////////////////////////////////////////////
-	};
-};
-
-class IP_DLG_CLOTHES
-{
-    idd = 10005;
-    movingenable = true;   
-    
-    class Controls
-    {
-		class IP_BOX_MAIN: BOX
-		{
-			idc = -1;
-			text = ""; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
-		};
-		
-		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT START (by Bender, v1.063, #Wukaze)
-		////////////////////////////////////////////////////////
-
-		class IP_FRM_CLOTHES: RscFrame
-		{
-			idc = 1800;
-			text = "Clothes"; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
-		};
-		class IP_BTN_CLOSE: RscButton
-		{
-			idc = 1600;
-			text = "Close"; //--- ToDo: Localize;
-			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 3.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "call IP_fnc_closeShop";
-		};
-		class IP_TXT_NAME: RscText
-		{
-			idc = 1000;
-			text = "NAME: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 13 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_RANK: RscText
-		{
-			idc = 1001;
-			text = "RANK: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 14.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_MONEY: RscText
-		{
-			idc = 1002;
-			text = "MONEY: €"; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 16 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_DEBTS: RscText
-		{
-			idc = 1003;
-			text = "STATUS: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 17.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_AVAILABLECLOTHES: RscListbox
-		{
-			idc = 1500;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 18.5 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_clothesDetail";
-			onLBDblClick = "(lbCurSel 1500) call IP_fnc_buyClothes";
-		};
-		class IP_TXT_AVAILABLECLOTHES: RscText
-		{
-			idc = 1004;
-			text = "Available Clothes"; //--- ToDo: Localize;
-			x = 1.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 1 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_BOX: RscListbox
-		{
-			idc = 1501;
-			x = 20 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 19 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_clothesDetail";
-			onLBDblClick = "(lbCurSel 1501) call IP_fnc_putOnClothes";
-		};
-		class IP_TXT_BOX: RscText
-		{
-			idc = 1005;
-			text = "In Possession"; //--- ToDo: Localize;
-			x = 20.7 * GUI_GRID_W + GUI_GRID_X;
-			y = 1.26 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_STX_ITEM: RscStructuredText
-		{
-			idc = 1100;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 12.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 24 * GUI_GRID_W;
-			h = 11.5 * GUI_GRID_H;
-		};
-		class IP_CMB_NAVIGATION: RscCombo
-		{
-			idc = 2100;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			onLBSelChanged = "call IP_fnc_closeShop; [player, ((_this select 0) lbValue (_this select 1))] spawn IP_fnc_openShop;";
-		};
-		class IP_TXT_NAVIGATION: RscText
-		{
-			idc = 1004;
-			text = "Navigation:"; //--- ToDo: Localize;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 20 * GUI_GRID_H + GUI_GRID_Y;
-			w = 5.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_BTN_ADD: RscButton
-		{
-			idc = 1601;
-			text = "Purchase"; //--- ToDo: Localize;
-			x = 26 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1500) call IP_fnc_buyClothes";
-		};
-		class IP_BTN_PUTON: RscButton
-		{
-			idc = 1602;
-			text = "Put On"; //--- ToDo: Localize;
-			x = 31 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1501) call IP_fnc_putOnClothes";
-		};
-		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT END
-		////////////////////////////////////////////////////////
-	};
-};
-
-class IP_DLG_ENHANCEMENTS
-{
-    idd = 10006;
-    movingenable = true;   
-    
-    class Controls
-    {
-		class IP_BOX_MAIN: BOX
-		{
-			idc = -1;
-			text = ""; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
-		};
-		
-		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT START (by Bender, v1.063, #Wukaze)
-		////////////////////////////////////////////////////////
-
-		class IP_FRM_ENHANCEMENTS: RscFrame
-		{
-			idc = 1800;
-			text = "Camp Enhancements"; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
-		};
-		class IP_BTN_CLOSE: RscButton
-		{
-			idc = 1600;
-			text = "Close"; //--- ToDo: Localize;
-			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 3.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "call IP_fnc_closeShop";
-		};
-		class IP_TXT_NAME: RscText
-		{
-			idc = 1000;
-			text = "NAME: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 13 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_RANK: RscText
-		{
-			idc = 1001;
-			text = "RANK: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 14.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_MONEY: RscText
-		{
-			idc = 1002;
-			text = "MONEY: €"; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 16 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_DEBTS: RscText
-		{
-			idc = 1003;
-			text = "STATUS: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 17.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_AVAILABLEENHANCEMENTS: RscListbox
-		{
-			idc = 1500;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 18.5 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_enhancementDetail";
-			onLBDblClick = "(lbCurSel 1500) call IP_fnc_buyEnhancement";
-		};
-		class IP_TXT_AVAILABLEENHANCEMENTS: RscText
-		{
-			idc = 1004;
-			text = "Available Enhancements"; //--- ToDo: Localize;
-			x = 1.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 1 * GUI_GRID_H + GUI_GRID_Y;
-			w = 12 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_BOX: RscListbox
-		{
-			idc = 1501;
-			x = 20 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 19 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_enhancementDetail";
-			//onLBDblClick = "(lbCurSel 1501) call IP_fnc_sellEnhancement";
-		};
-		class IP_TXT_BOX: RscText
-		{
-			idc = 1005;
-			text = "In Possession"; //--- ToDo: Localize;
-			x = 20.7 * GUI_GRID_W + GUI_GRID_X;
-			y = 1.26 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_STX_ENHANCEMENT: RscStructuredText
-		{
-			idc = 1100;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 12.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 24 * GUI_GRID_W;
-			h = 11.5 * GUI_GRID_H;
-		};
-		class IP_CMB_NAVIGATION: RscCombo
-		{
-			idc = 2100;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			onLBSelChanged = "call IP_fnc_closeShop; [player, ((_this select 0) lbValue (_this select 1))] spawn IP_fnc_openShop;";
-		};
-		class IP_TXT_NAVIGATION: RscText
-		{
-			idc = 1004;
-			text = "Navigation:"; //--- ToDo: Localize;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 20 * GUI_GRID_H + GUI_GRID_Y;
-			w = 5.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_BTN_ADD: RscButton
-		{
-			idc = 1601;
-			text = "Purchase"; //--- ToDo: Localize;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1500) call IP_fnc_buyEnhancement";
-		};
-		/*
-		class IP_BTN_REMOVE: RscButton
-		{
-			idc = 1602;
-			text = "Sell"; //--- ToDo: Localize;
-			x = 31 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1501) call IP_fnc_sellWeapon";
-		};
-		*/
-		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT END
-		////////////////////////////////////////////////////////
-	};
-};
-
-class IP_DLG_VEHICLES
-{
-    idd = 10007;
-    movingenable = true;   
-    
-    class Controls
-    {
-		class IP_BOX_MAIN: BOX
-		{
-			idc = -1;
-			text = ""; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
-		};
-		
-		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT START (by Bender, v1.063, #Wukaze)
-		////////////////////////////////////////////////////////
-
-		class IP_FRM_ENHANCEMENTS: RscFrame
-		{
-			idc = 1800;
-			text = "Camp Vehicles"; //--- ToDo: Localize;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 39 * GUI_GRID_W;
-			h = 24 * GUI_GRID_H;
-		};
-		class IP_BTN_CLOSE: RscButton
-		{
-			idc = 1600;
-			text = "Close"; //--- ToDo: Localize;
-			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 3.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "call IP_fnc_closeShop";
-		};
-		class IP_TXT_NAME: RscText
-		{
-			idc = 1000;
-			text = "NAME: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 13 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_RANK: RscText
-		{
-			idc = 1001;
-			text = "RANK: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 14.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_MONEY: RscText
-		{
-			idc = 1002;
-			text = "MONEY: €"; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 16 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_TXT_DEBTS: RscText
-		{
-			idc = 1003;
-			text = "STATUS: "; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 17.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_AVAILABLEVEHICLES: RscListbox
-		{
-			idc = 1500;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 18.5 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_vehicleDetail";
-			onLBDblClick = "(lbCurSel 1500) call IP_fnc_buyVehicle";
-		};
-		class IP_TXT_AVAILABLEVEHICLES: RscText
-		{
-			idc = 1004;
-			text = "Available Vehicles"; //--- ToDo: Localize;
-			x = 1.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 1 * GUI_GRID_H + GUI_GRID_Y;
-			w = 12 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_LSB_BOX: RscListbox
-		{
-			idc = 1501;
-			x = 20 * GUI_GRID_W + GUI_GRID_X;
-			y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 19 * GUI_GRID_W;
-			h = 10 * GUI_GRID_H;
-			onLBSelChanged = "_this call IP_fnc_vehicleDetail";
-			onLBDblClick = "(lbCurSel 1501) call IP_fnc_sellVehicle";
-		};
-		class IP_TXT_BOX: RscText
-		{
-			idc = 1005;
-			text = "In Possession"; //--- ToDo: Localize;
-			x = 20.7 * GUI_GRID_W + GUI_GRID_X;
-			y = 1.26 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_STX_ENHANCEMENT: RscStructuredText
-		{
-			idc = 1100;
-			text = ""; //--- ToDo: Localize;
-			x = 1 * GUI_GRID_W + GUI_GRID_X;
-			y = 12.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 24 * GUI_GRID_W;
-			h = 11.5 * GUI_GRID_H;
-		};
-		class IP_CMB_NAVIGATION: RscCombo
-		{
-			idc = 2100;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 11 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			onLBSelChanged = "call IP_fnc_closeShop; [player, ((_this select 0) lbValue (_this select 1))] spawn IP_fnc_openShop;";
-		};
-		class IP_TXT_NAVIGATION: RscText
-		{
-			idc = 1004;
-			text = "Navigation:"; //--- ToDo: Localize;
-			x = 28 * GUI_GRID_W + GUI_GRID_X;
-			y = 20 * GUI_GRID_H + GUI_GRID_Y;
-			w = 5.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class IP_BTN_ADD: RscButton
-		{
-			idc = 1601;
-			text = "Purchase"; //--- ToDo: Localize;
-			x = 26 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1500) call IP_fnc_buyVehicle";
-		};
-		class IP_BTN_REMOVE: RscButton
-		{
-			idc = 1602;
-			text = "Sell"; //--- ToDo: Localize;
-			x = 31 * GUI_GRID_W + GUI_GRID_X;
-			y = 23 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			action = "(lbCurSel 1501) call IP_fnc_sellVehicle";
-		};
-		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT END
-		////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////	
 	};
 };
 
 class IP_DLG_AMOUNT
 {
-	idd = 10008;
+	idd = 10002;
 	movingenable = true;   
     
     class Controls
@@ -1333,90 +357,218 @@ class IP_DLG_AMOUNT
 		};
 	
 		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT START (by IndeedPete, v1.063, #Wodiso)
+		// GUI EDITOR OUTPUT START (by IndeedPete, v1.063, #Nocixy)
 		////////////////////////////////////////////////////////
+
 		class IP_FRM_AMOUNT: RscFrame
 		{
 			idc = 1800;
-			x = 7 * GUI_GRID_W + GUI_GRID_X;
-			y = 7 * GUI_GRID_H + GUI_GRID_Y;
-			w = 26 * GUI_GRID_W;
-			h = 11 * GUI_GRID_H;
+			x = 0.365937 * safezoneW + safezoneX;
+			y = 0.379 * safezoneH + safezoneY;
+			w = 0.268125 * safezoneW;
+			h = 0.242 * safezoneH;
 		};
 		class IP_TXT_HOWMANY: RscText
 		{
 			idc = 1000;
 			text = "How Many?"; //--- ToDo: Localize;
-			x = 7.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 7.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 6 * GUI_GRID_W;
-			h = 2 * GUI_GRID_H;
+			x = 0.371094 * safezoneW + safezoneX;
+			y = 0.39 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.044 * safezoneH;
 		};
 		class IP_TXT_MAGAZINE: RscText
 		{
 			idc = 1001;
 			text = "5.56mm STANAG 30"; //--- ToDo: Localize;
-			x = 7.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 9.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 14.5 * GUI_GRID_W;
-			h = 2 * GUI_GRID_H;
+			x = 0.371094 * safezoneW + safezoneX;
+			y = 0.434 * safezoneH + safezoneY;
+			w = 0.149531 * safezoneW;
+			h = 0.044 * safezoneH;
 		};
 		class IP_TXT_PRICE: RscText
 		{
 			idc = 1002;
 			text = "Price: "; //--- ToDo: Localize;
-			x = 22.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 7.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 10 * GUI_GRID_W;
-			h = 2 * GUI_GRID_H;
+			x = 0.525781 * safezoneW + safezoneX;
+			y = 0.39 * safezoneH + safezoneY;
+			w = 0.103125 * safezoneW;
+			h = 0.044 * safezoneH;
 		};
 		class IP_TXT_TOTAL: RscText
 		{
 			idc = 1003;
-			text = "Total: "; //--- ToDo: Localize;
-			x = 22.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 9.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 10 * GUI_GRID_W;
-			h = 2 * GUI_GRID_H;
-		};
-		class IP_TXT_AMOUNT: RscText
-		{
-			idc = 1004;
-			text = "Amount: "; //--- ToDo: Localize;
-			x = 7.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 15 * GUI_GRID_H + GUI_GRID_Y;
-			w = 15 * GUI_GRID_W;
-			h = 2.5 * GUI_GRID_H;
+			text = "Total:"; //--- ToDo: Localize;
+			x = 0.525781 * safezoneW + safezoneX;
+			y = 0.434 * safezoneH + safezoneY;
+			w = 0.103125 * safezoneW;
+			h = 0.044 * safezoneH;
 		};
 		class IP_SLD_AMOUNT: RscSlider
 		{
 			idc = 1900;
 			text = "Amount"; //--- ToDo: Localize;
-			x = 7.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 12 * GUI_GRID_H + GUI_GRID_Y;
-			w = 25 * GUI_GRID_W;
-			h = 2.5 * GUI_GRID_H;
-			onSliderPosChanged = "(sliderPosition 1900) call IP_fnc_magazineAmountSetTotal";
+			x = 0.371094 * safezoneW + safezoneX;
+			y = 0.489 * safezoneH + safezoneY;
+			w = 0.257813 * safezoneW;
+			h = 0.055 * safezoneH;
+			onSliderPosChanged = "(sliderPosition 1900) call IP_fnc_amountSetTotal";
 		};
 		class IP_BTN_OKAY: RscButton
 		{
 			idc = 1600;
 			text = "Okay"; //--- ToDo: Localize;
-			x = 23.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 15 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 2.5 * GUI_GRID_H;
-			action = "(sliderPosition 1900) call IP_fnc_buyOrSellMagazine";
+			x = 0.536094 * safezoneW + safezoneX;
+			y = 0.555 * safezoneH + safezoneY;
+			w = 0.04125 * safezoneW;
+			h = 0.055 * safezoneH;
+			action = "1600 call IP_fnc_amountButtonAction";
 		};
 		class IP_BTN_CANCEL: RscButton
 		{
 			idc = 1601;
 			text = "Cancel"; //--- ToDo: Localize;
-			x = 28.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 15 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 2.5 * GUI_GRID_H;
+			x = 0.587656 * safezoneW + safezoneX;
+			y = 0.555 * safezoneH + safezoneY;
+			w = 0.04125 * safezoneW;
+			h = 0.055 * safezoneH;
 			action = "closeDialog 0";
+		};
+		class IP_TXT_AMOUNT: RscText
+		{
+			idc = 1004;
+			text = "Amount: "; //--- ToDo: Localize;
+			x = 0.371094 * safezoneW + safezoneX;
+			y = 0.555 * safezoneH + safezoneY;
+			w = 0.154687 * safezoneW;
+			h = 0.055 * safezoneH;
+		};
+		////////////////////////////////////////////////////////
+		// GUI EDITOR OUTPUT END
+		////////////////////////////////////////////////////////
+	};
+};
+
+class IP_DLG_INSERT
+{
+	idd = 10003;
+	movingenable = true;   
+    
+    class Controls
+    {
+		class IP_BOX_MAIN: BOX
+		{
+			idc = -1;
+			text = ""; //--- ToDo: Localize;
+			x = 0.371093 * safezoneW + safezoneX;
+			y = 0.379 * safezoneH + safezoneY;
+			w = 0.262969 * safezoneW;
+			h = 0.253 * safezoneH;
+		};
+		
+		////////////////////////////////////////////////////////
+		// GUI EDITOR OUTPUT START (by IndeedPete, v1.063, #Pobixa)
+		////////////////////////////////////////////////////////
+
+		class IP_FRM_INSERT: RscFrame
+		{
+			idc = 1800;
+			x = 0.371093 * safezoneW + safezoneX;
+			y = 0.379 * safezoneH + safezoneY;
+			w = 0.262969 * safezoneW;
+			h = 0.253 * safezoneH;
+		};
+		class IP_TXT_LABEL_TO: RscText
+		{
+			idc = 1000;
+			text = "Insert to:"; //--- ToDo: Localize;
+			x = 0.371094 * safezoneW + safezoneX;
+			y = 0.39 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.044 * safezoneH;
+		};
+		class IP_TXT_LABEL_BY: RscText
+		{
+			idc = 1001;
+			text = "By:"; //--- ToDo: Localize;
+			x = 0.371094 * safezoneW + safezoneX;
+			y = 0.434 * safezoneH + safezoneY;
+			w = 0.149531 * safezoneW;
+			h = 0.044 * safezoneH;
+		};
+		class IP_TXT_TO: RscText
+		{
+			idc = 1002;
+			text = "Super Long Mission Title"; //--- ToDo: Localize;
+			x = 0.427812 * safezoneW + safezoneX;
+			y = 0.39 * safezoneH + safezoneY;
+			w = 0.201094 * safezoneW;
+			h = 0.044 * safezoneH;
+		};
+		class IP_TXT_BY: RscText
+		{
+			idc = 1003;
+			text = "Super Long Vehicle Display Name"; //--- ToDo: Localize;
+			x = 0.427812 * safezoneW + safezoneX;
+			y = 0.434 * safezoneH + safezoneY;
+			w = 0.201094 * safezoneW;
+			h = 0.044 * safezoneH;
+		};
+		class IP_BTN_OKAY: RscButton
+		{
+			idc = 1600;
+			text = "Insert"; //--- ToDo: Localize;
+			x = 0.536094 * safezoneW + safezoneX;
+			y = 0.577 * safezoneH + safezoneY;
+			w = 0.04125 * safezoneW;
+			h = 0.044 * safezoneH;
+			action = "closeDialog 0; [] call IP_fnc_startMission;";
+		};
+		class IP_BTN_CANCEL: RscButton
+		{
+			idc = 1601;
+			text = "Cancel"; //--- ToDo: Localize;
+			x = 0.587656 * safezoneW + safezoneX;
+			y = 0.577 * safezoneH + safezoneY;
+			w = 0.04125 * safezoneW;
+			h = 0.044 * safezoneH;
+			action = "closeDialog 0; [] spawn IP_fnc_openShop;";
+		};
+		class IP_TXT_LABEL_SIZE: RscText
+		{
+			idc = 1004;
+			text = "Team Size:"; //--- ToDo: Localize;
+			x = 0.371094 * safezoneW + safezoneX;
+			y = 0.478 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.044 * safezoneH;
+		};
+		class IP_TXT_SIZE: RscText
+		{
+			idc = 1005;
+			text = "8"; //--- ToDo: Localize;
+			x = 0.427812 * safezoneW + safezoneX;
+			y = 0.478 * safezoneH + safezoneY;
+			w = 0.201094 * safezoneW;
+			h = 0.044 * safezoneH;
+		};
+		class IP_TXT_LABEL_CAPACITY: RscText
+		{
+			idc = 1006;
+			text = "Capacity:"; //--- ToDo: Localize;
+			x = 0.371094 * safezoneW + safezoneX;
+			y = 0.522 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.044 * safezoneH;
+		};
+		class IP_TXT_CAPACITY: RscText
+		{
+			idc = 1007;
+			text = "20"; //--- ToDo: Localize;
+			x = 0.427812 * safezoneW + safezoneX;
+			y = 0.522 * safezoneH + safezoneY;
+			w = 0.201094 * safezoneW;
+			h = 0.044 * safezoneH;
 		};
 		////////////////////////////////////////////////////////
 		// GUI EDITOR OUTPUT END

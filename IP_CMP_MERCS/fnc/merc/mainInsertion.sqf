@@ -62,7 +62,12 @@ switch (_insertion) do {
 		} else {
 			_grp move _dataOrLZ;
 			_handle = _dataOrLZ spawn {
-				waitUntil {(IP_Heli distance _this) < 150};
+				waitUntil {
+					sleep 1;
+					(unitReady IP_Heli) &&
+					((IP_Heli distance _this) < 250)
+				};
+				
 				IP_Heli land "GET OUT";
 				IP_Heli lock 0;
 				waitUntil {{_x in IP_Heli} count (units group IP_Main) == 0};

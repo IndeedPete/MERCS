@@ -1,7 +1,7 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 #include "missionConversations.hpp"
 
-SET_MISSION_META(A, "M04c", "An Eye For An Eye", "On the way to the AAC Airfield...", "Attacks on ION contractors by Black Arrow operatives are continuing. Time to kick some ass.", "Campaigns\IP_CMP_MERCS\img\M04c_load.jpg", "Campaigns\IP_CMP_MERCS\img\M04c_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+SET_MISSION_META(A, "M04c", "An Eye For An Eye", "On the way to the AAC Airfield...", "Attacks on ION contractors by Black Arrow operatives are continuing. Time to kick some ass.", "IP_CMP_MERCS\IP_CMP_MERCS\img\M04c_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\M04c_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
 
 class CfgDebriefing
 {  

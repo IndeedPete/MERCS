@@ -6,7 +6,7 @@ IP_ContactsAlive = if (isNil "IP_MERCS_ContactsAlive") then {[true, true, [true,
 IP_MainGroup = group IP_EFOfficer;
 
 // Scenes
-IP_scn_credits = compile(preprocessFileLineNumbers "Campaigns\IP_CMP_MERCS\scn\credits.sqf");
+IP_scn_credits = compile(preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\scn\credits.sqf");
 
 // Main Setup
 [] call IP_fnc_mainInit;
@@ -39,7 +39,7 @@ if (IP_ContactsAlive select 1) then {
 IP_HQ allowDamage false;
 IP_HQ enableSimulation false;
 IP_HQ hideObject true;
-IP_HQ setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\EF_Flag.jpg"];
+IP_HQ setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\EF_Flag.jpg"];
 (group IP_HQ) setGroupID ["Gamemaster"];
 
 // All Units
@@ -48,7 +48,7 @@ IP_HQ setVariable ["IP_Avatar", "Campaigns\IP_CMP_MERCS\img\EF_Flag.jpg"];
 	
 	if ((side _x) == west) then {
 		_x setVariable ["IP_Faction", "EFMil"];
-		_x setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa"];
+		_x setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_coMOD.paa"];
 		[_x, "TFAegis"] call BIS_fnc_setUnitInsignia;
 	};
 	

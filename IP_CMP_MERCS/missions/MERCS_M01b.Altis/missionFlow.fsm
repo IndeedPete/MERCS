@@ -7,8 +7,8 @@ item2[] = {"Money_Delivery",2,250,-175.000000,150.000000,-75.000000,200.000000,0
 item3[] = {"Mercs_Killed",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Mercs Killed"};
 item4[] = {"Fuck_",2,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Fuck!"};
 item5[] = {"In_Car",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"In Car"};
-item6[] = {"Start_Chase",2,4346,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Start Chase"};
-item7[] = {"Pirates_Near",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Pirates Near"};
+item6[] = {"Start_Chase",2,250,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Start Chase"};
+item7[] = {"Pirates_Near",4,4314,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Pirates Near"};
 item8[] = {"Arrived",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Arrived"};
 item9[] = {"Lost_Them",4,218,-50.000000,450.000000,50.000000,500.000000,1.000000,"Lost Them"};
 item10[] = {"Fail_2",1,250,75.000000,450.000000,175.000000,500.000000,0.000000,"Fail 2"};
@@ -40,8 +40,8 @@ link16[] = {14,13};
 link17[] = {15,14};
 link18[] = {16,17};
 link19[] = {18,16};
-globals[] = {25.000000,1,0,0,0,640,480,1,60,6316128,1,-451.753479,157.958176,596.490906,-111.210167,784,910,1};
-window[] = {2,-1,-1,-1,-1,967,208,1648,208,3,802};
+globals[] = {0.000000,0,0,0,0,640,480,1,60,6316128,1,-451.753479,157.958176,573.937744,-393.512909,784,1244,1};
+window[] = {2,-1,-1,-1,-1,785,26,1466,26,3,802};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -161,7 +161,7 @@ class FSM
           priority = 0.000000;
           to="Arrived";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"IP_Car distance (getMarkerPos ""mPirateDelivery"") < 5"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"IP_Car distance (getMarkerPos ""mPirateDelivery"") < 15"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -407,6 +407,7 @@ class FSM
        "	[""tRansom"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
        "	[IP_Main, ""I have it! I have the ransom! Let's get out of here!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "	[IP_Buddy, ""Starforce, this is Razor. We've got the money back. Stand by for extraction, over!"", ""SIDE""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""Raif, call it in."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "	IP_Extract = false;" \n
        "	waitUntil {IP_Extract};" \n
        "	[""Hub01"", true, true] call IP_fnc_endMission;" \n

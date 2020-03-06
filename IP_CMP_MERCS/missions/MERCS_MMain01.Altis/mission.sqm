@@ -1671,7 +1671,7 @@ class Mission
 			vehicle="SignAd_Sponsor_ARMEX_F";
 			leader=1;
 			skill=0.2;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\DSE_Logo.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\DSE_Logo.paa""];";
 		};
 		class Item11
 		{

@@ -34,8 +34,8 @@ link13[] = {11,14};
 link14[] = {13,15};
 link15[] = {14,15};
 link16[] = {15,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,111,6316128,1,-435.207397,80.550659,323.199310,-173.507004,758,910,1};
-window[] = {2,-1,-1,-1,-1,915,156,1596,156,3,776};
+globals[] = {25.000000,1,0,0,0,640,480,1,111,6316128,1,-460.995300,106.338539,733.832458,-216.713654,758,1270,1};
+window[] = {2,-1,-1,-1,-1,1071,312,1752,312,3,776};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -119,7 +119,7 @@ class FSM
        "	[""IP_BlackScreen"", false] call BIS_fnc_blackOut;" \n
        "	sleep 0.5;" \n
        "	" \n
-       "	IP_Main switchMove """";" \n
+       "	IP_Main switchMove ""amovpercmstpslowwrfldnon"";" \n
        "	IP_Buddy switchMove """";" \n
        "	_dir = [IP_Buddy, IP_Rival] call BIS_fnc_dirTo;" \n
        "	IP_Buddy setDir _dir;" \n
@@ -166,6 +166,7 @@ class FSM
        "	" \n
        "	""tDepot"" call IP_fnc_taskHint;" \n
        "	saveGame;" \n
+       "	IP_Rival setPos (getMarkerPos ""mRival"");" \n
        "	" \n
        "	{_x setPos (getPos IP_Main)} forEach (units group IP_Main); // Stupid Workaround" \n
        "	_grp = group IP_Rival;	" \n
@@ -195,6 +196,8 @@ class FSM
        "		_wp setWaypointType ""HOLD"";" \n
        "		//[_grp, 1] setWaypointBehaviour ""COMBAT"";		" \n
        "	};" \n
+       "	" \n
+       "	" \n
        "	" \n
        "	sleep 15;" \n
        "	" \n

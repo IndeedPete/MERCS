@@ -23,7 +23,7 @@ deleteVehicle IP_Enemy;
 IP_Main setPos (getMarkerPos "mGamblerPlayer");
 _dir = [IP_Main, IP_Gambler] call BIS_fnc_dirTo;
 IP_Main setDir _dir;
-IP_Main switchMove "";
+IP_Main switchMove "amovpercmstpslowwrfldnon";
 IP_Main removeAllEventhandlers "HandleDamage";
 
 sleep 0.5;

@@ -1,4 +1,5 @@
 player allowDamage false;
+player setVariable ["IP_Glass_Boot", false];
 41 cutText ["", "BLACK", 5];
 5 fadeSound 0;
 sleep 5;

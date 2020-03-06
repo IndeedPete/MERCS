@@ -106,8 +106,8 @@ IP_Closet addAction ["Change Uniform", {
 			_items = uniformItems _unit;
 			removeUniform _unit;
 			_unit forceAddUniform "U_O_CombatUniform_ocamo";
-			_unit setObjectMaterial [0, "Campaigns\IP_CMP_MERCS\txt\clothingMOD.rvmat"];
-			_unit setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\clothing_rus_coBA.paa"];
+			_unit setObjectMaterial [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothingMOD.rvmat"];
+			_unit setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing_rus_coBA.paa"];
 			{_unit addItem _x} forEach _items;
 		} forEach (units group IP_Main);
 		IP_Disguise = true;
@@ -131,7 +131,7 @@ IP_Closet addAction ["Change Uniform", {
 } forEach IP_ToKill;
 
 // Whiteboard
-IP_Whiteboard setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\wb\M04c_WB1.paa"];
+IP_Whiteboard setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\M04c_WB1.paa"];
 
 // Marker
 {_x setMarkerAlpha 0} forEach ["mPatrol", "mRoadBlock", "mDrone", "mOutpost", "mOverview", "mCar"];

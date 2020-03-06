@@ -4580,7 +4580,7 @@ class Mission
 			vehicle="UserTexture1m_F";
 			lock="LOCKED";
 			skill=0.60000002;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\misc\MANW.paa""]; this setVectorUp [0,0,1];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\misc\MANW.paa""]; this setVectorUp [0,0,1];";
 		};
 		class Item75
 		{
@@ -4592,7 +4592,7 @@ class Mission
 			vehicle="UserTexture1m_F";
 			lock="LOCKED";
 			skill=0.60000002;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\misc\Poster_ICRC.paa""]; this setVectorUp [0,0,1]; [this, 0, 5] call BIS_fnc_setPitchBank;  ";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\misc\Poster_ICRC.paa""]; this setVectorUp [0,0,1]; [this, 0, 5] call BIS_fnc_setPitchBank;  ";
 		};
 		class Item76
 		{
@@ -6448,7 +6448,7 @@ class Mission
 			vehicle="Land_Laptop_unfolded_F";
 			leader=1;
 			skill=0.60000002;
-			init="this setPos (IP_Table modelToWorld [-0.6,0.1,0.37]); this enableSimulation false; this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\laptop\Laptop_A3Gameplay.paa""];";
+			init="this setPos (IP_Table modelToWorld [-0.6,0.1,0.37]); this enableSimulation false; this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\laptop\Laptop_A3Gameplay.paa""];";
 		};
 		class Item267
 		{
@@ -6989,7 +6989,7 @@ class Mission
 			vehicle="UserTexture1m_F";
 			lock="LOCKED";
 			skill=0.60000002;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\misc\bloodstain2.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\misc\bloodstain2.paa""];";
 		};
 		class Item320
 		{
@@ -7001,7 +7001,7 @@ class Mission
 			vehicle="UserTexture1m_F";
 			lock="LOCKED";
 			skill=0.60000002;
-			init="this setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\misc\bloodhand.paa""];";
+			init="this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\misc\bloodhand.paa""];";
 		};
 		class Item321
 		{

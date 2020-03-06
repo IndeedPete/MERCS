@@ -26,7 +26,7 @@ item21[] = {"",7,210,-379.000000,96.000000,-371.000000,104.000000,0.000000,""};
 item22[] = {"",7,210,-129.000000,246.000000,-121.000000,254.000000,0.000000,""};
 item23[] = {"Scientist_Move",2,250,-50.000000,300.000000,50.000000,350.000000,0.000000,"Scientist Move"};
 item24[] = {"",7,210,-129.000000,321.000000,-121.000000,329.000000,0.000000,""};
-item25[] = {"Scientist_Close",4,218,-50.000000,375.000000,50.000000,425.000000,0.000000,"Scientist Close"};
+item25[] = {"Scientist_Close",4,4314,-50.000000,375.000000,50.000000,425.000000,0.000000,"Scientist Close"};
 item26[] = {"Start_Disassembl",2,250,-50.000000,450.000000,50.000000,500.000000,0.000000,"Start" \n "Disassembling"};
 item27[] = {"Timeout",4,218,75.000000,300.000000,175.000000,350.000000,1.000000,"Timeout"};
 item28[] = {"Set_Pos",2,250,75.000000,375.000000,175.000000,425.000000,0.000000,"Set Pos"};
@@ -57,7 +57,7 @@ item52[] = {"EF_Trigger",4,218,325.000000,1125.000000,425.000000,1175.000000,0.0
 item53[] = {"",7,210,246.000000,1071.000000,254.000000,1079.000000,0.000000,""};
 item54[] = {"",7,210,371.000000,1071.000000,379.000000,1079.000000,0.000000,""};
 item55[] = {"CSAT_End",1,250,200.000000,1200.000000,300.000000,1250.000000,0.000000,"CSAT" \n "End"};
-item56[] = {"EF_End",1,4346,325.000000,1200.000000,425.000000,1250.000000,0.000000,"EF" \n "End"};
+item56[] = {"EF_End",1,250,325.000000,1200.000000,425.000000,1250.000000,0.000000,"EF" \n "End"};
 item57[] = {"Spawn_Ultrabattl",2,250,-425.000000,300.000000,-325.000000,350.000000,0.000000,"Spawn" \n "Ultrabattle"};
 item58[] = {"All_Clear",4,218,-425.000000,375.000000,-325.000000,425.000000,0.000000,"All" \n "Clear"};
 item59[] = {"Jesus_Fucking_Ch",2,250,-300.000000,375.000000,-200.000000,425.000000,0.000000,"Jesus Fucking" \n "Christ"};
@@ -143,8 +143,8 @@ link75[] = {59,60};
 link76[] = {59,61};
 link77[] = {60,62};
 link78[] = {61,34};
-globals[] = {25.000000,1,0,0,0,640,480,1,191,6316128,1,-99.122383,695.825989,1450.731689,853.371582,1211,910,1};
-window[] = {2,-1,-1,-1,-1,889,130,1570,130,3,1229};
+globals[] = {0.000000,0,0,0,0,640,480,1,191,6316128,1,-336.753540,458.194824,1084.438232,267.827362,1211,1244,1};
+window[] = {2,-1,-1,-1,-1,1071,312,1752,312,3,1229};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -651,7 +651,7 @@ class FSM
           priority = 0.000000;
           to="Start_Disassembl";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"IP_Scientist distance IP_Device < 5"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"IP_Scientist distance IP_Device < 15"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -736,7 +736,7 @@ class FSM
        "	{deleteVehicle _x} forEach ( (units(group IP_ScientistBodyguard)) + [IP_ScientistCar]);" \n
        "	" \n
        "	skipTime 0.25;	" \n
-       "	_video = [""\A3\Missions_F_EPB\video\B_out2_sometime_later.ogv""] spawn BIS_fnc_playVideo;" \n
+       "	_video = [""\A3\Missions_F_EPA\video\B_out2_sometime_later.ogv""] spawn BIS_fnc_playVideo;" \n
        "	waitUntil {scriptDone _video};" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -1098,7 +1098,7 @@ class FSM
        "		_grp = [_posEnd, west, (configFile >> ""CfgGroups"" >> ""West"" >> ""BLU_F"" >> ""Infantry"" >> ""BUS_InfSquad"")] call BIS_fnc_spawnGroup;" \n
        "		{" \n
        "			_x setVariable [""IP_Faction"", ""EFMil""];" \n
-       "			_x setObjectTexture [0, ""Campaigns\IP_CMP_MERCS\txt\clothing1_coMOD.paa""];" \n
+       "			_x setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_coMOD.paa""];" \n
        "			[_x, 'TFAegis'] call BIS_fnc_setUnitInsignia;" \n
        "			_x moveInCargo _heli;" \n
        "		} forEach (units _grp);" \n

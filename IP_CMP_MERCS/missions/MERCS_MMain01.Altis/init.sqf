@@ -150,7 +150,7 @@ IP_CutsceneStuff = [IP_CommanderDummy, IP_MainDummy, IP_Map, IP_Can1, IP_Can2, I
 
 // Briefing
 _prefix = "OPERATION CRUSADER Phase I<br/><br/>";
-_suffix = "<br/><br/><img image='Campaigns\IP_CMP_MERCS\img\BK_LogoSmall.paa' width='128'/>";
+_suffix = "<br/><br/><img image='IP_CMP_MERCS\IP_CMP_MERCS\img\BK_LogoSmall.paa' width='128'/>";
  
 player createDiaryRecord ["Diary", ["Signal", (_prefix + "White King - Command, Lord Commander Titus<br/>Black Knight - Recon, Executive Ian McMillian<br/>Paladin - Recon, Knight Captain Gabriel" + _suffix)]];
 player createDiaryRecord ["Diary", ["Execution", (_prefix + "(Team Specific Version)<br/>1. Callsign 'Black Knight' will insert via boat <marker name=""mInsertion"">north-east</marker> of the <marker name=""mResearch"">target facility, code name 'Black Mesa'</marker>.<br/>2. Black Knight will secure an <marker name=""mOverview"">Overview Position east</marker> of <marker name=""mResearch"">Black Mesa</marker>.<br/>3. Black Knight will observe <marker name=""mResearch"">Black Mesa</marker> for approximately 24 hours.<br/>4. Black Knight will return to the <marker name=""mInsertion"">Insertion Point</marker> and extract by boat.<br/><br/>Black Knight must not be compromised throughout steps 1-3!" + _suffix)]];

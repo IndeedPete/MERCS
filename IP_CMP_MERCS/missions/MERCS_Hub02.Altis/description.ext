@@ -1,4 +1,4 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 #include "missionConversations.hpp"
 
-SET_MISSION_META(B, "Hub02", "Sanctuary", "In Relative Safety...", "The camp near Bomos serves as forward operating base to the British Knights on Altis. It's hidden position far away from the major warzones and with access to ground, air and sea connections makes it the ideal base for running covert operations on Altis.", "Campaigns\IP_CMP_MERCS\img\Hub02_load.jpg", "Campaigns\IP_CMP_MERCS\img\Hub02_overview.jpg", 0, 0, 0, 0, 1, 1, 0)
+SET_MISSION_META(B, "Hub02", "Sanctuary", "In Relative Safety...", "The camp near Bomos serves as forward operating base to the British Knights on Altis. It's hidden position far away from the major warzones and with access to ground, air and sea connections makes it the ideal base for running covert operations on Altis.", "IP_CMP_MERCS\IP_CMP_MERCS\img\Hub02_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\Hub02_overview.jpg", 0, 0, 0, 0, 1, 1, 0)

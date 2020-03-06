@@ -1,7 +1,7 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 #include "missionConversations.hpp"
 
-SET_MISSION_META(A, "Hub01", "Home Sweet Home", "Coming Home...", "Camp Maxwell on Stratis serves as the central hub for all ION, Inc. operations in the Aegean Sea region. Contractors have access to the company's shop system, mission control and training facilities. The local ION representatives also provide several R'n'R activities as well as shelter and food for all contractors.", "Campaigns\IP_CMP_MERCS\img\Hub01_load.jpg", "Campaigns\IP_CMP_MERCS\img\Hub01_overview.jpg", 0, 0, 0, 0, 1, 1, 0)
+SET_MISSION_META(A, "Hub01", "Home Sweet Home", "Coming Home...", "Camp Maxwell on Stratis serves as the central hub for all ION, Inc. operations in the Aegean Sea region. Contractors have access to the company's shop system, mission control and training facilities. The local ION representatives also provide several R'n'R activities as well as shelter and food for all contractors.", "IP_CMP_MERCS\IP_CMP_MERCS\img\Hub01_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\Hub01_overview.jpg", 0, 0, 0, 0, 1, 1, 0)
 
 // Mission Data
 DuelStake = 1000;

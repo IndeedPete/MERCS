@@ -4,7 +4,7 @@ class Conversations
 	{
 		responses[] = {"buddyWhy", "buddyExitNo"};
 		sentences[] = {
-			"Hey, you're sitting upright! Felling better?",
+			"Hey, you're sitting upright! Feeling better?",
 			"Yes, I've managed to move my great toe last night and kept training all day until I was able to stand upright again. I think I can walk - well, slowly at least. Listen, we gotta leave, now."
 		};
 	};
@@ -45,7 +45,7 @@ class Conversations
 	{
 		expression = "call IP_fnc_closeConversation; IP_ChoseBuddy = false;";
 		sentences[] = {
-			"Sorry, I can't do that. *Leave him.*"
+			"Sorry, I can't do that. (Leave him.)"
 		};
 	};
 };

@@ -50,10 +50,10 @@ IP_Ship addAction ["Plant Charge",
 
 // Briefing
 _prefix = "OPERATION CRUSADER Phase II<br/><br/>";
-_suffix = "<br/><br/><img image='Campaigns\IP_CMP_MERCS\img\BK_LogoSmall.paa' width='128'/>";
+_suffix = "<br/><br/><img image='IP_CMP_MERCS\IP_CMP_MERCS\img\BK_LogoSmall.paa' width='128'/>";
 _rank = if (isClass(campaignConfigFile >> "campaign")) then {(getText(missionConfigFile >> "Factions" >> "ION" >> "Ranks" >> (([] call IP_fnc_getMainRankData) select 0) >> "displayName"))} else {"Section Leader"};
 
-player createDiaryRecord ["Diary", ["Target Information", "Satellite image of the target trawler.<img image='Campaigns\IP_CMP_MERCS\img\briefing\Briefing_MMain02_Sat.jpg' width='248' height='124'/>"]];
+player createDiaryRecord ["Diary", ["Target Information", "Satellite image of the target trawler.<img image='IP_CMP_MERCS\IP_CMP_MERCS\img\briefing\Briefing_MMain02_Sat.jpg' width='248' height='124'/>"]];
 player createDiaryRecord ["Diary", ["Signal", (_prefix + "White King - Command, Lord Commander Titus<br/>Templar - Attack, " + _rank + " Raif Salih" + _suffix)]];
 player createDiaryRecord ["Diary", ["Execution", (_prefix + "1. Callsign 'Templar' will insert by boat or on foot close to <marker name=""mSurfer"">Surfer's Scrapyard</marker>.<br/>2. Templar will neutralise the <marker name=""mCaptain"">Black Arrow Captain</marker> and sink the <marker name=""mShip"">Ship</marker>.<br/>3. Templar will get to a safe distance from the targets and call for extraction." + _suffix)]];
 player createDiaryRecord ["Diary", ["Mission", (_prefix + "Objectives are to eliminate the <marker name=""mCaptain"">Black Arrow Captain</marker> and plant a satchel charge on the <marker name=""mShip"">Ship</marker> in order to destroy it." + _suffix)]];

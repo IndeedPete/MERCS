@@ -1,6 +1,6 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 
-SET_MISSION_META(A, "M04b", "Protection Money", "On the way to Sideras...", "ION reacts to the cowardly Black Arrow ambush on the Sauerland cargo trucks. Contractors are sent out to eliminate a disloyal client's security detail.", "Campaigns\IP_CMP_MERCS\img\M04b_load.jpg", "Campaigns\IP_CMP_MERCS\img\M04b_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+SET_MISSION_META(A, "M04b", "Protection Money", "On the way to Sideras...", "ION reacts to the cowardly Black Arrow ambush on the Sauerland cargo trucks. Contractors are sent out to eliminate a disloyal client's security detail.", "IP_CMP_MERCS\IP_CMP_MERCS\img\M04b_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\M04b_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
 
 class CfgDebriefing
 {  

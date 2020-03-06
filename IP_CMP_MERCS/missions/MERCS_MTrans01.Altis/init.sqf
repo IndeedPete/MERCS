@@ -41,7 +41,7 @@ IP_Medic unlinkItem "NVGoggles";
 IP_Medic setUnitPos "MIDDLE";
 
 // Crashsite
-IP_Heli2 setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\heli_light_02_ext_coION.paa"];
+IP_Heli2 setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\heli_light_02_ext_coION.paa"];
 {IP_Heli2 animate [_x, 1]} forEach ["dvere1", "dvere1_posunZ", "dvere2"];
 IP_Heli2 setDamage 0.9;
 IP_Heli2 allowDamage false;
@@ -52,7 +52,7 @@ clearBackpackCargo IP_Heli2;
 
 IP_Pilot2 setIdentity "pilot";
 removeBackpack IP_Pilot2;
-IP_Pilot2 setObjectTexture [0, "Campaigns\IP_CMP_MERCS\txt\coveralls_black_coION.paa"];
+IP_Pilot2 setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_black_coION.paa"];
 [IP_Pilot2] call IP_fnc_deadBody;
 
 removeBackpack IP_CoPilot2;
@@ -73,4 +73,4 @@ removeBackpack IP_CoPilot2;
 } forEach (allUnits - [IP_Main, IP_Buddy]);
 
 // Music
-[] call BIS_fnc_jukebox;
+// [] call BIS_fnc_jukebox;

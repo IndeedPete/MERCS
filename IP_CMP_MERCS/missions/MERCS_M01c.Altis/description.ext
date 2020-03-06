@@ -1,7 +1,7 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 #include "missionConversations.hpp"
 
-SET_MISSION_META(A, "M01c", "Hostage Down", "On the way to the Northern Airfield...", "The client lost contact to the pirates after the failed ransom delivery. He issued an immediate rescue attempt.", "Campaigns\IP_CMP_MERCS\img\M01c_load.jpg", "Campaigns\IP_CMP_MERCS\img\M01c_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+SET_MISSION_META(A, "M01c", "Hostage Down", "On the way to the Northern Airfield...", "The client lost contact to the pirates after the failed ransom delivery. He issued an immediate rescue attempt.", "IP_CMP_MERCS\IP_CMP_MERCS\img\M01c_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\M01c_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
 
 class CfgDebriefing
 {  

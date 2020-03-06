@@ -1,7 +1,7 @@
-#include "\Campaigns\IP_CMP_MERCS\missions\description.hpp"
+#include "\IP_CMP_MERCS\IP_CMP_MERCS\missions\description.hpp"
 #include "missionConversations.hpp"
 
-SET_MISSION_META(B, "MMain03", "Schnitzeljagd", "On the way to Agios Panagiotis...", "ION contractors are sent out to pick up a freelancing IT-Security specialist.", "Campaigns\IP_CMP_MERCS\img\MMain03_load.jpg", "Campaigns\IP_CMP_MERCS\img\MMain03_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
+SET_MISSION_META(B, "MMain03", "Schnitzeljagd", "On the way to Agios Panagiotis...", "ION contractors are sent out to pick up a freelancing IT-Security specialist.", "IP_CMP_MERCS\IP_CMP_MERCS\img\MMain03_load.jpg", "IP_CMP_MERCS\IP_CMP_MERCS\img\MMain03_overview.jpg", 1, 1, 0, 0, 1, 0, 1)
 
 // Temporary as it does not seem to work from the campaign folder
 class CfgSounds
