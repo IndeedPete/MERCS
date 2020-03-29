@@ -287,7 +287,7 @@ class Conversations
 	};
 	class commanderBriefing
 	{
-		condition = "((player getVariable ['IP_Mission', '']) != '')";
+		condition = "((player getVariable ['IP_ShopMission', '']) != '')";
 		expression = "call IP_fnc_closeConversation; nul = [] execVM 'scn\briefing.sqf';";
 		sentences[] = {"Reporting in for briefing. (Start mission.)"};
 	};
@@ -302,7 +302,7 @@ class Conversations
 	};
 	class commanderStay
 	{
-		expression = "call IP_fnc_closeConversation; IP_Decision = true; [IP_Commander, ""Wise choice! Now get some equip, we're going on a mission! Report in for briefing when you're ready!"", 'DIRECT'] call IP_fnc_simpleSentence; ['tCommander1', 'SUCCEEDED'] call BIS_fnc_taskSetState; player setVariable ['IP_Mission', 'MTrans01']; [player, 'tCommander2', ['Report in with McMillian!', 'Hereford Calling', ''], IP_Commander, true, 1] call BIS_fnc_taskCreate;";
+		expression = "call IP_fnc_closeConversation; IP_Decision = true; [IP_Commander, ""Wise choice! Now get some equip, we're going on a mission! Report in for briefing when you're ready!"", 'DIRECT'] call IP_fnc_simpleSentence; ['tCommander1', 'SUCCEEDED'] call BIS_fnc_taskSetState; player setVariable ['IP_ShopMission', 'MTrans01']; [player, 'tCommander2', ['Report in with McMillian!', 'Hereford Calling', ''], IP_Commander, true, 1] call BIS_fnc_taskCreate;";
 		sentences[] = {"I'll stay."};
 	};
 	class commanderLeave

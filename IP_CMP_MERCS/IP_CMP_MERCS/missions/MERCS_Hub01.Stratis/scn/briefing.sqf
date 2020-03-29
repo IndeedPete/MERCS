@@ -1,4 +1,4 @@
-_mission = IP_Main getVariable "IP_Mission";
+_mission = IP_Main getVariable "IP_ShopMission";
 if (isNil "_mission") exitWith {hint "You have to select a mission first!"};
 if (_mission == "MTrans01") exitWith {[] execVM "scn\AEnd.sqf"}; // Alpha / Promo Ending
 _sentences = getArray(missionConfigFile >> "ShopMissions" >> _mission >> "briefing");

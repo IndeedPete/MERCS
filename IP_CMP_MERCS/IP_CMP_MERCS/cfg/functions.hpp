@@ -375,10 +375,12 @@ class CfgFunctions
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\createCampVehicle.sqf";
 			};
+			/*
 			class createMerc
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\createMerc.sqf";
 			};
+			*/
 			class determinePrice
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\determinePrice.sqf";

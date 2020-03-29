@@ -47,8 +47,9 @@ switch (_this) do {
 	case 1602: {
 		switch (IP_LastOpened) do {
 			case "Missions": {
-				[] call IP_fnc_closeShop;
-				[] spawn IP_fnc_insert;
+				/*[] call IP_fnc_closeShop;
+				[] spawn IP_fnc_insert;*/
+				hint "This feature is disabled for M.E.R.C.S.";
 			};
 			
 			case "Personnel": {

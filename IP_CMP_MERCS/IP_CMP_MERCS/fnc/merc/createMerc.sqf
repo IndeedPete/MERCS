@@ -46,19 +46,19 @@ _face = _facePool call BIS_fnc_selectRandom;
 _unit setFace _face;
 //_unit setName _name;
 
-_uniforms = (missionConfigFile >> "ShopClothes") call IP_fnc_getConfigEntries;
+_uniforms = ((missionConfigFile >> "ShopUniforms" >> "Paramilitary") call IP_fnc_getConfigEntries) + ((missionConfigFile >> "ShopUniforms" >> "Military") call IP_fnc_getConfigEntries);
 _uniforms = if (isArray(missionConfigFile >> "Factions" >> _faction >> "blacklistUniforms")) then {(_uniforms - (getArray(missionConfigFile >> "Factions" >> _faction >> "blacklistUniforms")))} else {_uniforms};
 {
 	if (!(isClass(configFile >> "CfgWeapons" >> _x))) then {_uniforms = _uniforms - [_x]};
 } forEach _uniforms;
 _uniform = _uniforms call BIS_fnc_selectRandom;
 _unit forceAddUniform _uniform;
-if (isArray(missionConfigFile >> "ShopClothes" >> _uniform >> "texture")) then {
-	_arr = getArray(missionConfigFile >> "ShopClothes" >> _uniform >> "texture");
+if (isArray(missionConfigFile >> "ShopUniforms" >> _uniform >> "texture")) then {
+	_arr = getArray(missionConfigFile >> "ShopUniforms" >> _uniform >> "texture");
 	_unit setObjectMaterial [0, (_arr select 0)];
 	_unit setObjectTexture [0, (_arr select 1)];
 } else {
-	if (isText(missionConfigFile >> "ShopClothes" >> _uniform >> "texture")) then {_unit setObjectTexture [0, (getText(missionConfigFile >> "ShopClothes" >> _uniform >> "texture"))]};
+	if (isText(missionConfigFile >> "ShopUniforms" >> _uniform >> "texture")) then {_unit setObjectTexture [0, (getText(missionConfigFile >> "ShopUniforms" >> _uniform >> "texture"))]};
 };
 
 _rank = rank _unit;

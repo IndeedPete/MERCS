@@ -48,7 +48,7 @@ params [
 ];
 IP_LastOpened = _category;
 
-_box = player getVariable ["IP_ShopBox", ObjNull];
+_box = player getVariable ["IP_ShopBox", objNull];
 if (isNull _box) exitWith {"Shop box is null!" call BIS_fnc_error};
 _name = name player;
 _rank = [player, false] call IP_fnc_getRank;

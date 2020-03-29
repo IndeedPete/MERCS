@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={3310.5852,229.16879,2951.1338};
-		dir[]={-0.094943784,-0.24224254,0.96568674};
-		up[]={-0.023713797,0.97015941,0.24116357};
-		aside[]={0.99530888,7.1301474e-007,0.097862013};
+		pos[]={3308.9924,232.30862,2937.5669};
+		dir[]={-0.36638129,-0.2846168,-0.88600624};
+		up[]={-0.10878952,0.95857948,-0.26309052};
+		aside[]={-0.92420697,2.6600901e-007,0.38217175};
 	};
 };
 binarizationWanted=0;
@@ -5236,15 +5236,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3308.5276,227.39706,2952.3943};
-				angles[]={6.2806959,0.89709926,0};
+				position[]={3308.5281,227.39706,2952.3945};
+				angles[]={6.2806892,0.89709926,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this setPos (IP_Table modelToWorld [-0.6,0.1,0.42]); this enableSimulation false; this addAction [""Open Shop"", {nul = [player, IP_LastOpened] spawn IP_fnc_openShop}]; this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\laptop\Laptop_Shop1.paa""];";
+				init="this setPos (IP_Table modelToWorld [-0.6,0.1,0.42]); this enableSimulation false; this addAction [""Open Shop"", {nul = [IP_LastOpened] spawn IP_fnc_openShop}]; this setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\laptop\Laptop_Shop1.paa""];";
 			};
 			id=290;
 			type="Land_Laptop_unfolded_F";

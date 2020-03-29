@@ -77,7 +77,7 @@ class IP_DLG_SHOP_MISSIONS
 		class IP_TXT_SHOP_LABEL_INSERTION: RscText
 		{
 			idc = 1003;
-			text = "Insertion:"; //--- ToDo: Localize;
+			text = "Insertion (Disabled):"; //--- ToDo: Localize;
 			x = 0.561875 * safezoneW + safezoneX;
 			y = 0.61 * safezoneH + safezoneY;
 			w = 0.118594 * safezoneW;

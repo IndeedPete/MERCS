@@ -41,7 +41,7 @@ class ShopCategories
 		displayName = "Weapons";
 		labelPurchaseButton = "Purchase";
 		labelSellButton = "Sell";
-		labelAdditionalButton = "Open Arsenal";
+		labelAdditionalButton = "Find Magazines";
 		labelLeft = "Available Weapons";
 		labelRight = "In Possession";
 	};
@@ -58,7 +58,7 @@ class ShopCategories
 	{
 		active = 1;
 		displayName = "Items";
-		labelAdditionalButton = "Open Arsenal";
+		labelAdditionalButton = "Additional";
 		labelLeft = "Available Items";
 		labelRight = "In Possession";
 	};
@@ -67,8 +67,8 @@ class ShopCategories
 	{
 		active = 1;
 		displayName = "Uniforms";
-		labelSellButton = "Arsenal";
-		labelAdditionalButton = "Open Arsenal";
+		labelSellButton = "Sell";
+		labelAdditionalButton = "Additional";
 		labelLeft = "Available Uniforms";
 		labelRight = "In Possession";
 	};

@@ -435,6 +435,10 @@ class RscCombo
 		0,
 		0.65
 	};
+	colorPicture[] = {1,1,1,1};
+	colorPictureSelected[] = {1,1,1,1};
+	colorPictureDisabled[] = {1,1,1,1};
+	colorPictudeDisabled[] = {1,1,1,0.25};
 };
 class RscListBox
 {
@@ -555,6 +559,10 @@ class RscListBox
 		0,
 		0.65
 	};
+	colorPicture[] = {1,1,1,1};
+	colorPictureSelected[] = {1,1,1,1};
+	colorPictureDisabled[] = {1,1,1,1};
+	colorPictudeDisabled[] = {1,1,1,0.25};
 };
 class RscButton
 {

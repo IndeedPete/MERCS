@@ -1,8 +1,3 @@
-if (!(isClass(campaignConfigFile >> "campaign"))) exitWith {
-	[([_this, 0, IP_Main, [objNull]] call BIS_fnc_param), "main"] call IP_fnc_applyTemplate;
-	IP_MainInitDone = true;
-};
-
 // Necessary to prevent lost uniform bug after briefing.
 _this spawn {
 	_unit = [_this, 0, player, [objNull]] call BIS_fnc_param;
@@ -14,7 +9,7 @@ _this spawn {
 	_team = if (isNil "IP_MERCS_Team") then {[]} else {IP_MERCS_Team}; 
 	_clothes = if (isNil "IP_MERCS_Clothes") then {[]} else {IP_MERCS_Clothes};
 	_playerBox = if (isNil "IP_MERCS_PlayerBox") then {[[], [], [], []]} else {IP_MERCS_PlayerBox};
-	_missionsDone = if (isNil "IP_MERCS_MissionsDone") then {[]} else {IP_MERCS_MissionsDone};
+	_missionsDone = if (isNil "IP_MERCS_MissionsDone") then {["MIn"]} else {IP_MERCS_MissionsDone};
 	
 	// Special for Stage B
 	_campEnhancements = if (isNil "IP_MERCS_CampEnhancements") then {[]} else {IP_MERCS_CampEnhancements};
@@ -41,7 +36,7 @@ _this spawn {
 		["IP_ShopCampEnhancements", _campEnhancements],
 		["IP_ShopCampVehicles", _campVehicles],
 		["IP_KilledTeammates", _killedTeammates],
-		["IP_Picture", ("IP_CMP_MERCS\IP_CMP_MERCS\img\" + _picture)],
+		["IP_ShopPicture", ("IP_CMP_MERCS\IP_CMP_MERCS\img\" + _picture)],
 		["IP_Avatar", ("IP_CMP_MERCS\IP_CMP_MERCS\img\" + _avatar)],
 		["IP_LiveFeed", true],
 		["IP_Faction", "ION"]
@@ -76,7 +71,7 @@ _this spawn {
 	};
 	
 	// Double stuff because of missing uniform bug
-	waitUntil{time > 0};
+	waitUntil {time > 0};
 
 	if (count _mainLoadout > 0) then {
 		[_unit, _mainLoadout] call IP_fnc_setLoadout;
@@ -106,6 +101,10 @@ _this spawn {
 		IP_MERCS_Hint_Glass = true;
 		saveVar "IP_MERCS_Hint_Glass";
 		[["MERCS", "Glass"]] call BIS_fnc_advHint;
+	};
+
+	if (!(isClass(campaignConfigFile >> "campaign"))) then {
+		[([_this, 0, IP_Main, [objNull]] call BIS_fnc_param), "main"] call IP_fnc_applyTemplate;
 	};
 	
 	IP_MainInitDone = true;

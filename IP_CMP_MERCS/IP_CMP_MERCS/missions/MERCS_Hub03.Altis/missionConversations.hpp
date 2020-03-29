@@ -6,6 +6,35 @@ class Conversations
 		sentences[] = {"Good bye!"};
 	};
 	
+	// Agent
+	class agentExit
+	{
+		expression = "call IP_fnc_closeConversation; [IP_Agent, 'agentOpener'] call IP_fnc_removeConversation; [IP_Agent, 'agentOpenerAgain'] call IP_fnc_addConversation; ['tDSE', 'SUCCEEDED'] call BIS_fnc_taskSetState; IP_OffersHeard set [2, true];";
+		sentences[] = {"Give me some time to think about that. I'll come back, when I've made a decision."};
+	};
+	class agentExitEnd
+	{
+		expression = "call IP_fnc_closeConversation; true call IP_scn_end;";
+		sentences[] = {"Okay, I'm going with you. (Start mission.)"};
+	};
+	class agentOpener
+	{
+		condition = "(({alive _x} count [IP_Agent, IP_Rival] == 2) && (rating IP_Main >= 0) && ('tHacker' call BIS_fnc_taskExists) && {('tHacker' call BIS_fnc_taskState) == 'SUCCEEDED'})";
+		responses[] = {"agentExitEnd", "agentExit"};
+		sentences[] = {
+			"And we meet again. You have an offer I hear?",
+			"Yes. We're not stupid, we know you will attack soon. And we both know that Black Arrow's chances to hold off the Knight's attack without any help are low at best. So we're increasing our chances of success. Help us defending the device and we'll pay you 1.000.000€. Think about it, you're helping the real owner and developer of the prototype to get his right. And you'll help preventing the deaths of many innocent civilians. Listen to your human conscience - or to the money, I don't care. Will you come with us now?"
+		};
+	};
+	class agentOpenerAgain
+	{
+		responses[] = {"agentExitEnd", "agentExit"};
+		sentences[] = {
+			"Hey.",
+			"And, have you decided yet?"
+		};
+	};
+	
 	// Buddy
 	class buddyExit
 	{
@@ -30,8 +59,8 @@ class Conversations
 	};
 	class buddyWound
 	{
-		condition = "((typeName IP_MERCS_BuddyDiedWeapon) == 'STRING')";
-		expression = "IP_PlayerBox addWeaponCargo [IP_MERCS_BuddyDiedWeapon, 1]; IP_PlayerBox addItemCargo ['optic_Nightstalker', 1]; IP_MERCS_BuddyDiedWeapon = true; saveVar 'IP_MERCS_BuddyDiedWeapon';";
+		condition = "!(isNil 'IP_MERCS_BuddyDiedWeapon')";
+		expression = "IP_PlayerBox addWeaponCargo [IP_MERCS_BuddyDiedWeapon, 1]; IP_PlayerBox addItemCargo ['optic_Nightstalker', 1]; IP_MERCS_BuddyDiedWeapon = nil; saveVar 'IP_MERCS_BuddyDiedWeapon';";
 		responses[] = {"buddyBack", "buddyExit"};
 		sentences[] = {
 			"At least you're still alive.",
@@ -153,6 +182,22 @@ class Conversations
 		};
 	};
 	
+	// Colonel
+	class colonelExit
+	{
+		expression = "call IP_fnc_closeConversation; [IP_Colonel, 'colonelOpener'] call IP_fnc_removeConversation; ['tAAF', 'SUCCEEDED'] call BIS_fnc_taskSetState; IP_OffersHeard set [0, true]; saveGame;";
+		sentences[] = {"I'll think about it and let you know how I decide."};
+	};
+	class colonelOpener
+	{
+		condition = "((rating IP_Main >= 0) && ('tHacker' call BIS_fnc_taskExists) && {('tHacker' call BIS_fnc_taskState) == 'SUCCEEDED'})";
+		responses[] = {"colonelExit"};
+		sentences[] = {
+			"Sir, I hear you have an offer for me?",
+			"Mr. Salih, 'ION contractor'. Or was it AAF recruit? I got a bit confused when I heard about your real identity. I would kill you right now but it seems like I need you. I'll spare you the patriotic bullshit I use to tell the men. My very power is at stake in this conflict. With every day different parties causing all kinds of conflicts on this island, supporting FIA and other groups. I'm losing men and influence day by day. This needs to stop. With the device gone, EUROFORCE, CSAT and you mercenary scum would leave the island, giving me the upper hand again. Make sure the prototype gets destroyed during or after your planned attack and be 750.000€ richer. Plus you'll get a high ranking position within my new government when this is over."
+		};
+	};
+	
 	// Commander
 	class commanderExit
 	{
@@ -177,13 +222,13 @@ class Conversations
 	};
 	class commanderInsertion
 	{
-		condition = "(((player getVariable ['IP_Mission', '']) in ['MMain01']) && (!isNil 'IP_BriefingDone'))";
-		expression = "call IP_fnc_closeConversation; [(player getVariable 'IP_Mission'), true, 5] call IP_fnc_endMission;";
+		condition = "(((player getVariable ['IP_ShopMission', '']) in ['MMain01']) && (!isNil 'IP_BriefingDone'))";
+		expression = "call IP_fnc_closeConversation; [(player getVariable 'IP_ShopMission'), true, 5] call IP_fnc_endMission;";
 		sentences[] = {"I'm ready! (Start mission.)"};
 	};
 	class commanderBriefing
 	{
-		condition = "(((player getVariable ['IP_Mission', '']) != '') && (isNil 'IP_BriefingDone'))";
+		condition = "(((player getVariable ['IP_ShopMission', '']) != '') && (isNil 'IP_BriefingDone'))";
 		expression = "call IP_fnc_closeConversation; [] spawn IP_scn_briefing;";
 		sentences[] = {"Reporting in for briefing. (Start briefing.)"};
 	};
@@ -274,56 +319,102 @@ class Conversations
 		};
 	};
 	
-	// Hacker
-	class hackerExit
+	// CSATOfficer
+	class CSATOfficerExit
 	{
-		expression = "call IP_fnc_closeConversation; nul = [IP_Hacker, 'Dont let them get you!', 'DIRECT'] spawn IP_fnc_simpleSentence;";
-		sentences[] = {"I've got work to do."};
+		expression = "call IP_fnc_closeConversation; [IP_CSATOfficer, 'CSATOfficerOpener'] call IP_fnc_removeConversation; ['tCSAT', 'SUCCEEDED'] call BIS_fnc_taskSetState; IP_OffersHeard set [1, true]; saveGame;";
+		sentences[] = {"I'll think about it. Good to see you again. I'll let you know how I decide."};
+	};
+	class CSATOfficerOpener
+	{
+		condition = "((rating IP_Main >= 0) && ('tHacker' call BIS_fnc_taskExists) && {('tHacker' call BIS_fnc_taskState) == 'SUCCEEDED'})";
+		responses[] = {"CSATOfficerExit"};
+		sentences[] = {
+			"Hey, I hear you have an offer for me?",
+			"Hi, friend. It's good to see you again after what we've been through in Kavala. I'm really grateful. Anyway, my commanders are interested in the device DSE is developing on this island. I know that you know what I'm talking about and that you're planning an attack. We know about your current employers and think they're a major threat, not only to CSAT. We need your help to stop them and we will make it worth your while. CSAT is offering you 800.000€ as well as safe passage and transportation to a country of your choice, excluding the European Federation. Provided you deliver the device to us after the attack."
+		};
+	};
+	
+	// EFOfficer
+	class EFOfficerExit
+	{
+		expression = "call IP_fnc_closeConversation; [IP_EFOfficer, 'EFOfficerOpener'] call IP_fnc_removeConversation; ['tEF', 'SUCCEEDED'] call BIS_fnc_taskSetState; IP_OffersHeard set [3, true]; saveGame;";
+		sentences[] = {"I'll consider your offer and let you know."};
+	};
+	class EFOfficerOpener
+	{
+		condition = "((rating IP_Main >= 0) && ('tHacker' call BIS_fnc_taskExists) && {('tHacker' call BIS_fnc_taskState) == 'SUCCEEDED'})";
+		responses[] = {"EFOfficerExit"};
+		sentences[] = {
+			"I hear you have an offer for me?",
+			"Yes, Mr. Salih. It's been a few days since we last met but the European Federation hasn't forgotten your service. And we would like to hire you again. We know you're employed by a group that calls themselves the 'British Knights' and that you plan an attack on DSE's research facility. The Federation is interested in the device as well, alone because of the Knights are a terrorist threat that must not succeed. My commanders have agreed to offer you 500.000€ plus a permanent residence within the European Federation if you deliver the device to us after the attack. And you need to provide us with all your information about the Knights and their ION associates."
+		};
+	};
+	
+	// Hacker
+	class hackerExitLater
+	{
+		expression = "call IP_fnc_closeConversation; nul = [IP_Hacker, 'Okay, keep me waiting...', 'DIRECT'] spawn IP_fnc_simpleSentence;";
+		sentences[] = {"I don't have time now. I'm coming back later."};
 	};
 	class hackerOpener
 	{
 		arguments[] = {"profileName"};
-		responses[] = {"hackerDoing", "hackerName", "hackerContractor", "hackerShirt", "hackerExit"};
+		responses[] = {"hackerWhat", "hackerExitLater"};
 		sentences[] = {
-			"Hi, '%1'?",
-			"Hey there, big, black, scary guy! Please don't shoot me, ahhhhh - just kidding. What can I do you for?"
+			"Hey, '%1'. You wanted to talk?",
+			"Yes, I'm getting straight to the point before someone gets suspicious. I have an offer for you. Well, it's not actually me and it's not one single offer. More like multiple offers to be more precise."
 		};
 	};
-	class hackerDoing
+	class hackerWhat
 	{
-		responses[] = {"hackerName", "hackerContractor", "hackerShirt", "hackerExit"};
+		responses[] = {"hackerMeetingsCSAT", "hackerMeetingsNoCSAT", "hackerWhyMe", "hackerAndYou", "hackerExitOkay"};
 		sentences[] = {
-			"What are you doing?",
-			"Trying to find an exploit in the latest Lightning Player plugin for Waterdog 42.",
-			"Uhm, okay. Why?",
-			"Because zero day exploits bring a buttload of cash. If I find it first I can sell it for around 50000; double if the Blueflag intel service is interested. These nutjobs are literally buying everything. You'd think they could afford to employ their own expert with the money they spend on buying information from me."
+			"What the hell are you talking about?",
+			"Well, let me put it this way. I think you have better options than running with the Knights here. And there are many different parties interested in the device. You see where I'm going?",
+			"Not really.",
+			"*sigh* Why do I always have to deal with these people? So, attention: I took the liberty to use my contacts to get some offers from the other factions interested in the device. And then I've made some appointments for you. So, people are waiting. Go or go not, I don't really care."
 		};
 	};
-	class hackerName
+	class hackerMeetingsCSAT
 	{
-		arguments[] = {"profileName"};
-		responses[] = {"hackerDoing", "hackerContractor", "hackerShirt", "hackerExit"};
+		condition = "!IP_CSATOfficerDied";
+		responses[] = {"hackerWhyMe", "hackerAndYou", "hackerExitOkay"};
 		sentences[] = {
-			"What is your real name?",
-			"You don't really expect an answer to this question, do you?",
-			"Not from a guy who calls himself '%1'. What's that for a stupid name anyway?",
-			"It's as good as any other pseudonym. It's not like 'Raif' is the most beautiful name I've ever heard - and that's your real one."
+			"You mean you've set up meetings with our enemies?!",
+			"They're not our enemies! They're potential business partners! Jesus, don't be so close-minded all the time! You just go meet representatives from the AAF, CSAT, DSE and EUROFORCE. They're all waiting outside of the camp, it's not far. Of course they don't know about each other, I'm not stupid. My advise: Choose who pays the most."
 		};
 	};
-	class hackerContractor
+	class hackerMeetingsNoCSAT
 	{
-		responses[] = {"hackerDoing", "hackerName", "hackerShirt", "hackerExit"};
+		condition = "IP_CSATOfficerDied";
+		responses[] = {"hackerWhyMe", "hackerAndYou", "hackerExitOkay"};
 		sentences[] = {
-			"How can you be a military contractor?",
-			"What, because I don't wave around big guns and look scary I can't kill people for money? I'll tell you something: If we want to compare our dicks here, go ahead, but I'm gonna win. You see, we're in the 21st century, it's not like we've just discovered electricity. Wars are not fought on battlefields with armies any more. They're fought in server rooms and offices, with spying software and gallons of coffee. I can bring down a whole country with a push of a button - what can you do with your little rifle, huh?"
+			"You mean you've set up meetings with our enemies?!",
+			"They're not our enemies! They're potential business partners! Jesus, don't be so close-minded all the time! You just go meet representatives from the AAF, DSE and EUROFORCE. They're all waiting outside of the camp, it's not far. Of course they don't know about each other, I'm not stupid. My advise: Choose who pays the most."
 		};
 	};
-	class hackerShirt
+	class hackerWhyMe
 	{
-		responses[] = {"hackerDoing", "hackerName", "hackerContractor", "hackerExit"};
+		responses[] = {"hackerMeetingsCSAT", "hackerMeetingsNoCSAT", "hackerAndYou", "hackerExitOkay"};
 		sentences[] = {
-			"What's 'Bohemia Interactive'? It's on your shirt.",
-			"Oh dear, I'm only working with idiots and retards. This is THE computer game company of the post-millennium years! Hell, have you even played retro classics like 'ARMA 3' or 'Take On Garbage Disposal - Operation Trashpoint'?! Such sweet games! Especially with the robotic radio-protocol DLC for the 'Terminator' expansion: 'Enemy! CONTAINER! Way! To! Our! Front! Close! EXTERMINATE!' Best 10 bucks I've ever spent! Sadly, they got shut down by the government when they started experimenting with that Czech military AI - nasty stuff, this BudWISEr."
+			"Why me? Are you kidding me?",
+			"Ha, no! I just like you. Contrary to these other losers here you have the most potential. And a real chance to make it out of here alive. Plus we two are in the same position. We're not indoctrinated by the Knight's ideology, we're just here to make a quick buck or two. Just freelancers, operating outside of any chain of command. So, listen what others have to offer and then make your decision."
+		};
+	};
+	class hackerAndYou
+	{
+		responses[] = {"hackerMeetingsCSAT", "hackerMeetingsNoCSAT", "hackerWhyMe", "hackerExitOkay"};
+		sentences[] = {
+			"And what are you doing? Aren't you staying here?",
+			"Hell no! My job here is done and my contract fulfilled. I'm just waiting for my ride off this island. I don't want to be here any more when all hell breaks loose. Fighting, explosions and yelling 'Engage that man!' is more for the muscular soldier type. I was bored before so I contacted the other players, just doing some market research."
+		};
+	};
+	class hackerExitOkay
+	{
+		expression = "call IP_fnc_closeConversation; call IP_scn_talk;";
+		sentences[] = {
+			"Okay, thanks I guess. Maybe I'll check out the other offers."
 		};
 	};
 	
