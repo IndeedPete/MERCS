@@ -13,7 +13,7 @@ params [
 ];
 
 waitUntil {!(isNil "IP_MainInitDone")};
-_team = _unit getVariable ["IP_ShopTeam", ["IP_I_Soldier_TL_FGuer","IP_I_Soldier_AR_FGuer","IP_I_Soldier_M_FGuer","IP_I_Soldier_LAT_FGuer","IP_I_medic_FGuer","IP_I_Soldier_GL_FGuer","IP_I_Soldier_FGuer"]];
+_team = _unit getVariable ["IP_ShopTeam", []];
 if (count _team == 0) exitWith {};
 
 _grp = group _unit;

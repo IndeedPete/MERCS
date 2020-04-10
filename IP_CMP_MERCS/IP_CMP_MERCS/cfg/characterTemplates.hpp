@@ -61,8 +61,8 @@ class CharacterTemplates {
 		identity = "commander";
 		rank = "CAPTAIN";
 		skill = 5;
-		texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_mtp_coION.paa";
-		uniform = "U_B_CTRG_3";
+		//texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_mtp_coION.paa";
+		uniform = "IP_U_B_CombatUniform_MERCS_Modern_Arid_Rolled";
 		variables = "[['IP_Faction', 'ION'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\commanderAvatar.jpg'], ['IP_ConvSpecial', 'Head of IONs Mediterranean operations.']]";
 		
 		class combat {
@@ -70,7 +70,6 @@ class CharacterTemplates {
 			goggles = "G_Tactical_Black";
 			items[] = {"FirstAidKit"};
 			magazines = "[['30Rnd_65x39_caseless_green', 8], ['9Rnd_45ACP_Mag', 3], ['HandGrenade', 2], ['SmokeShell', 2], ['1Rnd_HE_Grenade_shell', 6]]";
-			//night[] = {"((dayTime < 7) OR (dayTime > 19))", "true"};
 			night[] = {"false", "false"};
 			weapons[] = {"arifle_Katiba_GL_Nstalker_pointer_F", "", "hgun_ACPC2_F"};
 			vest = "V_PlateCarrierH_CTRG";

@@ -1,4 +1,4 @@
-private ["_getClasses", "_setPrices", "_autoIndexing", "_defaultNavigation", "_inPossession", "_uniformsInPossession", "_enhancementsInPossession", "_vehiclesInPossession", "_serverSide", "_box", "_missions", "_personnelCategories", "_weaponCategories", "_magazines", "_itemCategories", "_uniformCategories", "_enhancements", "_enhancementClasses", "_vehicleCategories"];
+private ["_getClasses", "_setPrices", "_autoIndexing", "_defaultNavigation", "_inPossession", "_uniformsInPossession", "_enhancementsInPossession", "_vehiclesInPossession", "_serverSide", "_box", "_missions", "_personnelCategories", "_killedTeammates", "_weaponCategories", "_magazines", "_itemCategories", "_uniformCategories", "_enhancements", "_enhancementClasses", "_vehicleCategories"];
 _getClasses = {
 	private "_arr";
 	_arr = [];
@@ -91,19 +91,24 @@ IP_Shop_HashMap = if (_serverSide && {isNil "IP_Shop_HashMap"}) then {
 _missions = "(isNumber(_x >> 'condition') && {(getNumber(_x >> 'condition') == 1) && {getText(_x >> 'stage') == getText(missionConfigFile >> 'stage')} && {!([(configName _x)] call IP_fnc_missionDone)}}) OR {isText(_x >> 'condition') && {call(compile(getText(_x >> 'condition')))}}" configClasses (missionConfigFile >> "ShopMissions");
 IP_AvailableMissions = _missions call _getClasses;
 
-_personnelCategories = "((if (isNumber(_x >> 'show')) then {(getNumber(_x >> 'show'))} else {1}) == 1) && {count _x > 0}" configClasses (missionConfigFile >> "ShopPersonnel");
+_personnelCategories = "((if (isNumber(_x >> 'show')) then {(getNumber(_x >> 'show'))} else {1}) <= (if (getText(missionConfigFile >> 'stage') == 'A')) then {1} else {2}) && {count _x > 0}" configClasses (missionConfigFile >> "ShopPersonnel");
+_killedTeammates = if (isNil "IP_MERCS_KilledTeammates") then {[]} else {IP_MERCS_KilledTeammates};
 IP_PersonnelCategories = _personnelCategories call _getClasses;
 IP_PersonnelFilters = ["All"] + IP_PersonnelCategories;
 IP_AvailablePersonnel = [];
 {
 	private "_personnel";
+	_category = _x;
 	_personnel = [];
-	_personnelClasspaths = "((isNumber(_x >> 'costRate')) && {(if (isNumber(_x >> 'show')) then {(getNumber(_x >> 'show'))} else {1}) == 1})" configClasses (missionConfigFile >> "ShopPersonnel" >> _x);
+	_personnelClasspaths = "((isNumber(_x >> 'costRate')) && {(if (isNumber(_x >> 'show')) then {(getNumber(_x >> 'show'))} else {1}) == 1})" configClasses (missionConfigFile >> "ShopPersonnel" >> _category);
 	_personnelClasses = _personnelClasspaths call _getClasses;
 	
 	{
-		if ((isNumber(configFile >> "CfgVehicles" >> _x >> "scope")) && {getNumber(configFile >> "CfgVehicles" >> _x >> "scope") == 2}) then {
-			_personnel pushBack _x;
+		_class = _x;
+		if (((if (isNumber(missionConfigFile >> "ShopPersonnel" >> _category >> _class >> 'show')) then {(getNumber(missionConfigFile >> "ShopPersonnel" >> _category >> _class >> 'show'))} else {1}) == 1)
+			&& {{_class == _x} count _killedTeammates == 0}) then {
+
+			_personnel pushBack _class;
 		};
 	} forEach _personnelClasses;
 	
@@ -395,6 +400,7 @@ IP_AvailableCampVehicles = [];
 ["ShopUniforms", (IP_AvailableUniforms call IP_fnc_arrayMerge), _serverSide] call _setPrices;
 [] call IP_fnc_updateStocks;
 
+IP_ShopInitDone = true;
 if (_serverSide) then {
-	{publicVariable _x} forEach ["IP_AvailableMissions", "IP_PersonnelCategories", "IP_PersonnelFilters", "IP_AvailablePersonnel", "IP_WeaponCategories", "IP_WeaponFilters", "IP_AvailableWeapons", "IP_AvailableMagazines", "IP_ItemCategories", "IP_ItemFilters", "IP_AvailableItems", "IP_UniformCategories", "IP_UniformFilters", "IP_AvailableUniforms", "IP_AvailableCampEnhancements", "IP_CampVehicleCategories", "IP_CampVehicleFilters", "IP_AvailableCampVehicles", "IP_LastStocks", "IP_AvailableStocks", "IP_LastStockMarketAccess"];
+	{publicVariable _x} forEach ["IP_AvailableMissions", "IP_PersonnelCategories", "IP_PersonnelFilters", "IP_AvailablePersonnel", "IP_WeaponCategories", "IP_WeaponFilters", "IP_AvailableWeapons", "IP_AvailableMagazines", "IP_ItemCategories", "IP_ItemFilters", "IP_AvailableItems", "IP_UniformCategories", "IP_UniformFilters", "IP_AvailableUniforms", "IP_AvailableCampEnhancements", "IP_CampVehicleCategories", "IP_CampVehicleFilters", "IP_AvailableCampVehicles", "IP_LastStocks", "IP_AvailableStocks", "IP_LastStockMarketAccess", "IP_ShopInitDone"];
 };

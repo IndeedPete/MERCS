@@ -21,9 +21,9 @@ switch (IP_LastOpened) do {
 		lbSetCurSel [1500, -1];
 		for "_i" from 0 to ((count _data) - 1) do {
 			_entry = _data select _i;
-			_title = getText(configFile >> "CfgVehicles" >> _entry >> "displayName");
 			_category = [(missionConfigFile >> "ShopPersonnel"), _entry] call IP_fnc_getConfigCategory;
-			_costRate = str((getNumber(missionConfigFile >> "ShopWeapons" >> _category >> _entry >> "costRate")) * 100);
+			_title = if (_category == "Merc") then {configName(missionConfigFile >> "ShopPersonnel" >> "Merc" >> _entry)} else {getText(configFile >> "CfgVehicles" >> _entry >> "displayName")};
+			_costRate = str((getNumber(missionConfigFile >> "ShopPersonnel" >> _category >> _entry >> "costRate")) * 100);
 			_text = _title + " " + _costRate + "%";
 			_index = lbAdd [1500, _text];
 		};

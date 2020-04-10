@@ -258,14 +258,26 @@ class ShopUniforms
 	class Military
 	{
 		displayName = "Military";
-		
-		class U_I_C_Soldier_Camo_F
+
+		class IP_U_B_CombatUniform_MERCS_Classic_Arid
+		{
+			merc = 1;
+			price = 450;
+			show = 1;
+		};
+		class IP_U_B_CombatUniform_MERCS_Classic_Arid_Rolled: IP_U_B_CombatUniform_MERCS_Classic_Arid {};
+		class IP_U_B_CombatUniform_MERCS_Modern_Arid_T
 		{
 			merc = 1;
 			price = 500;
 			show = 1;
 		};
-		class U_Tank_green_F
+		class IP_U_B_CombatUniform_MERCS_Modern_Arid: IP_U_B_CombatUniform_MERCS_Modern_Arid_T
+		{
+			price = 700;
+		};
+		class IP_U_B_CombatUniform_MERCS_Modern_Arid_Rolled: IP_U_B_CombatUniform_MERCS_Modern_Arid {};
+		class U_I_C_Soldier_Camo_F
 		{
 			merc = 1;
 			price = 500;
@@ -401,6 +413,11 @@ class ShopUniforms
 		};
 		class U_I_HeliPilotCoveralls: U_B_HeliPilotCoveralls {};
 		class U_O_HeliPilotCoveralls: U_B_HeliPilotCoveralls {};
+		class U_Tank_green_F
+		{
+			price = 500;
+			show = 0;
+		};
 		class U_B_survival_uniform
 		{
 			price = 750;

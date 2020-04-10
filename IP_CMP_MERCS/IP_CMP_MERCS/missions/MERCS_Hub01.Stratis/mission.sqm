@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={3308.9924,232.30862,2937.5669};
-		dir[]={-0.36638129,-0.2846168,-0.88600624};
-		up[]={-0.10878952,0.95857948,-0.26309052};
-		aside[]={-0.92420697,2.6600901e-007,0.38217175};
+		pos[]={3309.3347,233.95485,2939.0125};
+		dir[]={0.098315485,-0.26932076,-0.95814586};
+		up[]={0.027503846,0.96296847,-0.26800489};
+		aside[]={-0.99488652,7.7200821e-007,-0.10209206};
 	};
 };
 binarizationWanted=0;
@@ -67,6 +67,13 @@ addons[]=
 	"A3_Structures_F_Civ_Accessories",
 	"A3_Misc_F_Helpers",
 	"A3_Characters_F",
+	"A3_Weapons_F_Rifles_MX",
+	"A3_Weapons_F_Acc",
+	"A3_Weapons_F",
+	"A3_Weapons_F_Pistols_P07",
+	"A3_Characters_F_Heads",
+	"IP_CMP_MERCS",
+	"A3_Weapons_F_Items",
 	"A3_Modules_F_Sites",
 	"A3_Modules_F_ObjectModifiers",
 	"A3_Modules_F",
@@ -76,7 +83,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=16;
+		items=17;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -177,12 +184,18 @@ class AddonsMetaData
 		};
 		class Item14
 		{
+			className="IP_CMP_MERCS";
+			name="IP_CMP_MERCS";
+			author="IndeedPete";
+		};
+		class Item15
+		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item15
+		class Item16
 		{
 			className="A3_Structures_F_Heli";
 			name="Arma 3 Helicopters - Buildings and Structures";
@@ -815,19 +828,20 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3310.0881,227.42743,2954.1863};
-				angles[]={0.022498533,2.1519735,6.2581916};
+				position[]={3310.0876,227.42743,2954.186};
+				angles[]={0.022497294,2.1519735,6.2581921};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
-				init="clearWeaponCargo this; clearMagazineCargo this; this setPos [(getPos this select 0), (getPos this select 1), 0.7];";
+				init="clearWeaponCargo this; clearMagazineCargo this; this setPos [(getPos this select 0), (getPos this select 1), 0.7]; [this] call IP_fnc_unpackOnContainerClosed;";
 				name="IP_PlayerBox";
 			};
 			id=57;
 			type="Box_NATO_Wps_F";
+			atlOffset=-1.5258789e-005;
 		};
 		class Item58
 		{
@@ -6121,7 +6135,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""SIT_LOW"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""SIT_LOW"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=343;
 					type="B_G_Soldier_lite_F";
@@ -6152,7 +6166,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""SIT_LOW_U"", ""NONE""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""SIT_LOW_U"", ""NONE""] call BIS_fnc_ambientAnim;";
 					};
 					id=345;
 					type="B_G_Soldier_F";
@@ -6183,7 +6197,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; removeHeadgear this; removeGoggles this; removeAllWeapons this; this stop true; this setVariable [""IP_LiveFeed"", true];";
+						init="[this] spawn IP_fnc_createMerc; removeHeadgear this; removeGoggles this; removeAllWeapons this; this stop true; this setVariable [""IP_LiveFeed"", true];";
 						name="IP_Storyteller";
 					};
 					id=347;
@@ -6215,7 +6229,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""SIT_U1""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""SIT_U1""] call BIS_fnc_ambientAnim;";
 					};
 					id=349;
 					type="B_G_Soldier_AR_F";
@@ -6246,7 +6260,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc;";
+						init="[this] spawn IP_fnc_createMerc;";
 					};
 					id=351;
 					type="B_G_Soldier_GL_F";
@@ -6293,7 +6307,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={3275.7568,229.19144,2935.1548};
+						position[]={3275.7571,229.19144,2935.155};
 						angles[]={0,2.3779237,0};
 					};
 					side="West";
@@ -6301,10 +6315,52 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc ;removeAllWeapons this; removeBackpack this;";
+						init="nul = this spawn {[_this] call IP_fnc_createMerc; removeAllWeapons _this; removeBackpack _this;};";
 					};
 					id=355;
 					type="B_G_Soldier_LAT_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male01GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 				class Item1
 				{
@@ -6356,7 +6412,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=359;
 					type="B_G_Soldier_M_F";
@@ -6387,7 +6443,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; this stop true;";
+						init="[this] spawn IP_fnc_createMerc; this stop true;";
 					};
 					id=361;
 					type="B_G_Soldier_TL_F";
@@ -6418,7 +6474,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""GUARD""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""GUARD""] call BIS_fnc_ambientAnim;";
 					};
 					id=363;
 					type="B_G_medic_F";
@@ -6441,7 +6497,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={3287.7129,229.18143,2935.7178};
+						position[]={3287.7129,229.18143,2935.718};
 						angles[]={0,2.3779237,0};
 					};
 					side="West";
@@ -6449,10 +6505,52 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; removeAllWeapons this; removeBackpack this;";
+						init="nul = this spawn {[_this] call IP_fnc_createMerc; removeAllWeapons _this; removeBackpack _this;};";
 					};
 					id=365;
 					type="B_G_engineer_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male05GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.98000002;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 				class Item1
 				{
@@ -6495,18 +6593,60 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={3286.271,229.11005,2961.0693};
-						angles[]={0.012496647,1.3447592,0.0050033992};
+						position[]={3286.271,229.11005,2961.0691};
+						angles[]={0.012496558,1.3447587,0.0050090947};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND"", ""LIGHT""] call BIS_fnc_ambientAnim;";
+						init="nul = this spawn {[_this] call IP_fnc_createMerc; [_this, ""STAND"", ""LIGHT""] call BIS_fnc_ambientAnim;}";
 					};
 					id=369;
 					type="B_G_Soldier_exp_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male06GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.98000002;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
@@ -6534,7 +6674,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""REPAIR_VEH_STAND"", ""NONE""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""REPAIR_VEH_STAND"", ""NONE""] call BIS_fnc_ambientAnim;";
 					};
 					id=371;
 					type="B_soldier_repair_F";
@@ -6557,24 +6697,68 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={3283.5879,229.16751,2948.833};
-						angles[]={0.0050033992,2.3779237,0};
+						position[]={3283.5879,229.16753,2948.833};
+						angles[]={0.0050090947,2.3779237,0};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""WATCH1"", ""LIGHT""] call BIS_fnc_ambientAnim;";
+						init="nul = this spawn {[_this] call IP_fnc_createMerc; [_this, ""WATCH1"", ""LIGHT""] call BIS_fnc_ambientAnim;};";
 					};
 					id=373;
 					type="B_G_medic_F";
+					atlOffset=1.5258789e-005;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male03GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.05;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
 			{
 			};
 			id=372;
+			atlOffset=1.5258789e-005;
 		};
 		class Item349
 		{
@@ -6596,7 +6780,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""SIT_HIGH2"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""SIT_HIGH2"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=375;
 					type="B_G_Soldier_SL_F";
@@ -6627,7 +6811,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=377;
 					type="B_G_Soldier_SL_F";
@@ -6658,7 +6842,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""SIT_U2""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""SIT_U2""] call BIS_fnc_ambientAnim;";
 					};
 					id=379;
 					type="B_G_officer_F";
@@ -6689,7 +6873,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
 						name="IP_ShootingRangeGuard";
 					};
 					id=381;
@@ -6745,17 +6929,59 @@ class Mission
 					class PositionInfo
 					{
 						position[]={3263.3601,226.52823,2916.759};
-						angles[]={6.173625,4.0745583,0.07983166};
+						angles[]={6.1736307,4.0745583,0.079831354};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""BRIEFING"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="nul = this spawn {[_this] call IP_fnc_createMerc; [_this, ""BRIEFING"", ""ASIS""] call BIS_fnc_ambientAnim;};";
 					};
 					id=385;
 					type="B_G_Soldier_A_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male05GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.97000003;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
@@ -6783,7 +7009,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""LEAN"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""LEAN"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=387;
 					type="B_G_Soldier_lite_F";
@@ -6814,7 +7040,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=389;
 					type="B_G_Soldier_F";
@@ -6845,7 +7071,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND_U1"", ""NONE""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""STAND_U1"", ""NONE""] call BIS_fnc_ambientAnim;";
 					};
 					id=391;
 					type="B_G_Soldier_GL_F";
@@ -6900,24 +7126,68 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={3261.7639,226.45024,2916.0178};
-						angles[]={6.2556911,1.1627977,0.022495884};
+						position[]={3261.7639,226.45023,2916.0181};
+						angles[]={6.2556963,1.1627908,0.022497294};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND_U3"", ""NONE""] call BIS_fnc_ambientAnim;";
+						init="nul = this spawn {[_this] call IP_fnc_createMerc; [_this, ""STAND_U3"", ""NONE""] call BIS_fnc_ambientAnim;};";
 					};
 					id=395;
 					type="B_G_Soldier_exp_F";
+					atlOffset=-1.5258789e-005;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male01GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.95999998;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
 			{
 			};
 			id=394;
+			atlOffset=-1.5258789e-005;
 		};
 		class Item360
 		{
@@ -6939,7 +7209,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.2;
-						init="[this] call IP_fnc_createMerc; [this, ""SIT_U1"", ""NONE""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""SIT_U1"", ""NONE""] call BIS_fnc_ambientAnim;";
 					};
 					id=397;
 					type="B_G_Soldier_lite_F";
@@ -6970,7 +7240,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.2;
-						init="[this] call IP_fnc_createMerc; [this, ""SIT_AT_TABLE""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""SIT_AT_TABLE""] call BIS_fnc_ambientAnim;";
 					};
 					id=399;
 					type="B_G_Soldier_SL_F";
@@ -7001,7 +7271,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""SIT_SAD1"", ""NONE""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""SIT_SAD1"", ""NONE""] call BIS_fnc_ambientAnim;";
 					};
 					id=401;
 					type="B_G_Soldier_lite_F";
@@ -7032,7 +7302,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=403;
 					type="B_G_Soldier_AR_F";
@@ -7065,6 +7335,109 @@ class Mission
 						skill=0.40000001;
 						rank="CAPTAIN";
 						name="IP_Commander";
+						class Inventory
+						{
+							class primaryWeapon
+							{
+								name="arifle_MX_F";
+								optics="optic_Aco";
+								flashlight="acc_pointer_IR";
+								class primaryMuzzleMag
+								{
+									name="30Rnd_65x39_caseless_mag";
+									ammoLeft=30;
+								};
+							};
+							class handgun
+							{
+								name="hgun_P07_F";
+								class primaryMuzzleMag
+								{
+									name="16Rnd_9x21_Mag";
+									ammoLeft=16;
+								};
+							};
+							class uniform
+							{
+								typeName="IP_U_B_CombatUniform_MERCS_Modern_Arid_T";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=2;
+									class Item0
+									{
+										name="30Rnd_65x39_caseless_mag";
+										count=2;
+										ammoLeft=30;
+									};
+									class Item1
+									{
+										name="Chemlight_green";
+										count=1;
+										ammoLeft=1;
+									};
+								};
+								class ItemCargo
+								{
+									items=1;
+									class Item0
+									{
+										name="FirstAidKit";
+										count=1;
+									};
+								};
+							};
+							class vest
+							{
+								typeName="V_PlateCarrierL_CTRG";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=6;
+									class Item0
+									{
+										name="30Rnd_65x39_caseless_mag";
+										count=7;
+										ammoLeft=30;
+									};
+									class Item1
+									{
+										name="16Rnd_9x21_Mag";
+										count=2;
+										ammoLeft=16;
+									};
+									class Item2
+									{
+										name="SmokeShell";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item3
+									{
+										name="SmokeShellGreen";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item4
+									{
+										name="Chemlight_green";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item5
+									{
+										name="HandGrenade";
+										count=2;
+										ammoLeft=1;
+									};
+								};
+							};
+							map="ItemMap";
+							compass="ItemCompass";
+							watch="ItemWatch";
+							radio="ItemRadio";
+							goggles="G_Tactical_Clear";
+						};
 					};
 					id=405;
 					type="B_Story_SF_Captain_F";
@@ -7095,7 +7468,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.2;
-						init="[this] call IP_fnc_createMerc; nul = this spawn {waitUntil {time > 0}; sleep 1; [_this, 0] call BIS_fnc_setHeight; [_this, ""REPAIR_VEH_PRONE"", ""NONE""] call BIS_fnc_ambientAnim;};";
+						init="[this] spawn IP_fnc_createMerc; nul = this spawn {waitUntil {time > 0}; sleep 1; [_this, 0] call BIS_fnc_setHeight; [_this, ""REPAIR_VEH_PRONE"", ""NONE""] call BIS_fnc_ambientAnim;};";
 						name="guy";
 					};
 					id=407;
@@ -7128,7 +7501,7 @@ class Mission
 					{
 						skill=0.46666664;
 						rank="SERGEANT";
-						init="[this] call IP_fnc_createMerc; this setPos[(getPos this select 0), (getPos this select 1), 3]; this stop true;";
+						init="[this] spawn IP_fnc_createMerc; this setPos[(getPos this select 0), (getPos this select 1), 3]; this stop true;";
 					};
 					id=409;
 					type="B_G_Soldier_TL_F";
@@ -7159,7 +7532,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="this setpos [getpos this select 0, getpos this select 1, 3.1913126]; [this] call IP_fnc_createMerc; [this, ""SIT"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="this setpos [getpos this select 0, getpos this select 1, 3.1913126]; [this] spawn IP_fnc_createMerc; [this, ""SIT"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=411;
 					type="B_G_Soldier_M_F";
@@ -7190,7 +7563,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.2;
-						init="[this] call IP_fnc_createMerc; [this, ""SIT""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""SIT""] call BIS_fnc_ambientAnim;";
 					};
 					id=413;
 					type="B_G_Soldier_GL_F";
@@ -7221,7 +7594,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; removeHeadgear this; removeGoggles this; removeAllWeapons this; [this, ""STAND_U2"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; removeHeadgear this; removeGoggles this; removeAllWeapons this; [this, ""STAND_U2"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=415;
 					type="B_G_officer_F";
@@ -7252,7 +7625,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; this stop true;";
+						init="[this] spawn IP_fnc_createMerc; this stop true;";
 					};
 					id=417;
 					type="B_G_Soldier_F";
@@ -7283,7 +7656,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND_U1"", ""NONE""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""STAND_U1"", ""NONE""] call BIS_fnc_ambientAnim;";
 					};
 					id=419;
 					type="B_G_Soldier_lite_F";
@@ -7314,7 +7687,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""LEAN"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""LEAN"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=421;
 					type="B_G_Soldier_AR_F";
@@ -7345,7 +7718,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc;";
+						init="[this] spawn IP_fnc_createMerc;";
 					};
 					id=423;
 					type="B_G_Soldier_SL_F";
@@ -7400,7 +7773,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc;";
+						init="[this] spawn IP_fnc_createMerc;";
 					};
 					id=427;
 					type="B_G_Soldier_F";
@@ -7455,7 +7828,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc;";
+						init="[this] spawn IP_fnc_createMerc;";
 					};
 					id=431;
 					type="B_G_Soldier_F";
@@ -7532,7 +7905,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""SIT_HIGH1"", ""ASIS"", IP_PosHelper1] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""SIT_HIGH1"", ""ASIS"", IP_PosHelper1] call BIS_fnc_ambientAnim;";
 					};
 					id=437;
 					type="B_G_Soldier_lite_F";
@@ -7605,7 +7978,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=439;
 					type="B_G_Soldier_TL_F";
@@ -7628,18 +8001,60 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={3315.4023,227.51419,2941.4631};
-						angles[]={0.094712868,2.5702243,0.0050033992};
+						position[]={3315.4021,227.51419,2941.4631};
+						angles[]={0.094719015,2.5702243,0.0050090947};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; removeBackpack this; [this, ""STAND_U1""] call BIS_fnc_ambientAnim;";
+						init="nul = this spawn {[_this] call IP_fnc_createMerc; removeBackpack _this; [_this, ""STAND_U1""] call BIS_fnc_ambientAnim;};";
 					};
 					id=441;
 					type="B_G_engineer_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male01GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
@@ -7823,7 +8238,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""STAND"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=448;
 					type="B_G_Soldier_GL_F";
@@ -7846,18 +8261,60 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={3352.7217,234.61887,2920.554};
-						angles[]={6.2706842,3.0112863,6.2432065};
+						position[]={3352.7219,234.61885,2920.554};
+						angles[]={6.2706885,3.0112863,6.2431998};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND_U1"", ""NONE""] call BIS_fnc_ambientAnim;";
+						init="nul = this spawn {[_this] call IP_fnc_createMerc; [_this, ""STAND_U1"", ""NONE""] call BIS_fnc_ambientAnim;};";
 					};
 					id=450;
 					type="B_G_engineer_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male05GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
@@ -7885,7 +8342,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""WATCH1"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""WATCH1"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=452;
 					type="B_G_Soldier_M_F";
@@ -7916,7 +8373,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""WATCH2"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""WATCH2"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=454;
 					type="B_G_Soldier_F";
@@ -7947,7 +8404,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; this stop true;";
+						init="[this] spawn IP_fnc_createMerc; this stop true;";
 					};
 					id=456;
 					type="B_G_Soldier_F";
@@ -8049,7 +8506,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND_U2"", ""MEDIUM""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""STAND_U2"", ""MEDIUM""] call BIS_fnc_ambientAnim;";
 					};
 					id=459;
 					type="B_G_Soldier_F";
@@ -8080,7 +8537,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""LEAN"", ""ASIS""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""LEAN"", ""ASIS""] call BIS_fnc_ambientAnim;";
 					};
 					id=461;
 					type="B_G_Soldier_F";
@@ -8111,7 +8568,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc;this stop true;";
+						init="[this] spawn IP_fnc_createMerc;this stop true;";
 					};
 					id=463;
 					type="B_G_Soldier_GL_F";
@@ -8142,7 +8599,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""SIT"", ""LIGHT""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""SIT"", ""LIGHT""] call BIS_fnc_ambientAnim;";
 					};
 					id=465;
 					type="B_G_Soldier_TL_F";
@@ -8173,7 +8630,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; removeHeadgear this; removeGoggles this; removeAllWeapons this; [this, ""BRIEFING"", ""ASIS""] call BIS_fnc_ambientAnim; this setVariable [""IP_LiveFeed"", true]; this setGroupID [""Announcer""];";
+						init="[this] spawn IP_fnc_createMerc; removeHeadgear this; removeGoggles this; removeAllWeapons this; [this, ""BRIEFING"", ""ASIS""] call BIS_fnc_ambientAnim; this setVariable [""IP_LiveFeed"", true]; this setGroupID [""Announcer""];";
 						name="IP_Gambler";
 					};
 					id=467;
@@ -8205,7 +8662,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""STAND_U3"", ""NONE""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""STAND_U3"", ""NONE""] call BIS_fnc_ambientAnim;";
 					};
 					id=469;
 					type="B_G_Soldier_F";
@@ -8236,7 +8693,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc;";
+						init="[this] spawn IP_fnc_createMerc;";
 					};
 					id=471;
 					type="B_G_Soldier_AR_F";
@@ -8302,7 +8759,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc;this stop true;";
+						init="[this] spawn IP_fnc_createMerc;this stop true;";
 					};
 					id=476;
 					type="B_G_Soldier_M_F";
@@ -8333,7 +8790,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; [this, ""PRONE_INJURED_U1"", ""NONE""] call BIS_fnc_ambientAnim;";
+						init="[this] spawn IP_fnc_createMerc; [this, ""PRONE_INJURED_U1"", ""NONE""] call BIS_fnc_ambientAnim;";
 					};
 					id=478;
 					type="B_G_Soldier_F";
@@ -8772,7 +9229,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="[this] call IP_fnc_createMerc; this stop true;";
+						init="[this] spawn IP_fnc_createMerc; this stop true;";
 					};
 					id=488;
 					type="B_G_Soldier_lite_F";

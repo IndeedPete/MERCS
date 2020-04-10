@@ -27,7 +27,7 @@ if (_control == "Control #1500") then {
 	_equipment = if (isText(missionConfigFile >> "ShopPersonnel" >> _category >> _person >> "equipment")) then {("Equipment: " + getText(missionConfigFile >> "ShopPersonnel" >> _category >> _person >> "equipment") + "<br/>")} else {(_person call _getWeaponStr)};
 	_text = _costRate + _desc + _equipment;
 } else {
-	_team = player getVariable ["IP_Team", []];
+	_team = player getVariable ["IP_ShopTeam", []];
 	if (count _team < 1) exitWith {_text = ""};
 	_person = _team select _i;
 	_category = [(missionConfigFile >> "ShopPersonnel"), _person] call IP_fnc_getConfigCategory;

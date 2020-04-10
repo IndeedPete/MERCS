@@ -213,10 +213,12 @@ class CfgFunctions
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\createBK.sqf";
 			};
+			/*
 			class createMerc
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\createMerc.sqf";
 			};
+			*/
 			class endMission
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\endMission.sqf";
@@ -254,11 +256,11 @@ class CfgFunctions
 			class setWeather
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\setWeather.sqf";
-			};
+			};/*
 			class spawnTeam
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\spawnTeam.sqf";
-			};
+			};*/
 			class showOSD
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\showOSD.sqf";
@@ -375,12 +377,10 @@ class CfgFunctions
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\createCampVehicle.sqf";
 			};
-			/*
 			class createMerc
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\createMerc.sqf";
 			};
-			*/
 			class determinePrice
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\shop\determinePrice.sqf";

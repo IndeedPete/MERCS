@@ -10,7 +10,7 @@ _personnel = IP_PersonnelFilter call IP_fnc_personnelFilter;
 _person = _personnel select _i;
 _category = [(missionConfigFile >> "ShopPersonnel"), _person] call IP_fnc_getConfigCategory;
 _costRate = getNumber(missionConfigFile >> "ShopPersonnel" >> _category >> _person >> "costRate");
-if (((call IP_fnc_calculateTotalCostRate) + _costRate) > 1) exitWith {hint "Your total cost rate would be higher than 100%!"};
+if (((call IP_fnc_calculateTotalCostRate) + _costRate) > 1.024) exitWith {hint "Your total cost rate would be higher than 100%!"};
 
 _team pushBack _person;
 player setVariable ["IP_ShopTeam", _team];

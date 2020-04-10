@@ -61,7 +61,7 @@ switch (_side) do{
 	};
 };
 
-if (count _arrays == 0) exitWith {hint format ["IP_fnc_menspawn: Wrong selection parameters!\nSelection: %1\nSide: %2", _selection, _side]};
+if (count _arrays == 0) exitWith {hint format ["IP_fnc_spawnMenGroup: Wrong selection parameters!\nSelection: %1\nSide: %2", _selection, _side]};
 _array = _arrays call BIS_fnc_selectRandom;
 _array = _array - _blacklist;
 

@@ -39,26 +39,26 @@ _unit addMagazines ["11Rnd_45ACP_Mag", 3];
 switch (_weapons) do {
 	case "RIFLEMAN": {
 		_unit addMagazines ["handGrenade", 4];
-		_unit addMagazines ["30Rnd_65x39_caseless_mag", 10];
+		_unit addMagazines ["30Rnd_65x39_caseless_black_mag", 10];
 		_unit addWeapon "arifle_MX_Black_F";
 		_unit addPrimaryWeaponItem "optic_Nightstalker";
 	};
 	case "GRENADIER": {
 		_unit addMagazines ["handGrenade", 2];
 		_unit addMagazines ["1Rnd_HE_Grenade_shell", 6];
-		_unit addMagazines ["30Rnd_65x39_caseless_mag", 8];
+		_unit addMagazines ["30Rnd_65x39_caseless_black_mag", 8];
 		_unit addWeapon "arifle_MX_GL_Black_F";
 		_unit addPrimaryWeaponItem "optic_Nightstalker";
 	};
 	case "AUTORIFLEMAN": {
 		_unit addMagazines ["handGrenade", 4];
-		_unit addMagazines ["100Rnd_65x39_caseless_mag", 4];
+		_unit addMagazines ["100Rnd_65x39_caseless_black_mag", 4];
 		_unit addWeapon "arifle_MX_SW_Black_F";
 		_unit addPrimaryWeaponItem "optic_Nightstalker";
 	};
 	case "MARKSMAN": {
 		_unit addMagazines ["handGrenade", 4];
-		_unit addMagazines ["30Rnd_65x39_caseless_mag", 10];
+		_unit addMagazines ["30Rnd_65x39_caseless_black_mag", 10];
 		_unit addWeapon "arifle_MXM_Black_F";
 		_unit addPrimaryWeaponItem "optic_Nightstalker";
 	};

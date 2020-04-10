@@ -68,7 +68,7 @@ _text = "
 sleep 2;
 IP_Weather = ["", IP_Weather] call IP_fnc_setWeather;
 sleep 10;
-0 fadeSound 1;
+10 fadeSound 1;
 1 cutText ["", "PLAIN", 3];
 sleep 2;
 0 cutText ["", "BLACK IN", 5];
@@ -86,7 +86,10 @@ if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};
 	[IP_Trafficker, "There is the coast, we're going to meet some of my partners! Don't worry!"]
 ] call _saySentences;
 
-["IP_BlackScreen", false] call BIS_fnc_blackOut;
+sleep 2;
+
+["IP_BlackScreen", true, 0.5] call BIS_fnc_blackOut;
+sleep 0.5;
 IP_Main setPos (getMarkerPos "mMain");
 IP_Main setDir ([IP_Main, IP_Commander] call BIS_fnc_dirTo);
 IP_Main switchMove "acts_StandingSpeakingUnarmed";
@@ -96,6 +99,7 @@ IP_Trafficker disableAI "MOVE";
 IP_Trafficker setPos (getMarkerPos "mTrafficker");
 IP_Trafficker setDir ([IP_Trafficker, IP_Commander] call BIS_fnc_dirTo);
 IP_Trafficker switchMove "Acts_B_out2_briefing";
+
 [] spawn {
 	sleep 52.359;
 	IP_Trafficker switchMove "Acts_B_out2_briefing";
@@ -129,7 +133,7 @@ sleep 3;
 if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};
 0 cutText ["", "BLACK FADED", 10e10];
 
-[] call BIS_fnc_jukebox;
+//[] call BIS_fnc_jukebox;
 [IP_Trafficker, "STAND_U1", "ASIS"] call BIS_fnc_ambientAnim;
 IP_Main switchMove "";
 
@@ -163,7 +167,7 @@ IP_BuddyGo = true;
 [IP_Buddy, "We're private military contractors doing mercenary work. Mostly on Altis up to the north. We're on Stratis now.", "DIRECT"] call IP_fnc_simpleSentence;
 [IP_Buddy, "Get in the car! Believe me, you don't want to see this.", "DIRECT"] call IP_fnc_simpleSentence;
 
-waitUntil{IP_Main in IP_Car};
+waitUntil {IP_Main in IP_Car};
 sleep 2;
 
 {

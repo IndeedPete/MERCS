@@ -12,6 +12,9 @@ IP_Weather = ["CLEAR", "SUNNY"];
 {profileNameSpace setVariable [_x, nil]} forEach ["IP_MERCS_MissionsDone", "IP_MERCS_PlayerBox", "IP_MERCS_MainLoadout", "IP_MERCS_BuddyLoadout", "IP_MERCS_Money", "IP_MERCS_Debts", "IP_MERCS_Team", "IP_MERCS_Clothes", "IP_MERCS_Mission", "IP_MERCS_Date", "IP_MERCS_Weather"];
 saveProfileNamespace;
 
+// Shop Init
+[] call IP_fnc_shopInit;
+
 // Player Initial Setup
 IP_Main setIdentity "main";
 IP_Main setVariable ["IP_Money", (getNumber(missionConfigFile >> "MainValues" >> "startMoney"))];
@@ -20,7 +23,7 @@ IP_Main setVariable ["IP_Picture", "IP_CMP_MERCS\IP_CMP_MERCS\img\main.jpg"];
 IP_Main setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\mainAvatar1.jpg"];
 IP_Main setVariable ["IP_LiveFeed", true];
 IP_Main setVariable ["IP_Team", []];
-IP_Main setVariable ["IP_Clothes", [getText(missionConfigFile >> "MainValues" >> "startUniform")]];
+IP_Main setVariable ["IP_ShopUniforms", [getText(missionConfigFile >> "MainValues" >> "startUniform")]];
 if (IP_TESTMODE) then {IP_Main allowDamage false};
 
 removeAllWeapons IP_Main;
@@ -29,7 +32,7 @@ removeVest IP_Main;
 removeGoggles IP_Main;
 removeHeadgear IP_Main;
 
-IP_Main forceAddUniform ((IP_Main getVariable "IP_Clothes") select 0);
+IP_Main forceAddUniform ((IP_Main getVariable "IP_ShopUniforms") select 0);
 IP_Main moveInCargo [IP_Boat1, 0];
 
 IP_Main unassignItem "ItemMap";

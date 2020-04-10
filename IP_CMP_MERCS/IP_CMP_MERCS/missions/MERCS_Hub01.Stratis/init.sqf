@@ -46,7 +46,7 @@ IP_scn_duelStart = compile(preProcessFileLineNumbers "scn\duelStart.sqf");
 IP_scn_duelEnd = compile(preProcessFileLineNumbers "scn\duelEnd.sqf");
 IP_scn_dynamicCampInit = {
 	// Shooting Range
-	[IP_Shooter, 4, ((dayTime < 7) OR (dayTime > 19)), [((dayTime < 7) OR (dayTime > 19)), true]] call IP_fnc_createMerc;
+	[IP_Shooter, "", west, (group IP_Shooter), false, ((dayTime < 7) OR (dayTime > 19))] call IP_fnc_createMerc;
 	
 	// Camp Fire && Helicopter
 	if ((dayTime < 7) OR (dayTime > 19)) then {

@@ -44,9 +44,8 @@ _this spawn {
 	
 	// Nicht schön, geht aber nicht anders, da sonst Kalkulation die Debts nicht miteinbezieht.
 	_unit setVariable ["IP_BasicTCR", (call IP_fnc_calculateBasicCostRate)];
-	
-	_unit createDiarySubject ["Money", "Account"];
-	_unit createDiaryRecord ["Money", [(name _unit), "Account Balance: +" + ([_money] call IP_fnc_numberText) + "€"]];
+	//_unit createDiarySubject ["Money", "Account"];
+	//_unit createDiaryRecord ["Money", [(name _unit), "Account Balance: +" + ([_money] call IP_fnc_numberText) + "€"]];
 	
 	if (getNumber(missionConfigFile >> "tacPad") == 1) then {[_unit, "TacPad"] call BIS_fnc_addCommMenuItem};	
 	if (IP_TESTMODE) then {_unit allowDamage false};	

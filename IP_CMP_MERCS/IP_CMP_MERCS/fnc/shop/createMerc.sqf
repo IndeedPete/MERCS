@@ -40,6 +40,7 @@ _getClasses = {
 	_arr
 };
 
+waitUntil {!(isNil "IP_ShopInitDone")};
 if (_class == "") then {
 	_class = "Rifleman";
 	
