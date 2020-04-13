@@ -6,6 +6,6 @@ class MainValues
 	startDate[] = {2037, 6, 1, 8, 0};
 	startDebts = 1;  
 	startMoney = 0;
-	startUniform = "U_C_Commoner1_1";
+	startUniform = "U_I_C_Soldier_Bandit_3_F";
 	testmode = 0;
 };

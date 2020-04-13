@@ -39,8 +39,8 @@ link16[] = {14,15};
 link17[] = {15,16};
 link18[] = {16,17};
 link19[] = {17,4};
-globals[] = {25.000000,1,0,0,0,640,480,1,113,6316128,1,-670.439880,110.793030,487.678711,-374.044861,825,910,1};
-window[] = {2,-1,-1,-32000,-32000,889,130,1570,130,3,843};
+globals[] = {0.000000,0,0,0,0,640,480,1,113,6316128,1,-670.439880,110.793030,487.678711,-374.044861,825,1244,1};
+window[] = {2,-1,-1,-1,-1,1071,312,1752,312,3,843};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -132,7 +132,7 @@ class FSM
        "	[IP_Main, ""Great, 'Bitish Fucktards' helpful and cryptic as always..."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "	" \n
        "	[""tPickup"", ""CANCELED""] call BIS_fnc_taskSetState;" \n
-       "	[player, ""tFind"", [(""Follow the hints to find "" + profileName + ""!""), (""Find "" + profileName), """"], nil, true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tFind"", [(""Follow the hints to find "" + profileName + ""!""), (""Find "" + profileName), """"], nil, true, 1, true, ""search""] call BIS_fnc_taskCreate;" \n
        "	saveGame;" \n
        "	" \n
        "	IP_LaptopChapel addAction [""Use Laptop"", {" \n

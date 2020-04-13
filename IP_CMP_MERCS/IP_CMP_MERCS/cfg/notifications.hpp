@@ -74,7 +74,7 @@ class CfgNotifications
 	class EnhancementDeployed
 	{
 		title = "ENHANCEMENT DEPLOYED";
-		iconPicture = "\A3\ui_f\data\map\mapcontrol\taskIcondone_ca.paa";
+		iconPicture = "\A3\ui_f\data\map\mapcontrol\bunker_ca.paa";
 		description = "%1";
 		color[] = {0.6,0.8,0.4,1};
 		priority = 7;

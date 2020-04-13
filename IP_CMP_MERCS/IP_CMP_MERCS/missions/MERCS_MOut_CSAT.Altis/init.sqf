@@ -13,6 +13,9 @@ IP_scn_credits = compile(preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\sc
 [] call IP_fnc_mainInit;
 IP_Main setCaptive true;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // EF Officer Setup
 if (IP_ContactsAlive select 3) then {
 	[IP_EFOfficer, "EFOfficer"] call IP_fnc_applyTemplate;

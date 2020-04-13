@@ -5,10 +5,10 @@ item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000
 item1[] = {"Pirates_Close",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Pirates Close"};
 item2[] = {"Money_Delivery",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Money Delivery"};
 item3[] = {"Mercs_Killed",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Mercs Killed"};
-item4[] = {"Fuck_",2,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Fuck!"};
+item4[] = {"Fuck_",2,4346,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Fuck!"};
 item5[] = {"In_Car",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"In Car"};
 item6[] = {"Start_Chase",2,250,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Start Chase"};
-item7[] = {"Pirates_Near",4,4314,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Pirates Near"};
+item7[] = {"Pirates_Near",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Pirates Near"};
 item8[] = {"Arrived",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Arrived"};
 item9[] = {"Lost_Them",4,218,-50.000000,450.000000,50.000000,500.000000,1.000000,"Lost Them"};
 item10[] = {"Fail_2",1,250,75.000000,450.000000,175.000000,500.000000,0.000000,"Fail 2"};
@@ -41,7 +41,7 @@ link17[] = {15,14};
 link18[] = {16,17};
 link19[] = {18,16};
 globals[] = {0.000000,0,0,0,0,640,480,1,60,6316128,1,-451.753479,157.958176,573.937744,-393.512909,784,1244,1};
-window[] = {2,-1,-1,-1,-1,785,26,1466,26,3,802};
+window[] = {2,-1,-1,-1,-1,837,78,1518,78,3,802};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -244,7 +244,7 @@ class FSM
        "	[IP_Pilot, ""Copy that, Razor. We're taking up the chase, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
        "	" \n
        "	[""tObserve"", ""CANCELED""] call BIS_fnc_taskSetState;" \n
-       "	[player, ""tRansom"", [""Chase the pirates and get the ransom back! Don't lose them!"", ""Retrieve Ransom"", """"], nil, true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tRansom"", [""Chase the pirates and get the ransom back! Don't lose them!"", ""Retrieve Ransom"", """"], nil, true, 1, true, ""backpack""] call BIS_fnc_taskCreate;" \n
        "	saveGame;" \n
        "};" \n
        ""/*%FSM</STATEINIT""">*/;

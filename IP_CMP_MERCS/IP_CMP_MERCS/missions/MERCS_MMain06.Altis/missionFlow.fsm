@@ -26,7 +26,7 @@ item21[] = {"",7,210,-379.000000,96.000000,-371.000000,104.000000,0.000000,""};
 item22[] = {"",7,210,-129.000000,246.000000,-121.000000,254.000000,0.000000,""};
 item23[] = {"Scientist_Move",2,250,-50.000000,300.000000,50.000000,350.000000,0.000000,"Scientist Move"};
 item24[] = {"",7,210,-129.000000,321.000000,-121.000000,329.000000,0.000000,""};
-item25[] = {"Scientist_Close",4,4314,-50.000000,375.000000,50.000000,425.000000,0.000000,"Scientist Close"};
+item25[] = {"Scientist_Close",4,218,-50.000000,375.000000,50.000000,425.000000,0.000000,"Scientist Close"};
 item26[] = {"Start_Disassembl",2,250,-50.000000,450.000000,50.000000,500.000000,0.000000,"Start" \n "Disassembling"};
 item27[] = {"Timeout",4,218,75.000000,300.000000,175.000000,350.000000,1.000000,"Timeout"};
 item28[] = {"Set_Pos",2,250,75.000000,375.000000,175.000000,425.000000,0.000000,"Set Pos"};
@@ -44,7 +44,7 @@ item39[] = {"All_Clear",2,250,-50.000000,825.000000,50.000000,875.000000,0.00000
 item40[] = {"",7,210,-129.000000,846.000000,-121.000008,854.000000,0.000000,""};
 item41[] = {"Script_Done",4,218,-50.000000,900.000000,50.000000,950.000000,0.000000,"Script Done"};
 item42[] = {"",7,210,121.000000,921.000000,129.000000,929.000000,0.000000,""};
-item43[] = {"Get_In",2,250,-50.000000,975.000000,50.000000,1025.000000,0.000000,"Get In"};
+item43[] = {"Get_In",2,4346,-50.000000,975.000000,50.000000,1025.000000,0.000000,"Get In"};
 item44[] = {"",7,210,-129.000000,1071.000000,-121.000000,1079.000000,0.000000,""};
 item45[] = {"",7,210,-4.000000,1071.000000,4.000000,1079.000000,0.000000,""};
 item46[] = {"AI_in_Truck",4,218,-50.000000,1125.000000,50.000000,1175.000000,0.000000,"AI in" \n "Truck"};
@@ -143,8 +143,8 @@ link75[] = {59,60};
 link76[] = {59,61};
 link77[] = {60,62};
 link78[] = {61,34};
-globals[] = {0.000000,0,0,0,0,640,480,1,191,6316128,1,-336.753540,458.194824,1084.438232,267.827362,1211,1244,1};
-window[] = {2,-1,-1,-1,-1,1071,312,1752,312,3,1229};
+globals[] = {0.000000,0,0,0,0,640,480,1,191,6316128,1,-560.402893,681.843567,1493.567993,217.470062,1211,1244,1};
+window[] = {2,-1,-1,-1,-1,915,156,1596,156,3,1229};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -768,7 +768,7 @@ class FSM
        "	[(leader IP_AttackGroup), ""Solid copy, Battlemage! Okay, you heard the man, hold the facility at all costs! Search the dead bodies for ammo and AT!"", ""SIDE""] call IP_fnc_simpleSentence;" \n
        "	[(leader IP_InfiltrationGroup), ""There's also a small weapons cache at the ammo truck in the centre of the facility! Might come in handy!"", ""SIDE""] call IP_fnc_simpleSentence;" \n
        "	" \n
-       "	[player, ""tDefend"", [""Defend <marker name=""""mResearch"""">Black Mesa</marker> at all costs!"", ""Defend Black Mesa"", ""Black Mesa""], ""mResearch"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tDefend"", [""Defend <marker name=""""mResearch"""">Black Mesa</marker> at all costs!"", ""Defend Black Mesa"", ""Black Mesa""], ""mResearch"", true, 1, true, ""defend""] call BIS_fnc_taskCreate;" \n
        "	saveGame;" \n
        "	" \n
        "	_pos = getMarkerPos ""mAAFSpawn1"";" \n
@@ -928,7 +928,7 @@ class FSM
        "	[_leader, ""Copy that, oscar mike, over."", ""SIDE""] call IP_fnc_simpleSentence;" \n
        "	" \n
        "	if (_isPlayer) then {" \n
-       "		[player, ""tGetIn"", [""Get in the Device Truck!"", ""Get In"", ""Device Truck""], IP_DeviceTruck, true, 1] call BIS_fnc_taskCreate;" \n
+       "		[player, ""tGetIn"", [""Get in the Device Truck!"", ""Get In"", ""Device Truck""], IP_DeviceTruck, true, 1, true, ""getin""] call BIS_fnc_taskCreate;" \n
        "		[] spawn {" \n
        "			waitUntil {(driver IP_DeviceTruck) == IP_Main};" \n
        "			[""tGetIn"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n

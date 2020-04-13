@@ -107,8 +107,8 @@ link55[] = {43,46};
 link56[] = {44,45};
 link57[] = {45,18};
 link58[] = {46,39};
-globals[] = {25.000000,1,0,0,0,640,480,1,129,6316128,1,-626.678223,269.137695,1371.226929,477.375580,912,910,1};
-window[] = {2,-1,-1,-1,-1,785,26,1466,26,3,930};
+globals[] = {0.000000,0,0,0,0,640,480,1,129,6316128,1,-626.678223,269.137695,1337.830322,115.906013,912,1244,1};
+window[] = {2,-1,-1,-1,-1,811,52,1492,52,3,930};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -271,7 +271,7 @@ class FSM
        "	" \n
        "	[""tPickup"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
        "	""mResearch1"" setMarkerAlpha 1;" \n
-       "	[player, ""tResearch1"", [""Take the VIP to the <marker name=""""mResearch1"""">Research Facility</marker>!"", ""Research Facility"", ""Research Facility""], ""mResearch1"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tResearch1"", [""Take the VIP to the <marker name=""""mResearch1"""">Research Facility</marker>!"", ""Research Facility"", ""Research Facility""], ""mResearch1"", true, 1, true, ""move1""] call BIS_fnc_taskCreate;" \n
        "	saveGame;" \n
        "	" \n
        "	[IP_Main, ""Oh, you're from Germany, Sir? How is it there?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
@@ -398,7 +398,7 @@ class FSM
        "	" \n
        "	[""tResearch1"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
        "	""mResearch2"" setMarkerAlpha 1;" \n
-       "	[player, ""tResearch2"", [""Take the VIP to the <marker name=""""mResearch2"""">Research Facility</marker>!"", ""Research Facility"", ""Research Facility""], ""mResearch2"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tResearch2"", [""Take the VIP to the <marker name=""""mResearch2"""">Research Facility</marker>!"", ""Research Facility"", ""Research Facility""], ""mResearch2"", true, 1, true, ""move2""] call BIS_fnc_taskCreate;" \n
        "	saveGame;	" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -467,7 +467,7 @@ class FSM
        "	{_x allowDamage true} forEach [IP_BarGate1, IP_BarGate2, IP_BarGate3];" \n
        "	" \n
        "	[""tResearch2"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
-       "	[player, ""tDrop"", [""Take the VIP back to the <marker name=""""mAirport"""">Central Airport</marker>!"", ""Drop VIP"", ""Central Airport""], ""mAirport"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tDrop"", [""Take the VIP back to the <marker name=""""mAirport"""">Central Airport</marker>!"", ""Drop VIP"", ""Central Airport""], ""mAirport"", true, 1, true, ""plane""] call BIS_fnc_taskCreate;" \n
        "	saveGame;" \n
        "	" \n
        "	[IP_Agent, ""I need you to be double aware now. Keep your eyes sharp."", ""DIRECT""] call IP_fnc_simpleSentence;" \n

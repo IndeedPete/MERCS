@@ -16,7 +16,8 @@ if (_price call IP_fnc_purchase) then {
 		sleep 0.5;
 		
 		{
-			_campEnhancement = _x getVariable ["IP_ShopCampEnhancement", ""];
+			//_campEnhancement = _x getVariable ["IP_ShopCampEnhancement", ""];
+			_campEnhancement = _x getVariable ["IP_CampEnhancement", ""];
 			if (_campEnhancement == _this) then {
 				_x enableSimulation true;
 				_x hideObject false;

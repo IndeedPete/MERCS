@@ -60,6 +60,9 @@ IP_Main addEventHandler ["Fired", {
 	};
 }];
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Commander Setup
 [IP_Commander, "commander", "combat"] call IP_fnc_applyTemplate;
 IP_Commander call _applySilencer;
@@ -157,11 +160,11 @@ player createDiaryRecord ["Diary", ["Execution", (_prefix + "(Team Specific Vers
 player createDiaryRecord ["Diary", ["Mission", (_prefix + "Main objective is to reconnoitre the two research bases on Altis, operated by Deep Space Engineering. A company originating in the United States which diverted their headquarters to Germany after the CSAT invasion of the US west-coast in 2031. Necessary information about defences, staff strength, backup, involvement of the AAF and other important intel must be gathered." + _suffix)]];
 player createDiaryRecord ["Diary", ["Situation", (_prefix + "AAF and FIA forces seem to have entered into a full blown civil war. Various reports speak of fightings around villages and military posts throughout the whole island of Altis. Officially, ION's mandate is frozen but the Altian government and the AAF are too busy fighting the FIA, independent warlords and pirates. The British Knights still operate undercover." + _suffix)]];
 
-[player, "tDetect", ["Stay undetected!", "Stay Undetected", ""], nil, false, 1] call BIS_fnc_taskCreate;
-[player, "tInsert", ["Insert by boat at the <marker name=""mInsertion"">Insertion Point</marker>!", "Insert", "Insertion Point"], "mInsertion", true, 1] call BIS_fnc_taskCreate;
-[player, "tOverview", ["Reach and secure the <marker name=""mOverview"">Overview Position</marker>!", "Reach Overview Position", "Overview Position"], "mOverview", false, 1] call BIS_fnc_taskCreate;
-[player, "tRecon", ["Reconnoitre the <marker name=""mResearch"">'Black Mesa' Research Facility</marker>!", "Recon Black Mesa", "Black Mesa"], "mResearch", false, 1] call BIS_fnc_taskCreate;
-[player, "tExtract", ["Extract by boat at the <marker name=""mInsertion"">Extraction Point</marker>!", "Extract", "Extraction Point"], "mInsertion", false, 1] call BIS_fnc_taskCreate;
+[player, "tDetect", ["Stay undetected!", "Stay Undetected", ""], nil, false, 1, true, "listen"] call BIS_fnc_taskCreate;
+[player, "tInsert", ["Insert by boat at the <marker name=""mInsertion"">Insertion Point</marker>!", "Insert", "Insertion Point"], "mInsertion", true, 1, true, "getin"] call BIS_fnc_taskCreate;
+[player, "tOverview", ["Reach and secure the <marker name=""mOverview"">Overview Position</marker>!", "Reach Overview Position", "Overview Position"], "mOverview", false, 1, true, "walk"] call BIS_fnc_taskCreate;
+[player, "tRecon", ["Reconnoitre the <marker name=""mResearch"">'Black Mesa' Research Facility</marker>!", "Recon Black Mesa", "Black Mesa"], "mResearch", false, 1, true, "scout"] call BIS_fnc_taskCreate;
+[player, "tExtract", ["Extract by boat at the <marker name=""mInsertion"">Extraction Point</marker>!", "Extract", "Extraction Point"], "mInsertion", false, 1, true, "exit"] call BIS_fnc_taskCreate;
 
 // All Units
 {
@@ -169,6 +172,7 @@ player createDiaryRecord ["Diary", ["Situation", (_prefix + "AAF and FIA forces 
 		[_x, 5, true, [true, true]] call IP_fnc_createBK;
 		IP_Knights = IP_Knights + [_x];
 	};
+	
 	if ((side _x) == east) then {
 		_x setVariable ["IP_Faction", "BlackArrow"];
 		[_x] call IP_fnc_createMerc;

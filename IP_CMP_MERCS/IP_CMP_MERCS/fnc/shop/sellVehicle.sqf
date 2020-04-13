@@ -24,11 +24,11 @@ switch (true) do {
 		
 		{deleteVehicle _x} forEach _garageVehicles;
 		_garageVehicles = [];		
-		_i = 0;		
+		_i = 1;		
 		{
 			_cat = [(missionConfigFile >> "ShopCampVehicles"), _x] call IP_fnc_getConfigCategory;			
 			if (_cat in ["Cars", "Armour"]) then {
-				_marker = "mShopGarage" + str(_i);
+				_marker = "mGarageSpot" + str(_i);
 				_created = [_x, _marker, _cat] call IP_fnc_createCampVehicle;
 				_garageVehicles pushBack _created;
 				_i = _i + 1;
@@ -37,35 +37,23 @@ switch (true) do {
 		
 		player setVariable ["IP_ShopCampVehicles", _vehiclesInPossession];
 		player setVariable ["IP_ShopGarageVehicles", _garageVehicles];
+		IP_GarageVehicles = _garageVehicles;
 	};
 	
 	case (_category == "Air"): {
-		private ["_hangarVehicles", "_i"];
-		_hangarVehicles = player getVariable ["IP_ShopHangarVehicles", []];
-		
-		_count = {_x == _vehicle} count _vehiclesInPossession;
+		IP_Heli enableSimulation false;
+		IP_Heli hideObject true;
+		IP_Pilot enableSimulation false;
+		IP_Pilot hideObject true;
 		_vehiclesInPossession = _vehiclesInPossession - [_vehicle];
-		if (_count > 1) then {		
-			for "_i" from 1 to (_count - 1) do {
-				_vehiclesInPossession pushBack _vehicle;
-			};
-		};
-		
-		{deleteVehicle _x} forEach _hangarVehicles;
-		_hangarVehicles = [];		
-		_i = 0;		
-		{
-			_cat = [(missionConfigFile >> "ShopCampVehicles"), _x] call IP_fnc_getConfigCategory;			
-			if (_cat == "Air") then {
-				_marker = "mShopHangar" + str(_i);
-				_created = [_x, _marker, _cat] call IP_fnc_createCampVehicle;
-				_hangarVehicles pushBack _created;
-				_i = _i + 1;
-			};
-		} forEach _vehiclesInPossession;
-		
 		player setVariable ["IP_ShopCampVehicles", _vehiclesInPossession];
-		player setVariable ["IP_ShopHangarVehicles", _hangarVehicles];
+	};
+
+	case (_category == "Boats"): {
+		IP_Boat enableSimulation false;
+		IP_Boat hideObject true;
+		_vehiclesInPossession = _vehiclesInPossession - [_vehicle];
+		player setVariable ["IP_ShopCampVehicles", _vehiclesInPossession];
 	};
 	
 	default {["%1 is not a recognised camp vehicle category!", _category] call BIS_fnc_error};

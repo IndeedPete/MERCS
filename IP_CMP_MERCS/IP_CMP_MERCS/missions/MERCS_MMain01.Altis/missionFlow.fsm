@@ -12,11 +12,11 @@ item7[] = {"Helis",4,218,-50.000000,0.000000,50.000000,50.000000,1.000000,"Helis
 item8[] = {"Get_Down",2,250,-50.000000,-75.000000,50.000000,-25.000000,0.000000,"Get Down"};
 item9[] = {"Detected",4,218,-425.000000,-75.000000,-325.000000,-25.000000,1.000000,"Detected"};
 item10[] = {"Fail",1,250,-425.000000,-150.000000,-325.000000,-100.000000,0.000000,"Fail"};
-item11[] = {"Big_Ass_Cutscene",2,4346,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Big Ass Cutscene"};
+item11[] = {"Big_Ass_Cutscene",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Big Ass Cutscene"};
 item12[] = {"At_Patrol",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"At Patrol"};
 item13[] = {"Patrol",2,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Patrol"};
 item14[] = {"Clear",4,218,-175.000000,375.000000,-75.000000,425.000000,0.000000,"Clear"};
-item15[] = {"Get_In",2,250,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Get In"};
+item15[] = {"Get_In",2,4346,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Get In"};
 item16[] = {"Done",4,218,-175.000000,525.000000,-75.000000,575.000000,0.000000,"Done"};
 item17[] = {"On_the_Road",2,250,-175.000000,600.000000,-75.000000,650.000000,0.000000,"On the Road"};
 item18[] = {"At_RV",4,218,-175.000000,675.000000,-75.000000,725.000000,0.000000,"At RV"};
@@ -68,7 +68,7 @@ link32[] = {28,29};
 link33[] = {29,30};
 link34[] = {30,16};
 globals[] = {0.000000,0,0,0,0,640,480,1,80,6316128,1,-858.755249,355.324219,745.540955,-203.745590,1591,1244,1};
-window[] = {2,-1,-1,-1,-1,915,156,1596,156,3,1609};
+window[] = {2,-1,-1,-1,-1,811,52,1492,52,3,1609};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -682,7 +682,7 @@ class FSM
        "	IP_HoldFire = false;" \n
        "	[""tExtract"", ""CANCELED""] call BIS_fnc_taskSetState;" \n
        "	[""tDetect"", ""CANCELED""] call BIS_fnc_taskSetState;" \n
-       "	[player, ""tExtract2"", [""Find a way to extract from the AO!"", ""Find New Extraction"", """"], nil, true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tExtract2"", [""Find a way to extract from the AO!"", ""Find New Extraction"", """"], nil, true, 1, true, ""exit""] call BIS_fnc_taskCreate;" \n
        "	" \n
        "	enableSentences true;" \n
        "	" \n
@@ -830,7 +830,7 @@ class FSM
        "	[IP_Commander, ""Copy, thanks for the heads up, White King. Black Knight, out."", ""SIDE""] call IP_fnc_simpleSentence;" \n
        "	" \n
        "	""mLinkup"" setMarkerAlpha 1;" \n
-       "	[player, ""tLinkup"", [""Link up with <marker name=""""mLinkup"""">Paladin around Nifi</marker>!"", ""Link Up"", ""RV""], ""mLinkup"", true, 1] call BIS_fnc_taskCreate;	" \n
+       "	[player, ""tLinkup"", [""Link up with <marker name=""""mLinkup"""">Paladin around Nifi</marker>!"", ""Link Up"", ""RV""], ""mLinkup"", true, 1, true, ""meet""] call BIS_fnc_taskCreate;	" \n
        "	saveGame;" \n
        "	" \n
        "	_wp = _grp addWaypoint [(getMarkerPos ""mLinkup""), 1];" \n

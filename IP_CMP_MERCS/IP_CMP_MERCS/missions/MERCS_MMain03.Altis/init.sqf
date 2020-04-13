@@ -43,6 +43,9 @@ IP_m_scn_notesFound = {
 [] call IP_fnc_mainInit;
 (group IP_Main) setGroupID ["Templar"];
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Hacker
 [IP_Hacker, "hacker", "combat"] call IP_fnc_applyTemplate;
 IP_Hacker setCaptive true;
@@ -116,7 +119,7 @@ player createDiaryRecord ["Diary", ["Execution", (_prefix + "1. Callsign 'Templa
 player createDiaryRecord ["Diary", ["Mission", (_prefix + "The task is to get to the <marker name=""mPickup"">Pickup Point</marker>, meet with " + profileName + " and then return to base with him." + _suffix)]];
 player createDiaryRecord ["Diary", ["Situation", (_prefix + "The future steps of Operation Crusader require the assistance of a professional IT-Security specialist. The Order hired a freelancing partner they have been working with before. He is known as very careful, nearly paranoid and he operates under the alias '" + profileName + "'. His exact whereabouts are unknown but he agreed to a meeting and is waiting at a <marker name=""mPickup"">Pickup Point</marker>." + _suffix)]];
 
-[player, "tPickup", [("Meet " + profileName + " at the <marker name=""mPickup"">Pickup Point</marker>!"), ("Pick up " + profileName), "Pickup"], "mPickup", true, 1] call BIS_fnc_taskCreate;
+[player, "tPickup", [("Meet " + profileName + " at the <marker name=""mPickup"">Pickup Point</marker>!"), ("Pick up " + profileName), "Pickup"], "mPickup", true, 1, true, "meet"] call BIS_fnc_taskCreate;
 
 // All Units
 {

@@ -246,4 +246,4 @@ _reward call IP_fnc_addMoney;
 saveGame;
 
 [IP_Hacker, "Hey, psst, big bad mercenary! Come over here for a sec, will you?", "DIRECT"] call IP_fnc_simpleSentence;
-[player, "tHacker", [("Talk to " + profileName + "! (OPTIONAL)"), "Talk (OPTIONAL)", profileName], IP_Hacker, true, 1] call BIS_fnc_taskCreate;
+[player, "tHacker", [("Talk to " + profileName + "! (OPTIONAL)"), "Talk (OPTIONAL)", profileName], IP_Hacker, true, 1, true, "talk1"] call BIS_fnc_taskCreate;

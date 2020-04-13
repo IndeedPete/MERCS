@@ -8,6 +8,7 @@ sleep 2;
 skipTime _time;
 if (getText(missionConfigFile >> "name") in ["Hub01", "Hub02"]) then {
 	call IP_scn_dynamicCampInit;
+	if (isNil "IP_Weather") then {IP_Weather = ["CLEAR", "SUNNY"]};
 	if (_time >= 1) then {IP_Weather = [(IP_Weather select 0)] call IP_fnc_setWeather};
 };
 

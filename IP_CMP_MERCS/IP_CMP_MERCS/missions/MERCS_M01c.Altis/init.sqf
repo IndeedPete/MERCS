@@ -24,7 +24,7 @@ IP_fnc_m_createPirate = {
 	_face = _facePool call BIS_fnc_selectRandom;
 	_unit setFace _face;
 
-	_uniforms = (missionConfigFile >> "ShopClothes") call IP_fnc_getConfigEntries;
+	_uniforms = (missionConfigFile >> "ShopUniforms" >> "Paramilitary") call IP_fnc_getConfigEntries;
 	_uniforms = _uniforms - ["U_Competitor", "U_Rangemaster", "U_B_CTRG_1", "U_B_CTRG_2", "U_B_CTRG_3", "U_O_CombatUniform_ocamo", "U_I_G_resistanceLeader_F", "U_B_Wetsuit"];
 	{
 		if (!(isClass(configFile >> "CfgWeapons" >> _x))) then {_uniforms = _uniforms - [_x]};
@@ -59,6 +59,9 @@ IP_fnc_m_createPirate = {
 
 // Buddy Setup
 [] call IP_fnc_buddyInit;
+
+// Shop Setup
+[] call IP_fnc_shopInit;
 
 // Contact Setup
 (group IP_Contact) setGroupID ["Pink Floyd"];
@@ -121,7 +124,7 @@ IP_Hostage addEventhandler ["Killed", {
 
 // Briefing
 ["The CLIENT requests the immediate extraction of his kidnapped daughter. She is being held by Altian Pirates in the AOR, near the Northern Airfield, Altis. The CONTRACTOR is obligated to infiltrate the AOR, find out where exactly the CLIENT's daughter is kept and ensure her save return. The CONTRACTOR is not responsible for any physical or psychic harm the CLIENT's daughter may experience during the OPERATION."] call IP_fnc_createBriefing;
-[player, "tRescue", ["Guard the missing girl from the <marker name=""mCompound"">Pirate Compound</marker>!", "Rescue Girl", "Pirate Compound"], "mCompound", true, 1] call BIS_fnc_taskCreate;
+[player, "tRescue", ["Rescue the missing girl from the <marker name=""mCompound"">Pirate Compound</marker>!", "Rescue Girl", "Pirate Compound"], "mCompound", true, 1, true, "run"] call BIS_fnc_taskCreate;
 
 // Music
 [] call BIS_fnc_jukebox;

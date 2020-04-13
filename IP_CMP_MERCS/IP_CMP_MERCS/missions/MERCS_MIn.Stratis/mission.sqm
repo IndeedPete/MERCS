@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=129;
+	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=62;
+		nextID=67;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4268.5117,8.0403242,2676.5044};
-		dir[]={-0.24880083,-0.18702297,0.95044571};
-		up[]={-0.047379624,0.98232764,0.18098912};
-		aside[]={0.96751451,1.1114171e-006,0.25326803};
+		pos[]={4247.8628,40.977325,2700.0322};
+		dir[]={0.74839962,-0.66321373,-0.017353307};
+		up[]={0.66302204,0.74841332,-0.015372247};
+		aside[]={-0.023182642,2.0431507e-006,-0.99985164};
 	};
 };
 binarizationWanted=0;
@@ -28,15 +28,21 @@ addons[]=
 	"A3_Ui_F",
 	"A3_Boat_F_Gamma_Boat_Civil_01",
 	"A3_Structures_F_EPB_Items_Luggage",
-	"A3_Soft_F_Offroad_01",
 	"A3_Characters_F",
+	"A3_Weapons_F_Rifles_MX",
+	"A3_Weapons_F_Acc",
+	"A3_Weapons_F",
+	"A3_Weapons_F_Pistols_P07",
+	"IP_CMP_MERCS",
+	"A3_Weapons_F_Items",
+	"A3_Soft_F_Offroad_01",
 	"A3_Soft_F_Exp_LSV_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=6;
+		items=8;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -60,19 +66,32 @@ class AddonsMetaData
 		};
 		class Item3
 		{
-			className="A3_Soft_F";
-			name="Arma 3 Alpha - Unarmored Land Vehicles";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item4
-		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item4
+		{
+			className="A3_Weapons_F";
+			name="Arma 3 Alpha - Weapons and Accessories";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 		class Item5
+		{
+			className="IP_CMP_MERCS";
+			name="IP_CMP_MERCS";
+			author="IndeedPete";
+		};
+		class Item6
+		{
+			className="A3_Soft_F";
+			name="Arma 3 Alpha - Unarmored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item7
 		{
 			className="A3_Soft_F_Exp";
 			name="Arma 3 Apex - Unarmored Land Vehicles";
@@ -206,7 +225,7 @@ class Mission
 		class Item6
 		{
 			dataType="Trigger";
-			position[]={4274.0576,5.6624904,2704.6865};
+			position[]={4272.1841,6.0400472,2706.3787};
 			class Attributes
 			{
 				condition="(player in IP_Car)";
@@ -221,13 +240,13 @@ class Mission
 		class Item7
 		{
 			dataType="Trigger";
-			position[]={4276.3145,5.0565476,2699.168};
+			position[]={4276.314,5.0564976,2699.168};
 			class Attributes
 			{
 				condition="this && ((IP_Main in thisList) OR ((vehicle IP_Main) in thisList))";
 				onDeactivation="[IP_Main] call BIS_fnc_neutralizeUnit;";
-				sizeA=75;
-				sizeB=100;
+				sizeA=300;
+				sizeB=400;
 				interuptable=1;
 				repeatable=1;
 				activationBy="ANY";
@@ -325,25 +344,6 @@ class Mission
 		};
 		class Item13
 		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={4275.3867,7.3139887,2704.7126};
-				angles[]={6.1489973,5.6762819,6.1934276};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				skill=0.60000002;
-				lock="LOCKEDPLAYER";
-				name="IP_Car";
-			};
-			id=14;
-			type="C_Offroad_01_F";
-		};
-		class Item14
-		{
 			dataType="Group";
 			side="West";
 			class Entities
@@ -372,29 +372,28 @@ class Mission
 				class Item1
 				{
 					dataType="Waypoint";
-					position[]={4279.7515,2.3084288,2676.0532};
+					position[]={4279.7153,2.3130674,2676.095};
 					type="Hold";
-					speed="LIMITED";
-					combat="SAFE";
-					synchronizations[]={2};
 					class Effects
 					{
 					};
 					showWP="NEVER";
-					syncId=0;
-					id=17;
+					id=63;
+					atlOffset=1.1920929e-005;
 				};
 				class Item2
 				{
 					dataType="Waypoint";
 					position[]={4275.2432,6.2192068,2704.897};
 					type="GetIn";
-					expActiv="IP_Car lock false;";
+					speed="LIMITED";
+					combat="SAFE";
+					expActiv="IP_Car lock 0;";
 					class Effects
 					{
 					};
 					showWP="NEVER";
-					id=18;
+					id=64;
 					atlOffset=0.5;
 					class AttachedTo
 					{
@@ -405,26 +404,24 @@ class Mission
 				class Item3
 				{
 					dataType="Waypoint";
-					position[]={4275.022,5.7782688,2705.187};
+					position[]={4274.1001,6.0638666,2706.6882};
 					type="Hold";
-					synchronizations[]={3};
 					class Effects
 					{
 					};
 					showWP="NEVER";
-					syncId=1;
-					id=19;
+					id=65;
+					atlOffset=-3.5762787e-005;
 				};
 				class Item4
 				{
 					dataType="Waypoint";
-					position[]={3302.2903,227.32397,2883.9736};
-					speed="NORMAL";
+					position[]={3792.6643,161.54318,3302.0913};
 					class Effects
 					{
 					};
 					showWP="NEVER";
-					id=20;
+					id=66;
 					type="Move";
 				};
 			};
@@ -433,7 +430,7 @@ class Mission
 			};
 			id=15;
 		};
-		class Item15
+		class Item14
 		{
 			dataType="Group";
 			side="West";
@@ -455,6 +452,109 @@ class Mission
 						skill=0.40000001;
 						rank="CAPTAIN";
 						name="IP_Commander";
+						class Inventory
+						{
+							class primaryWeapon
+							{
+								name="arifle_MX_F";
+								optics="optic_Aco";
+								flashlight="acc_pointer_IR";
+								class primaryMuzzleMag
+								{
+									name="30Rnd_65x39_caseless_mag";
+									ammoLeft=30;
+								};
+							};
+							class handgun
+							{
+								name="hgun_P07_F";
+								class primaryMuzzleMag
+								{
+									name="16Rnd_9x21_Mag";
+									ammoLeft=16;
+								};
+							};
+							class uniform
+							{
+								typeName="IP_U_B_CombatUniform_MERCS_Modern_Arid_T";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=2;
+									class Item0
+									{
+										name="30Rnd_65x39_caseless_mag";
+										count=2;
+										ammoLeft=30;
+									};
+									class Item1
+									{
+										name="Chemlight_green";
+										count=1;
+										ammoLeft=1;
+									};
+								};
+								class ItemCargo
+								{
+									items=1;
+									class Item0
+									{
+										name="FirstAidKit";
+										count=1;
+									};
+								};
+							};
+							class vest
+							{
+								typeName="V_PlateCarrierL_CTRG";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=6;
+									class Item0
+									{
+										name="30Rnd_65x39_caseless_mag";
+										count=7;
+										ammoLeft=30;
+									};
+									class Item1
+									{
+										name="16Rnd_9x21_Mag";
+										count=2;
+										ammoLeft=16;
+									};
+									class Item2
+									{
+										name="SmokeShell";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item3
+									{
+										name="SmokeShellGreen";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item4
+									{
+										name="Chemlight_green";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item5
+									{
+										name="HandGrenade";
+										count=2;
+										ammoLeft=1;
+									};
+								};
+							};
+							map="ItemMap";
+							compass="ItemCompass";
+							watch="ItemWatch";
+							radio="ItemRadio";
+							goggles="G_Combat";
+						};
 					};
 					id=26;
 					type="B_Story_SF_Captain_F";
@@ -465,7 +565,7 @@ class Mission
 			};
 			id=25;
 		};
-		class Item16
+		class Item15
 		{
 			dataType="Group";
 			side="Civilian";
@@ -510,7 +610,7 @@ class Mission
 			};
 			id=31;
 		};
-		class Item17
+		class Item16
 		{
 			dataType="Group";
 			side="West";
@@ -544,7 +644,7 @@ class Mission
 			};
 			id=34;
 		};
-		class Item18
+		class Item17
 		{
 			dataType="Group";
 			side="Civilian";
@@ -575,7 +675,7 @@ class Mission
 			};
 			id=36;
 		};
-		class Item19
+		class Item18
 		{
 			dataType="Group";
 			side="Civilian";
@@ -607,7 +707,7 @@ class Mission
 			};
 			id=38;
 		};
-		class Item20
+		class Item19
 		{
 			dataType="Group";
 			side="Civilian";
@@ -638,7 +738,7 @@ class Mission
 			};
 			id=40;
 		};
-		class Item21
+		class Item20
 		{
 			dataType="Group";
 			side="Civilian";
@@ -669,7 +769,7 @@ class Mission
 			};
 			id=42;
 		};
-		class Item22
+		class Item21
 		{
 			dataType="Group";
 			side="West";
@@ -773,7 +873,7 @@ class Mission
 			id=44;
 			atlOffset=0.0028231144;
 		};
-		class Item23
+		class Item22
 		{
 			dataType="Object";
 			class PositionInfo
@@ -793,7 +893,7 @@ class Mission
 			type="B_G_Offroad_01_armed_F";
 			atlOffset=0.0028231144;
 		};
-		class Item24
+		class Item23
 		{
 			dataType="Object";
 			class PositionInfo
@@ -836,7 +936,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item25
+		class Item24
 		{
 			dataType="Group";
 			side="West";
@@ -910,7 +1010,7 @@ class Mission
 			id=54;
 			atlOffset=4.7683716e-007;
 		};
-		class Item26
+		class Item25
 		{
 			dataType="Group";
 			side="West";
@@ -984,7 +1084,7 @@ class Mission
 			id=56;
 			atlOffset=4.7683716e-007;
 		};
-		class Item27
+		class Item26
 		{
 			dataType="Group";
 			side="West";
@@ -1056,7 +1156,7 @@ class Mission
 			};
 			id=58;
 		};
-		class Item28
+		class Item27
 		{
 			dataType="Group";
 			side="West";
@@ -1131,6 +1231,25 @@ class Mission
 			id=60;
 			atlOffset=-2.3841858e-007;
 		};
+		class Item28
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4275.3867,7.3139887,2704.7126};
+				angles[]={6.1489973,5.6762819,6.1934276};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				skill=0.60000002;
+				lock="LOCKEDPLAYER";
+				name="IP_Car";
+			};
+			id=14;
+			type="C_Offroad_01_F";
+		};
 	};
 	class Connections
 	{
@@ -1144,8 +1263,8 @@ class Mission
 			class Item0
 			{
 				linkID=0;
-				item0=17;
-				item1=5;
+				item0=5;
+				item1=63;
 				class CustomData
 				{
 					type="WaypointActivation";
@@ -1154,8 +1273,8 @@ class Mission
 			class Item1
 			{
 				linkID=1;
-				item0=19;
-				item1=6;
+				item0=6;
+				item1=65;
 				class CustomData
 				{
 					type="WaypointActivation";

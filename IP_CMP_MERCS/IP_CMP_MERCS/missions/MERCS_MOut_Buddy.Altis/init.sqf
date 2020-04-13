@@ -26,6 +26,9 @@ IP_Buddy forceWalk true;
 IP_Buddy addGoggles "G_Aviator";
 //if (!IP_TESTMODE) then {IP_Buddy allowDamage true};
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Boat
 IP_Boat allowDamage false;
 

@@ -114,9 +114,9 @@ switch (_insertion) do {
 		IP_Boat setDir _dir;
 		IP_Boat addEventHandler ["Killed", {
 			_vehicle = typeOf (_this select 0);
-			_inPosession = IP_Main getVariable ["IP_CampVehicles",[]];
+			_inPosession = IP_Main getVariable ["IP_ShopCampVehicles",[]];
 			_inPosession = _inPosession - [_vehicle];
-			IP_Main setVariable ["IP_CampVehicles", _inPosession];
+			IP_Main setVariable ["IP_ShopCampVehicles", _inPosession];
 		}];
 		
 		IP_Main moveInDriver IP_Boat;
@@ -138,15 +138,15 @@ switch (_insertion) do {
 		IP_Car setDir _dir;
 		IP_Car addEventHandler ["Killed", {
 			_vehicle = typeOf (_this select 0);
-			_inPosession = IP_Main getVariable ["IP_CampVehicles",[]];
+			_inPosession = IP_Main getVariable ["IP_ShopCampVehicles",[]];
 			
 			_count = {_x == _vehicle} count _inPosession;
 			_inPosession = _inPosession - [_vehicle];
-			IP_Main setVariable ["IP_CampVehicles", _inPosession];
+			IP_Main setVariable ["IP_ShopCampVehicles", _inPosession];
 			if (_count > 1) then {		
 				for "_i" from 1 to (_count - 1) do {
 					_inPosession = _inPosession + [_vehicle]; // Adds other vehicles of the same class back to array
-					IP_Main setVariable ["IP_CampVehicles", ((IP_Main getVariable "IP_CampVehicles") + [_vehicle])];
+					IP_Main setVariable ["IP_ShopCampVehicles", ((IP_Main getVariable "IP_ShopCampVehicles") + [_vehicle])];
 				};		
 			};
 		}];

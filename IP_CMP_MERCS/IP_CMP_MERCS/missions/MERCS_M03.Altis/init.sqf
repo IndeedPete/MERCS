@@ -71,8 +71,8 @@ IP_Car addEventHandler [
 
 // Briefing
 ["The CLIENT requests transportation and personal protection during the course of the OPERATION. The CONTRACTOR is obligated to pick up the CLIENT at the Altis International Airport. From there the further course of the OPERATION falls to the CLIENT."] call IP_fnc_createBriefing;
-[player, "tProtect", ["Protect the VIP at all costs and keep the SUV intact!", "Protect VIP", ""], nil, false, 1] call BIS_fnc_taskCreate;	
-[player, "tPickup", ["Pick up the VIP from the <marker name=""mAirport"">Central Airport</marker>!", "Pick Up VIP", "Central Airport"], "mAirport", true, 1] call BIS_fnc_taskCreate;	
+[player, "tProtect", ["Protect the VIP at all costs and keep the SUV intact!", "Protect VIP", ""], nil, false, 1, true, "defend"] call BIS_fnc_taskCreate;	
+[player, "tPickup", ["Pick up the VIP from the <marker name=""mAirport"">Central Airport</marker>!", "Pick Up VIP", "Central Airport"], "mAirport", true, 1, true, "meet"] call BIS_fnc_taskCreate;	
 
 // AAF Compositions (Airport etc.)
 [] call compile preProcessFileLineNumbers "compositions_complex\C_EA_Airbase.sqf";
@@ -81,7 +81,10 @@ IP_Car addEventHandler [
 
 // Checkpoints
 {_x setVariable ["IP_LiveFeed", true]} forEach [IP_Officer1, IP_Officer2, IP_Officer3];
-	
+
+// Shop Setup
+[] call IP_fnc_shopInit;	
+
 // All Units
 {
 	if (side _x == resistance) then {

@@ -11,6 +11,7 @@ class ShopCampEnhancements
     {
         description = "Deploys a camouflage net as vehicle shelter. Offers space for two ground vehicles.";
 		marker = "mGarage";
+		garage = 2;
 		price = 500;
 		title = "Garage";
     };
@@ -18,6 +19,7 @@ class ShopCampEnhancements
     {
         description = "Deploys a heli pad for one small helicopter and a fuel truck.";
 		marker = "mHeliPad";
+		hangar = 1;
 		price = 5000;
 		title = "Heli Pad";
     };

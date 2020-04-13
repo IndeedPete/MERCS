@@ -17,12 +17,12 @@ saveProfileNamespace;
 
 // Player Initial Setup
 IP_Main setIdentity "main";
-IP_Main setVariable ["IP_Money", (getNumber(missionConfigFile >> "MainValues" >> "startMoney"))];
+IP_Main setVariable ["IP_ShopMoney", (getNumber(missionConfigFile >> "MainValues" >> "startMoney"))];
 IP_Main setVariable ["IP_Debts", (getNumber(missionConfigFile >> "MainValues" >> "startDebts"))];
 IP_Main setVariable ["IP_Picture", "IP_CMP_MERCS\IP_CMP_MERCS\img\main.jpg"];
 IP_Main setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\mainAvatar1.jpg"];
 IP_Main setVariable ["IP_LiveFeed", true];
-IP_Main setVariable ["IP_Team", []];
+IP_Main setVariable ["IP_ShopTeam", []];
 IP_Main setVariable ["IP_ShopUniforms", [getText(missionConfigFile >> "MainValues" >> "startUniform")]];
 if (IP_TESTMODE) then {IP_Main allowDamage false};
 

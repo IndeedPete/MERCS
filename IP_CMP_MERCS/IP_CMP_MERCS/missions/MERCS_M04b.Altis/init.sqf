@@ -61,8 +61,11 @@ _commander = getText(missionConfigFile >> "CfgIdentities" >> "commander" >> "nam
 _text = format ["According to our information the HVI travels in a black SUV guarded by at least three PMCs. His first appointment is at the <marker name=""mRadar"">AAF Radar Station</marker> at precisely %1. He will stay there for around 15 minutes and then move on to a <marker name=""mMilitary"">Military Base</marker> where he will also spend around 15 minutes. Finally, his security detail will take him to the <marker name=""mAirfield"">Molos Airfield</marker> where he will be brought off country. Attack the HVI on the road between his stops. Engaging the AAF bases head on is bloody suicide and the airfield is guarded by Black Arrow PMCs.<br/><br/>Executive on Site<br/>%2", _time, _commander];
 player createDiaryRecord ["Diary", ["HVI Schedule", _text]];
 [] call IP_fnc_createBriefing;
-[player, "tHVI", ["The HVI must stay alive!", "HVI", ""], nil, true, 1] call BIS_fnc_taskCreate;	
-[player, "tSecurity", ["Eliminate the HVI's security detail!", "Eliminate Security Detail", ""], nil, true, 2] call BIS_fnc_taskCreate;
+[player, "tHVI", ["The HVI must stay alive!", "HVI", ""], nil, true, 1, true, "defend"] call BIS_fnc_taskCreate;	
+[player, "tSecurity", ["Eliminate the HVI's security detail!", "Eliminate Security Detail", ""], nil, true, 2, true, "kill"] call BIS_fnc_taskCreate;
+
+// Shop Setup
+[] call IP_fnc_shopInit;
 
 // All Units - Post init to affect units spawned by site modules
 [] spawn {

@@ -23,7 +23,7 @@ IP_fnc_m_createPirate = {
 	_face = _facePool call BIS_fnc_selectRandom;
 	_unit setFace _face;
 
-	_uniforms = (missionConfigFile >> "ShopClothes") call IP_fnc_getConfigEntries;
+	_uniforms = (missionConfigFile >> "ShopUniforms" >> "Paramilitary") call IP_fnc_getConfigEntries;
 	_uniforms = _uniforms - ["U_Competitor", "U_Rangemaster", "U_B_CTRG_1", "U_B_CTRG_2", "U_B_CTRG_3", "U_O_CombatUniform_ocamo", "U_I_G_resistanceLeader_F", "U_B_Wetsuit"];
 	{
 		if (!(isClass(configFile >> "CfgWeapons" >> _x))) then {_uniforms = _uniforms - [_x]};
@@ -50,6 +50,9 @@ IP_fnc_m_createPirate = {
 
 // Buddy Setup
 [] call IP_fnc_buddyInit;
+
+// Shop Setup
+[] call IP_fnc_shopInit;
 
 // Team Setup - Moved to Mission Start
 //[] call IP_fnc_spawnTeam;
@@ -86,7 +89,7 @@ IP_Survivor addEventHandler ["HandleDamage", {
 
 // Briefing
 ["The CLIENT requests any information about his daughter's whereabouts and status. The CLIENT's daughter was on vacation on Altis when the CLIENT lost contact with her. She was last seen alive in Kavala, Altis."] call IP_fnc_createBriefing;
-[player, "tHint", ["Find hints regarding the whereabouts and status of the missing girl!", "Find Hints", ""], nil, true, 1] call BIS_fnc_taskCreate;
+[player, "tHint", ["Find hints regarding the whereabouts and status of the missing girl!", "Find Hints", ""], nil, true, 1, true, "intel"] call BIS_fnc_taskCreate;
 
 // Music
 [] call BIS_fnc_jukebox;

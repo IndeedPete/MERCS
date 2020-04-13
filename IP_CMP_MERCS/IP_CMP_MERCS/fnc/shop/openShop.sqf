@@ -253,7 +253,7 @@ switch (_category) do {
 		
 		for "_i" from 0 to ((count _uniformsInPossession) - 1) do {
 			_entry = _uniformsInPossession select _i;
-			_title = getText(configFile >> "CfgWeapons" >> _entry >> "displayName");
+			_title = if (_entry == "U_O_CombatUniform_ocamo") then {getText(missionConfigFile >> "ShopUniforms" >> "Military" >> _entry >> "displayName")} else {getText(configFile >> "CfgWeapons" >> _entry >> "displayName")};
 			_picture = getText(configFile >> "CfgWeapons" >> _entry >> "picture");
 			_index = lbAdd [1501, _title];
 			lbSetPicture [1501, _index, _picture];

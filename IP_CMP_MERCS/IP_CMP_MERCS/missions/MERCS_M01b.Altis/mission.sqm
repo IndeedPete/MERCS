@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={5550.7334,74.425888,15048.963};
-		dir[]={0.86165977,-0.35928532,0.35842216};
-		up[]={0.3317326,0.93322724,0.13798968};
-		aside[]={0.38406652,9.7512384e-008,-0.92331189};
+		pos[]={5478.4849,29.555992,14999.632};
+		dir[]={-0.82200772,-0.30351493,0.48188573};
+		up[]={-0.26184517,0.95282483,0.15350166};
+		aside[]={0.50574386,8.6147338e-008,0.86270434};
 	};
 };
 binarizationWanted=0;
@@ -211,7 +211,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={6551.3101,153.10063,17685.105};
-			angle=0.57662523;
+			angle=0.57662517;
 			class Attributes
 			{
 				name="trgRenegade";
@@ -558,7 +558,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={5490.4297,27.301437,14989.621};
-						angles[]={-0,5.3514414,0};
+						angles[]={0,5.3514414,0};
 					};
 					side="West";
 					flags=6;
@@ -814,7 +814,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={5475.873,27.301437,15001.022};
-						angles[]={-0,2.1934485,0};
+						angles[]={0,2.1934485,0};
 					};
 					side="West";
 					flags=6;
@@ -846,7 +846,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={5473.4155,27.301437,15000.527};
-						angles[]={-0,2.1934485,0};
+						angles[]={0,2.1934485,0};
 					};
 					side="West";
 					flags=6;
@@ -919,7 +919,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={5490.063,27.301437,14991.612};
-						angles[]={-0,5.3514414,0};
+						angles[]={0,5.3514414,0};
 					};
 					side="West";
 					flags=6;
@@ -1167,26 +1167,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute3
-				{
-					property="ModulePoster_F_Units";
-					expression="_this setVariable ['Units',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				nAttributes=4;
+				nAttributes=3;
 			};
 		};
 	};

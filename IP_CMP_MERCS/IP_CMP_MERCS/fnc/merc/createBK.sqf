@@ -11,23 +11,23 @@ _class = toString(_classArr);
  if (((rank _unit) == "PRIVATE") OR ((rank _unit) == "CORPORAL")) then {_unit setRank "SERGEANT"};
 _rank = rank _unit;
 
-_backpack = getText(missionConfigFile >> "ShopPersonnel" >> _class >> "backpack");
+_backpack = getText(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "backpack");
 _glasses = getArray(missionConfigFile >> "MainValues" >> "glassGoggles");
-_handgrenadeCount = getNumber(missionConfigFile >> "ShopPersonnel" >> _class >> "handgrenadeCount");
-_handMagCount = getNumber(missionConfigFile >> "ShopPersonnel" >> _class >> "handMagCount");
-_handWeapon = getText(missionConfigFile >> "ShopPersonnel" >> _class >> "handWeapon");
-_headgearPool = getArray(missionConfigFile >> "ShopPersonnel" >> _class >> "headgearPool");
-_identity = getText(missionConfigFile >> "ShopPersonnel" >> _class >> "identity");
-_items = getArray(missionConfigFile >> "ShopPersonnel" >> _class >> "items");
-_primMagCount = getNumber(missionConfigFile >> "ShopPersonnel" >> _class >> "primMagCount");
-_primWeaponPool = getArray(missionConfigFile >> "ShopPersonnel" >> _class >> "primWeaponPool");
+_handgrenadeCount = getNumber(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "handgrenadeCount");
+_handMagCount = getNumber(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "handMagCount");
+_handWeapon = getText(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "handWeapon");
+_headgearPool = getArray(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "headgearPool");
+_identity = getText(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "identity");
+_items = getArray(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "items");
+_primMagCount = getNumber(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "primMagCount");
+_primWeaponPool = getArray(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "primWeaponPool");
 {
 	if (!(isClass(configFile >> "CfgWeapons" >> _x))) then {_primWeaponPool = _primWeaponPool - [_x]};
 } forEach _primWeaponPool;
-_uniform = getText(missionConfigFile >> "ShopPersonnel" >> _class >> "uniform");
-_secMagazines = getArray(missionConfigFile >> "ShopPersonnel" >> _class >> "secMagazines");
-_secWeapon = getText(missionConfigFile >> "ShopPersonnel" >> _class >> "secWeapon");
-_vestPool = getArray(missionConfigFile >> "ShopPersonnel" >> _class >> "vestPool");
+_uniform = getText(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "uniform");
+_secMagazines = getArray(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "secMagazines");
+_secWeapon = getText(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "secWeapon");
+_vestPool = getArray(missionConfigFile >> "ShopPersonnel" >> "BK" >> _class >> "vestPool");
 
 removeAllWeapons _unit;
 removeHeadgear _unit;

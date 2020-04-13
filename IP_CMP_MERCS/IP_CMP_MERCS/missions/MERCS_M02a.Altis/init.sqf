@@ -16,6 +16,9 @@ IP_AAFSupport = true;
 // Team Setup - Moved to mission start
 //[] call IP_fnc_spawnTeam;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Officer Setup
 IP_Officer allowDamage false;
 (group IP_Officer) setGroupID ["Gamma-1"];
@@ -23,7 +26,7 @@ IP_Officer setVariable ["IP_LiveFeed", true];
 
 // Briefing
 ["The CLIENT requests additional manpower to guard his important checkpoints and structures. The CONTRACTOR is obligated to deploy at the CLIENT's 'Checkpoint Charlie' and guard this strategic important position. Furthermore, the CONTRACTOR has to check incoming unknown vehicles.<br/><br/>This check includes: <br/><br/>- determining and verifying the identities of drivers and passengers <br/>- searching the vehicle and additional cargo for dangerous substances <br/>- questioning for start and destination of the ride.<br/><br/>In case of: <br/><br/>- the driver and/or passengers carrying firearms, ammunition and/or explosives<br/>- the cargo containing firearms, ammunition and/or explosives<br/>- an active arrest warrant against the driver and/or one of the passengers<br/>- other suspicious behaviour<br/><br/>driving on must be denied. In one of the prior stated cases or in a case of defence the CONTRACTOR may request support at the nearest CLIENT base. The CONTRACTOR must not -under any circumstances- leave the checkpoint to hostile forces."] call IP_fnc_createBriefing;
-[player, "tGuard", ["Guard the <marker name=""mCheckpoint"">AAF Checkpoint Charlie</marker>! Check all passing vehicles!", "Guard Checkpoint", "Checkpoint Charlie"], "mCheckpoint", true, 1] call BIS_fnc_taskCreate;	
+[player, "tGuard", ["Guard the <marker name=""mCheckpoint"">AAF Checkpoint Charlie</marker>! Check all passing vehicles!", "Guard Checkpoint", "Checkpoint Charlie"], "mCheckpoint", true, 1, true, "defend"] call BIS_fnc_taskCreate;	
 
 // Music
 [] call BIS_fnc_jukebox;

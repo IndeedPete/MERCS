@@ -223,5 +223,5 @@ if (count IP_AvailableMissions == 0) then {
 	IP_Main setVariable ["IP_Debts", 0];
 	IP_Main setVariable ["IP_BasicTCR", (call IP_fnc_calculateBasicCostRate)];	
 	[IP_Commander, "Hey, Freshmeat! Get your arse over here!", "DIRECT"] call IP_fnc_simpleSentence;
-	[player, 'tCommander1', ['Report in with McMillian!', 'Report In', ''], IP_Commander, true, 1] call BIS_fnc_taskCreate;
+	[player, 'tCommander1', ['Report in with McMillian!', 'Report In', ''], IP_Commander, true, 1, true, "whiteboard"] call BIS_fnc_taskCreate;
 };

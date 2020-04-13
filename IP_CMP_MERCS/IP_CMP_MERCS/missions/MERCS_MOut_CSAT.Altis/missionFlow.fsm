@@ -1,13 +1,13 @@
 /*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start",0,250,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Start"};
+item0[] = {"Start",0,4346,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Start"};
 item1[] = {"In_Truck",4,218,-175.000000,0.000000,-75.000000,50.000000,0.000000,"In Truck"};
 item2[] = {"End",1,250,-175.000000,825.000000,-75.000000,875.000000,0.000000,"End"};
 item3[] = {"On_the_Way",2,250,-175.000000,75.000000,-75.000000,125.000000,0.000000,"On the Way"};
 item4[] = {"First_Trigger",4,218,-175.000000,150.000000,-75.000000,200.000000,0.000000,"First Trigger"};
 item5[] = {"Gas_Station",4,218,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Gas Station"};
-item6[] = {"Radio_Conv",2,4346,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Radio Conv"};
+item6[] = {"Radio_Conv",2,250,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Radio Conv"};
 item7[] = {"Dead_Bodies_Helo",2,250,-175.000000,375.000000,-75.000000,425.000000,0.000000,"Dead Bodies" \n "Helo"};
 item8[] = {"At_Dest",4,218,-175.000000,450.000000,-75.000000,500.000000,0.000000,"At Dest"};
 item9[] = {"Still_Alive",2,250,-175.000000,525.000000,-75.000000,575.000000,0.000000,"Still Alive"};
@@ -27,7 +27,7 @@ link9[] = {10,11};
 link10[] = {11,12};
 link11[] = {12,2};
 globals[] = {0.000000,0,0,0,0,640,480,1,182,6316128,1,-677.156616,346.934631,968.587952,-385.258606,941,1244,1};
-window[] = {2,-1,-1,-1,-1,993,234,1674,234,3,959};
+window[] = {2,-1,-1,-1,-1,1097,338,1778,338,3,959};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -84,7 +84,7 @@ class FSM
        "	sleep 0.25;" \n
        "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
        "	" \n
-       "	[player, ""tExtract"", [""Follow SLt. Nafisi's orders to extract the device!"", ""Extract Device"", """"], IP_DeviceTruck, true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tExtract"", [""Follow SLt. Nafisi's orders to extract the device!"", ""Extract Device"", """"], IP_DeviceTruck, true, 1, true, ""run""] call BIS_fnc_taskCreate;" \n
        "	if ((dayTime < 7) OR (dayTime > 19)) then {IP_CSATOfficer linkItem ""NVGoggles""};" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;

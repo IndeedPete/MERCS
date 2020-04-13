@@ -428,7 +428,7 @@ class Mission
 					leader=1;
 					lock="LOCKED";
 					skill=0.60000002;
-					init="this setVariable [""IP_Faction"", ""Rogues""]; [this] call IP_fnc_createMerc; [this] call IP_fnc_deadBody;";
+					init="this setVariable [""IP_Faction"", ""Rogues""]; nul = [this] spawn IP_fnc_createMerc; [this] call IP_fnc_deadBody;";
 				};
 			};
 		};
@@ -448,7 +448,7 @@ class Mission
 					leader=1;
 					lock="LOCKED";
 					skill=0.60000002;
-					init="this setVariable [""IP_Faction"", ""Rogues""]; [this] call IP_fnc_createMerc; [this] call IP_fnc_deadBody;";
+					init="this setVariable [""IP_Faction"", ""Rogues""]; nul = [this] spawn IP_fnc_createMerc; [this] call IP_fnc_deadBody;";
 				};
 			};
 		};

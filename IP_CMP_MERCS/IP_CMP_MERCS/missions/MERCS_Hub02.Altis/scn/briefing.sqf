@@ -57,16 +57,16 @@ IP_BriefingDone = true;
 
 switch (_mission) do {
 	case "M06": {
-		[player, [("t" + _mission + "InsertionFoot"), ("t" + _mission)], ["Go to the car wreck to insert on foot!", "Insert On Foot", "Foot"], "mFoot", true, 1] call BIS_fnc_taskCreate;
-		if ((count IP_GarageVehicles) > 0) then {[player, [("t" + _mission + "InsertionCar"), ("t" + _mission)], ["Go to the garage to insert by car!", "Insert By Car", "Garage"], IP_Garage, false, 1] call BIS_fnc_taskCreate};
-		if ("B_Heli_Light_01_F" in (player getVariable ["IP_CampVehicles", []])) then {[player, [("t" + _mission + "InsertionHeli"), ("t" + _mission)], ["Go to the heli pad to insert by helicopter!", "Insert By Helicopter", "Helicopter"], IP_Heli, false, 1] call BIS_fnc_taskCreate};
-		if ("B_G_Boat_Transport_01_F" in (player getVariable ["IP_CampVehicles", []])) then {[player, [("t" + _mission + "InsertionBoat"), ("t" + _mission)], ["Go to the beach to insert by boat!", "Insert By Boat", "Boat"], IP_Boat, false, 1] call BIS_fnc_taskCreate};
+		[player, [("t" + _mission + "InsertionFoot"), ("t" + _mission)], ["Go to the car wreck to insert on foot!", "Insert On Foot", "Foot"], "mFoot", true, 1, true, "walk"] call BIS_fnc_taskCreate;
+		if ((count IP_GarageVehicles) > 0) then {[player, [("t" + _mission + "InsertionCar"), ("t" + _mission)], ["Go to the garage to insert by car!", "Insert By Car", "Garage"], IP_Garage, false, 1, true, "car"] call BIS_fnc_taskCreate};
+		if ("B_Heli_Light_01_F" in (player getVariable ["IP_ShopCampVehicles", []])) then {[player, [("t" + _mission + "InsertionHeli"), ("t" + _mission)], ["Go to the heli pad to insert by helicopter!", "Insert By Helicopter", "Helicopter"], IP_Heli, false, 1, true, "heli"] call BIS_fnc_taskCreate};
+		if ("B_G_Boat_Transport_01_F" in (player getVariable ["IP_ShopCampVehicles", []])) then {[player, [("t" + _mission + "InsertionBoat"), ("t" + _mission)], ["Go to the beach to insert by boat!", "Insert By Boat", "Boat"], IP_Boat, false, 1, true, "boat"] call BIS_fnc_taskCreate};
 		[["MERCS", "Insertion"]] call BIS_fnc_advHint;
 	};
 	
 	case "M07c": {
-		[player, [("t" + _mission + "InsertionFoot"), ("t" + _mission)], ["Go to the car wreck to insert on foot!", "Insert On Foot", "Foot"], "mFoot", true, 1] call BIS_fnc_taskCreate;
-		if ((count IP_GarageVehicles) > 0) then {[player, [("t" + _mission + "InsertionCar"), ("t" + _mission)], ["Go to the garage to insert by car!", "Insert By Car", "Garage"], IP_Garage, false, 1] call BIS_fnc_taskCreate};
+		[player, [("t" + _mission + "InsertionFoot"), ("t" + _mission)], ["Go to the car wreck to insert on foot!", "Insert On Foot", "Foot"], "mFoot", true, 1, true, "walk"] call BIS_fnc_taskCreate;
+		if ((count IP_GarageVehicles) > 0) then {[player, [("t" + _mission + "InsertionCar"), ("t" + _mission)], ["Go to the garage to insert by car!", "Insert By Car", "Garage"], IP_Garage, false, 1, true, "car"] call BIS_fnc_taskCreate};
 	};
 	
 	case "MMain01": {
@@ -74,14 +74,14 @@ switch (_mission) do {
 	};
 	
 	case "MMain02": {
-		[player, [("t" + _mission + "InsertionFoot"), ("t" + _mission)], ["Go to the car wreck to insert on foot!", "Insert On Foot", "Foot"], "mFoot", true, 1] call BIS_fnc_taskCreate;
-		if ("B_G_Boat_Transport_01_F" in (player getVariable ["IP_CampVehicles", []])) then {[player, [("t" + _mission + "InsertionBoat"), ("t" + _mission)], ["Go to the beach to insert by boat!", "Insert By Boat", "Boat"], IP_Boat, false, 1] call BIS_fnc_taskCreate};
+		[player, [("t" + _mission + "InsertionFoot"), ("t" + _mission)], ["Go to the car wreck to insert on foot!", "Insert On Foot", "Foot"], "mFoot", true, 1, true, "walk"] call BIS_fnc_taskCreate;
+		if ("B_G_Boat_Transport_01_F" in (player getVariable ["IP_ShopCampVehicles", []])) then {[player, [("t" + _mission + "InsertionBoat"), ("t" + _mission)], ["Go to the beach to insert by boat!", "Insert By Boat", "Boat"], IP_Boat, false, 1, true, "boat"] call BIS_fnc_taskCreate};
 	};
 	
 	case "MMain03": {
-		[player, [("t" + _mission + "InsertionFoot"), ("t" + _mission)], ["Go to the car wreck to insert on foot!", "Insert On Foot", "Foot"], "mFoot", true, 1] call BIS_fnc_taskCreate;
-		if ((count IP_GarageVehicles) > 0) then {[player, [("t" + _mission + "InsertionCar"), ("t" + _mission)], ["Go to the garage to insert by car!", "Insert By Car", "Garage"], IP_Garage, false, 1] call BIS_fnc_taskCreate};
-		if ("B_Heli_Light_01_F" in (player getVariable ["IP_CampVehicles", []])) then {[player, [("t" + _mission + "InsertionHeli"), ("t" + _mission)], ["Go to the heli pad to insert by helicopter!", "Insert By Helicopter", "Helicopter"], IP_Heli, false, 1] call BIS_fnc_taskCreate};
+		[player, [("t" + _mission + "InsertionFoot"), ("t" + _mission)], ["Go to the car wreck to insert on foot!", "Insert On Foot", "Foot"], "mFoot", true, 1, true, "walk"] call BIS_fnc_taskCreate;
+		if ((count IP_GarageVehicles) > 0) then {[player, [("t" + _mission + "InsertionCar"), ("t" + _mission)], ["Go to the garage to insert by car!", "Insert By Car", "Garage"], IP_Garage, false, 1, true, "car"] call BIS_fnc_taskCreate};
+		if ("B_Heli_Light_01_F" in (player getVariable ["IP_ShopCampVehicles", []])) then {[player, [("t" + _mission + "InsertionHeli"), ("t" + _mission)], ["Go to the heli pad to insert by helicopter!", "Insert By Helicopter", "Helicopter"], IP_Heli, false, 1, true, "heli"] call BIS_fnc_taskCreate};
 	};
 	
 	case "MMain04": {
@@ -89,9 +89,9 @@ switch (_mission) do {
 	};
 	
 	default {
-		[player, [("t" + _mission + "InsertionFoot"), ("t" + _mission)], ["Go to the car wreck to insert on foot!", "Insert On Foot", "Foot"], "mFoot", true, 1] call BIS_fnc_taskCreate;
-		if ((count IP_GarageVehicles) > 0) then {[player, [("t" + _mission + "InsertionCar"), ("t" + _mission)], ["Go to the garage to insert by car!", "Insert By Car", "Garage"], IP_Garage, false, 1] call BIS_fnc_taskCreate};
-		if ("B_Heli_Light_01_F" in (player getVariable ["IP_CampVehicles", []])) then {[player, [("t" + _mission + "InsertionHeli"), ("t" + _mission)], ["Go to the heli pad to insert by helicopter!", "Insert By Helicopter", "Helicopter"], IP_Heli, false, 1] call BIS_fnc_taskCreate};
-		if ("B_G_Boat_Transport_01_F" in (player getVariable ["IP_CampVehicles", []])) then {[player, [("t" + _mission + "InsertionBoat"), ("t" + _mission)], ["Go to the beach to insert by boat!", "Insert By Boat", "Boat"], IP_Boat, false, 1] call BIS_fnc_taskCreate};
+		[player, [("t" + _mission + "InsertionFoot"), ("t" + _mission)], ["Go to the car wreck to insert on foot!", "Insert On Foot", "Foot"], "mFoot", true, 1, true, "walk"] call BIS_fnc_taskCreate;
+		if ((count IP_GarageVehicles) > 0) then {[player, [("t" + _mission + "InsertionCar"), ("t" + _mission)], ["Go to the garage to insert by car!", "Insert By Car", "Garage"], IP_Garage, false, 1, true, "car"] call BIS_fnc_taskCreate};
+		if ("B_Heli_Light_01_F" in (player getVariable ["IP_ShopCampVehicles", []])) then {[player, [("t" + _mission + "InsertionHeli"), ("t" + _mission)], ["Go to the heli pad to insert by helicopter!", "Insert By Helicopter", "Helicopter"], IP_Heli, false, 1, true, "heli"] call BIS_fnc_taskCreate};
+		if ("B_G_Boat_Transport_01_F" in (player getVariable ["IP_ShopCampVehicles", []])) then {[player, [("t" + _mission + "InsertionBoat"), ("t" + _mission)], ["Go to the beach to insert by boat!", "Insert By Boat", "Boat"], IP_Boat, false, 1, true, "boat"] call BIS_fnc_taskCreate};
 	};
 };

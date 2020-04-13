@@ -42,6 +42,9 @@ IP_m_fnc_QRF = {
 	};
 };
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // HQ
 [IP_Lord, "lord", "command"] call IP_fnc_applyTemplate;
 
@@ -124,7 +127,7 @@ player createDiaryRecord ["Diary", ["Execution", (_prefix + "1. Callsign 'Templa
 player createDiaryRecord ["Diary", ["Mission", (_prefix + "The task is to abduct Dr. Joaquín Díaz. The British Knights' tactical officer identified three recommended ways to do so. First one would be to wait close to the <marker name=""mResearch"">Research Facility</marker> until Dr. Díaz's shift is over at around 1900 and then ambush his armed escort. Second way would be to break into his <marker name=""mHouse"">House in Anthrakia</marker> during daytime, take his sons as hostages and call him to leave his work early. Third option would be a night attack on his <marker name=""mHouse"">House in Anthrakia</marker> while he is at home. A direct attack on the <marker name=""mResearch"">Research Facility</marker> is not recommended. Furthermore, the AAF checkpoints, roadblocks and bases should be avoided." + _suffix)]];
 player createDiaryRecord ["Diary", ["Situation", (_prefix + "The final steps of Operation Crusader require the assistance of a Deep Space Engineering employee in order to ensure safe transportation and handling once the British Knights are in possession of the device. Therefore, project engineer and chief logistics specialist Dr. Joaquín Díaz has been identified as primary target. As it is unlikely that Dr. Díaz's cooperation can be bought, the Knights decided to enforce his assistance by abducting him.<br/><br/>Dr. Díaz works at the <marker name=""mResearch"">Research Facility</marker> in central Altis. The whole facility is heavily guarded by Black Arrow PMCs while the surroundings are protected by AAF patrols, checkpoints and bases. Since the operation takes place within the AAF's Greenzone quick reaction forces as well as armoured support should be expected. Dr. Díaz is usually going home around 1900, accompanied by an armed escort that takes him to his <marker name=""mHouse"">House in Anthrakia</marker>. The <marker name=""mHouse"">House in Anthrakia</marker> is guarded by Black Arrow PMCs as well (staff seems to double at night). During daytime, his two sons are usually at home while Dr. Díaz is at work." + _suffix)]];
 
-[player, "tKidnap", ["Find a way to kidnap Dr. Joaquín Díaz!", "Kidnap Dr. Díaz", ""], nil, true, 1] call BIS_fnc_taskCreate;
+[player, "tKidnap", ["Find a way to kidnap Dr. Joaquín Díaz!", "Kidnap Dr. Díaz", ""], nil, true, 1, true, "kill"] call BIS_fnc_taskCreate;
 
 // Random Patrols
 _blacklisted = ["I_soldier_AA_F", "I_soldier_AAA_F"];

@@ -40,6 +40,9 @@ IP_m_fnc_alert = {
 	};
 };
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // HQ
 [IP_Lord, "lord", "command"] call IP_fnc_applyTemplate;
 
@@ -59,8 +62,8 @@ player createDiaryRecord ["Diary", ["Execution", (_prefix + "1. Callsign 'Templa
 player createDiaryRecord ["Diary", ["Mission", (_prefix + "Objectives are to eliminate the <marker name=""mCaptain"">Black Arrow Captain</marker> and plant a satchel charge on the <marker name=""mShip"">Ship</marker> in order to destroy it." + _suffix)]];
 player createDiaryRecord ["Diary", ["Situation", (_prefix + "Deep Space Engineering is planning to transport the device off country. The company intends to use a civil trawler operated by Black Arrow PMCs. The <marker name=""mShip"">Ship</marker> is currently docked near Anthrakia, south of the AAF airbase / central airport. Captain and crew of the ship are holding out in a <marker name=""mCaptain"">house</marker> on the premises of a local company called <marker name=""mSurfer"">'Surfer's Scrapyard'</marker>. The AAF runs a maintenance depot as well as outposts and checkpoints near-by. Expect a QRF to be on stand-by at the airbase." + _suffix)]];
 
-[player, "tCaptain", ["Eliminate the <marker name=""mCaptain"">Black Arrow Captain</marker>! He's staying in the office house in <marker name=""mSurfer"">Surfer's Scrapyard</marker>.", "Eliminate Captain", "Captain"], "mCaptain", true, 1] call BIS_fnc_taskCreate;
-[player, "tShip", ["Plant a charge at the side of the <marker name=""mShip"">Ship</marker> and destroy it!", "Destroy Ship", "Ship"], "mShip", false, 1] call BIS_fnc_taskCreate;
+[player, "tCaptain", ["Eliminate the <marker name=""mCaptain"">Black Arrow Captain</marker>! He's staying in the office house in <marker name=""mSurfer"">Surfer's Scrapyard</marker>.", "Eliminate Captain", "Captain"], "mCaptain", true, 1, true, "kill"] call BIS_fnc_taskCreate;
+[player, "tShip", ["Plant a charge at the side of the <marker name=""mShip"">Ship</marker> and destroy it!", "Destroy Ship", "Ship"], "mShip", false, 1, true, "destroy"] call BIS_fnc_taskCreate;
 
 // All Units
 {

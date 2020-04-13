@@ -211,7 +211,7 @@ class Mission
 			name="mArr";
 			type="mil_arrow2";
 			colorName="ColorWEST";
-			angle=71.266426;
+			angle=71.266418;
 			id=136;
 		};
 		class Item3
@@ -2519,12 +2519,12 @@ class Mission
 				{
 					dataType="Waypoint";
 					position[]={8536.1738,68.167671,20951.23};
-					id=261;
 					type="Hold";
 					class Effects
 					{
 					};
 					showWP="NEVER";
+					id=261;
 					atlOffset=0.5;
 					class AttachedTo
 					{
@@ -2566,12 +2566,12 @@ class Mission
 				{
 					dataType="Waypoint";
 					position[]={8522.9141,68.619858,20941.309};
-					id=264;
 					type="Hold";
 					class Effects
 					{
 					};
 					showWP="NEVER";
+					id=264;
 					atlOffset=0.5;
 					class AttachedTo
 					{
@@ -2613,12 +2613,12 @@ class Mission
 				{
 					dataType="Waypoint";
 					position[]={8571.8994,70.467293,20870.906};
-					id=267;
 					type="Hold";
 					class Effects
 					{
 					};
 					showWP="NEVER";
+					id=267;
 					atlOffset=0.5;
 					class AttachedTo
 					{

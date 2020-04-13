@@ -90,8 +90,8 @@ link42[] = {38,39};
 link43[] = {39,41};
 link44[] = {40,42};
 link45[] = {41,40};
-globals[] = {25.000000,1,0,0,0,640,480,1,50,6316128,1,-301.684113,71.674408,254.118378,-338.824493,573,910,1};
-window[] = {2,-1,-1,-1,-1,780,156,1356,156,3,591};
+globals[] = {0.000000,0,0,0,0,640,480,1,50,6316128,1,-499.400421,269.390259,1171.298828,-497.768494,573,1244,1};
+window[] = {2,-1,-1,-1,-1,650,26,1226,26,3,591};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -121,33 +121,34 @@ class FSM
        "clearMagazineCargo IP_Heli;" \n
        "clearBackpackCargo IP_Heli;" \n
        "clearItemCargo IP_Heli;" \n
-       "[IP_Heli] call IP_fnc_heliDoors;" \n
+       "//[IP_Heli] call IP_fnc_heliDoors;" \n
        "IP_Heli setDir _dir;" \n
        "IP_Pilot moveInDriver IP_Heli;" \n
        "IP_Copilot moveInTurret [IP_Heli, [0]];" \n
        "" \n
        "_grp setCombatMode ""BLUE"";" \n
        "_grp setBehaviour ""CARELESS"";" \n
-       "_grp move _posLZ;" \n
+       "//_grp move _posLZ;" \n
        "{_x setCaptive true} forEach units _grp;" \n
        "" \n
        "[] spawn {" \n
        "	waitUntil{time > 0};" \n
-       "	IP_Main moveInCargo [IP_Heli, 5];" \n
-       "	IP_Buddy moveInCargo [IP_Heli, 2];" \n
+       "	//IP_Main moveInCargo [IP_Heli, 5];" \n
+       "	//IP_Buddy moveInCargo [IP_Heli, 2];" \n
+       "	player switchMove ""amovpercmstpslowwpstdnon"";" \n
        "	[] call IP_fnc_spawnTeam;" \n
-       "	{_x moveInCargo IP_Heli} forEach ((units group IP_Main) - [IP_Main]);" \n
+       "	//{_x moveInCargo IP_Heli} forEach ((units group IP_Main) - [IP_Main]);" \n
        "	" \n
        "	{_x setCaptive true} forEach ([IP_Buddy, IP_Pirate1, IP_Pirate2] + units group IP_Main);" \n
        "	sleep 2;" \n
        "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
-       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	/*if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
        "" \n
        "	[IP_Pilot, ""Guys, three minutes till touchdown. We will go down at that old stadium. That's close enough I hope."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "	[IP_Buddy, ""Thanks, buddy! Hey, Raif, right? See that? That's Kavala down there. Beautiful old castle but be aware of the pickpockets!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "	[IP_Main, ""Yes, beautiful countryside. I'll never understand how they manage to fuck up such great looking countries. Just like they did with Sudan."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "	[IP_Buddy, ""Never been there. I've visited Africa many times but not Sudan. How is it?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
-       "	[IP_Main, ""Pretty fucked at the moment. But it was beautiful when I grew up."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Main, ""Pretty fucked at the moment. But it was beautiful when I grew up."", ""DIRECT""] call IP_fnc_simpleSentence;*/" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -158,7 +159,7 @@ class FSM
           priority = 0.000000;
           to="Land";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(IP_Heli distance _posLZ) < 100"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(IP_Heli distance _posLZ) < 150"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -169,19 +170,21 @@ class FSM
     class Go_to_Car
     {
       name = "Go_to_Car";
-      init = /*%FSM<STATEINIT""">*/"[IP_Buddy] orderGetIn false;" \n
-       "_wp = _grp addWaypoint [_posStart, 0];" \n
+      init = /*%FSM<STATEINIT""">*/"//[IP_Buddy] orderGetIn false;" \n
+       "_wp = _grp addWaypoint [[0, 0, 0], 0];" \n
        "_wp setWaypointType ""MOVE"";" \n
        "_wp setWaypointStatements [""true"", ""deleteVehicle (vehicle this); {deleteVehicle _x} forEach units group this;""];" \n
        "" \n
        """tHint"" call IP_fnc_taskHint;" \n
-       "saveGame;" \n
+       "//saveGame;" \n
        "" \n
-       "IP_Buddy setBehaviour ""SAFE"";" \n
-       "IP_Buddy setSpeedMode ""LIMITED"";" \n
-       "IP_Buddy move (getPos IP_Car);" \n
+       "" \n
        "" \n
        "[] spawn {" \n
+       "	sleep 3;" \n
+       "	IP_Buddy setBehaviour ""SAFE"";" \n
+       "	IP_Buddy setSpeedMode ""LIMITED"";" \n
+       "	IP_Buddy move (getPos IP_Car);" \n
        "	[] call IP_fnc_showOSD;" \n
        "	[IP_Buddy, ""Okay, our car is down there. We will drive to a place near-by. Here, take the keys!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "	[IP_Main, ""Wait, to whom are we going to? And how did the car get here?"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
@@ -233,7 +236,7 @@ class FSM
     {
       name = "Move_to_Contact";
       init = /*%FSM<STATEINIT""">*/"""mHouse"" setMarkerAlpha 1;" \n
-       "[player, ""tHouse"", [""Drive to the <marker name=""""mHouse"""">Pirate's Hideout</marker> and question them about the girl!"", ""Talk to the Pirates"", ""Pirate Hideout""], ""mHouse"", true, 1] call BIS_fnc_taskCreate;" \n
+       "[player, ""tHouse"", [""Drive to the <marker name=""""mHouse"""">Pirate's Hideout</marker> and question them about the girl!"", ""Talk to the Pirates"", ""Pirate Hideout""], ""mHouse"", true, 1, true, ""meet""] call BIS_fnc_taskCreate;" \n
        "saveGame;" \n
        "" \n
        "[] spawn {" \n
@@ -278,10 +281,7 @@ class FSM
     class Land
     {
       name = "Land";
-      init = /*%FSM<STATEINIT""">*/"[IP_Pilot, ""Okay, we're going down now. Sit tight."", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
-       "" \n
-       "IP_Heli land ""GET OUT"";" \n
-       "if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -664,7 +664,7 @@ class FSM
        "	IP_Buddy setUnitPos ""AUTO"";" \n
        "	" \n
        "	""mFactory"" setMarkerAlpha 1;" \n
-       "	[player, ""tFactory"", [""Go to the <marker name=""""mFactory"""">old Factory in Gori</marker> and search for hints about the girl!"", ""Search the Factory"", ""Factory""], ""mFactory"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tFactory"", [""Go to the <marker name=""""mFactory"""">old Factory in Gori</marker> and search for hints about the girl!"", ""Search the Factory"", ""Factory""], ""mFactory"", true, 1, true, ""search""] call BIS_fnc_taskCreate;" \n
        "	saveGame;" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;

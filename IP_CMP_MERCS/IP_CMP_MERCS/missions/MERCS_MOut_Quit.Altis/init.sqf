@@ -54,6 +54,9 @@ IP_Main addHeadgear "H_Cap_grn_BI";
 	IP_Main setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_dirty_coMODMain.paa"];
 };
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Buddy Setup
 [] call IP_fnc_buddyInit;
 

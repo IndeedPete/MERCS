@@ -35,14 +35,14 @@ class CfgHints // toDo: Ranks!
 		{
 			displayName = "Looting";
 			displayNameShort = "Looting";
-			description = "Loot bodies for gear and items to sell. Many people carry cash in their pockets (I know, crazy, right? It's like 2037, hello?!), use the mousewheel to raid their pockets. They won't need it any more.";
-            tip = "Also, keep your eyes open for piles of money. Those notes look like Ben Franklins but I can assure you: It's EURO! Trust me, I'm a text field!";
+			description = "Loot bodies for gear and items to sell. Many people carry cash in their pockets, use the mousewheel to raid their pockets. They won't need it any more.";
+            tip = "Also, keep your eyes open for piles of money.";
 		};
 		
 		class Phone
 		{
 			displayName = "Object Conversations";
-			displayNameShort = "Bananaphone";
+			displayNameShort = "Phone Calls";
 			description = "Conversations can also be held through objects like phones or laptops.";
             tip = "There's a phone ringing near-by. If I were you I'd look for it somewhere inside. Be nice, manners are important!";
 		};
@@ -51,8 +51,8 @@ class CfgHints // toDo: Ranks!
 		{
 			displayName = "Tactical Pad";
 			displayNameShort = "TacPad";
-			description = "The 'Tactical Pad', or 'TacPad' in short, is your mobile connection to ION's network. Use it to look-up contract information, plan your afternoon naps (breaks are important!), call for extraction or disable the ppEffects if you find them annoying. To open it during a mission hit Backspace-0-8-1.";
-            tip = "It's also compatible to BIS' awesome Glass system for which you are probably too poor to buy right now. Don't worry, we will discuss that later when you finally did something for your money. I'll just wait here, it's fine...";
+			description = "The 'Tactical Pad', or 'TacPad' in short, is your mobile connection to ION's network. Use it to look-up contract information, skip time, call for extraction, or disable the ppEffects if you find them annoying. To open it during a mission hit Backspace-0-8-1.";
+            tip = "It's also compatible to BIS' awesome Glass system for which you are probably too poor to afford right now.";
 		};
 		
 		class Promotions
@@ -75,31 +75,31 @@ class CfgHints // toDo: Ranks!
 		{
 			displayName = "Advanced Shop System";
 			displayNameShort = "Shopping Again";
-			description = "Hey there! Long time no see! Take a look at the shop now and you will notice some new cool stuff like Camp Enhancements and Vehicles ready for purchase. Make sure you check in with McMillian to learn more!";
-            tip = "Think before buying, this stuff is fucking expensive!";
+			description = "Take a look at the shop now and you will notice some new cool stuff like Camp Enhancements and Vehicles ready for purchase. Make sure you check in with McMillian to learn more!";
+            tip = "Think before buying as Camp Enhancements cannot be sold back to the shop!";
 		};
 		
 		class Insertion
 		{
 			displayName = "Pick Your Insertion";
 			displayNameShort = "Insertion";
-			description = "Hola,¿qué tal? I just wanted to make sure you know about the different insertion methods you can choose from. Go to the marked HUMVEE wreck to insert the mission on foot. Buy a ground vehicle and enter it to insert by car (or bike, or truck, or llama...). Purchase a boat to insert by - wait for it - by boat, BY BOAT! And finally, invest some money in a heli pad, buy yourself a nice helo and insert by air (which is the coolest way of insertion, believe me).";
-            tip = "The mean of insertion can influence the mission start and gameplay and sometimes gains you certain advantages. Due to other circumstances (mainly the laziness of the author to provide unit capture data for every f*cking mission) not every mean of insertion is supported by every mission. Your insertion tasks indicate what's possible.";
+			description = "Go to the marked HUMVEE wreck to insert the mission on foot. Buy a ground vehicle and enter it to insert by car. Purchase a boat to insert by boat! And finally, buy a helo and insert by air.";
+            tip = "The mean of insertion can influence the mission start and gameplay and sometimes gains you certain advantages. Due to other circumstances not every mean of insertion is supported by every mission. Your insertion tasks indicate what's possible.";
 		};
 		
 		class CarCommander
 		{
 			displayName = "Commanding a Car";
 			displayNameShort = "Command";
-			description = "Good morning/day/evening/night Sir! You've chosen to let McMillian drive. He might be your boss outside of the car but sadly, he's too stupid to find the way on his own. So, use Backspace-1-9 to order him to drive to the next waypoint!";
-            tip = "Sometimes I hate Arma's AI. No really, it's like playing sack race with my retarded little brother. And don't forget, I'm just a text field. On the other hand we GUI elements are a very proud...";
+			description = "You've chosen to let McMillian drive. He might be your boss outside of the car but sadly, he's too stupid to find the way on his own. So, use Backspace-1-9 to order him to drive to the next waypoint!";
+            tip = "Sometimes I hate Arma's AI.";
 		};
 		
 		class LaserDesignator
 		{
 			displayName = "Lase Targets for CAS";
 			displayNameShort = "Laser Designator";
-			description = "If you are not as dumb as I think you are you took a laser designator with you. Find a good spot and start lasing static targets. Every 'shot' with your laser designator will be saved and then broadcast to the fast movers once you've called them in.";
+			description = "Hopefully, you've brought a laser designator with you. Find a good spot and start lasing static targets. Every 'shot' with your laser designator will be saved and then broadcast to the fast movers once you've called them in.";
             tip = "Pick only a handful of targets and don't waste any shots if you want the fast movers to actually hit something!";
 		};
 		
@@ -115,7 +115,7 @@ class CfgHints // toDo: Ranks!
 		{
 			displayName = "Pick Your Insertion";
 			displayNameShort = "Insertion";
-			description = "Dear Sir/Madam, you are about to enter the final stages of this campaign. I am happy to inform you about the great choice you have regarding your personal way of insertion. Go on foot to experience the following adventure with the Support Team, travel by ground vehicle to join the Attack Team or take the helicopter to be part of the Insertion Team. Unfortunately an insertion by boat is not possible. I wish you good luck and all the best! Sincerely, IndeedPete (CEO, CFO, CTO, Project Manager, Lead Designer, Lead Programmer, Head of Customer Relations, (In)Human Resources and the Coffee Department of the M.E.R.C.S. Project.)";
+			description = "Go on foot to experience the following adventure with the Support Team, travel by ground vehicle to join the Attack Team or take the helicopter to be part of the Insertion Team.";
 		};
 	};
 };

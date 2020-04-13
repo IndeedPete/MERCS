@@ -16,6 +16,9 @@ IP_Main addEventHandler ["WeaponAssembled", {
 [] call IP_fnc_buddyInit;
 //[] call IP_fnc_buddyEquipment;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Black Arrow Officers
 IP_Officer1 setVariable ["IP_GlassInfo", "> <t color='#FF0000'>Priority Target</t><br/>"];
 IP_Officer2 setVariable ["IP_GlassInfo", "> <t color='#FF0000'>Priority Target</t><br/>"];
@@ -138,7 +141,7 @@ IP_Whiteboard setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\M04c_WB1.pa
 
 // Briefing
 [] call IP_fnc_createBriefing;
-[player, "tCamp", ["Destroy all vehicles and equipment and eliminate key personnel in the <marker name=""mCamp"">Black Arrow Camp</marker>!", "Black Arrow Camp", "Camp"], "mCamp", true, 1] call BIS_fnc_taskCreate;	
+[player, "tCamp", ["Destroy all vehicles and equipment and eliminate key personnel in the <marker name=""mCamp"">Black Arrow Camp</marker>!", "Black Arrow Camp", "Camp"], "mCamp", true, 1, true, "destroy"] call BIS_fnc_taskCreate;	
 
 // Random Patrols
 ["mPatrol", east, [10, 15], [1, 2], ["GUE"]] call IP_fnc_randomPatrolArea;

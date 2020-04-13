@@ -8,6 +8,9 @@ IP_TankCrew = units(group IP_TankLeader);
 [] call IP_fnc_mainInit;
 (group IP_Main) setGroupID ["Templar"];
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Commander Setup
 [IP_Commander, "commander", "combat"] call IP_fnc_applyTemplate;
 {_x setVariable ["IP_Faction", "ION"]} forEach (units(group IP_Commander));
@@ -54,10 +57,10 @@ player createDiaryRecord ["Diary", ["Execution", (_prefix + "1. Callsigns 'Black
 player createDiaryRecord ["Diary", ["Mission", (_prefix + "Main objective is to break the cease-fire and peace negotiations in order to further destabilise the Republic of Altis, making covert operations by the British Knights and ION possible. Therefore, a combined force of both British Knights and ION contractors will engage the <marker name=""mFIA"">FIA Base in a factory near Kore</marker>, capture the <marker name=""mTanks"">two M2A1 Slammer MBTs</marker> and use them to engage the <marker name=""mDefence"">AAF Defences</marker> in order to provoke a diplomatic incident breaking the fragile peace. If the tanks are still operational after engaging the <marker name=""mDefence"">AAF Defences</marker>, the attack may continue on the <marker name=""mDepot"">AAF Tank Depot</marker>. On extraction, the European tanks may be left in the AO in order to serve as evidence for the AAF that this was a European-led attack." + _suffix)]];
 player createDiaryRecord ["Diary", ["Situation", (_prefix + "The AAF and the Pro-European FIA agreed to a temporary cease-fire after the heavy fightings around Kavala. A cease-fire at this particular time as well as peace negotiations or any other measure to stabilise the Republic of Altis is a potential thread to the British Knight's Operation Crusader.<br/><br/>Latest reports of informants within the European Federation state that - prior to the cease-fire agreement - a shipment of <marker name=""mTanks"">two M2A1 Slammer MBTs</marker> has been delivered to an <marker name=""mFIA"">FIA Base in a factory near Kore</marker>. Since the FIA lacks for trained personnel to operate the MBTs they're inactive at the moment.<br/><br/>Meanwhile the AAF established a <marker name=""mDefence"">Defensive Perimeter</marker> around Kavala, consisting of checkpoints, a light infantry platoon, several APCs, at least one MBT-52 Kuma and support vehicles. They have transferred their local HQ to what is left of the <marker name=""mDepot"">AAF Tank Depot</marker>." + _suffix)]];
 
-[player, "tTanks", ["Secure the <marker name=""mTanks"">Tanks</marker> in the <marker name=""mFIA"">FIA Base</marker>!", "Secure Tanks", "Tanks"], "mTanks", true, 1] call BIS_fnc_taskCreate;
-[player, "tDefences", ["Use the tanks to engage and clear the <marker name=""mDefence"">AAF Defences</marker>!", "Attack Defences", "AAF Defences"], "mDefence", false, 1] call BIS_fnc_taskCreate;
-[player, "tDepot", ["(OPTIONAL) Use the tanks to engage and clear what's let of the <marker name=""mDepot"">AAF Tank Depot</marker>!", "(OPTIONAL) Attack Depot", "AAF Tank Depot"], "mDepot", false, 1] call BIS_fnc_taskCreate;
-[player, "tExtract", ["Leave the EUROFORCE tanks in the AO and extract!", "Extract", ""], nil, false, 1] call BIS_fnc_taskCreate;
+[player, "tTanks", ["Secure the <marker name=""mTanks"">Tanks</marker> in the <marker name=""mFIA"">FIA Base</marker>!", "Secure Tanks", "Tanks"], "mTanks", true, 1, true, "getin"] call BIS_fnc_taskCreate;
+[player, "tDefences", ["Use the tanks to engage and clear the <marker name=""mDefence"">AAF Defences</marker>!", "Attack Defences", "AAF Defences"], "mDefence", false, 1, true, "attack"] call BIS_fnc_taskCreate;
+[player, "tDepot", ["(OPTIONAL) Use the tanks to engage and clear what's let of the <marker name=""mDepot"">AAF Tank Depot</marker>!", "(OPTIONAL) Attack Depot", "AAF Tank Depot"], "mDepot", false, 1, true, "attack"] call BIS_fnc_taskCreate;
+[player, "tExtract", ["Leave the EUROFORCE tanks in the AO and extract!", "Extract", ""], nil, false, 1, true, "exit"] call BIS_fnc_taskCreate;
 
 // All Units
 {

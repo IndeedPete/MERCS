@@ -24,7 +24,7 @@ class ShopPersonnel
 			unique = 1; // One time use only
 			secMagazines[] = {"smokeGrenade", "smokeGrenade", "smokeGrenadeRed", "smokeGrenadeGreen"};
 			secWeapon = "";
-			show = 2; // Stage B
+			show = 1; // Stage B
 			vestPool[] = {"V_PlateCarrierL_CTRG", "V_PlateCarrierH_CTRG"};
 		};
 		class B_CTRG_soldier_AR_A_F
@@ -45,7 +45,7 @@ class ShopPersonnel
 			unique = 1; // One time use only
 			secMagazines[] = {"smokeGrenade", "smokeGrenade", "smokeGrenadeRed", "smokeGrenadeGreen", "SmokeShellYellow", "SmokeShellPurple", "SmokeShellBlue", "SmokeShellOrange","1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell","NLAW_F"};
 			secWeapon = "";
-			show = 2; // Stage B
+			show = 1; // Stage B
 			vestPool[] = {"V_PlateCarrierL_CTRG", "V_PlateCarrierH_CTRG"};
 		};
 		class B_CTRG_soldier_engineer_exp_F
@@ -66,7 +66,7 @@ class ShopPersonnel
 			unique = 1; // One time use only
 			secMagazines[] = {"smokeGrenade", "smokeGrenade", "smokeGrenadeRed", "smokeGrenadeGreen","DemoCharge_Remote_Mag","APERSBoundingMine_Range_Mag","APERSBoundingMine_Range_Mag","APERSBoundingMine_Range_Mag","ClaymoreDirectionalMine_Remote_Mag","ClaymoreDirectionalMine_Remote_Mag","SLAMDirectionalMine_Wire_Mag","SLAMDirectionalMine_Wire_Mag"};
 			secWeapon = "";
-			show = 2; // Stage B
+			show = 1; // Stage B
 			vestPool[] = {"V_PlateCarrierL_CTRG", "V_PlateCarrierH_CTRG"};
 		};
 		class B_CTRG_soldier_GL_LAT_F
@@ -87,7 +87,7 @@ class ShopPersonnel
 			unique = 1; // One time use only
 			secMagazines[] = {"smokeGrenade", "smokeGrenade", "smokeGrenadeRed", "smokeGrenadeGreen","NLAW_F","NLAW_F","NLAW_F","1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell","1Rnd_HE_Grenade_shell"};
 			secWeapon = "launch_NLAW_F";
-			show = 2; // Stage B
+			show = 1; // Stage B
 			vestPool[] = {"V_PlateCarrierL_CTRG", "V_PlateCarrierH_CTRG"};
 		};
 

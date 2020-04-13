@@ -3,7 +3,7 @@ class ShopMetaInformation
 	basicCostRate = 0;
 	currency = "Euro";
 	currencyShort = "€";
-	defaultBuildTime = 0;
+	defaultBuildTime = 4;
 	defaultPicture = "";
 	excludedMods[] = {};
 	sellingDisvisor = 5;
@@ -75,7 +75,7 @@ class ShopCategories
 	
 	class CampEnhancements
 	{
-		active = 0;
+		active = 2;
 		displayName = "Camp Enhancements";
 		labelLeft = "Available Camp Enhancements";
 		labelRight = "In Possession";
@@ -83,16 +83,16 @@ class ShopCategories
 	
 	class CampVehicles
 	{
-		active = 0;
+		active = 2;
 		displayName = "Camp Vehicles";
 		labelAdditionalButton = "Select for Insertion";
-		labelLeft = "Available Vehicles Enhancements";
+		labelLeft = "Available Vehicles";
 		labelRight = "In Possession";
 	};
 	
 	class StockMarket
 	{
-		active = 0;
+		active = 3;
 		displayName = "Stock Market";
 		labelLeft = "Available Stocks";
 		labelRight = "In Depot";

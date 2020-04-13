@@ -52,6 +52,9 @@ IP_m_fnc_destroyed = {
 	};
 };
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // HQ Dummy
 IP_HQ allowDamage false;
 IP_HQ setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\EF_Flag.jpg"];
@@ -76,7 +79,7 @@ player createDiaryRecord ["Diary", ["Target Information", "TRANSMISSION BY EUROF
 	"The CONTRACTOR is tasked to infiltrate the AOR on his own and locate an appropriate overview position close to the AAF Headquarters near Pyrgos. Once the CONTRACTOR is in position he will start reconnoitring the AOR and mark targets around the AAF Headquarters at his own will. The target coordinates will be uploaded into EUNET. The CONTRACTOR will then call in EUROFORCE air assets who will engage the AAF Headquarters as well as the marked targets. The CONTRACTOR constantly provides BDA. On mission completion, the CONTRACTOR will extract on his own.",
 	"EUROFORCE requested our services for recon and BDA in the tactical bombardment of the AAF Headquarters at Pyrgos. Hitting their Headquarters and possibly taking our their leader - Colonel Georgious Akhanteros - would be a severe strike against the AAF and probably the base for a Blueflag ground attack. We will help them out this time but we need to observe the situation so the Blueflags won't become a thread to the Knights and us."
 ] call IP_fnc_createBriefing;
-[player, "tOverview", ["Establish an overview position around the <marker name=""mHQ"">AAF Headquarters</marker> and call in the EUROFORCE air assets!", "Establish Overview", ""], nil, true, 1] call BIS_fnc_taskCreate;
+[player, "tOverview", ["Establish an overview position around the <marker name=""mHQ"">AAF Headquarters</marker> and call in the EUROFORCE air assets!", "Establish Overview", ""], nil, true, 1, true, "scout"] call BIS_fnc_taskCreate;
 
 // All Units
 {

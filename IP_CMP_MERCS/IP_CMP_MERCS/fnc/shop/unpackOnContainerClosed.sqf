@@ -9,7 +9,6 @@ _id = _box addEventHandler ["ContainerClosed", {
 	_backpacks = backpackCargo _container;
 	_mags = magazinesAmmoCargo _container;
 	_weaponsItems = weaponsItemsCargo _container;
-	systemChat str(weaponsItemsCargo _container);
 
 	{
 		_class = _x select 0;
@@ -32,7 +31,6 @@ _id = _box addEventHandler ["ContainerClosed", {
 	{
 		_weapon = _x select 0;
 		_cfg = (configFile >> "CfgWeapons" >> _weapon);
-		systemChat str(_x);
 		_muzzle = _x select 1;
 		_pointer = _x select 2;
 		_optic = _x select 3;
@@ -77,10 +75,6 @@ _id = _box addEventHandler ["ContainerClosed", {
 
 		_weapons pushBack _baseWeapon;
 	} forEach _weaponsItems;
-
-	systemChat str(_items);
-	systemChat str(_mags);
-	systemChat str(_weapons);
 
 	clearItemCargoGlobal _container;
 	clearBackpackCargoGlobal _container;

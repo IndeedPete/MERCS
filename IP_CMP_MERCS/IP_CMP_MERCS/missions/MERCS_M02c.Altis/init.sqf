@@ -11,6 +11,9 @@ IP_RivalGroup = group IP_Rival;
 // Buddy Setup
 [] call IP_fnc_buddyInit;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Rival Setup
 IP_Rival allowDamage false;
 IP_Rival setIdentity "rival";
@@ -59,7 +62,7 @@ IP_Officer setVariable ["IP_LiveFeed", true];
 
 // Briefing
 ["The FIA took control of one of the CLIENTS's armour depots. The CLIENT requests support to re-take the facility. The CONTRACTOR is obligated to deploy at the AOR and follow the CLIENT's orders.<br/>FIA controlled armour may be engaged and immobilised or incapacitated. Destruction of the CLIENT's property should only happen if necessary."] call IP_fnc_createBriefing;
-[player, "tDepot", ["Secure the <marker name=""mDepot"">Tank Depot</marker>!", "Secure Tank Depot", "Tank Depot"], "mDepot", true, 1] call BIS_fnc_taskCreate;	
+[player, "tDepot", ["Secure the <marker name=""mDepot"">Tank Depot</marker>!", "Secure Tank Depot", "Tank Depot"], "mDepot", true, 1, true, "attack"] call BIS_fnc_taskCreate;	
 
 // Tank Setup - To Prevent player from losing rating.
 {

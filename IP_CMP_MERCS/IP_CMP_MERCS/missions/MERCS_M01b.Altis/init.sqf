@@ -24,7 +24,7 @@ IP_fnc_m_createPirate = {
 	_face = _facePool call BIS_fnc_selectRandom;
 	_unit setFace _face;
 
-	_uniforms = (missionConfigFile >> "ShopClothes") call IP_fnc_getConfigEntries;
+	_uniforms = (missionConfigFile >> "ShopUniforms" >> "Paramilitary") call IP_fnc_getConfigEntries;
 	_uniforms = _uniforms - ["U_Competitor", "U_Rangemaster", "U_B_CTRG_1", "U_B_CTRG_2", "U_B_CTRG_3", "U_O_CombatUniform_ocamo", "U_I_G_resistanceLeader_F", "U_B_Wetsuit"];
 	{
 		if (!(isClass(configFile >> "CfgWeapons" >> _x))) then {_uniforms = _uniforms - [_x]};
@@ -58,6 +58,9 @@ group IP_Main setGroupID ["Razor"];
 
 // Buddy Setup
 [] call IP_fnc_buddyInit;
+
+// Shop Setup
+[] call IP_fnc_shopInit;
 
 // Team Setup - Moved to mission start
 //[] call IP_fnc_spawnTeam;
@@ -97,7 +100,7 @@ IP_Pirate2 addEventHandler ["Killed", {
 
 // Briefing
 ["The CLIENT received a ransom demand for his kidnapped daughter and agreed to pay the full amount. The CONTRACTOR is obligated to observe the ransom delivery which is taken out by another contractor and ensure the save retrieval of the hostage."] call IP_fnc_createBriefing;
-[player, "tObserve", ["Observe the delivery of the ransom at the <marker name=""mDelivery"">Delivery Point in the stadium</marker>! Make sure everything is going as planned!", "Observe Delivery", "Delivery Point"], "mDelivery", true, 1] call BIS_fnc_taskCreate;
+[player, "tObserve", ["Observe the delivery of the ransom at the <marker name=""mDelivery"">Delivery Point in the stadium</marker>! Make sure everything is going as planned!", "Observe Delivery", "Delivery Point"], "mDelivery", true, 1, true, "scout"] call BIS_fnc_taskCreate;
 
 // Music
 [] call BIS_fnc_jukebox;

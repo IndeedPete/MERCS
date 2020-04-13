@@ -34,8 +34,8 @@ link13[] = {11,14};
 link14[] = {13,15};
 link15[] = {14,15};
 link16[] = {15,3};
-globals[] = {25.000000,1,0,0,0,640,480,1,111,6316128,1,-460.995300,106.338539,733.832458,-216.713654,758,1270,1};
-window[] = {2,-1,-1,-1,-1,1071,312,1752,312,3,776};
+globals[] = {0.000000,0,0,0,0,640,480,1,111,6316128,1,-460.995300,106.338539,733.832458,-216.713654,758,1244,1};
+window[] = {2,-1,-1,-1,-1,1019,260,1700,260,3,776};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -177,7 +177,7 @@ class FSM
        "	{_x stop false} forEach units _grp;" \n
        "	" \n
        "	if (IP_Choice) then {" \n
-       "		[player, [""tCover"", ""tDepot""], [""Support the <marker name=""""mAssault"""">Main Assault</marker> from the <marker name=""""mCover"""">Covering Position</marker>! Use the mortar support!"", ""Covering"", ""Covering Position""], ""mCover"", true, 1] call BIS_fnc_taskCreate;	" \n
+       "		[player, [""tCover"", ""tDepot""], [""Support the <marker name=""""mAssault"""">Main Assault</marker> from the <marker name=""""mCover"""">Covering Position</marker>! Use the mortar support!"", ""Covering"", ""Covering Position""], ""mCover"", true, 1, true, ""target""] call BIS_fnc_taskCreate;	" \n
        "		" \n
        "		_wp = _grp addWaypoint [(getMarkerPos ""mAssault""), 0];" \n
        "		_wp setWaypointType ""MOVE"";" \n
@@ -187,7 +187,7 @@ class FSM
        "		_wp = _grp addWaypoint [(getMarkerPos ""mDepot""), 2];" \n
        "		_wp setWaypointType ""HOLD"";		" \n
        "	} else {" \n
-       "		[player, [""tAssault"", ""tDepot""], [""Follow the <marker name=""""mAssault"""">Main Assault</marker>!"", ""Main Assault"", ""Main Assault""], ""mAssault"", true, 1] call BIS_fnc_taskCreate;" \n
+       "		[player, [""tAssault"", ""tDepot""], [""Follow the <marker name=""""mAssault"""">Main Assault</marker>!"", ""Main Assault"", ""Main Assault""], ""mAssault"", true, 1, true, ""destroy""] call BIS_fnc_taskCreate;" \n
        "		" \n
        "		_pos = getMarkerPos ""mCover"";" \n
        "		_wp = _grp addWaypoint [_pos, 0];" \n

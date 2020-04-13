@@ -18,6 +18,9 @@ IP_scn_credits = compile(preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\sc
 // Main Setup
 [] call IP_fnc_mainInit;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Hacker
 [IP_Hacker, "hacker", "hub"] call IP_fnc_applyTemplate;
 IP_Hacker setUnitPos "MIDDLE";
@@ -61,7 +64,7 @@ if (!IP_TESTMODE) then {IP_Hacker allowDamage true};
 	{
 		if ((side _x) == east) then {
 			_x setVariable ["IP_Faction", "Rogues"];
-			[_x, 4, false, [((dayTime < 7) OR (dayTime > 19)), false], false] call IP_fnc_createMerc;
+			[_x] call IP_fnc_createMerc;
 		};
 	} forEach (allUnits - [IP_Trafficker]);
 };

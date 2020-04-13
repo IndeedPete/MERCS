@@ -15,7 +15,15 @@ class CfgFunctions
 			class ambientVehicleFire
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\ambientVehicleFire.sqf";
-			};			
+			};
+			class blackIn
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\blackIn.sqf";
+			};
+			class blackOut
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\blackOut.sqf";
+			};
 			class deadBody
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\base\deadBody.sqf";

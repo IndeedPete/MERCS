@@ -7,6 +7,9 @@ IP_ShowIntro = true;
 [] call IP_fnc_mainInit;
 (group IP_Main) setGroupID ["Asker"];
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // CSAT Officer
 [IP_Officer, "CSATOfficer", "covert"] call IP_fnc_applyTemplate;
 IP_Officer stop true;
@@ -28,7 +31,7 @@ IP_HQ setVariable ["IP_Avatar", "IP_CMP_MERCS\IP_CMP_MERCS\img\CSAT_Flag.jpg"];
 	"The CONTRACTOR is tasked to infiltrate the AOR and locate covert operative Sub-Lieutenant Malik Nafisi, who is working undercover as journalist. The CONTRACTOR will then transport SLt. Nafisi safely to a location the CLIENT determines during the course of the OPERATION where the SLt. will be extracted. In case of unforeseen death of SLt. Nafisi, the important information he is carrying must be extracted instead. Under no circumstances the CONTRACTOR is allowed to copy or examine the information SLt. Nafisi is carrying.",
 	"You're tasked to locate and rescue some CSAT operative who was obviously too dumb to leave before the AAF started bombing the living shit out of Kavala. Try to make your way between the front lines and avoid contact where possible. Extract the super important intel the guy is carrying, preferably with him still alive. But don't make the life of some random CSAT agent your top priority. Stick to the contract. Care for the data, care for the money."
 ] call IP_fnc_createBriefing;
-[player, "tReach", ["Reach <marker name=""mOfficer"">Mirza's position</marker> and link up with him!", "Reach Mirza", "Mirza"], IP_Officer, true, 1] call BIS_fnc_taskCreate;
+[player, "tReach", ["Reach <marker name=""mOfficer"">Mirza's position</marker> and link up with him!", "Reach Mirza", "Mirza"], IP_Officer, true, 1, true, "run"] call BIS_fnc_taskCreate;
 
 // All Units
 {

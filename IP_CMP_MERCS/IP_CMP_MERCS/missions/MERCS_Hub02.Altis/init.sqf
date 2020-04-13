@@ -80,6 +80,9 @@ IP_scn_dynamicCampInit = {
 	};
 };
 
+// Shop Setup
+[true, true, [(player getVariable ["IP_ShopUniforms", []]), (player getVariable ["IP_ShopCampEnhancements", []]), (player getVariable ["IP_ShopCampVehicles", []])]] call IP_fnc_shopInit;
+
 // All Objects
 {
 	if (_x isKindOf "Man") then {
@@ -180,9 +183,6 @@ if (IP_BuddyDied) then {
 	[IP_Buddy, "PRONE_INJURED", "NONE"] call BIS_fnc_ambientAnim;
 	[IP_Buddy, "buddyOpener"] call IP_fnc_addConversation;
 };
-
-// Shop Setup
-[] call IP_fnc_shopInit;
 
 // Whiteboards
 IP_StratMap setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\Hub02_WBStratMap1.paa"];

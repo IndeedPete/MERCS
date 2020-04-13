@@ -10,11 +10,14 @@ _campEnhancements = if (isNil "IP_MERCS_CampEnhancements") then {[]} else {IP_ME
 IP_m_scn_outro = compile(preprocessFileLineNumbers "scn\outro.sqf");
 IP_scn_credits = compile(preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\scn\credits.sqf");
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // All Objects
 {
 	if (_x isKindOf "Man") then {
 		if ((_x getVariable ["IP_Faction", ""]) == "ION") then {
-			[_x, 5, false, [((dayTime < 7) OR (dayTime > 19)), true]] call IP_fnc_createMerc;
+			[_x] call IP_fnc_createMerc;
 		};
 		
 		if ((_x getVariable ["IP_Faction", ""]) == "BritishKnights") then {

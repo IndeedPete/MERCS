@@ -1,4 +1,4 @@
-private ["_getClasses", "_setPrices", "_autoIndexing", "_defaultNavigation", "_inPossession", "_uniformsInPossession", "_enhancementsInPossession", "_vehiclesInPossession", "_serverSide", "_box", "_missions", "_personnelCategories", "_killedTeammates", "_weaponCategories", "_magazines", "_itemCategories", "_uniformCategories", "_enhancements", "_enhancementClasses", "_vehicleCategories"];
+private ["_getClasses", "_setPrices", "_autoIndexing", "_defaultNavigation", "_inPossession", "_uniformsInPossession", "_enhancementsInPossession", "_vehiclesInPossession", "_serverSide", "_box", "_missions", "_requiredShow", "_personnelCategories", "_killedTeammates", "_weaponCategories", "_magazines", "_itemCategories", "_uniformCategories", "_enhancements", "_enhancementClasses", "_vehicleCategories"];
 _getClasses = {
 	private "_arr";
 	_arr = [];
@@ -25,14 +25,14 @@ _setPrices = {
 
 _autoIndexing = param [0, true, [false]];
 _allowModContent = param [1, true, [false]];
-_defaultNavigation = "((isNumber(_x >> 'active')) && {(getNumber(_x >> 'active')) == 1})" configClasses (missionConfigFile >> "ShopCategories");
-IP_Navigation = param [2, (_defaultNavigation call _getClasses), [[]]];
-if (count IP_Navigation > 0) then {IP_LastOpened = IP_Navigation select 0};
-
-_inPossession = param [3, [[],[],[]], [], 3];
+_inPossession = param [2, [[],[],[]], [], 3];
 _uniformsInPossession = _inPossession select 0;
 _enhancementsInPossession = _inPossession select 1;
 _vehiclesInPossession = _inPossession select 2;
+
+_defaultNavigation = "((isNumber(_x >> 'active')) && {(getNumber(_x >> 'active')) <= if (getText(missionConfigFile >> 'stage') == 'A') then {1} else {2}})" configClasses (missionConfigFile >> "ShopCategories");
+IP_Navigation = param [3, (_defaultNavigation call _getClasses), [[]]];
+if (count IP_Navigation > 0) then {IP_LastOpened = IP_Navigation select 0};
 
 _serverSide = param [4, true, [false]];
 if ((count _this > 5) && {!isDedicated} && {isNull(player getVariable ["IP_ShopBox", ObjNull])}) then {
@@ -91,7 +91,8 @@ IP_Shop_HashMap = if (_serverSide && {isNil "IP_Shop_HashMap"}) then {
 _missions = "(isNumber(_x >> 'condition') && {(getNumber(_x >> 'condition') == 1) && {getText(_x >> 'stage') == getText(missionConfigFile >> 'stage')} && {!([(configName _x)] call IP_fnc_missionDone)}}) OR {isText(_x >> 'condition') && {call(compile(getText(_x >> 'condition')))}}" configClasses (missionConfigFile >> "ShopMissions");
 IP_AvailableMissions = _missions call _getClasses;
 
-_personnelCategories = "((if (isNumber(_x >> 'show')) then {(getNumber(_x >> 'show'))} else {1}) <= (if (getText(missionConfigFile >> 'stage') == 'A')) then {1} else {2}) && {count _x > 0}" configClasses (missionConfigFile >> "ShopPersonnel");
+_requiredShow = if (getText(missionConfigFile >> "stage") == "A") then {1} else {2};
+_personnelCategories = ("((if (isNumber(_x >> 'show')) then {(getNumber(_x >> 'show'))} else {1}) <= " + str(_requiredShow) + ") && {count _x > 0}") configClasses (missionConfigFile >> "ShopPersonnel");
 _killedTeammates = if (isNil "IP_MERCS_KilledTeammates") then {[]} else {IP_MERCS_KilledTeammates};
 IP_PersonnelCategories = _personnelCategories call _getClasses;
 IP_PersonnelFilters = ["All"] + IP_PersonnelCategories;

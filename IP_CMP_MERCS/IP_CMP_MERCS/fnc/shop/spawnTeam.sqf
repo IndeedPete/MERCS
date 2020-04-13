@@ -20,7 +20,6 @@ _grp = group _unit;
 _pos = getPos _unit;
 _veh = vehicle _unit;
 _capacity = if (_unit != _veh) then {(((typeOf _veh) call IP_fnc_getCargoSeats) - 1)} else {(getNumber(missionConfigFile >> "ShopMetaInformation" >> "teamLimit"))};
-
 {
 	if (_forEachIndex >= _capacity) exitWith {};
 	
@@ -28,9 +27,10 @@ _capacity = if (_unit != _veh) then {(((typeOf _veh) call IP_fnc_getCargoSeats) 
 	if ((isNumber(missionConfigFile >> "ShopPersonnel" >> "Merc" >> _x >> "isMerc")) && {(getNumber(missionConfigFile >> "ShopPersonnel" >> "Merc" >> _x >> "isMerc")) == 1}) then {
 		_teammate = [_pos, _x, (side _unit), _grp, false, _silenced] call IP_fnc_createMerc;
 	} else {
-		_teammate = _grp createUnit [_x, _pos, [], 0, "FORM"];
-		
-		if (_unique) then {
+		_teammate = _grp createUnit [_x, _pos, [], 0, "FORM"];		
+		if (_x in ["B_CTRG_soldier_M_medic_F", "B_CTRG_soldier_AR_A_F", "B_CTRG_soldier_engineer_exp_F", "B_CTRG_soldier_GL_LAT_F"]) then { // British Knights Player Team
+			_teammate setVariable ["IP_Faction", "BritishKnights"];
+			[_teammate, _skill, _silenced, _night] call IP_fnc_createBK;
 			_teammate setVariable ["IP_Owner", _unit];
 			_teammate addEventHandler ["Killed", {
 				_unit = _this select 0;
@@ -45,15 +45,6 @@ _capacity = if (_unit != _veh) then {(((typeOf _veh) call IP_fnc_getCargoSeats) 
 				_owner setVariable ["IP_ShopTeam", _team];
 				_owner setVariable ["IP_ShopKilledTeammates", _killedTeammates];
 			}];
-		};
-		
-		if (_night select 0) then {
-			if (_night select 1) then {
-				_teammate linkItem "NVGoggles_OPFOR";
-			} else {
-				_teammate addPrimaryWeaponItem "acc_flashlight";
-				_teammate enableGunLights "AUTO";
-			};
 		};
 	};
 	

@@ -12,6 +12,7 @@ if ((count _sentences > 0) && IP_ShowIntro) then {
 	_dir = getDir IP_Commander;
 	_goggles = goggles IP_Commander;
 	_hasVest = (vest IP_Commander != "");
+	_uniform = uniform IP_Commander;
 
 	deleteVehicle IP_Commander;
 	_grp = createGroup west;
@@ -24,6 +25,8 @@ if ((count _sentences > 0) && IP_ShowIntro) then {
 	[IP_Commander, "Executive"] call BIS_fnc_setUnitInsignia;
 	removeAllWeapons IP_Commander;
 	removeGoggles IP_Commander;
+	removeUniform IP_Commander;
+	IP_Commander forceAddUniform _uniform;
 	if (_goggles != "") then {IP_Commander addGoggles _goggles};
 	if (!_hasVest) then {removeVest IP_Commander};
 

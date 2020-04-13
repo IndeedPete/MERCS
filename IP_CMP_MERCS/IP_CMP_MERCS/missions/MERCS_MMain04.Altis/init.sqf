@@ -25,6 +25,9 @@ IP_MERCS_Team = [];
 	[IP_Main, "mainAAF"] call IP_fnc_applyTemplate;
 };
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Commander Setup
 [IP_Commander, "commander", "combat"] call IP_fnc_applyTemplate;
 IP_Commander setVariable ["IP_LiveFeed", false];
@@ -83,7 +86,7 @@ player createDiaryRecord ["Diary", ["Execution", (_prefix + "1. Raif Salih will 
 player createDiaryRecord ["Diary", ["Mission", (_prefix + "The task is to infiltrate the AAF using their extended recruitment program, find a way to get close to Colonel Arkhanteros, apply the smartphone app to read out his credentials without him noticing and then extract without being compromised. Any behaviour leading to compromise is to be avoided." + _suffix)]];
 player createDiaryRecord ["Diary", ["Situation", (_prefix + "In order to gain access to the AAF's internal network and communications valid user credentials and login data are required. The easiest way to obtain said credentials is to copy existing and valid ones. It is mandatory to gain the highest access level possible which is currently possessed by the AAF's Commander in Chief - Colonel Georgious Akhanteros.<br/><br/>According to " + profileName + " Colonel Arkhanteros carries a small subcutaneous implant containing the needed data. It is using Near-Field-Communication (NFC) to exchange data with the AAF's computer terminals. " + profileName + " found an exploit in its communication protocols and wrote a small smartphone app which is able to read out the credentials once it is close enough to establish an NFC connection." + _suffix)]];
 
-[player, "tKey", ["Find a way to get Colonel Akhanteros' AAF network credentials!", "Colonel's Credentials", ""], nil, true, 1] call BIS_fnc_taskCreate;
+[player, "tKey", ["Find a way to get Colonel Akhanteros' AAF network credentials!", "Colonel's Credentials", ""], nil, true, 1, true, "intel"] call BIS_fnc_taskCreate;
 
 // All Units
 {

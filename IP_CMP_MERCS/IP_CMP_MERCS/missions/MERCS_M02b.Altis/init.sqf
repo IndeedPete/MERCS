@@ -45,6 +45,9 @@ IP_fnc_m_createPoliceman = {
 // Buddy Setup
 [] call IP_fnc_buddyInit;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Tank Setup
 clearWeaponCargo IP_Tank;
 clearMagazineCargo IP_Tank;
@@ -61,7 +64,7 @@ IP_Sergeant setVariable ["IP_LiveFeed", true];
 
 // Briefing
 ["Violent riots broke out throughout the whole Republic of Altis. The CLIENT requests additional manpower to get these riots under control. The CONTRACTOR is obligated to deploy at the AOR and clear the main street of the city of Negades from rioters and road blocks.<br/>The AOR is under martial law. Hence ROE dictate that the CONTRACTOR is allowed to use lethal force against civilian rioters if necessary. However, peaceful solutions are preferred by the CLIENT."] call IP_fnc_createBriefing;
-[player, "tClear", ["Clear the <marker name=""mAO"">main street of Negades</marker>! Scare off the civilians and move the cars aside!", "Clear Street", "Main Street"], "mAO", true, 1] call BIS_fnc_taskCreate;	
+[player, "tClear", ["Clear the <marker name=""mAO"">main street of Negades</marker>! Scare off the civilians and move the cars aside!", "Clear Street", "Main Street"], "mAO", true, 1, true, "danger"] call BIS_fnc_taskCreate;	
 
 // Accident Scene
 _smoke = "#particlesource" createVehicle [0,0,0];

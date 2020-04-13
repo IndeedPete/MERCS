@@ -96,7 +96,7 @@ _animSet = ["BRIEFING", "GUARD", "STAND_U1", "STAND_U2", "STAND_U3"] call BIS_fn
 [IP_Commander, "commanderOpener"] call IP_fnc_addConversation;
 
 // Shop Setup
-[] call IP_fnc_shopInit;
+[true, true, [(player getVariable ["IP_ShopUniforms", []]),[],[]]] call IP_fnc_shopInit;
 
 // Shooting Range
 _nul = [IP_Shooter, [[IP_SR_TargetBig], [IP_SR_TargetSmall], [IP_MR_TargetBig, "MIDDLE"], [IP_MR_TargetSmall, "MIDDLE"], [IP_LR_TargetBig, "DOWN"], [IP_LR_TargetSmall, "DOWN"]]] spawn IP_scn_ambientShootingRange;
@@ -139,7 +139,7 @@ removeVest IP_ToiletGuy;
 IP_Whiteboard setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\Hub01_WB1.paa"];
 
 // Capturing Init
-[player, "tCapture", ["Capture Stratis by leaving the base and eliminating all rogues at every red marked location! This task and the progress you make stays persistent when leaving the hub for a contract mission. (OPTIONAL)", "Capture Stratis (OPTIONAL)", ""], nil, true, 1] call BIS_fnc_taskCreate;
+[player, "tCapture", ["Capture Stratis by leaving the base and eliminating all rogues at every red marked location! This task and the progress you make stays persistent when leaving the hub for a contract mission. (OPTIONAL)", "Capture Stratis (OPTIONAL)", ""], nil, true, 1, false, "kill"] call BIS_fnc_taskCreate;
 if ((count IP_PlacesCaptured) == (count IP_Places)) then {["tCapture", "SUCCEEDED"] call BIS_fnc_taskSetState};
 _logicCentre = createCenter sideLogic;
 _logicGroup = createGroup _logicCentre;

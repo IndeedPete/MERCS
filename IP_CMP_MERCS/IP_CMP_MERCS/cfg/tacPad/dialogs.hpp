@@ -115,7 +115,7 @@ class IP_DLG_TACPAD
 		class IP_BTN_PPEFFECTS: RscButton
 		{
 			idc = 1607;
-			text = "PPEffects Off"; //--- ToDo: Localize;
+			text = "PPEffects On"; //--- ToDo: Localize;
 			x = 30 * GUI_GRID_W + GUI_GRID_X;
 			y = 4 * GUI_GRID_H + GUI_GRID_Y;
 			w = 8.5 * GUI_GRID_W;

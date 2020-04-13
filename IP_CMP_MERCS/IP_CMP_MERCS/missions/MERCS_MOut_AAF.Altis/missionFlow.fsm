@@ -58,8 +58,8 @@ link26[] = {23,1};
 link27[] = {24,19};
 link28[] = {25,23};
 link29[] = {26,19};
-globals[] = {25.000000,1,0,0,0,640,480,1,193,6316128,1,-530.555725,303.278137,349.602203,-309.068634,1152,910,1};
-window[] = {2,-1,-1,-1,-1,837,78,1518,78,3,1170};
+globals[] = {0.000000,0,0,0,0,640,480,1,193,6316128,1,-530.555725,303.278137,349.602203,-309.068634,1152,1244,1};
+window[] = {2,-1,-1,-1,-1,889,130,1570,130,3,1170};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -147,7 +147,7 @@ class FSM
        "		""DIRECT""" \n
        "	] call IP_fnc_simpleConversation;" \n
        "	" \n
-       "	[player, ""tExtract"", [""Find a way to get off the island!"", ""Leave Altis"", """"], nil, true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tExtract"", [""Find a way to get off the island!"", ""Leave Altis"", """"], nil, true, 1, true, ""exit""] call BIS_fnc_taskCreate;" \n
        "	saveGame;" \n
        "	[] spawn IP_fnc_showOSD;" \n
        "	" \n

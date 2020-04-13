@@ -87,13 +87,13 @@ IP_scn_talk = {
 	["tHacker", "SUCCEEDED"] call BIS_fnc_taskSetState;
 	
 	{_x setMarkerAlpha 1} forEach ["mAAF", "mDSE", "mEF"]; 
-	[player, "tAAF", ["Talk to <marker name=""mAAF"">AAF representative</marker>! (OPTIONAL)", "Talk to AAF (OPTIONAL)", "Meet"], "mAAF", false, 1] call BIS_fnc_taskCreate;
+	[player, "tAAF", ["Talk to <marker name=""mAAF"">AAF representative</marker>! (OPTIONAL)", "Talk to AAF (OPTIONAL)", "Meet"], "mAAF", false, 1, true, "talk2"] call BIS_fnc_taskCreate;
+	[player, "tDSE", ["Talk to <marker name=""mDSE"">Deep Space Engineering representative</marker>! (OPTIONAL)", "Talk to DSE (OPTIONAL)", "Meet"], "mDSE", false, 1, true, "talk3"] call BIS_fnc_taskCreate;
+	[player, "tEF", ["Talk to <marker name=""mEF"">EUROFORCE representative</marker>! (OPTIONAL)", "Talk to EUROFORCE (OPTIONAL)", "Meet"], "mEF", false, 1, true, "talk4"] call BIS_fnc_taskCreate;
 	if (!IP_CSATOfficerDied) then {
 		"mCSAT" setMarkerAlpha 1;
-		[player, "tCSAT", ["Talk to <marker name=""mCSAT"">CSAT representative</marker>! (OPTIONAL)", "Talk to CSAT (OPTIONAL)", "Meet"], "mCSAT", false, 1] call BIS_fnc_taskCreate;
+		[player, "tCSAT", ["Talk to <marker name=""mCSAT"">CSAT representative</marker>! (OPTIONAL)", "Talk to CSAT (OPTIONAL)", "Meet"], "mCSAT", false, 1, true, "talk5"] call BIS_fnc_taskCreate;
 	};
-	[player, "tDSE", ["Talk to <marker name=""mDSE"">Deep Space Engineering representative</marker>! (OPTIONAL)", "Talk to DSE (OPTIONAL)", "Meet"], "mDSE", false, 1] call BIS_fnc_taskCreate;
-	[player, "tEF", ["Talk to <marker name=""mEF"">EUROFORCE representative</marker>! (OPTIONAL)", "Talk to EUROFORCE (OPTIONAL)", "Meet"], "mEF", false, 1] call BIS_fnc_taskCreate;
 	saveGame;
 };
 IP_scn_end = {
@@ -103,6 +103,9 @@ IP_scn_end = {
 	{saveVar _x} forEach ["IP_MERCS_ChoseBlackArrow", "IP_MERCS_OffersHeard", "IP_MERCS_ContactsAlive"];
 	["mMain06", true, 5] call IP_fnc_endMission;
 };
+
+// Shop Setup
+[true, true, [(player getVariable ["IP_ShopUniforms", []]), (player getVariable ["IP_ShopCampEnhancements", []]), (player getVariable ["IP_ShopCampVehicles", []])]] call IP_fnc_shopInit;
 
 // All Objects
 {
@@ -234,9 +237,6 @@ if (IP_BuddyDied) then {
 	[IP_Buddy, "PRONE_INJURED", "NONE"] call BIS_fnc_ambientAnim;
 	[IP_Buddy, "buddyOpener"] call IP_fnc_addConversation;
 };
-
-// Shop Setup
-[] call IP_fnc_shopInit;
 
 // Whiteboards
 IP_StratMap setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\Hub02_WBStratMap1.paa"];

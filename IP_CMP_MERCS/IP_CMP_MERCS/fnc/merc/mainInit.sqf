@@ -28,7 +28,6 @@ _this spawn {
 	{
 		_unit setVariable _x;
 	} forEach [
-		["IP_ShopBox", IP_PlayerBox],
 		["IP_ShopMoney", _money],
 		["IP_Debts", _debts],
 		["IP_ShopTeam", _team],
@@ -63,6 +62,7 @@ _this spawn {
 	};
 
 	if ((getNumber(missionConfigFile >> "isHub") == 1) && {(count _playerBox) > 0}) then {
+		_unit setVariable ["IP_ShopBox", IP_PlayerBox];
 		{IP_PlayerBox addWeaponCargo [_x, 1]} forEach (_playerBox select 0);
 		{IP_PlayerBox addMagazineCargo [_x, 1]} forEach (_playerBox select 1);
 		{IP_PlayerBox addItemCargo [_x, 1]} forEach (_playerBox select 2);
@@ -84,12 +84,12 @@ _this spawn {
 	};
 	
 	_uniform = uniform _unit;
-	if (isArray(missionConfigFile >> "ShopClothes" >> _uniform >> "texture")) then {
-		_arr = getArray(missionConfigFile >> "ShopClothes" >> _uniform >> "texture");
+	if (isArray(missionConfigFile >> "ShopUniforms" >> "Military" >> _uniform >> "texture")) then {
+		_arr = getArray(missionConfigFile >> "ShopUniforms" >> "Military" >> _uniform >> "texture");
 		_unit setObjectMaterial [0, (_arr select 0)];
 		_unit setObjectTexture [0, (_arr select 1)];
 	} else {
-		if (isText(missionConfigFile >> "ShopClothes" >> _uniform >> "texture")) then {_unit setObjectTexture [0, (getText(missionConfigFile >> "ShopClothes" >> _uniform >> "texture"))]};
+		if (isText(missionConfigFile >> "ShopUniforms" >> "Military" >> _uniform >> "texture")) then {_unit setObjectTexture [0, (getText(missionConfigFile >> "ShopUniforms" >> "Military" >> _uniform >> "texture"))]};
 	};
 	
 	// Exclude BA Uniform

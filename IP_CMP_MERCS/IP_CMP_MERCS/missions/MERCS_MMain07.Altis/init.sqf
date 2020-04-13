@@ -26,6 +26,9 @@ _getVehicleClassNameFromIdentifier = {
 	_className
 };
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // All Objects
 {
 	if (_x isKindOf "Man") then {
@@ -133,9 +136,9 @@ IP_Whiteboard setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\Hub03_WB1.p
 private "_rewards";
 _rewards = "ION / British Knights<br/>1.500.000€";
 
-[player, "tDefend", ["Defend the <marker name=""mCamp"">Camp</marker> at all costs!", "Defend the Camp", "Defend"], "mCheckpoint", true, 1] call BIS_fnc_taskCreate;
+[player, "tDefend", ["Defend the <marker name=""mCamp"">Camp</marker> at all costs!", "Defend the Camp", "Defend"], "mCheckpoint", true, 1, true, "defend"] call BIS_fnc_taskCreate;
 if ((IP_OffersHeard select 0) && (IP_ContactsAlive select 0)) then {
-	[player, "tAAF", ["Betray the other factions and destroy the device for the AAF!", "Destroy the Device (AAF)", ""], IP_DeviceTruck, false, 1] call BIS_fnc_taskCreate;
+	[player, "tAAF", ["Betray the other factions and destroy the device for the AAF!", "Destroy the Device (AAF)", ""], IP_DeviceTruck, false, 1, true, "a"] call BIS_fnc_taskCreate;
 	_rewards = _rewards + "<br/><br/>AAF<br/>750.000€ + A high government position on Altis.";
 };
 

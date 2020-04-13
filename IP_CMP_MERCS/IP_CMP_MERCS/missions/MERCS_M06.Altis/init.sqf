@@ -40,6 +40,9 @@ if (!(isNil "IP_MERCS_BuddyDied") && {IP_MERCS_BuddyDied}) then {
 	IP_ToBurry = IP_ToBurry - 1;
 };
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // HQ
 [IP_Lord, "lord", "command"] call IP_fnc_applyTemplate;
 
@@ -65,7 +68,10 @@ IP_CoPilot2 addAction ["Bury", _bury];
 
 // Briefing
 player createDiaryRecord ["Diary", ["Executive Briefing", "Our quick withdrawal from the crash site left traces, assets and dead contractors for anybody to find. Insert, locate and then clean up the crash site. Destroy what's left of the helo and bury the fallen contractors.<br/><br/>Executive on Site<br/>Ian McMillian"]];
-[player, "tClean", ["Destroy what's left of the transport helicopter and bury the dead ION contractors at the <marker name=""mClean"">Crashsite</marker>!", "Cleanup", "Crashsite"], "mClean", true, 1] call BIS_fnc_taskCreate;
+[player, "tClean", ["Destroy what's left of the transport helicopter and bury the dead ION contractors at the <marker name=""mClean"">Crashsite</marker>!", "Cleanup", "Crashsite"], "mClean", true, 1, true, "destroy"] call BIS_fnc_taskCreate;
+
+// Shop Setup
+[] call IP_fnc_shopInit;
 
 // All Units
 {

@@ -1673,7 +1673,7 @@ class Mission
 					leader=1;
 					rank="CORPORAL";
 					skill=0.60000002;
-					init="[this] call IP_fnc_createMerc; [this, ""WATCH1"", ""ASIS""] call BIS_fnc_ambientAnimCombat;";
+					init="nul = this spawn {[_this] call IP_fnc_createMerc; [_this, ""WATCH1"", ""ASIS""] call BIS_fnc_ambientAnimCombat;};";
 				};
 			};
 		};
@@ -1693,7 +1693,7 @@ class Mission
 					isUAV=1;
 					leader=1;
 					skill=0.60000002;
-					init="[this] call IP_fnc_createMerc; [this, ""WATCH1"", ""ASIS""] call BIS_fnc_ambientAnimCombat;";
+					init="nul = this spawn {[_this] call IP_fnc_createMerc; [_this, ""WATCH1"", ""ASIS""] call BIS_fnc_ambientAnimCombat;};";
 				};
 			};
 		};

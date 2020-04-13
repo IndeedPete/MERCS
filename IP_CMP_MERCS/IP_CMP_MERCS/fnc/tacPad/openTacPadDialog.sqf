@@ -26,6 +26,8 @@ sliderSetPosition [1900, 1];
 
 if ((!isNil "IP_MERCS_PPEffects") && {!IP_MERCS_PPEffects}) then {
 	((findDisplay 40000) displayCtrl 1607) ctrlSetText "PPEffects On";
+} else {
+	((findDisplay 40000) displayCtrl 1607) ctrlSetText "PPEffects Off";
 };
 
 if (player getVariable ["IP_Glass_Boot", false]) then {((findDisplay 40000) displayCtrl 1603) ctrlSetText "Glass Off"};

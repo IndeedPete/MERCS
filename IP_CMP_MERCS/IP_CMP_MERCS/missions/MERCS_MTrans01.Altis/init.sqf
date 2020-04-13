@@ -21,6 +21,9 @@ if (!IP_TESTMODE) then {["IP_OnEachFrameEH", "onEachFrame", {(vehicle player) sw
 // Main Setup
 [] call IP_fnc_mainInit;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Buddy Setup
 [] call IP_fnc_buddyInit;
 _set = ["RIFLEMAN", "GRENADIER", "AUTORIFLEMAN", "MARKSMAN"] call BIS_fnc_selectRandom;

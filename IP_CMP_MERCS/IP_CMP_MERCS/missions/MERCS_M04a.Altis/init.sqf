@@ -9,6 +9,9 @@ IP_ShowIntro = true;
 // Buddy Setup
 [] call IP_fnc_buddyInit;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Corporal Setup
 IP_Corporal setVariable ["IP_LiveFeed", true];
 
@@ -44,7 +47,7 @@ IP_Box enableSimulation false;
 
 // Briefing
 ["The CLIENT requests the retrieval of his property from a former CLIENT base. The CONTRACTOR is obligated to pick up two trucks loaded with the CLIENT's property and then take them to the Northern Airfield, Altis. A CLIENT's associate will wait at the Northern Airfield, Altis to check if the property is complete and ready for shipment. The CLIENT's property must not be damaged during the course of the OPERATION."] call IP_fnc_createBriefing;
-[player, "tTransport", ["Deliver the two HEMTT Cargo Trucks from the <marker name=""mFOB"">former FOB Sauerland</marker> to the <marker name=""mAirfield"">Northern Airfield</marker>! The trucks must not be destroyed!", "Transport", "Northern Airfield"], "mAirfield", true, 1] call BIS_fnc_taskCreate;	
+[player, "tTransport", ["Deliver the two HEMTT Cargo Trucks from the <marker name=""mFOB"">former FOB Sauerland</marker> to the <marker name=""mAirfield"">Northern Airfield</marker>! The trucks must not be destroyed!", "Transport", "Northern Airfield"], "mAirfield", true, 1, true, "container"] call BIS_fnc_taskCreate;	
 
 // All Units
 {

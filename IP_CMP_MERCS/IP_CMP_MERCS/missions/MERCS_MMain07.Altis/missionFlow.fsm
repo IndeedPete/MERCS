@@ -108,8 +108,8 @@ link53[] = {47,31};
 link54[] = {48,49};
 link55[] = {49,3};
 link56[] = {49,31};
-globals[] = {25.000000,1,0,0,0,640,480,1,243,6316128,1,-475.147949,276.670654,543.775146,-457.915894,683,910,1};
-window[] = {2,-1,-1,-1,-1,889,130,1570,130,3,701};
+globals[] = {0.000000,0,0,0,0,640,480,1,243,6316128,1,-475.147949,276.670654,543.775146,-457.915894,683,1244,1};
+window[] = {2,-1,-1,-1,-1,1071,312,1752,312,3,701};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -167,7 +167,7 @@ class FSM
        "	" \n
        "	if (!IP_BuddyDied) then {" \n
        "		[IP_Buddy, ""Hey Raif! Come inside the house for a sec, I gotta talk to you!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
-       "		[player, ""tTalk"", [""Talk to Dražen! He's waiting in the shack! (OPTIONAL)"", ""Talk to Dražen! (OPTIONAL)"", ""Dražen""], IP_Buddy, true, 1] call BIS_fnc_taskCreate;" \n
+       "		[player, ""tTalk"", [""Talk to Dražen! He's waiting in the shack! (OPTIONAL)"", ""Talk to Dražen! (OPTIONAL)"", ""Dražen""], IP_Buddy, true, 1, true, ""talk""] call BIS_fnc_taskCreate;" \n
        "	};" \n
        "	" \n
        "	saveGame;" \n
@@ -327,7 +327,7 @@ class FSM
        "	[IP_Buddy] joinSilent IP_Main; //[IP_Buddy, IP_Main, {true}, {false}, false] spawn IP_fnc_follow;" \n
        "	IP_Buddy setPos (getMarkerPos ""mComingHome"");" \n
        "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
-       "	[player, ""tEscape"", [""Escape into the woods together with Dražen!"", ""Escape"", """"], nil, true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tEscape"", [""Escape into the woods together with Dražen!"", ""Escape"", """"], nil, true, 1, true, ""run""] call BIS_fnc_taskCreate;" \n
        "	saveGame;" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;

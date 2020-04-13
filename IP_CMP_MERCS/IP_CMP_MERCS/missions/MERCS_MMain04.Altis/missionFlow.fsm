@@ -3,7 +3,7 @@
 /*
 item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
 item1[] = {"Cutscene_Done",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Cutscene Done"};
-item2[] = {"Win_End",1,4346,-175.000000,900.000000,-75.000000,950.000000,0.000000,"Win End"};
+item2[] = {"Win_End",1,250,-175.000000,900.000000,-75.000000,950.000000,0.000000,"Win End"};
 item3[] = {"Running_Complete",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"Running Complete"};
 item4[] = {"Intro_Done",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Intro Done"};
 item5[] = {"Shootingrange",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Shootingrange"};
@@ -21,7 +21,7 @@ item16[] = {"Clear",4,218,-175.000000,525.000000,-75.000000,575.000000,0.000000,
 item17[] = {"Cemetery",2,250,-175.000000,600.000000,-75.000000,650.000000,0.000000,"Cemetery"};
 item18[] = {"",7,210,-254.000000,621.000000,-246.000000,629.000000,0.000000,""};
 item19[] = {"Copied",4,218,-175.000000,675.000000,-75.000000,725.000000,0.000000,"Copied"};
-item20[] = {"Meet",2,250,-175.000000,750.000000,-75.000000,800.000000,0.000000,"Meet"};
+item20[] = {"Meet",2,4346,-175.000000,750.000000,-75.000000,800.000000,0.000000,"Meet"};
 item21[] = {"",7,210,-254.000000,771.000000,-245.999985,779.000000,0.000000,""};
 item22[] = {"Close",4,218,-175.000000,825.000000,-75.000000,875.000000,0.000000,"Close"};
 link0[] = {0,1};
@@ -52,8 +52,8 @@ link24[] = {20,21};
 link25[] = {20,22};
 link26[] = {21,18};
 link27[] = {22,2};
-globals[] = {0.000000,0,0,0,0,640,480,1,129,6316128,1,-609.090759,49.443481,1439.019287,-728.220459,378,1244,1};
-window[] = {0,-1,-1,-32000,-32000,889,130,1570,130,1,396};
+globals[] = {0.000000,0,0,0,0,640,480,1,129,6316128,1,-609.090759,49.443481,886.524597,-285.459045,699,1244,1};
+window[] = {2,-1,-1,-1,-1,837,78,1518,78,3,717};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -171,7 +171,7 @@ class FSM
        "		IP_ShowIntro" \n
        "	] call IP_fnc_simpleConversation;" \n
        "	" \n
-       "	[player, ""tRun"", [""Run a penalty round and follow the waypoints as quickly as possible just because you've pissed off the drill sergeant with the look on your face!"", ""Run"", """"], nil, true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tRun"", [""Run a penalty round and follow the waypoints as quickly as possible just because you've pissed off the drill sergeant with the look on your face!"", ""Run"", """"], nil, true, 1, true, ""run""] call BIS_fnc_taskCreate;" \n
        "	saveGame;" \n
        "	" \n
        "	[] spawn {" \n
@@ -358,7 +358,7 @@ class FSM
        "		_x doMove _pos;" \n
        "	} forEach IP_Recruits;" \n
        "	" \n
-       "	[player, ""tRifle"", [""Pick up a rifle!"", ""Pick Up A Rifle"", ""Officer""], IP_Officer, true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tRifle"", [""Pick up a rifle!"", ""Pick Up A Rifle"", ""Officer""], IP_Officer, true, 1, true, ""rifle""] call BIS_fnc_taskCreate;" \n
        "	saveGame;" \n
        "	" \n
        "	waitUntil {IP_Main distance IP_Officer < 3};" \n
@@ -384,7 +384,7 @@ class FSM
        "	" \n
        "	[IP_Sergeant, ""Okay, now come back here!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "	[""tRifle"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
-       "	[player, ""tShootRifle"", [""Shoot at the targets!"", ""Shoot Targets"", ""Shooting Range""], ""mShooting"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tShootRifle"", [""Shoot at the targets!"", ""Shoot Targets"", ""Shooting Range""], ""mShooting"", true, 1, true, ""target""] call BIS_fnc_taskCreate;" \n
        "	" \n
        "	waitUntil {IP_Main distance (getMarkerPos ""mShooting"") < 1.5};" \n
        "	" \n
@@ -438,25 +438,25 @@ class FSM
        "		case (_acc <= 0.25): {" \n
        "			[IP_Sergeant, ""Jesus fucking Christ! Looks like you can't hit a damn thing! Maybe a supporting role is more suiting for you, you damn nuthead!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "			[IP_Sergeant, ""Get you ass back to the officer and pick up an MG, double time!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
-       "			[player, ""tMG"", [""Pick up a machine gun!"", ""Pick Up An MG"", ""Officer""], IP_Officer, true, 1] call BIS_fnc_taskCreate;" \n
+       "			[player, ""tMG"", [""Pick up a machine gun!"", ""Pick Up An MG"", ""Officer""], IP_Officer, true, 1, true, ""rifle""] call BIS_fnc_taskCreate;" \n
        "			""Automatic Rifleman""" \n
        "		};" \n
        "		" \n
        "		case ((_acc > 0.25) && (_acc <= 0.5)): {" \n
        "			[IP_Sergeant, ""Ah, looks like you're the average loser! Get yourself an assault rifle and see if we can confirm this result!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
-       "			[player, ""tAssaultRifle"", [""Pick up an assault rifle!"", ""Pick Up An Assault Rifle"", ""Officer""], IP_Officer, true, 1] call BIS_fnc_taskCreate;" \n
+       "			[player, ""tAssaultRifle"", [""Pick up an assault rifle!"", ""Pick Up An Assault Rifle"", ""Officer""], IP_Officer, true, 1, true, ""rifle""] call BIS_fnc_taskCreate;" \n
        "			""Rifleman""" \n
        "		};" \n
        "		" \n
        "		case ((_acc > 0.5) && (_acc <= 0.75)): {" \n
        "			[IP_Sergeant, ""Fairly accurate result for a fucktard like you! Maybe you're not that much of a useless shit I thought at first. Let's see how you handle the grenade launcher!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
-       "			[player, ""tGrenade"", [""Pick up an assault rifle with grenade launcher!"", ""Pick Up An Assault Rifle"", ""Officer""], IP_Officer, true, 1] call BIS_fnc_taskCreate;" \n
+       "			[player, ""tGrenade"", [""Pick up an assault rifle with grenade launcher!"", ""Pick Up An Assault Rifle"", ""Officer""], IP_Officer, true, 1, true, ""rifle""] call BIS_fnc_taskCreate;" \n
        "			""Grenadier""" \n
        "		};" \n
        "		" \n
        "		case (_acc > 0.75): {" \n
        "			[IP_Sergeant, ""Holy moly, I'm impressed you piece of shit! Go for the marksman rifle, now!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
-       "			[player, ""tMarksman"", [""Pick up a marksman rifle!"", ""Pick Up A Marksman Rifle"", ""Officer""], IP_Officer, true, 1] call BIS_fnc_taskCreate;" \n
+       "			[player, ""tMarksman"", [""Pick up a marksman rifle!"", ""Pick Up A Marksman Rifle"", ""Officer""], IP_Officer, true, 1, true, ""rifle""] call BIS_fnc_taskCreate;" \n
        "			""Marksman""" \n
        "		};" \n
        "	};" \n
@@ -482,7 +482,7 @@ class FSM
        "	" \n
        "	[IP_Sergeant, ""Okay, now come back here!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "	[(_stuff select 2), ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
-       "	[player, ""tShoot"", [""Shoot at the targets!"", ""Shoot Targets"", ""Shooting Range""], ""mShooting"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tShoot"", [""Shoot at the targets!"", ""Shoot Targets"", ""Shooting Range""], ""mShooting"", true, 1, true, ""target""] call BIS_fnc_taskCreate;" \n
        "	" \n
        "	waitUntil {IP_Main distance (getMarkerPos ""mShooting"") < 1.5};" \n
        "	" \n
@@ -500,7 +500,7 @@ class FSM
        "	[IP_Main, ""Uhm, Staff Sergeant? Can I excuse myself for a second? Nature's calling."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "	[IP_Sergeant, ""What the fuck do you think this is?! Kindergarten?! Are you completely out of your mind?! Ah fuck, get going before you start peeing all over my beautiful range."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
        "	" \n
-       "	[player, ""tTalk"", [""Get to a safe position and talk to McMillian!"", ""Talk"", ""Toilet""], IP_Toilet, true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tTalk"", [""Get to a safe position and talk to McMillian!"", ""Talk"", ""Toilet""], IP_Toilet, true, 1, true, ""radio""] call BIS_fnc_taskCreate;" \n
        "	[IP_Commander, ""commanderOpener"", IP_Toilet] call IP_fnc_addConversation;" \n
        "	saveGame;" \n
        "	" \n
@@ -519,7 +519,7 @@ class FSM
        "	sleep 1;" \n
        "	[_guy, [[IP_SR_Target1], [IP_SR_Target2], [IP_MR_Target3], [IP_MR_Target4], [IP_MR_Target5]], {isNil ""IP_ShootingRangeDone""}] spawn IP_scn_ambientShootingRange;" \n
        "	" \n
-       "	[player, ""tBack"", [""Get back to the Drill Sergeant!"", ""Get Back"", ""Drill Sergeant""], IP_Sergeant, true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tBack"", [""Get back to the Drill Sergeant!"", ""Get Back"", ""Drill Sergeant""], IP_Sergeant, true, 1, true, ""run""] call BIS_fnc_taskCreate;" \n
        "	" \n
        "	waitUntil {IP_Main distance IP_Sergeant < 5};" \n
        "	" \n
@@ -718,7 +718,7 @@ class FSM
        "	" \n
        "	waitUntil {{_x in IP_APC} count(units(group IP_Main)) == 0};" \n
        "	" \n
-       "	[player, ""tSofia"", [""Capture the village of <marker name=""""mSofia"""">Sofia</marker>!"", ""Capture Sofia"", ""Sofia""], ""mSofia"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tSofia"", [""Capture the village of <marker name=""""mSofia"""">Sofia</marker>!"", ""Capture Sofia"", ""Sofia""], ""mSofia"", true, 1, true, ""attack""] call BIS_fnc_taskCreate;" \n
        "	saveGame;" \n
        "	" \n
        "	[] spawn {" \n
@@ -847,7 +847,7 @@ class FSM
        "	sleep 5;" \n
        "	[IP_Commander, ""Hey, this is McMillian. Looks like we've got everything. Get your ass to these coordinates, over!"", ""SIDE""] call IP_fnc_simpleSentence;" \n
        "	""mMeet"" setMarkerAlpha 1;" \n
-       "	[player, ""tMeet"", [""Move to the <marker name=""""mMeet"""">Meeting Point</marker> and link-up with McMillian for extraction!"", ""Meet McMillian"", ""McMillian""], ""mMeet"", true, 1] call BIS_fnc_taskCreate;" \n
+       "	[player, ""tMeet"", [""Move to the <marker name=""""mMeet"""">Meeting Point</marker> and link-up with McMillian for extraction!"", ""Meet McMillian"", ""McMillian""], ""mMeet"", true, 1, true, ""exit""] call BIS_fnc_taskCreate;" \n
        "	saveGame;" \n
        "	" \n
        "	{" \n

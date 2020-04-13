@@ -32,6 +32,9 @@ setDate _date;
 [] call IP_fnc_mainInit;
 IP_Main setCaptive true;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Agent Setup
 [IP_Agent, "agent", "combat"] call IP_fnc_applyTemplate;
 removeGoggles IP_Agent;
@@ -57,7 +60,7 @@ IP_Whiteboard setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\MOut_DSE_WB
 {
 	if ((side _x) == east) then {
 		_x setVariable ["IP_Faction", "BlackArrow"];
-		[_x, 4, false, [true, false], false] call IP_fnc_createMerc;
+		[_x] call IP_fnc_createMerc;
 		_x enableSimulation false;
 		_x hideObject true;
 	};

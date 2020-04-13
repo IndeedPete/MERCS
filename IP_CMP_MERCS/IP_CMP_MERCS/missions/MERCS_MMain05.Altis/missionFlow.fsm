@@ -47,8 +47,8 @@ link20[] = {18,19};
 link21[] = {19,16};
 link22[] = {20,21};
 link23[] = {21,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,128,6316128,1,-610.358704,54.827454,537.792969,-195.927567,825,910,1};
-window[] = {2,-1,-1,-1,-1,967,208,1648,208,3,843};
+globals[] = {0.000000,0,0,0,0,640,480,1,128,6316128,1,-610.358704,54.827454,537.792969,-195.927567,825,1244,1};
+window[] = {2,-1,-1,-1,-1,811,52,1492,52,3,843};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -182,7 +182,7 @@ class FSM
        "	" \n
        "	[""tKidnap"", ""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
        "	saveGame;" \n
-       "	[player, ""tExtract"", [""Get at least 1000 metres away from the <marker name=""""mResearch"""">Research Facility</marker> and <marker name=""""mHouse"""">Diaz's House</marker> and call for extraction!"", ""Extract"", """"], nil, true, 1] call BIS_fnc_taskCreate;	" \n
+       "	[player, ""tExtract"", [""Get at least 1000 metres away from the <marker name=""""mResearch"""">Research Facility</marker> and <marker name=""""mHouse"""">Diaz's House</marker> and call for extraction!"", ""Extract"", """"], nil, true, 1, true, ""exit""] call BIS_fnc_taskCreate;	" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links

@@ -35,6 +35,9 @@ if (IP_ChoseBlackArrow) then {
 };
 [] call IP_fnc_mainInit;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // HQ
 [IP_Lord, "lord", "command"] call IP_fnc_applyTemplate;
 
@@ -110,13 +113,13 @@ call(compile(preProcessFileLineNumbers "compositions\researchBase.sqf"));
 
 // Briefing
 if (IP_ChoseBlackArrow) then {
-	[player, "tDefend", ["Defend <marker name=""mResearch"">Black Mesa</marker> at all costs!", "Defend Black Mesa", "Black Mesa"], "mResearch", true, 1] call BIS_fnc_taskCreate;
+	[player, "tDefend", ["Defend <marker name=""mResearch"">Black Mesa</marker> at all costs!", "Defend Black Mesa", "Black Mesa"], "mResearch", true, 1, true, "defend"] call BIS_fnc_taskCreate;
 	
 	private "_rewards";
 	_rewards = "Deep Space Engineering / Black Arrow<br/>1.000.000€";
 	
 	if ((IP_OffersHeard select 0) && (IP_ContactsAlive select 0)) then {
-		[player, "tAAF", ["Betray the other factions and destroy the device for the AAF!", "Destroy the Device (AAF)", ""], nil, false, 1] call BIS_fnc_taskCreate;
+		[player, "tAAF", ["Betray the other factions and destroy the device for the AAF!", "Destroy the Device (AAF)", ""], nil, false, 1, true, "a"] call BIS_fnc_taskCreate;
 		_rewards = _rewards + "<br/><br/>AAF<br/>750.000€ + A high government position on Altis.";
 	};
 	
@@ -131,42 +134,42 @@ if (IP_ChoseBlackArrow) then {
 		
 	_roles = switch (IP_Insertion) do {
 		case "foot": {
-			[player, "tSupport", ["Support the attack on <marker name=""mResearch"">Black Mesa</marker> from the <marker name=""mSupport"">Ridgeline</marker>!", "Support", "Ridgeline"], "mSupport", true, 1] call BIS_fnc_taskCreate;
+			[player, "tSupport", ["Support the attack on <marker name=""mResearch"">Black Mesa</marker> from the <marker name=""mSupport"">Ridgeline</marker>!", "Support", "Ridgeline"], "mSupport", true, 1, true, "target"] call BIS_fnc_taskCreate;
 			["Attack", "Infiltration", "Support"]
 		};
 		
 		case "heli": {
-			[player, "tInfiltrate", ["<marker name=""mInfiltration"">Infiltrate</marker> <marker name=""mResearch"">Black Mesa</marker> and use explosives to destroy the <marker name=""mGenerator"">Hologram Generator</marker>!", "Infiltrate", "Generator"], "mGenerator", true, 1] call BIS_fnc_taskCreate;
+			[player, "tInfiltrate", ["<marker name=""mInfiltration"">Infiltrate</marker> <marker name=""mResearch"">Black Mesa</marker> and use explosives to destroy the <marker name=""mGenerator"">Hologram Generator</marker>!", "Infiltrate", "Generator"], "mGenerator", true, 1, true, "destroy"] call BIS_fnc_taskCreate;
 			["Support", "Attack", "Infiltration"]
 		};
 		
 		default {
-			[player, "tAttack", ["Attack <marker name=""mResearch"">Black Mesa</marker> and defeat the garrison!", "Attack", "Black Mesa"], "mResearch", true, 1] call BIS_fnc_taskCreate;
+			[player, "tAttack", ["Attack <marker name=""mResearch"">Black Mesa</marker> and defeat the garrison!", "Attack", "Black Mesa"], "mResearch", true, 1, true, "attack"] call BIS_fnc_taskCreate;
 			["Infiltration", "Support", "Attack"]
 		};
 	};
 	
 	"mCamp" setMarkerAlpha 1;
-	[player, "tDevice", ["Capture <marker name=""mResearch"">Black Mesa</marker> and retrieve the device!", "Capture Black Mesa", "Black Mesa"], "mResearch", false, 1] call BIS_fnc_taskCreate;
-	[player, "tBK", ["Return with the device back to the <marker name=""mCamp"">British Knight's Camp</marker>!", "Extract Device (ION/BK)", "Camp"], "mCamp", false, 1] call BIS_fnc_taskCreate;
+	[player, "tDevice", ["Capture <marker name=""mResearch"">Black Mesa</marker> and retrieve the device!", "Capture Black Mesa", "Black Mesa"], "mResearch", false, 1, true, "attack"] call BIS_fnc_taskCreate;
+	[player, "tBK", ["Return with the device back to the <marker name=""mCamp"">British Knight's Camp</marker>!", "Extract Device (ION/BK)", "Camp"], "mCamp", false, 1, true, "b"] call BIS_fnc_taskCreate;
 	
 	private "_rewards";
 	_rewards = "ION / British Knights<br/>1.500.000€";
 	
 	if ((IP_OffersHeard select 0) && (IP_ContactsAlive select 0)) then {
-		[player, "tAAF", ["Betray the other factions and destroy the device for the AAF!", "Destroy the Device (AAF)", ""], nil, false, 1] call BIS_fnc_taskCreate;
+		[player, "tAAF", ["Betray the other factions and destroy the device for the AAF!", "Destroy the Device (AAF)", ""], nil, false, 1, true, "a"] call BIS_fnc_taskCreate;
 		_rewards = _rewards + "<br/><br/>AAF<br/>750.000€ + A high government position on Altis.";
 	};
 	
 	if ((IP_OffersHeard select 1) && (IP_ContactsAlive select 1)) then {
 		"mCSAT" setMarkerAlpha 1;
-		[player, "tCSAT", ["Betray the other factions, steal the device and <marker name=""mCSAT"">meet with CSAT</marker>!", "Steal the Device (CSAT)", "CSAT"], "mCSAT", false, 1] call BIS_fnc_taskCreate;
+		[player, "tCSAT", ["Betray the other factions, steal the device and <marker name=""mCSAT"">meet with CSAT</marker>!", "Steal the Device (CSAT)", "CSAT"], "mCSAT", false, 1, true, "c"] call BIS_fnc_taskCreate;
 		_rewards = _rewards + "<br/><br/>CSAT<br/>800.000€ + Safe passage to a country of choice, except the European Federation.";
 	};
 	
 	if ((IP_OffersHeard select 3) && (IP_ContactsAlive select 3)) then {
 		"mEF" setMarkerAlpha 1;
-		[player, "tEF", ["Betray the other factions, steal the device and <marker name=""mEF"">meet with EUROFORCE</marker>!", "Steal the Device (EUROFORCE)", "EUROFORCE"], "mEF", false, 1] call BIS_fnc_taskCreate;
+		[player, "tEF", ["Betray the other factions, steal the device and <marker name=""mEF"">meet with EUROFORCE</marker>!", "Steal the Device (EUROFORCE)", "EUROFORCE"], "mEF", false, 1, true, "e"] call BIS_fnc_taskCreate;
 		_rewards = _rewards + "<br/><br/>EUROFORCE<br/>500.000€ + Permanent residence within the European Federation.";
 	};
 	

@@ -25,6 +25,9 @@ setDate _date;
 // Main Setup
 [] call IP_fnc_mainInit;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Buddy Setup
 [] call IP_fnc_buddyInit;
 //[IP_Buddy, ""] call IP_fnc_buddyEquipment;

@@ -28,12 +28,13 @@ switch (true) do {
 		
 		if (_price call IP_fnc_purchase) then {
 			_spot = _countInPossession + 1;
-			_marker = "mShopGarage" + str(_spot);
+			_marker = "mGarageSpot" + str(_spot);
 			_created = [_vehicle, _marker, _category] call IP_fnc_createCampVehicle;
 			_garageVehicles = player getVariable ["IP_ShopGarageVehicles", []];
 			_garageVehicles pushBack _created;
 			_vehiclesInPossession pushBack _vehicle;
 			player setVariable ["IP_ShopGarageVehicles", _garageVehicles];
+			IP_GarageVehicles = _garageVehicles;
 			player setVariable ["IP_ShopCampVehicles", _vehiclesInPossession];
 			call IP_fnc_closeShop;
 			if (_unique == 1) then {
@@ -47,7 +48,7 @@ switch (true) do {
 	};
 	
 	case (_category == "Air"): {
-		private ["_space"];
+		/*private ["_space"];
 		_countInPossession = {([(missionConfigFile >> "ShopCampVehicles"), _x] call IP_fnc_getConfigCategory) == "Air"} count _vehiclesInPossession;
 		_hangars = "isNumber(_x >> 'hangar')" configClasses (missionConfigFile >> "ShopCampEnhancements");
 		_space = 0;
@@ -75,6 +76,53 @@ switch (true) do {
 				_index = IP_CampVehicleCategories find _category;
 				_sub = IP_AvailableCampVehicles select _index;
 				_sub = _sub - [_vehicle];
+				IP_AvailableCampVehicles set [_index, _sub];
+			};
+			["CampVehicles", _i] spawn IP_fnc_openShop;
+		};*/
+
+		_countInPossession = {([(missionConfigFile >> "ShopCampVehicles"), _x] call IP_fnc_getConfigCategory) == "Air"} count _vehiclesInPossession;
+		_hangars = "isNumber(_x >> 'hangar')" configClasses (missionConfigFile >> "ShopCampEnhancements");
+		_space = 0;
+		
+		{
+			if ((configName _x) in _enhancementsInPossession) then {
+				_add = getNumber(_x >> "hangar");
+				_space = _space + _add;
+			};
+		} forEach _hangars;
+		
+		if (_countInPossession >= _space) exitWith {hint "You need a heli pad!"};
+
+		if (_price call IP_fnc_purchase) then {
+			IP_Heli enableSimulation true;
+			IP_Heli hideObject false;
+			IP_Pilot enableSimulation true;
+			IP_Pilot hideObject false;
+			_vehiclesInPossession pushBack (typeOf IP_Heli);
+			player setVariable ["IP_ShopCampVehicles", _vehiclesInPossession];
+			call IP_fnc_closeShop;
+			if (_unique == 1) then {
+				_index = IP_CampVehicleCategories find _category;
+				_sub = IP_AvailableCampVehicles select _index;
+				_sub = _sub - [(typeOf IP_Heli)];
+				IP_AvailableCampVehicles set [_index, _sub];
+			};
+			["CampVehicles", _i] spawn IP_fnc_openShop;
+		};
+	};
+
+	case (_category == "Boats"): {		
+		if (_price call IP_fnc_purchase) then {
+			IP_Boat enableSimulation true;
+			IP_Boat hideObject false;
+			_vehiclesInPossession pushBack (typeOf IP_Boat);
+			player setVariable ["IP_ShopCampVehicles", _vehiclesInPossession];
+			call IP_fnc_closeShop;
+			if (_unique == 1) then {
+				_index = IP_CampVehicleCategories find _category;
+				_sub = IP_AvailableCampVehicles select _index;
+				_sub = _sub - [(typeOf IP_Boat)];
 				IP_AvailableCampVehicles set [_index, _sub];
 			};
 			["CampVehicles", _i] spawn IP_fnc_openShop;

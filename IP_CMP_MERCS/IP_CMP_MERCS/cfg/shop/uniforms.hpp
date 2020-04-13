@@ -78,6 +78,7 @@ class ShopUniforms
 		class U_I_C_Soldier_Bandit_3_F
 		{
 			price = 200;
+			show = 0;
 		};
 		class U_I_C_Soldier_Bandit_4_F
 		{
@@ -261,6 +262,7 @@ class ShopUniforms
 
 		class IP_U_B_CombatUniform_MERCS_Classic_Arid
 		{
+			description = "ION Combat Suit Classic<br/>Coffeestain Arid Camo Shirt, Pants, Mittens, and Boots";
 			merc = 1;
 			price = 450;
 			show = 1;
@@ -268,6 +270,7 @@ class ShopUniforms
 		class IP_U_B_CombatUniform_MERCS_Classic_Arid_Rolled: IP_U_B_CombatUniform_MERCS_Classic_Arid {};
 		class IP_U_B_CombatUniform_MERCS_Modern_Arid_T
 		{
+			description = "ION Combat Suit Modern<br/>Digital Arid Camo Shirt, Pants, Gloves, and Boots";
 			merc = 1;
 			price = 500;
 			show = 1;
@@ -353,10 +356,11 @@ class ShopUniforms
 		class U_B_CTRG_Soldier_urb_3_F: U_B_CTRG_1 {};
 		class U_O_CombatUniform_ocamo
 		{
+			description = "Black Arrow Combat Uniform (BACU)<br/>Camo Upper, Camo Pants, Gloves and Boots<br/>Based on CSAT Standard Combat Uniform for Mediterranean operations. Comes with additional forearm and leg protectors as well as a cooled case for the 'Combat Support AI (CSAI)' by Böhmen Integrated Systems (BIS).";
+			displayName = "BACU Camo Shirt & Camo Pants";
 			merc = 0;
-			description = "Compatible to BIS Glass, equipped with hologram emitters.";
-			price = 25000;
 			show = 0;
+			texture[] = {"IP_CMP_MERCS\IP_CMP_MERCS\txt\clothingMOD.rvmat", "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing_rus_coBA.paa"};
 		};
 		class U_O_SpecopsUniform_ocamo: U_O_CombatUniform_ocamo {};
 		class U_O_CombatUniform_oucamo: U_O_CombatUniform_ocamo {};

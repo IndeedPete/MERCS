@@ -152,6 +152,9 @@ IP_Main addEventHandler [
 [] call IP_fnc_buddyInit;
 IP_Buddy moveInDriver IP_Car;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // Car Setup
 IP_Car allowDamage false;
 IP_Car lock 2;

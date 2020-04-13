@@ -12,6 +12,9 @@ IP_scn_credits = compile(preprocessFileLineNumbers "IP_CMP_MERCS\IP_CMP_MERCS\sc
 [] call IP_fnc_mainInit;
 //IP_Main setCaptive true;
 
+// Shop Setup
+[] call IP_fnc_shopInit;
+
 // EF Officer Setup
 [IP_EFOfficer, "EFOfficer"] call IP_fnc_applyTemplate;
 [IP_EFOfficer] call IP_fnc_automaticRearm;
