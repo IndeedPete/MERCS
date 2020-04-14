@@ -67,7 +67,7 @@ class ShopCategories
 	{
 		active = 1;
 		displayName = "Uniforms";
-		labelSellButton = "Sell";
+		labelSellButton = "Put On";
 		labelAdditionalButton = "Additional";
 		labelLeft = "Available Uniforms";
 		labelRight = "In Possession";

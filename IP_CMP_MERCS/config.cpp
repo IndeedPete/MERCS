@@ -25,6 +25,21 @@ class CfgMissions
 	};
 };
 
+class CfgMainMenuSpotlight
+{
+	class IP_KSK_MEW
+	{
+		text = "M.E.R.C.S."; // Text displayed on the square button, converted to upper-case
+		textIsQuote = 1; // 1 to add quotation marks around the text
+		picture = "\IP_CMP_MERCS\IP_CMP_MERCS\img\Main_Menu.paa"; // Square picture, ideally 512x512
+		//video = "\IP_KSK_MEW\vid\MEW_Main_Menu.ogv"; // Video played on mouse hover
+		action = "uiNamespace setVariable ['RscDisplayCampaignLoad_filter', 'IP_CMP_MERCS']; ctrlActivate ((ctrlParent (_this select 0)) displayCtrl 101);";
+		//action = "ctrlactivate ((ctrlparent (_this select 0)) displayctrl 101);"; // Code called upon clicking, passed arguments are [<button:Control>]
+		actionText = $STR_A3_RscDisplayMain_Spotlight_Play; // Text displayed in top left corner of on-hover white frame
+		condition = "true"; // Condition for showing the spotlight
+	};
+};
+
 class CfgVehicles
 {	
 	// Uniform Dummies
