@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={19662.859,66.30381,7734.6772};
-		dir[]={-0.50091642,-0.41898251,0.75738102};
-		up[]={-0.23114486,0.90798736,0.34948796};
-		aside[]={0.83411777,-7.2909461e-007,0.55166417};
+		pos[]={19631.498,71.985191,7681.4648};
+		dir[]={0.27838016,-0.45561811,0.84559911};
+		up[]={0.14248179,0.89016443,0.43280196};
+		aside[]={0.94990712,-7.4272975e-007,-0.31272492};
 	};
 };
 binarizationWanted=0;
@@ -261,7 +261,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={19651.471,56.953854,7743.3862};
-			angle=-3.0036588;
+			angle=-3.0036585;
 			class Attributes
 			{
 				condition="IP_OfficerGo";
@@ -307,7 +307,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={18905.574,30.381941,8540.458};
-			angle=-0.32793713;
+			angle=-0.32793707;
 			class Attributes
 			{
 				condition="IP_CarsGo > 0 ";
@@ -337,7 +337,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={18898.213,30.362082,8546.4609};
-			angle=-0.32793713;
+			angle=-0.32793707;
 			class Attributes
 			{
 				condition="IP_CarsGo > 1";
@@ -353,7 +353,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={18891.342,30.155127,8553.4258};
-			angle=-0.32793713;
+			angle=-0.32793707;
 			class Attributes
 			{
 				condition="IP_CarsGo > 2";
@@ -369,7 +369,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={18880.818,29.843937,8561.4746};
-			angle=-0.32793713;
+			angle=-0.32793707;
 			class Attributes
 			{
 				condition="IP_CarsGo > 3";
@@ -1504,8 +1504,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={19641.814,57.817493,7766.6309};
-						angles[]={6.256525,2.3163664,0.018663859};
+						position[]={19640.205,54.605824,7707.3398};
+						angles[]={6.2126365,0.27682707,6.2631893};
 					};
 					side="West";
 					flags=6;
@@ -1537,8 +1537,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={19646.705,57.86232,7766.9365};
-						angles[]={6.2551923,2.3163664,0.0066682254};
+						position[]={19638.416,54.593334,7706.6567};
+						angles[]={6.2126365,0.27682707,6.2631893};
 					};
 					side="West";
 					flags=6;
@@ -1658,12 +1658,12 @@ class Mission
 				{
 					dataType="Waypoint";
 					position[]={19662.893,57.434742,7747.4692};
-					id=151;
 					type="GetIn";
 					class Effects
 					{
 					};
 					showWP="NEVER";
+					id=151;
 					atlOffset=0.5;
 					class AttachedTo
 					{
@@ -2646,7 +2646,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={20624.994,37.591686,6994.0825};
-						angles[]={-0,0,6.2378831};
+						angles[]={0,0,6.2378831};
 					};
 					side="Independent";
 					flags=4;
@@ -2869,7 +2869,7 @@ class Mission
 			};
 			id=216;
 			type="Land_Portable_generator_F";
-			atlOffset=-3.8146973e-006;
+			atlOffset=-9.1552734e-005;
 			class CustomAttributes
 			{
 				class Attribute0

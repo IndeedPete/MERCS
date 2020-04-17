@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=511;
+		nextID=513;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={3307.4409,233.95485,2936.2097};
-		dir[]={-0.37266904,-0.28660059,-0.8827346};
-		up[]={-0.11149982,0.95796579,-0.26411742};
-		aside[]={-0.92136902,6.4793858e-007,0.38897234};
+		pos[]={3259.6108,227.91333,2912.2817};
+		dir[]={0.39248171,-0.18111201,0.90188736};
+		up[]={0.072310448,0.98338825,0.16617189};
+		aside[]={0.91704988,1.7734128e-006,-0.39907041};
 	};
 };
 binarizationWanted=0;
@@ -898,6 +898,7 @@ class Mission
 			};
 			id=60;
 			type="B_G_Offroad_01_armed_F";
+			atlOffset=-0.069458008;
 		};
 		class Item61
 		{
@@ -1358,8 +1359,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3261.6262,226.75351,2917.4109};
-				angles[]={6.2307363,5.6666222,0.022495884};
+				position[]={3261.626,226.75313,2917.4109};
+				angles[]={6.2307382,5.6666303,0.022497294};
 			};
 			side="Empty";
 			flags=4;
@@ -1369,7 +1370,29 @@ class Mission
 			};
 			id=80;
 			type="Land_CratesPlastic_F";
-			atlOffset=0.00038146973;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item81
 		{
@@ -2155,8 +2178,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3264.1243,226.5549,2909.7065};
-				angles[]={6.2506957,4.7227287,0.052453648};
+				position[]={3264.124,226.55446,2909.707};
+				angles[]={6.2506871,4.7227216,0.052447144};
 			};
 			side="Empty";
 			flags=4;
@@ -2167,7 +2190,29 @@ class Mission
 			};
 			id=124;
 			type="Land_CratesPlastic_F";
-			atlOffset=0.00044250488;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item125
 		{

@@ -32,7 +32,7 @@ IP_fnc_m_createPirate = {
 	_uniform = _uniforms call BIS_fnc_selectRandom;
 	_unit forceAddUniform _uniform;
 	
-	_vests = (missionConfigFile >> "ShopItems" >> "LightVests") call IP_fnc_getConfigEntries;
+	_vests = (missionConfigFile >> "ShopItems" >> "VestsLight") call IP_fnc_getConfigEntries;
 	_vest = _vests call BIS_fnc_selectRandom;
 	_unit addVest _vest;
 	

@@ -340,15 +340,15 @@ class ShopUniforms
 		class U_B_CombatUniform_tshirt_mcam_wdL_f: U_B_CombatUniform_mcam {};
 		class U_B_CTRG_2
 		{
-			merc = 0;
+			merc = 1;
 			price = 500;
-			show = 0;
+			show = 1;
 		};
 		class U_B_CTRG_1
 		{
-			merc = 0;
+			merc = 1;
 			price = 750;
-			show = 0;
+			show = 1;
 		};
 		class U_B_CTRG_3: U_B_CTRG_1 {};
 		class U_B_CTRG_Soldier_urb_1_F: U_B_CTRG_1 {};

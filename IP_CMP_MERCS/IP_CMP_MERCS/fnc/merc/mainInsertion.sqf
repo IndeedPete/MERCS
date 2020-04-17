@@ -25,8 +25,8 @@ switch (_insertion) do {
 		_handle = _conversation spawn IP_fnc_simpleConversation;
 		
 		while {((time > 0) && (time < _timeout)) OR (!scriptDone _handle)} do {
-			 IP_Main playMove "AmovPercMrunSrasWrflDf";        
-			 sleep 1.3;
+			IP_Main playMove "AmovPercMrunSrasWrflDf";
+			sleep 1.3;
 		};
 	};
 	

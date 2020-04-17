@@ -100,8 +100,8 @@ link49[] = {42,44};
 link50[] = {43,42};
 link51[] = {44,45};
 link52[] = {45,41};
-globals[] = {25.000000,1,0,0,0,640,480,1,89,6316128,1,-639.165649,284.694092,365.493591,-512.076721,958,910,1};
-window[] = {2,-1,-1,-1,-1,785,26,1466,26,3,976};
+globals[] = {0.000000,0,0,0,0,640,480,1,89,6316128,1,-639.165649,284.694092,365.493591,-512.076721,958,1244,1};
+window[] = {2,-1,-1,-1,-1,1071,312,1752,312,3,976};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -117,7 +117,7 @@ class FSM
        "" \n
        "_posStart = getMarkerPos ""mStart"";" \n
        "_posLZ = getPos IP_LZ;" \n
-       "_dir = [_posStart, _posLZ] call BIS_fnc_dirTo;" \n
+       "_dir = [_posLZ, _posStart] call BIS_fnc_dirTo;" \n
        "" \n
        "_grp = createGroup civilian;" \n
        "IP_Pilot = _grp createUnit [""C_man_pilot_F"", _posStart, [], 0, ""NONE""];" \n
@@ -125,7 +125,7 @@ class FSM
        "IP_Pilot setVariable [""IP_Avatar"", ""IP_CMP_MERCS\IP_CMP_MERCS\img\pilotAvatar.jpg""];" \n
        "IP_Pilot setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\coveralls_black_coION.paa""];" \n
        "IP_Copilot = _grp createUnit [""C_man_pilot_F"", _posStart, [], 0, ""NONE""];" \n
-       "IP_Heli = createVehicle [""O_Heli_Light_02_unarmed_F"", _posStart, [], 0, ""FLY""];" \n
+       "IP_Heli = createVehicle [""O_Heli_Light_02_unarmed_F"", _posLZ, [], 0, ""FLY""];" \n
        "clearWeaponCargo IP_Heli;" \n
        "clearMagazineCargo IP_Heli;" \n
        "clearBackpackCargo IP_Heli;" \n
@@ -138,23 +138,24 @@ class FSM
        "" \n
        "_grp setCombatMode ""BLUE"";" \n
        "_grp setBehaviour ""CARELESS"";" \n
-       "_grp move _posLZ;" \n
+       "//_grp move _posLZ;" \n
        "{_x setCaptive true} forEach units _grp;" \n
        "" \n
        "[] spawn {" \n
        "	waitUntil{time > 0};	" \n
-       "	IP_Main moveInCargo [IP_Heli, 5];" \n
-       "	IP_Buddy moveInCargo [IP_Heli, 2];" \n
+       "	//IP_Main moveInCargo [IP_Heli, 5];" \n
+       "	//IP_Buddy moveInCargo [IP_Heli, 2];" \n
+       "	player switchMove ""amovpercmstpslowwrfldnon"";" \n
        "	[] call IP_fnc_spawnTeam;" \n
-       "	{_x moveInCargo IP_Heli} forEach ((units group IP_Main) - [IP_Main]);" \n
+       "	//{_x moveInCargo IP_Heli} forEach ((units group IP_Main) - [IP_Main]);" \n
        "	" \n
        "	sleep 2;" \n
        "" \n
        "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n
-       "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
+       "	/*if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
        "" \n
        "	[IP_Pilot, ""Guys, thirty seconds. We're landing right on top of them."", ""DIRECT""] call IP_fnc_simpleSentence;" \n
-       "	[IP_Buddy, ""All right! Get ready, Raif! We're saving some Greenback asses today!"", ""DIRECT""] call IP_fnc_simpleSentence;" \n
+       "	[IP_Buddy, ""All right! Get ready, Raif! We're saving some Greenback asses today!"", ""DIRECT""] call IP_fnc_simpleSentence;*/" \n
        "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -286,10 +287,10 @@ class FSM
     class Land
     {
       name = "Land";
-      init = /*%FSM<STATEINIT""">*/"[IP_Pilot, ""Okay, we're going down now. Sit tight."", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
+      init = /*%FSM<STATEINIT""">*/"//[IP_Pilot, ""Okay, we're going down now. Sit tight."", ""DIRECT""] spawn IP_fnc_simpleSentence;" \n
        "" \n
-       "IP_Heli land ""GET OUT"";" \n
-       "if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};"/*%FSM</STATEINIT""">*/;
+       "//IP_Heli land ""GET OUT"";" \n
+       "//if (IP_ShowIntro) then {[1] call BIS_fnc_cinemaBorder};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -299,7 +300,7 @@ class FSM
           priority = 0.000000;
           to="Go_to_Officer";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"{_x in IP_Heli} count (units group IP_Main) ==  0"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"{_x in IP_Heli} count (units group IP_Main) == 0"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

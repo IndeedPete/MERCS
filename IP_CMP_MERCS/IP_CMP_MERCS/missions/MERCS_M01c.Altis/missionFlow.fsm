@@ -1,7 +1,7 @@
 /*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, missionFlow">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start",0,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
+item0[] = {"Start",0,4346,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"Start"};
 item1[] = {"LZ_Reached",4,218,-175.000000,300.000000,-75.000000,350.000000,0.000000,"LZ Reached"};
 item2[] = {"Wait",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.000000,"Wait"};
 item3[] = {"On_Mission",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"On Mission"};
@@ -21,7 +21,7 @@ item16[] = {"",7,210,-254.000015,221.000000,-245.999985,229.000000,0.000000,""};
 item17[] = {"",7,210,-129.000000,96.000008,-121.000000,104.000000,0.000000,""};
 item18[] = {"Hostage_Killed",4,218,-50.000000,75.000000,50.000000,125.000000,0.000000,"Hostage Killed"};
 item19[] = {"Knows_About_Girl",4,218,-175.000000,150.000000,-75.000000,200.000000,1.000000,"Knows About Girl"};
-item20[] = {"Exfiltrate",2,4346,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Exfiltrate"};
+item20[] = {"Exfiltrate",2,250,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Exfiltrate"};
 item21[] = {"Fail_End",1,250,75.000000,75.000000,175.000000,125.000000,0.000000,"Fail End"};
 link0[] = {0,2};
 link1[] = {1,4};
@@ -48,7 +48,7 @@ link21[] = {18,21};
 link22[] = {19,20};
 link23[] = {20,1};
 globals[] = {0.000000,0,0,0,0,640,480,1,117,6316128,1,-626.829529,349.042542,505.253174,-238.365417,958,1244,1};
-window[] = {2,-1,-1,-1,-1,941,182,1622,182,3,976};
+window[] = {2,-1,-1,-1,-1,837,78,1518,78,3,976};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -119,7 +119,7 @@ class FSM
        "	IP_Buddy switchMove ""Acts_PercMwlkSlowWrflDf2"";" \n
        "	" \n
        "	[IP_Buddy] joinSilent IP_Main;" \n
-       "	[IP_Main, 5, true] call IP_fnc_spawnTeam;" \n
+       "	[IP_Main] call IP_fnc_spawnTeam;" \n
        "	" \n
        "	if (IP_ShowIntro) then {[0] call BIS_fnc_cinemaBorder};" \n
        "	[""IP_BlackScreen""] call BIS_fnc_blackIn;" \n

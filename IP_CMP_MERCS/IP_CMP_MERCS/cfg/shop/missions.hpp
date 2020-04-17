@@ -35,7 +35,7 @@ class ShopMissions
 		location = "Kavala, Altis";
 		reward = 2500;
 		description = "A young female tourist disappeared and has probably been kidnapped. Her father is paying for any hints regarding her status.";
-		requirements = "-";
+		recommended = "-";
 		title = "Daddy's Girl";		
     };
 	
@@ -49,7 +49,7 @@ class ShopMissions
 		location = "Stadium, Altis";
 		reward = 5000;
 		description = "The pirates sent a ransom demand for the kidnapped girl. Her father is paying for the safe delivery of the money.";
-		requirements = "Binoculars";
+		recommended = "Binoculars";
 		title = "Ransom Demand";		
     };
 	
@@ -63,7 +63,7 @@ class ShopMissions
 		location = "Northern Airfield, Altis";
 		reward = 7500;
 		description = "The client lost contact to the pirates after the failed ransom delivery. He issued an immediate rescue attempt.";
-		requirements = "Silencers, NVGs";
+		recommended = "Silencers, NVGs";
 		title = "Hostage Down";
     };
 	
@@ -77,7 +77,7 @@ class ShopMissions
 		location = "Selakano Airfield, Altis";
 		reward = 5000;
 		description = "The AAF is short on staff. They have requested PMCs to man important outposts and roadblocks.";
-		requirements = "Police Vest + Beret";
+		recommended = "Police Vest + Beret";
 		title = "Checkpoint Charlie";
     };
 	
@@ -91,7 +91,7 @@ class ShopMissions
 		location = "Negades, Altis";
 		reward = 7500;
 		description = "Anti-government protests broke out throughout the whole country. The AAF can't handle the situation and requested help to control the riots.";
-		requirements = "Police Vest + Beret, Smoke Grenades, Grenade Launcher";
+		recommended = "Police Vest + Beret, Smoke Grenades, Grenade Launcher";
 		title = "Riot Control";
     };
 	
@@ -105,7 +105,7 @@ class ShopMissions
 		location = "Aggelochori, Altis";
 		reward = 10000;
 		description = "The FIA managed to take control of a tank depot. PMCs and AAF will launch a joined attack to re-take the facility.";
-		requirements = "Good Protection Gear, AT Weapons";
+		recommended = "Good Protection Gear, AT Weapons";
 		title = "Panzerfaust";
     };
 	
@@ -119,7 +119,7 @@ class ShopMissions
 		location = "Central Airport, Altis";
 		reward = 5000;
 		description = "An important client wishes to be picked up from the international airport on Altis and then being ground-transported to a location of his choice.";
-		requirements = "-";
+		recommended = "-";
 		title = "Very Important Pickup";		
     };
 	
@@ -133,7 +133,7 @@ class ShopMissions
 		location = "Former FOB Sauerland, Altis";
 		reward = 5000;
 		description = "EUROFORCE cut a deal with the AAF to ship out old but valuable equipment from the former occupation. PMCs are tasked to ensure the safe transportation.";
-		requirements = "Toolkit";
+		recommended = "Toolkit";
 		title = "Sauerland Express";
     };
 	
@@ -147,7 +147,7 @@ class ShopMissions
 		location = "Sideras, Altis";
 		reward = 7500;
 		description = "ION reacts to the cowardly Black Arrow ambush on the Sauerland cargo trucks. Contractors are sent out to eliminate a disloyal client's security detail.";
-		requirements = "UAV Terminal";
+		recommended = "UAV Terminal";
 		title = "Protection Money";
     };
 	
@@ -161,7 +161,7 @@ class ShopMissions
 		location = "AAC Airfield, Altis";
 		reward = 10000;
 		description = "Attacks on ION contractors by Black Arrow operatives are continuing. Time to kick some ass.";
-		requirements = "UAV Terminal, Explosives, Heavy Weapons";
+		recommended = "UAV Terminal, Explosives, Heavy Weapons";
 		title = "An Eye For An Eye";
     };
 	
@@ -175,7 +175,7 @@ class ShopMissions
 		location = "Kavala, Altis";
 		reward = 0;
 		description = "ION contractors take some time off for a good old bender.";
-		requirements = "Party mood! And a crazy hat...";
+		recommended = "Party mood! And a crazy hat...";
 		title = "Rest And Recuperation";
     };
 	
@@ -188,7 +188,7 @@ class ShopMissions
 		description = "ION contractors move out to destroy what's left of the company's assets at the crash site.";
 		location = "Limni, Altis";
 		reward = 10000;
-		requirements = "Explosives";
+		recommended = "Explosives";
 		title = "Cleanup";
     };
 	
@@ -201,7 +201,7 @@ class ShopMissions
 		description = "EUROFORCE air assets plan to engage the AAF Headquarters at Pyrgos. ION contractors are tasked to provide reconnaissance and BDA.";
 		location = "Pyrgos, Altis";
 		reward = 12500;
-		requirements = "Laser Designator";
+		recommended = "Laser Designator";
 		title = "Badass One";
     };
 	
@@ -214,7 +214,7 @@ class ShopMissions
 		description = "CSAT requested help with the extraction of a covert agent in the city of Kavala.";
 		location = "Kavala, Altis";
 		reward = 15000;
-		requirements = "-";
+		recommended = "-";
 		title = "Close Quarters Battle";
     };
 	
@@ -227,7 +227,7 @@ class ShopMissions
 		description = "The British Knights move out in an attempt to further escalate the conflict between AAF and FIA.";
 		location = "Factory near Kore, Altis";
 		reward = 20000;
-		requirements = "Toolkit, AT-Weapons";
+		recommended = "Toolkit, AT-Weapons";
 		title = "Diplomatic Incident";
     };
 	
@@ -240,7 +240,7 @@ class ShopMissions
 		description = "The British Knights send out ION contractors to reconnoitre one of the research facilities.";
 		location = "Agios Georgios, Altis";
 		reward = 15000;
-		requirements = "Binoculars, Silenced Weapons";
+		recommended = "Binoculars, Silenced Weapons";
 		title = "Force Recon";
     };
 	
@@ -253,7 +253,7 @@ class ShopMissions
 		description = "Deep Space Engineering plans to get the device off country. ION contractors are tasked to destroy any means of transportation.";
 		location = "Pyrgos Gulf, Altis";
 		reward = 17500;
-		requirements = "Satchel Charge, Diving Equipment, Silenced Weapons";
+		recommended = "Satchel Charge, Diving Equipment, Silenced Weapons";
 		title = "Surfin' R.o.A.";
     };
 	
@@ -266,7 +266,7 @@ class ShopMissions
 		description = "ION contractors are sent out to pick up a freelancing IT-Security specialist.";
 		location = "Agios Panagiotis, Altis";
 		reward = 20000;
-		requirements = "-";
+		recommended = "-";
 		title = "Schnitzeljagd";
     };
 	
@@ -279,7 +279,7 @@ class ShopMissions
 		description = "The task is to infiltrate the AAF and get hold of the Colonel's network credentials without him noticing.";
 		location = "Central Airbase, Altis";
 		reward = 22500;
-		requirements = "Nothing, the AAF will provide everything.";
+		recommended = "Nothing, the AAF will provide everything.";
 		title = "Uncle Kostas";
     };
 	
@@ -292,7 +292,7 @@ class ShopMissions
 		description = "The British Knights require the 'assistance' of a Deep Space Engineering employee. Contractors are sent out to enforce this 'cooperation'.";
 		location = "Central Research Facility, Altis";
 		reward = 25000;
-		requirements = "Silencers / Low Profile Equipment";
+		recommended = "Silencers / Low Profile Equipment";
 		title = "Enforced Cooperation";
     };
 	
@@ -305,7 +305,7 @@ class ShopMissions
 		description = "The British Knights and ION contractors launch an attack on DSE's research facility code name 'Black Mesa' in order to extract the device.";
 		location = "Research Facility 'Black Mesa', Altis";
 		reward = 1500000;
-		requirements = "Explosives as infiltrator and the best gear you've got. ;)";
+		recommended = "Explosives as infiltrator and the best gear you've got. ;)";
 		title = "Smash And Grab";
     };
 	

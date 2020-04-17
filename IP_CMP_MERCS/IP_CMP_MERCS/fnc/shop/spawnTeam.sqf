@@ -37,13 +37,13 @@ _capacity = if (_unit != _veh) then {(((typeOf _veh) call IP_fnc_getCargoSeats) 
 				_class = typeOf _unit;
 				_owner = _unit getVariable ["IP_Owner", player];
 				_team = _owner getVariable ["IP_ShopTeam", []];
-				_killedTeammates = _owner getVariable ["IP_ShopKilledTeammates", []];
+				_killedTeammates = _owner getVariable ["IP_KilledTeammates", []];
 				
 				_team = _team - [_class];
 				_killedTeammates = _killedTeammates + [_class];
 				
 				_owner setVariable ["IP_ShopTeam", _team];
-				_owner setVariable ["IP_ShopKilledTeammates", _killedTeammates];
+				_owner setVariable ["IP_KilledTeammates", _killedTeammates];
 			}];
 		};
 	};

@@ -76,7 +76,7 @@ IP_Officer setVariable ["IP_LiveFeed", true];
 {
 	if  (side _x == west) then {
 		_x setVariable ["IP_Faction", "BlackArrow"];
-		[_x, 5, false, [((dayTime < 7) OR (dayTime > 19)), true]] call IP_fnc_createMerc;
+		[_x] call IP_fnc_createMerc;
 		_x addEventHandler ["HIT", {
 			if ((_this select 1) == (vehicle player)) then {
 				player addRating -999999;

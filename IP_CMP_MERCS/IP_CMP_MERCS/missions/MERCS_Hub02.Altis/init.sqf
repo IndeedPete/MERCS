@@ -81,7 +81,7 @@ IP_scn_dynamicCampInit = {
 };
 
 // Shop Setup
-[true, true, [(player getVariable ["IP_ShopUniforms", []]), (player getVariable ["IP_ShopCampEnhancements", []]), (player getVariable ["IP_ShopCampVehicles", []])]] call IP_fnc_shopInit;
+[true, true, [(missionNameSpace getVariable ["IP_MERCS_Clothes", []]), (missionNameSpace getVariable ["IP_MERCS_CampEnhancements", []]), (missionNameSpace getVariable ["IP_MERCS_CampVehicles", []])]] call IP_fnc_shopInit;
 
 // All Objects
 {
@@ -157,7 +157,7 @@ _availableCampEnhancements = (missionConfigFile >> "ShopCampEnhancements") call 
 
 // Garage Setup
 {
-	if (getNumber(missionConfigFile >> "ShopCampVehicles" >> _x >> "isCar") == 1) then {
+	if (isClass(missionConfigFile >> "ShopCampVehicles" >> "Cars" >> _x)) then {
 		_spot = (count IP_GarageVehicles) + 1;
 		_marker = "mGarageSpot" + str(_spot);
 		_pos = getMarkerPos _marker;

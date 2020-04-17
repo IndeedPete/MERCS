@@ -1,4 +1,4 @@
-_mission = IP_Main getVariable ["IP_Mission", ""];
+_mission = IP_Main getVariable ["IP_ShopMission", ""];
 if (_mission == "") exitWith {hint "No mission selected!"};
 if (_mission in ["MMain01"]) exitWith {};
 
@@ -15,6 +15,6 @@ _params = switch (_this) do {
 
 if ((_params select 0) call BIS_fnc_taskExists) then {
 	[(_params select 0), "SUCCEEDED"] call BIS_fnc_taskSetState;
-	IP_Main setVariable ["IP_Insertion", (_params select 1)];
+	IP_Main setVariable ["IP_ShopInsertion", (_params select 1)];
 	[_mission, true, 5] call IP_fnc_endMission;
 };

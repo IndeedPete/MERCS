@@ -96,7 +96,7 @@ _animSet = ["BRIEFING", "GUARD", "STAND_U1", "STAND_U2", "STAND_U3"] call BIS_fn
 [IP_Commander, "commanderOpener"] call IP_fnc_addConversation;
 
 // Shop Setup
-[true, true, [(player getVariable ["IP_ShopUniforms", []]),[],[]]] call IP_fnc_shopInit;
+[true, true, [(missionNameSpace getVariable ["IP_MERCS_Clothes", []]),[],[]]] call IP_fnc_shopInit;
 
 // Shooting Range
 _nul = [IP_Shooter, [[IP_SR_TargetBig], [IP_SR_TargetSmall], [IP_MR_TargetBig, "MIDDLE"], [IP_MR_TargetSmall, "MIDDLE"], [IP_LR_TargetBig, "DOWN"], [IP_LR_TargetSmall, "DOWN"]]] spawn IP_scn_ambientShootingRange;

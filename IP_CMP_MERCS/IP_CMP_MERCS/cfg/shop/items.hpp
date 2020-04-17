@@ -233,15 +233,19 @@ class ShopItems
 		class V_HarnessOSpec_gry: V_HarnessOSpec_brn {};
 		class V_TacVest_khk
 		{
-			merc = 0;
+			merc = 1;
 			price = 1500;
-			show = 0;			
+			show = 1;			
 		};
 		class V_TacVest_brn: V_TacVest_khk {};
 		class V_TacVest_gen_F: V_TacVest_khk {};
-		class IP_V_TacVest_KSK_Tropic: V_TacVest_khk {};
-		class IP_V_TacVest_KSK_Arid: V_TacVest_khk {};
-		class IP_V_TacVest_KSK: V_TacVest_khk {};
+		class IP_V_TacVest_KSK_Tropic: V_TacVest_khk 
+		{
+			merc = 0;
+			show = 0;
+		};
+		class IP_V_TacVest_KSK_Arid: IP_V_TacVest_KSK_Tropic {};
+		class IP_V_TacVest_KSK: IP_V_TacVest_KSK_Tropic {};
 		class V_TacVest_oli: V_TacVest_khk
 		{
 			merc = 1;
@@ -251,7 +255,11 @@ class ShopItems
 		class V_TacVest_camo: V_TacVest_oli {};
 		class V_TacVest_blk_POLICE: V_TacVest_khk {};
 		class V_TacVestCamo_khk: V_TacVest_oli {};		
-		class V_I_G_resistanceLeader_F: V_TacVest_oli {};
+		class V_I_G_resistanceLeader_F: V_TacVest_oli
+		{
+			merc = 0;
+			show = 0;
+		};
 		class V_Press_F
 		{
 			merc = 0;

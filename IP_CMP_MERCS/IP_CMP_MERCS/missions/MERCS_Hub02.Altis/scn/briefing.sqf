@@ -1,5 +1,5 @@
 private "_speakers";
-_mission = IP_Main getVariable "IP_Mission";
+_mission = IP_Main getVariable "IP_ShopMission";
 if (isNil "_mission") exitWith {hint "You have to select a mission first!"};
 _speakers = getArray(missionConfigFile >> "ShopMissions" >> _mission >> "briefingSpeakers");
 _sentences = getArray(missionConfigFile >> "ShopMissions" >> _mission >> "briefingSentences");

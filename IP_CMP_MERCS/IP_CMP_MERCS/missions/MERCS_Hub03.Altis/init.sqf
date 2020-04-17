@@ -209,7 +209,7 @@ _availableCampEnhancements = (missionConfigFile >> "ShopCampEnhancements") call 
 
 // Garage Setup
 {
-	if (getNumber(missionConfigFile >> "ShopCampVehicles" >> _x >> "isCar") == 1) then {
+	if (isClass(missionConfigFile >> "ShopCampVehicles" >> "Cars" >> _x)) then {
 		_spot = (count IP_GarageVehicles) + 1;
 		_marker = "mGarageSpot" + str(_spot);
 		_pos = getMarkerPos _marker;

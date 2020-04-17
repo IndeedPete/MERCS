@@ -344,8 +344,9 @@ IP_AvailableUniforms = [];
 	_uniformClasses = _uniformClasspaths call _getClasses;
 	
 	{
-		if (!(_x in _uniformsInPossession) && {isNumber(configFile >> "CfgWeapons" >> _x >> "scope")} && {getNumber(configFile >> "CfgWeapons" >> _x >> "scope") == 2}) then {
-			_uniforms pushBack _x;
+		_uniform = _x;
+		if (({toLower _uniform == toLower _x} count _uniformsInPossession == 0) && {isNumber(configFile >> "CfgWeapons" >> _uniform >> "scope")} && {getNumber(configFile >> "CfgWeapons" >> _uniform >> "scope") == 2}) then {
+			_uniforms pushBack _uniform;
 		};
 	} forEach _uniformClasses;
 	
@@ -357,10 +358,11 @@ if (_autoIndexing) then {
 	_uniformClasses = _uniformClasspaths call _getClasses;
 	
 	{
-		if (([(missionConfigFile >> "ShopUniforms"), _x] call IP_fnc_getConfigCategory) == "") then {			
+		_uniform = _x;
+		if ((([(missionConfigFile >> "ShopUniforms"), _uniform] call IP_fnc_getConfigCategory) == "") && {{toLower _uniform == toLower _x} count _uniformsInPossession == 0}) then {			
 			_index = IP_UniformCategories find "Military";
 			if (_index >= 0) then {
-				(IP_AvailableUniforms select _index) pushBack _x;
+				(IP_AvailableUniforms select _index) pushBack _uniform;
 			};
 		};
 	} forEach _uniformClasses;
@@ -370,7 +372,8 @@ _enhancements = "((isNumber(_x >> 'price')) && {(if (isNumber(_x >> 'show')) the
 _enhancementClasses = _enhancements call _getClasses;
 IP_AvailableCampEnhancements = [];
 {
-	if !(_x in _enhancementsInPossession) then {IP_AvailableCampEnhancements pushBack _x};
+	_enhancement = _x;
+	if ({toLower _enhancement == toLower _x} count _enhancementsInPossession == 0) then {IP_AvailableCampEnhancements pushBack _enhancement};
 } forEach _enhancementClasses;
 
 _vehicleCategories = "((if (isNumber(_x >> 'show')) then {(getNumber(_x >> 'show'))} else {1}) == 1) && {count _x > 0}" configClasses (missionConfigFile >> "ShopCampVehicles");
@@ -386,9 +389,10 @@ IP_AvailableCampVehicles = [];
 	_index = _forEachIndex;
 	
 	{
-		_unique = if (isNumber(missionConfigFile >> "ShopCampVehicles" >> _category >> _x >> "unique")) then {(getNumber(missionConfigFile >> "ShopCampVehicles" >> _category >> _x >> "unique"))} else {0};
-		if ((isNumber(configFile >> "CfgVehicles" >> _x >> "scope")) && {getNumber(configFile >> "CfgVehicles" >> _x >> "scope") == 2} && {(_unique == 0) OR !(_x in _vehiclesInPossession)}) then {
-			_vehicles pushBack _x;
+		_vehicle = _x;
+		_unique = if (isNumber(missionConfigFile >> "ShopCampVehicles" >> _category >> _vehicle >> "unique")) then {(getNumber(missionConfigFile >> "ShopCampVehicles" >> _category >> _vehicle >> "unique"))} else {0};
+		if ((isNumber(configFile >> "CfgVehicles" >> _vehicle >> "scope")) && {getNumber(configFile >> "CfgVehicles" >> _vehicle >> "scope") == 2} && {(_unique == 0) OR ({toLower _vehicle == toLower _x} count _vehiclesInPossession == 0)}) then {
+			_vehicles pushBack _vehicle;
 		};
 	} forEach _vehicleClasses;
 	

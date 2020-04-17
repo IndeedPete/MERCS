@@ -180,6 +180,10 @@ class CfgFunctions
 		
 		class merc
 		{
+			class applySilencer
+			{
+				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\applySilencer.sqf";
+			};
 			class applyTemplate
 			{
 				file = "IP_CMP_MERCS\IP_CMP_MERCS\fnc\merc\applyTemplate.sqf";

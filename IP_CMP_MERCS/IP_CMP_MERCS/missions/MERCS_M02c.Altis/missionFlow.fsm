@@ -35,7 +35,7 @@ link14[] = {13,15};
 link15[] = {14,15};
 link16[] = {15,3};
 globals[] = {0.000000,0,0,0,0,640,480,1,111,6316128,1,-460.995300,106.338539,733.832458,-216.713654,758,1244,1};
-window[] = {2,-1,-1,-1,-1,1019,260,1700,260,3,776};
+window[] = {2,-1,-1,-1,-1,811,52,1492,52,3,776};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -168,7 +168,7 @@ class FSM
        "	saveGame;" \n
        "	IP_Rival setPos (getMarkerPos ""mRival"");" \n
        "	" \n
-       "	{_x setPos (getPos IP_Main)} forEach (units group IP_Main); // Stupid Workaround" \n
+       "	//{_x setPos (getPos IP_Main)} forEach (units group IP_Main); // Stupid Workaround" \n
        "	_grp = group IP_Rival;	" \n
        "	_grp setBehaviour ""AWARE"";" \n
        "	_grp setCombatMode ""RED"";" \n
@@ -196,8 +196,6 @@ class FSM
        "		_wp setWaypointType ""HOLD"";" \n
        "		//[_grp, 1] setWaypointBehaviour ""COMBAT"";		" \n
        "	};" \n
-       "	" \n
-       "	" \n
        "	" \n
        "	sleep 15;" \n
        "	" \n

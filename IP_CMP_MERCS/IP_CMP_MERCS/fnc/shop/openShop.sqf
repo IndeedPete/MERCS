@@ -82,6 +82,12 @@ switch (_category) do {
 			_text = _title + " " + _currency + " " + _rew;
 			_index = lbAdd [1500, _text];
 		};
+
+		_selectedMission = player getVariable ["IP_ShopMission", ""];
+		_selectedIndex = IP_AvailableMissions find _selectedMission;
+		if (_selectedIndex >= 0) then {
+			lbSetCurSel [1500, _selectedIndex];
+		};
 	};
 	
 	// Personnel

@@ -3,7 +3,7 @@ params [
 	["_class", "", [""]],
 	["_side", west, [west]],
 	["_grp", grpNull, [grpNull]],
-	["_addMoney", false, [true]],
+	["_addMoney", true, [true]],
 	["_silenced", false, [true]],
 	["_rank", "", [""]],
 	["_code", {}, [{}]],

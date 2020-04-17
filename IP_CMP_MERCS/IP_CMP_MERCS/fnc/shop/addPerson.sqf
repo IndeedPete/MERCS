@@ -14,5 +14,11 @@ if (((call IP_fnc_calculateTotalCostRate) + _costRate) > 1.024) exitWith {hint "
 
 _team pushBack _person;
 player setVariable ["IP_ShopTeam", _team];
+if (getNumber(missionConfigFile >> "ShopPersonnel" >> _category >> _person >> "unique") == 1) then {
+	_categoryIndex = IP_PersonnelCategories find _category;
+	_arr = (IP_AvailablePersonnel select _categoryIndex) - [_person];
+	IP_AvailablePersonnel set [_categoryIndex, _arr];
+};
+
 call IP_fnc_closeShop;
 ["Personnel", _i] spawn IP_fnc_openShop;
