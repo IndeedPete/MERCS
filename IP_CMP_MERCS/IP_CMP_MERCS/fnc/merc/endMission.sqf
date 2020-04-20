@@ -9,6 +9,7 @@ _money = IP_Main getVariable "IP_ShopMoney";
 _debts = IP_Main getVariable "IP_Debts";
 _team = IP_Main getVariable "IP_ShopTeam";
 _clothes = IP_Main getVariable "IP_ShopUniforms";
+_silenced = IP_Main getVariable ["IP_ShopTeamSilenced", false];
 _campEnhancements = IP_Main getVariable ["IP_ShopCampEnhancements", []];
 _campVehicles = IP_Main getVariable ["IP_ShopCampVehicles", []];
 _killedTeammates = IP_Main getVariable ["IP_KilledTeammates", []];
@@ -27,6 +28,7 @@ IP_MERCS_Team = _team;
 IP_MERCS_Clothes = _clothes;
 IP_MERCS_Mission = _mission;
 IP_MERCS_Insertion = _insertion;
+IP_MERCS_TeamSilenced = _silenced;
 IP_MERCS_CampEnhancements = _campEnhancements;
 IP_MERCS_CampVehicles = _campVehicles;
 IP_MERCS_KilledTeammates = _killedTeammates;
@@ -37,7 +39,7 @@ if (isNil "IP_Weather") then {
 };
 IP_MERCS_Weather = IP_Weather;
 
-{saveVar _x} forEach ["IP_MERCS_MainLoadout", "IP_MERCS_Money", "IP_MERCS_Debts", "IP_MERCS_Team", "IP_MERCS_Clothes", "IP_MERCS_Mission", "IP_MERCS_Insertion", "IP_MERCS_CampEnhancements", "IP_MERCS_CampVehicles", "IP_MERCS_KilledTeammates", "IP_MERCS_Date", "IP_MERCS_Weather"];
+{saveVar _x} forEach ["IP_MERCS_MainLoadout", "IP_MERCS_Money", "IP_MERCS_Debts", "IP_MERCS_Team", "IP_MERCS_Clothes", "IP_MERCS_Mission", "IP_MERCS_Insertion", "IP_MERCS_TeamSilenced", "IP_MERCS_CampEnhancements", "IP_MERCS_CampVehicles", "IP_MERCS_KilledTeammates", "IP_MERCS_Date", "IP_MERCS_Weather"];
 
 if (_isHub) then {
 	_boxWeapons = weaponCargo IP_PlayerBox;

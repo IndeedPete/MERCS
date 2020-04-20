@@ -10,6 +10,7 @@ _this spawn {
 	_clothes = if (isNil "IP_MERCS_Clothes") then {[]} else {IP_MERCS_Clothes};
 	_playerBox = if (isNil "IP_MERCS_PlayerBox") then {[[], [], [], []]} else {IP_MERCS_PlayerBox};
 	_missionsDone = if (isNil "IP_MERCS_MissionsDone") then {["MIn"]} else {IP_MERCS_MissionsDone};
+	_silenced = if (isNil "IP_MERCS_TeamSilenced") then {false} else {IP_MERCS_TeamSilenced};
 	
 	// Special for Stage B
 	_campEnhancements = if (isNil "IP_MERCS_CampEnhancements") then {[]} else {IP_MERCS_CampEnhancements};
@@ -32,6 +33,7 @@ _this spawn {
 		["IP_Debts", _debts],
 		["IP_ShopTeam", _team],
 		["IP_ShopUniforms", _clothes],
+		["IP_ShopTeamSilenced", _silenced],
 		["IP_ShopCampEnhancements", _campEnhancements],
 		["IP_ShopCampVehicles", _campVehicles],
 		["IP_KilledTeammates", _killedTeammates],

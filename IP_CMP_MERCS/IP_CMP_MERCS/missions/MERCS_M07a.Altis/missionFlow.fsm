@@ -6,7 +6,7 @@ item1[] = {"Handle_Done",4,218,-175.000000,-75.000000,-75.000000,-25.000000,0.00
 item2[] = {"Win_End",1,250,-425.000000,450.000000,-325.000000,500.000000,0.000000,"Win End"};
 item3[] = {"On_the_Move",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,"On the Move"};
 item4[] = {"Badass_Called",4,218,-175.000000,75.000000,-75.000000,125.000000,0.000000,"Badass Called"};
-item5[] = {"Cutscene",2,250,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Cutscene"};
+item5[] = {"Cutscene",2,4346,-175.000000,150.000000,-75.000000,200.000000,0.000000,"Cutscene"};
 item6[] = {"Handle_Done",4,218,-175.000000,225.000000,-75.000000,275.000000,0.000000,"Handle Done"};
 item7[] = {"On_Mission",2,250,-175.000000,300.000000,-75.000000,350.000000,0.000000,"On Mission"};
 item8[] = {"Raif_Dead",4,218,-300.000000,300.000000,-200.000000,350.000000,10.000000,"Raif Dead"};
@@ -25,7 +25,7 @@ item20[] = {"Pilot_Dead",4,218,200.000000,450.000000,300.000000,500.000000,1.000
 item21[] = {"Died",2,250,325.000000,450.000000,425.000000,500.000000,0.000000,"Died"};
 item22[] = {"",7,210,496.000000,471.000000,504.000000,479.000000,0.000000,""};
 item23[] = {"HQ_Destroyed",4,218,-50.000000,375.000000,50.000000,425.000000,5.000000,"HQ Destroyed"};
-item24[] = {"Direct_Hit",2,4346,-50.000000,450.000000,50.000000,500.000000,0.000000,"Direct Hit"};
+item24[] = {"Direct_Hit",2,250,-50.000000,450.000000,50.000000,500.000000,0.000000,"Direct Hit"};
 item25[] = {"",7,210,-129.000000,396.000000,-121.000000,404.000000,0.000000,""};
 item26[] = {"",7,210,-3.999997,546.000000,3.999997,554.000000,0.000000,""};
 item27[] = {"",7,210,496.000000,546.000000,504.000000,554.000000,0.000000,""};
@@ -195,7 +195,7 @@ class FSM
        "	IP_Pilot setVariable [""IP_Faction"", ""EFMil""];" \n
        "	IP_Pilot setIdentity ""planePilot"";" \n
        "	IP_Pilot setVariable [""IP_Avatar"", ""IP_CMP_MERCS\IP_CMP_MERCS\img\planePilotAvatar.jpg""];" \n
-       "	//IP_Pilot linkItem ""NVGoggles"";" \n
+       "	IP_Pilot linkItem ""NVGoggles"";" \n
        "	[IP_Pilot, 5] call IP_fnc_setSkill;" \n
        "	" \n
        "	//IP_Plane = createVehicle [""B_Plane_CAS_01_F"", _posStart, [], 0, ""FLY""];" \n
@@ -252,6 +252,7 @@ class FSM
        "	{" \n
        "		_x enableSimulation true;" \n
        "		_x hideObject false;" \n
+       "		[_x, _dir] call IP_fnc_setDirFly;" \n
        "		_x addEventhandler [""Fired"", {" \n
        "			if ((_this select 1) == ""Bomb_04_Plane_CAS_01_F"") then {" \n
        "				(_this select 6) spawn {" \n

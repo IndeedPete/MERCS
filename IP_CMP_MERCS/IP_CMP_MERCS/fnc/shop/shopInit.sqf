@@ -1,4 +1,4 @@
-private ["_getClasses", "_setPrices", "_autoIndexing", "_defaultNavigation", "_inPossession", "_uniformsInPossession", "_enhancementsInPossession", "_vehiclesInPossession", "_serverSide", "_box", "_missions", "_requiredShow", "_personnelCategories", "_killedTeammates", "_weaponCategories", "_magazines", "_itemCategories", "_uniformCategories", "_enhancements", "_enhancementClasses", "_vehicleCategories"];
+private ["_getClasses", "_setPrices", "_autoIndexing", "_defaultNavigation", "_inPossession", "_uniformsInPossession", "_enhancementsInPossession", "_vehiclesInPossession", "_serverSide", "_box", "_missions", "_requiredShow", "_personnelCategories", "_killedTeammates", "_team", "_weaponCategories", "_magazines", "_itemCategories", "_uniformCategories", "_enhancements", "_enhancementClasses", "_vehicleCategories"];
 _getClasses = {
 	private "_arr";
 	_arr = [];
@@ -94,6 +94,7 @@ IP_AvailableMissions = _missions call _getClasses;
 _requiredShow = if (getText(missionConfigFile >> "stage") == "A") then {1} else {2};
 _personnelCategories = ("((if (isNumber(_x >> 'show')) then {(getNumber(_x >> 'show'))} else {1}) <= " + str(_requiredShow) + ") && {count _x > 0}") configClasses (missionConfigFile >> "ShopPersonnel");
 _killedTeammates = if (isNil "IP_MERCS_KilledTeammates") then {[]} else {IP_MERCS_KilledTeammates};
+_team = if (isNil "IP_MERCS_Team") then {[]} else {IP_MERCS_Team};
 IP_PersonnelCategories = _personnelCategories call _getClasses;
 IP_PersonnelFilters = ["All"] + IP_PersonnelCategories;
 IP_AvailablePersonnel = [];
@@ -107,7 +108,7 @@ IP_AvailablePersonnel = [];
 	{
 		_class = _x;
 		if (((if (isNumber(missionConfigFile >> "ShopPersonnel" >> _category >> _class >> 'show')) then {(getNumber(missionConfigFile >> "ShopPersonnel" >> _category >> _class >> 'show'))} else {1}) == 1)
-			&& {{_class == _x} count _killedTeammates == 0}) then {
+			&& {{_class == _x} count _killedTeammates == 0} && {({_class == _x} count _team == 0) || (getNumber(missionConfigFile >> "ShopPersonnel" >> _category >> _class >> 'unique') != 1)}) then {
 
 			_personnel pushBack _class;
 		};

@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={3125.9478,20.658707,21966.059};
-		dir[]={-0.94236612,-0.32863048,-0.064798124};
-		up[]={-0.32793814,0.94441068,-0.022553461};
-		aside[]={-0.068607569,8.7777153e-008,0.99774104};
+		pos[]={3126.8691,19.497198,21963.211};
+		dir[]={0.44569424,-0.344313,0.8264724};
+		up[]={0.16346292,0.93880713,0.30312636};
+		aside[]={0.88026214,6.0448656e-008,-0.4746998};
 	};
 };
 binarizationWanted=0;
@@ -551,7 +551,7 @@ class Mission
 			position[]={3109.1831,16.220209,21947.813};
 			class Attributes
 			{
-				condition="this && (player in thisList) && ((player getVariable [""IP_Mission"", """"]) != """") && (!isNil ""IP_BriefingDone"")";
+				condition="this && (player in thisList) && ((player getVariable [""IP_ShopMission"", """"]) != """") && (!isNil ""IP_BriefingDone"")";
 				onActivation="nul = ""foot"" spawn IP_scn_insertion;";
 				sizeA=5;
 				sizeB=5;
@@ -568,7 +568,7 @@ class Mission
 			position[]={3112.658,13.709599,21970.672};
 			class Attributes
 			{
-				condition="(({player in _x} count IP_GarageVehicles) > 0) && ((player getVariable [""IP_Mission"", """"]) != """") && (!isNil ""IP_BriefingDone"")";
+				condition="(({player in _x} count IP_GarageVehicles) > 0) && ((player getVariable [""IP_ShopMission"", """"]) != """") && (!isNil ""IP_BriefingDone"")";
 				onActivation="nul = ""car"" spawn IP_scn_insertion;";
 				sizeA=0;
 				sizeB=0;
@@ -584,7 +584,7 @@ class Mission
 			position[]={3129.2251,14.504384,21979.482};
 			class Attributes
 			{
-				condition="(player in IP_Heli) && ((player getVariable [""IP_Mission"", """"]) != """") && (!isNil ""IP_BriefingDone"")";
+				condition="(player in IP_Heli) && ((player getVariable [""IP_ShopMission"", """"]) != """") && (!isNil ""IP_BriefingDone"")";
 				onActivation="nul = ""heli"" spawn IP_scn_insertion;";
 				sizeA=0;
 				sizeB=0;

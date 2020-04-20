@@ -1,3 +1,4 @@
+waitUntil {!(isNil "IP_MainInitDone")};
 params [
 	["_unit", player, [ObjNull]],
 	["_unique", false, [true]],
@@ -12,7 +13,6 @@ params [
 	"_capacity"
 ];
 
-waitUntil {!(isNil "IP_MainInitDone")};
 _team = _unit getVariable ["IP_ShopTeam", []];
 if (count _team == 0) exitWith {};
 

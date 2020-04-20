@@ -223,6 +223,7 @@ _availableCampEnhancements = (missionConfigFile >> "ShopCampEnhancements") call 
 		IP_GarageVehicles = IP_GarageVehicles + [_created];
 	};
 } forEach _campVehicles;
+player setVariable ["IP_ShopGarageVehicles", IP_GarageVehicles];
 
 // Main Setup
 [] call IP_fnc_mainInit;

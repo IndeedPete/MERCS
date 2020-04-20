@@ -27,6 +27,8 @@ IP_m_fnc_destroyed = {
 	while {IP_LaseTargets} do {
 		waitUntil {(!isNull (laserTarget IP_Main)) && {isNull ((laserTarget IP_Main) getVariable ["IP_LaserTarget", ObjNull])}};
 		_target = (nearestObjects [(getPos(laserTarget IP_Main)), ["ALL"], 50]) select 1;
+		if (isNull _target) exitWith {};
+		
 		_pos = getPosATL _target;
 		_laserTarget = "LaserTargetW" createVehicle _pos;
 		_laserTarget attachTo [_target, [0, 0, 3]];
