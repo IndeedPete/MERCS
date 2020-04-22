@@ -67,11 +67,11 @@ player createDiaryRecord ["Diary", ["Situation", (_prefix + "The AAF and the Pro
 	if ((side _x) == west) then {
 		switch ((_x getVariable ["IP_Faction", ""])) do {
 			case "ION":{
-				[_x, 5, false, [((dayTime < 7) OR (dayTime > 19)), true], false] call IP_fnc_createMerc;
+				[_x] call IP_fnc_createMerc;
 			};
 			
 			case "BritishKnights":{
-				[_x, 5, false, [((dayTime < 7) OR (dayTime > 19)), true]] call IP_fnc_createBK;
+				[_x] call IP_fnc_createBK;
 			};
 			
 			default {};
