@@ -46,7 +46,11 @@ IP_Commander setVariable ["IP_Faction", "ION"];
 IP_Heli allowDamage false;
 {
 	_x setVariable ["IP_Faction", "ION"];
-	[_x, false, [true, true], false] call IP_fnc_createMerc;
+	[_x] call IP_fnc_createMerc;
+	_x unlinkItem "NVGoggles_INDEP";
+	_x unlinkItem "NVGoggles_OPFOR";
+	_x addPrimaryWeaponItem "acc_flashlight";
+	_x enableGunLights "ForceOn";
 } forEach allUnits - [IP_Main, IP_Buddy, IP_Commander] - (units group IP_Heli);
 {_x moveInCargo IP_Heli} forEach (units group IP_Commander);
 

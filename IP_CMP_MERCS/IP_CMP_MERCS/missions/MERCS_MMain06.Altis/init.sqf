@@ -27,7 +27,7 @@ if (IP_ChoseBlackArrow) then {
 	(group IP_Main) setGroupID ["Razor"];
 	[] spawn {
 		waitUntil {time > 0};
-		{[_x, 5, false, [((dayTime < 7) OR (dayTime > 19)), true], false] call IP_fnc_createMerc} forEach ((units(group IP_Main)) - [IP_Main]);
+		{[_x] call IP_fnc_createMerc} forEach ((units(group IP_Main)) - [IP_Main]);
 	};
 } else {
 	{deleteVehicle _x} forEach (units(group IP_MainDSE));
@@ -192,7 +192,7 @@ if (IP_ChoseBlackArrow) then {
 			[_x, (_ambientAnimCombat select 0)] call BIS_fnc_ambientAnimCombat;
 		};
 	};
-	if ((_x getVariable ["IP_Faction", ""]) in ["BlackArrow", "ION"]) then {[_x, 5, false, [((dayTime < 7) OR (dayTime > 19)), true], false] call IP_fnc_createMerc};
+	if ((_x getVariable ["IP_Faction", ""]) in ["BlackArrow", "ION"]) then {[_x] call IP_fnc_createMerc};
 	if ((_x getVariable ["IP_Faction", ""]) == "BritishKnights") then {[_x, 5, false, [((dayTime < 7) OR (dayTime > 19)), true]] call IP_fnc_createBK};
 	if ((_x getVariable ["IP_Faction", ""]) == "CSAT") then {
 		if (IP_ChoseBlackArrow OR (!(IP_OffersHeard select 1))) then {deleteVehicle _x} else {

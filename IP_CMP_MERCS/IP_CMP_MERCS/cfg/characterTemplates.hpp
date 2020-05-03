@@ -64,6 +64,7 @@ class CharacterTemplates {
 		//texture = "IP_CMP_MERCS\IP_CMP_MERCS\txt\clothing1_mtp_coION.paa";
 		uniform = "IP_U_B_CombatUniform_MERCS_Modern_Arid_Rolled";
 		variables = "[['IP_Faction', 'ION'], ['IP_LiveFeed', true], ['IP_Avatar', 'IP_CMP_MERCS\IP_CMP_MERCS\img\commanderAvatar.jpg'], ['IP_ConvSpecial', 'Head of IONs Mediterranean operations.']]";
+		weapons[] = {"", "", "hgun_ACPC2_F"};
 		
 		class combat {
 			code = "[_this] call IP_fnc_automaticRearm; _this allowDamage false; (group _this) setGroupID ['Black Knight'];";

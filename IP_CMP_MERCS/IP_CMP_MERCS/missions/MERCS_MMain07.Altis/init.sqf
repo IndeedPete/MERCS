@@ -13,15 +13,21 @@ _playerBox = if (isNil "IP_MERCS_PlayerBox") then {[]} else {IP_MERCS_PlayerBox}
 
 // Functions
 _getVehicleClassNameFromIdentifier = {
-	private ["_identifier", "_allCampVehicles", "_className"];
+	private ["_identifier", "_allCategories", "_className", "_allCampVehicles"];
 	_identifier = _this;
-	_allCampVehicles = (missionConfigFile >> "ShopCampVehicles") call IP_fnc_getConfigEntries;
+	_allCategories = (missionConfigFile >> "ShopCampVehicles") call IP_fnc_getConfigEntries;
 	_className = "";
 	
 	{
-		_path = (missionConfigFile >> "ShopCampVehicles" >> _x >> "identifier");
-		if ((isText _path) && {(getText _path) == _identifier}) exitWith {_className = _x};
-	} forEach _allCampVehicles;
+		_category = _x;
+		_allCampVehicles = (missionConfigFile >> "ShopCampVehicles" >> _category) call IP_fnc_getConfigEntries;
+		{
+			if (isClass(missionConfigFile >> "ShopCampVehicles" >> _category >> _x)) then {
+				_path = (missionConfigFile >> "ShopCampVehicles" >> _category >> _x >> "identifier");
+				if ((isText _path) && {(getText _path) == _identifier}) exitWith {_className = _x};
+			};
+		} forEach _allCampVehicles;
+	} forEach _allCategories;
 	
 	_className
 };
@@ -35,7 +41,7 @@ _getVehicleClassNameFromIdentifier = {
 		if ((typeOf _x) in _killedTeammates) then {deleteVehicle _x};
 			
 		if ((_x getVariable ["IP_Faction", ""]) == "ION") then {
-			[_x, 5, false, [((dayTime < 7) OR (dayTime > 19)), true], false] call IP_fnc_createMerc;
+			[_x] call IP_fnc_createMerc;
 		};
 		
 		if ((_x getVariable ["IP_Faction", ""]) == "BritishKnights") then {
@@ -78,7 +84,7 @@ _availableCampEnhancements = (missionConfigFile >> "ShopCampEnhancements") call 
 
 // Garage Setup
 {
-	if (getNumber(missionConfigFile >> "ShopCampVehicles" >> _x >> "isCar") == 1) then {
+	if (isClass(missionConfigFile >> "ShopCampVehicles" >> "Cars" >> _x)) then {
 		_spot = (count IP_GarageVehicles) + 1;
 		_marker = "mGarageSpot" + str(_spot);
 		_pos = getMarkerPos _marker;
@@ -86,11 +92,13 @@ _availableCampEnhancements = (missionConfigFile >> "ShopCampEnhancements") call 
 		_created = _x createVehicle _pos;
 		_created setDir 180;
 		_created setPos _pos;
+		_created lockDriver true;
 		clearItemCargo _created;
 		
 		IP_GarageVehicles = IP_GarageVehicles + [_created];
 	};
 } forEach IP_CampVehicles;
+player setVariable ["IP_ShopGarageVehicles", IP_GarageVehicles];
 
 // Player's Box
 if ((count _playerBox) > 0) then {

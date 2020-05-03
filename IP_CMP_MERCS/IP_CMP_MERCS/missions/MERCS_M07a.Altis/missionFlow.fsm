@@ -78,8 +78,8 @@ link37[] = {32,33};
 link38[] = {33,34};
 link39[] = {34,26};
 link40[] = {35,2};
-globals[] = {0.000000,0,0,0,0,640,480,1,90,6316128,1,-450.472626,458.182404,836.541382,-165.732635,825,1244,1};
-window[] = {2,-1,-1,-1,-1,811,52,1492,52,3,843};
+globals[] = {0.000000,0,0,0,0,640,480,1,90,6316128,1,-450.472626,458.182404,903.147949,-466.993622,825,1244,1};
+window[] = {2,-1,-1,-32000,-32000,837,78,1518,78,3,843};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -185,7 +185,7 @@ class FSM
        "	enableSentences false;" \n
        "	" \n
        "	_posTarget = getMarkerPos ""mHQ"";" \n
-       "	_posStart = getMarkerPos ""mPlane1"";" \n
+       "	_posStart = [((getMarkerPos ""mPlane1"") select 0), ((getMarkerPos ""mPlane1"") select 1), 100];" \n
        "	_dir = [_posStart, _posTarget] call BIS_fnc_dirTo;" \n
        "	_grp = createGroup west;" \n
        "	_grp setGroupID [""Badass One""];" \n
@@ -198,10 +198,12 @@ class FSM
        "	IP_Pilot linkItem ""NVGoggles"";" \n
        "	[IP_Pilot, 5] call IP_fnc_setSkill;" \n
        "	" \n
-       "	//IP_Plane = createVehicle [""B_Plane_CAS_01_F"", _posStart, [], 0, ""FLY""];" \n
-       "	//[IP_Plane, _dir] call IP_fnc_setDirFly; // IP_Plane setDir _dir;" \n
-       "	//IP_Plane setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext01_coEF1.paa""];" \n
-       "	//IP_Plane setObjectTexture [1, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext02_coEF1.paa""];" \n
+       "	IP_Plane = createVehicle [""B_Plane_CAS_01_F"", _posStart, [], 0, ""FLY""];" \n
+       "	//[IP_Plane, _dir] call IP_fnc_setDirFly;" \n
+       "	//IP_Plane setDir _dir;" \n
+       "	//IP_Plane setVelocity [100 * (sin _dir), 100 * (cos _dir), 0];" \n
+       "	IP_Plane setObjectTexture [1, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext01_coEF1.paa""];" \n
+       "	IP_Plane setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext02_coEF1.paa""];" \n
        "	IP_Pilot moveInDriver IP_Plane;" \n
        "	//IP_Plane enableSimulation false;" \n
        "	" \n
@@ -221,10 +223,12 @@ class FSM
        "	IP_Pilot2 allowDamage false;" \n
        "	[IP_Pilot2, 5] call IP_fnc_setSkill;" \n
        "	" \n
-       "	//IP_Plane2 = createVehicle [""B_Plane_CAS_01_F"", _posStart, [], 0, ""FLY""];" \n
-       "	//[IP_Plane2, _dir] call IP_fnc_setDirFly; // IP_Plane2 setDir _dir;" \n
-       "	//IP_Plane2 setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext01_coEF1.paa""];" \n
-       "	//IP_Plane2 setObjectTexture [1, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext02_coEF2.paa""];" \n
+       "	IP_Plane2 = createVehicle [""B_Plane_CAS_01_F"", _posStart, [], 0, ""FLY""];" \n
+       "	//[IP_Plane2, _dir] call IP_fnc_setDirFly;" \n
+       "	//IP_Plane2 setDir _dir;" \n
+       "	//IP_Plane2 setVelocity [100 * (sin _dir), 100 * (cos _dir), 0];" \n
+       "	IP_Plane2 setObjectTexture [1, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext01_coEF1.paa""];" \n
+       "	IP_Plane2 setObjectTexture [0, ""IP_CMP_MERCS\IP_CMP_MERCS\txt\plane_cas_01_ext02_coEF2.paa""];" \n
        "	IP_Pilot2 moveInDriver IP_Plane2;" \n
        "	//IP_Plane2 enableSimulation false;" \n
        "	IP_Plane2 allowDamage false;" \n
@@ -250,8 +254,8 @@ class FSM
        "	[""IP_OnEachFrameEH"", ""onEachFrame"", _scene] call BIS_fnc_addStackedEventHandler;" \n
        "	" \n
        "	{" \n
-       "		_x enableSimulation true;" \n
-       "		_x hideObject false;" \n
+       "		//_x enableSimulation true;" \n
+       "		//_x hideObject false;" \n
        "		[_x, _dir] call IP_fnc_setDirFly;" \n
        "		_x addEventhandler [""Fired"", {" \n
        "			if ((_this select 1) == ""Bomb_04_Plane_CAS_01_F"") then {" \n

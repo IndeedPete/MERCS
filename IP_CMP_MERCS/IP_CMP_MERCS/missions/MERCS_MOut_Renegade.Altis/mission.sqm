@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2090.125,74.601151,22180.725};
-		dir[]={-0.38549379,-0.90473515,0.18136258};
-		up[]={-0.81865096,0.42599034,0.38515002};
-		aside[]={0.42571643,2.23401e-007,0.90487671};
+		pos[]={704.59467,30.877823,22215.564};
+		dir[]={-0.83344394,-0.54783231,0.073054373};
+		up[]={-0.54577756,0.83656257,0.047840223};
+		aside[]={0.087323733,-4.3606633e-007,0.9962194};
 	};
 };
 binarizationWanted=0;
@@ -31,6 +31,12 @@ addons[]=
 	"A3_Characters_F",
 	"A3_Characters_F_Exp_Civil",
 	"A3_Air_F_Heli_Light_02",
+	"A3_Weapons_F_Rifles_MX",
+	"A3_Weapons_F_Acc",
+	"A3_Weapons_F",
+	"A3_Weapons_F_Pistols_P07",
+	"IP_CMP_MERCS",
+	"A3_Weapons_F_Items",
 	"A3_Modules_F",
 	"A3_Structures_F_System"
 };
@@ -38,7 +44,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=7;
+		items=9;
 		class Item0
 		{
 			className="A3_Structures_F";
@@ -82,6 +88,19 @@ class AddonsMetaData
 			url="https://www.arma3.com";
 		};
 		class Item6
+		{
+			className="A3_Weapons_F";
+			name="Arma 3 Alpha - Weapons and Accessories";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item7
+		{
+			className="IP_CMP_MERCS";
+			name="IP_CMP_MERCS";
+			author="IndeedPete";
+		};
+		class Item8
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
@@ -271,12 +290,14 @@ class Mission
 				angles[]={6.2033553,0,6.1206322};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
 			};
 			id=1915;
 			type="Land_HelipadEmpty_F";
+			atlOffset=-7.6293945e-006;
 		};
 		class Item7
 		{
@@ -427,7 +448,7 @@ class Mission
 					};
 					showWP="NEVER";
 					id=1923;
-					atlOffset=0.5;
+					atlOffset=0.49999237;
 					class AttachedTo
 					{
 						id=1915;
@@ -537,6 +558,108 @@ class Mission
 						skill=1;
 						rank="CAPTAIN";
 						name="IP_Commander";
+						class Inventory
+						{
+							class primaryWeapon
+							{
+								name="arifle_MX_F";
+								optics="optic_Aco";
+								flashlight="acc_pointer_IR";
+								class primaryMuzzleMag
+								{
+									name="30Rnd_65x39_caseless_mag";
+									ammoLeft=30;
+								};
+							};
+							class handgun
+							{
+								name="hgun_P07_F";
+								class primaryMuzzleMag
+								{
+									name="16Rnd_9x21_Mag";
+									ammoLeft=16;
+								};
+							};
+							class uniform
+							{
+								typeName="IP_U_B_CombatUniform_MERCS_Modern_Arid_T";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=2;
+									class Item0
+									{
+										name="30Rnd_65x39_caseless_mag";
+										count=2;
+										ammoLeft=30;
+									};
+									class Item1
+									{
+										name="Chemlight_green";
+										count=1;
+										ammoLeft=1;
+									};
+								};
+								class ItemCargo
+								{
+									items=1;
+									class Item0
+									{
+										name="FirstAidKit";
+										count=1;
+									};
+								};
+							};
+							class vest
+							{
+								typeName="V_PlateCarrierL_CTRG";
+								isBackpack=0;
+								class MagazineCargo
+								{
+									items=6;
+									class Item0
+									{
+										name="30Rnd_65x39_caseless_mag";
+										count=7;
+										ammoLeft=30;
+									};
+									class Item1
+									{
+										name="16Rnd_9x21_Mag";
+										count=2;
+										ammoLeft=16;
+									};
+									class Item2
+									{
+										name="SmokeShell";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item3
+									{
+										name="SmokeShellGreen";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item4
+									{
+										name="Chemlight_green";
+										count=1;
+										ammoLeft=1;
+									};
+									class Item5
+									{
+										name="HandGrenade";
+										count=2;
+										ammoLeft=1;
+									};
+								};
+							};
+							map="ItemMap";
+							compass="ItemCompass";
+							watch="ItemWatch";
+							radio="ItemRadio";
+						};
 					};
 					id=1927;
 					type="B_Story_SF_Captain_F";
@@ -1002,7 +1125,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={2077.2144,54.426754,22185.744};
-				angles[]={-0,0,6.282495};
+				angles[]={0,0,6.282495};
 			};
 			side="Empty";
 			flags=4;

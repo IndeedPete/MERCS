@@ -15,18 +15,25 @@ _missionsDone = if (isNil "IP_MERCS_MissionsDone") then {[]} else {IP_MERCS_Miss
 
 // Functions
 _getVehicleClassNameFromIdentifier = {
-	private ["_identifier", "_allCampVehicles", "_className"];
+	private ["_identifier", "_allCategories", "_className", "_allCampVehicles"];
 	_identifier = _this;
-	_allCampVehicles = (missionConfigFile >> "ShopCampVehicles") call IP_fnc_getConfigEntries;
+	_allCategories = (missionConfigFile >> "ShopCampVehicles") call IP_fnc_getConfigEntries;
 	_className = "";
 	
 	{
-		_path = (missionConfigFile >> "ShopCampVehicles" >> _x >> "identifier");
-		if ((isText _path) && {(getText _path) == _identifier}) exitWith {_className = _x};
-	} forEach _allCampVehicles;
+		_category = _x;
+		_allCampVehicles = (missionConfigFile >> "ShopCampVehicles" >> _category) call IP_fnc_getConfigEntries;
+		{
+			if (isClass(missionConfigFile >> "ShopCampVehicles" >> _category >> _x)) then {
+				_path = (missionConfigFile >> "ShopCampVehicles" >> _category >> _x >> "identifier");
+				if ((isText _path) && {(getText _path) == _identifier}) exitWith {_className = _x};
+			};
+		} forEach _allCampVehicles;
+	} forEach _allCategories;
 	
 	_className
 };
+
 IP_m_fnc_stratMap = {
 	if ((isNil "IP_AvailableMissions") OR {count IP_AvailableMissions == 0}) exitWith {hint "No missions available at the moment!"};
 	private "_missionsData";

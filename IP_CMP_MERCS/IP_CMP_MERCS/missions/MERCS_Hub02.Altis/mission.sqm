@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={3126.8691,19.497198,21963.211};
-		dir[]={0.44569424,-0.344313,0.8264724};
-		up[]={0.16346292,0.93880713,0.30312636};
-		aside[]={0.88026214,6.0448656e-008,-0.4746998};
+		pos[]={3130.3992,19.497198,21966.117};
+		dir[]={-0.18097131,-0.51657975,0.83704519};
+		up[]={-0.10917684,0.85619086,0.50495452};
+		aside[]={0.97751361,-4.4971239e-007,0.21134262};
 	};
 };
 binarizationWanted=0;
@@ -4336,8 +4336,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3122.8735,15.386512,21976.184};
-				angles[]={6.2498627,4.3677373,0.055941612};
+				position[]={3123.551,15.427659,21976.348};
+				angles[]={6.2498627,4.3677387,0.055941612};
 			};
 			side="Empty";
 			flags=4;
@@ -4347,15 +4347,37 @@ class Mission
 			};
 			id=241;
 			type="Land_PortableLight_single_F";
-			atlOffset=0.0022859573;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item242
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3122.6936,14.708053,21977.916};
-				angles[]={6.2498627,1.3369951,0.055941612};
+				position[]={3124.1499,14.69966,21974.801};
+				angles[]={0.041311946,1.3369919,0.055937801};
 			};
 			side="Empty";
 			flags=4;
@@ -4365,6 +4387,29 @@ class Mission
 			};
 			id=242;
 			type="Land_Portable_generator_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item243
 		{
@@ -5860,8 +5905,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3121.3154,14.838033,21980.207};
-				angles[]={0.28165892,1.0855362,5.6264687};
+				position[]={3121.21,15.071671,21979.9};
+				angles[]={6.249867,1.0855424,0.055937801};
 			};
 			side="Empty";
 			flags=4;
@@ -5872,7 +5917,6 @@ class Mission
 			};
 			id=320;
 			type="Land_HBarrier_5_F";
-			atlOffset=-0.24973965;
 		};
 		class Item321
 		{

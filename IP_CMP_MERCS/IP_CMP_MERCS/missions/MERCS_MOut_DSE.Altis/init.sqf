@@ -63,6 +63,10 @@ IP_Whiteboard setObjectTexture [0, "IP_CMP_MERCS\IP_CMP_MERCS\txt\wb\MOut_DSE_WB
 		[_x] call IP_fnc_createMerc;
 		_x enableSimulation false;
 		_x hideObject true;
+		_x unlinkItem "NVGoggles_INDEP";
+		_x unlinkItem "NVGoggles_OPFOR";
+		_x addPrimaryWeaponItem "acc_flashlight";
+		_x enableGunLights "ForceOn";
 	};
 } forEach (allUnits - [IP_Main, IP_Rival]);
 

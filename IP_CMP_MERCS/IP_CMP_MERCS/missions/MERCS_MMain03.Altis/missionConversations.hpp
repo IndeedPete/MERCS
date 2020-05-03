@@ -91,7 +91,7 @@ class Conversations
 	};
 	class phoneHangUp
 	{
-		expression = "call IP_fnc_closeConversation; IP_PhoneAnswered = nil; IP_PhoneCallDone = true; [IP_Hacker, 'phoneOpener'] call IP_fnc_removeConversation; 'mCheckpoint' setMarkerAlpha 1; [player, 'tCheckpoint', ['Engage and clear the <marker name=''mCheckpoint''>AAF Checkpoint at Edessa</marker>!', 'Clear AAF Checkpoint', 'AAF Checkpoint'], 'mCheckpoint', true, 1] call BIS_fnc_taskCreate;";
+		expression = "call IP_fnc_closeConversation; IP_PhoneAnswered = nil; IP_PhoneCallDone = true; [IP_Hacker, 'phoneOpener'] call IP_fnc_removeConversation; 'mCheckpoint' setMarkerAlpha 1; [player, 'tCheckpoint', ['Engage and clear the <marker name=''mCheckpoint''>AAF Checkpoint at Edessa</marker>!', 'Clear AAF Checkpoint', 'AAF Checkpoint'], 'mCheckpoint', true, 1, true, 'destroy'] call BIS_fnc_taskCreate;";
 		sentences[] = {
 			"(Hang up.)"
 		};
