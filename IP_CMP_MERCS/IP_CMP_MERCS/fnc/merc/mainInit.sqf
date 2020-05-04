@@ -63,12 +63,15 @@ _this spawn {
 		_unit forceAddUniform (_clothes select 0);
 	};
 
-	if ((getNumber(missionConfigFile >> "isHub") == 1) && {(count _playerBox) > 0}) then {
+	if ((getNumber(missionConfigFile >> "isHub") == 1)) then {
 		_unit setVariable ["IP_ShopBox", IP_PlayerBox];
-		{IP_PlayerBox addWeaponCargo [_x, 1]} forEach (_playerBox select 0);
-		{IP_PlayerBox addMagazineCargo [_x, 1]} forEach (_playerBox select 1);
-		{IP_PlayerBox addItemCargo [_x, 1]} forEach (_playerBox select 2);
-		{IP_PlayerBox addBackpackCargo [_x, 1]} forEach (_playerBox select 3);
+
+		if ((count _playerBox) > 0) then {
+			{IP_PlayerBox addWeaponCargo [_x, 1]} forEach (_playerBox select 0);
+			{IP_PlayerBox addMagazineCargo [_x, 1]} forEach (_playerBox select 1);
+			{IP_PlayerBox addItemCargo [_x, 1]} forEach (_playerBox select 2);
+			{IP_PlayerBox addBackpackCargo [_x, 1]} forEach (_playerBox select 3);
+		};
 	};
 	
 	// Double stuff because of missing uniform bug
